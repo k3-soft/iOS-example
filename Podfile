@@ -2,7 +2,7 @@ source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, '10.0'
 use_frameworks!
 
-target ‘CommunityApp’ do
+target ‘Movask’ do
 pod 'Alamofire', '~> 4.4'
 pod 'AlamofireObjectMapper', '~> 4.1'
 pod 'AlamofireImage', '~> 3.2'
@@ -11,14 +11,8 @@ pod 'Fabric'
 pod 'Crashlytics'
 pod 'IQKeyboardManagerSwift', '~> 4.0'
 pod 'PKHUD', '~> 4.2'
-pod 'GoogleMaps'
-pod 'GooglePlaces'
-pod "Popover"
-pod 'JTAppleCalendar', '~> 6.0'
-pod 'KMPlaceholderTextView', '~> 1.3.0'
 pod 'FirebaseMessaging'
 pod 'Firebase'
-pod 'Branch'
 
 end
 

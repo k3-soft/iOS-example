@@ -12,6 +12,7 @@
 		03D646C01F30D2CE007C206F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03D646BE1F30D2CE007C206F /* Main.storyboard */; };
 		03D646C21F30D2CE007C206F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 03D646C11F30D2CE007C206F /* Assets.xcassets */; };
 		03D646C51F30D2CE007C206F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03D646C31F30D2CE007C206F /* LaunchScreen.storyboard */; };
+		CD6C7355B1C4AE093EDD1E8F /* Pods_Movask.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADD8DD89C88C0C32D0D1EA71 /* Pods_Movask.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,9 @@
 		03D646C11F30D2CE007C206F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		03D646C41F30D2CE007C206F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		03D646C61F30D2CE007C206F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4E98A7AC960E59B9702AEB84 /* Pods-Movask.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Movask.release.xcconfig"; path = "Pods/Target Support Files/Pods-Movask/Pods-Movask.release.xcconfig"; sourceTree = "<group>"; };
+		86C8F8B01958BC742420DC15 /* Pods-Movask.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Movask.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Movask/Pods-Movask.debug.xcconfig"; sourceTree = "<group>"; };
+		ADD8DD89C88C0C32D0D1EA71 /* Pods_Movask.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Movask.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,6 +33,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CD6C7355B1C4AE093EDD1E8F /* Pods_Movask.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -40,6 +45,8 @@
 			children = (
 				03D646B91F30D2CE007C206F /* Movask */,
 				03D646B81F30D2CE007C206F /* Products */,
+				BD744513CEC4D1F770E2D836 /* Pods */,
+				4D5EB1E2A759B5F25A0D343A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -64,6 +71,23 @@
 			path = Movask;
 			sourceTree = "<group>";
 		};
+		4D5EB1E2A759B5F25A0D343A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				ADD8DD89C88C0C32D0D1EA71 /* Pods_Movask.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BD744513CEC4D1F770E2D836 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				86C8F8B01958BC742420DC15 /* Pods-Movask.debug.xcconfig */,
+				4E98A7AC960E59B9702AEB84 /* Pods-Movask.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -71,9 +95,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 03D646C91F30D2CE007C206F /* Build configuration list for PBXNativeTarget "Movask" */;
 			buildPhases = (
+				1378413F2A1AE8F0D2D3C90F /* [CP] Check Pods Manifest.lock */,
 				03D646B31F30D2CE007C206F /* Sources */,
 				03D646B41F30D2CE007C206F /* Frameworks */,
 				03D646B51F30D2CE007C206F /* Resources */,
+				50133AEA52C17AE8FF363865 /* [CP] Embed Pods Frameworks */,
+				1804470644D0F0917DCD97F3 /* [CP] Copy Pods Resources */,
+				03D646CC1F30D579007C206F /* Fabric */,
 			);
 			buildRules = (
 			);
@@ -131,6 +159,68 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		03D646CC1F30D579007C206F /* Fabric */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = Fabric;
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Fabric/run\" 0ead8f9e6aa2d15ecb6da97f6f609777cf1bb874 9d27dc328eda34fd5471f15d296e4badbe0eb922a16153ce294a40ba5aeb0b7c";
+		};
+		1378413F2A1AE8F0D2D3C90F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		1804470644D0F0917DCD97F3 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Movask/Pods-Movask-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		50133AEA52C17AE8FF363865 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Movask/Pods-Movask-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		03D646B31F30D2CE007C206F /* Sources */ = {
@@ -261,6 +351,7 @@
 		};
 		03D646CA1F30D2CE007C206F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 86C8F8B01958BC742420DC15 /* Pods-Movask.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 47NU3T65A7;
@@ -274,6 +365,7 @@
 		};
 		03D646CB1F30D2CE007C206F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4E98A7AC960E59B9702AEB84 /* Pods-Movask.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 47NU3T65A7;
@@ -304,6 +396,7 @@
 				03D646CB1F30D2CE007C206F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
