@@ -16,8 +16,22 @@ class LibraryVC: BasicVC {
     var userQuizes = [QuizTest]()
     
     let cellReuseIdentifier = "QuizCell"
-    let collectionLineSpacing: CGFloat = 10.0
-    let collectionInsets: CGFloat = 20.0
+    
+    var collectionLineSpacing: CGFloat {
+        if UIDevice.current.userInterfaceIdiom == .phone {
+            return 10.0
+        } else {
+            return 20.0
+        }
+    }
+    
+    var collectionInsets: CGFloat {
+        if UIDevice.current.userInterfaceIdiom == .phone {
+            return 20.0
+        } else {
+            return 40.0
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

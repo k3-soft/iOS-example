@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait">
+    <device id="ipad9_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -19,13 +19,13 @@
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d2c-9o-wPX">
-                        <rect key="frame" x="0.0" y="0.0" width="259" height="196"/>
+                        <rect key="frame" x="0.0" y="0.0" width="259" height="161"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="sJ2-lx-PU9">
-                                <rect key="frame" x="0.0" y="0.0" width="259" height="196"/>
+                                <rect key="frame" x="0.0" y="0.0" width="259" height="161"/>
                             </imageView>
                             <view alpha="0.25" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Drh-fw-UWv">
-                                <rect key="frame" x="0.0" y="0.0" width="259" height="196"/>
+                                <rect key="frame" x="0.0" y="0.0" width="259" height="161"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                         </subviews>
@@ -42,34 +42,48 @@
                         </constraints>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.75" translatesAutoresizingMaskIntoConstraints="NO" id="TKE-NS-8Mk">
-                        <rect key="frame" x="14" y="224.5" width="231" height="30"/>
+                        <rect key="frame" x="14" y="192.5" width="231" height="55"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="30" id="AW7-YF-eXI"/>
+                            <constraint firstAttribute="height" constant="30" id="AW7-YF-eXI">
+                                <variation key="heightClass=regular-widthClass=regular" constant="55"/>
+                            </constraint>
                         </constraints>
                         <fontDescription key="fontDescription" name="AmericanTypewriter-Semibold" family="American Typewriter" pointSize="17"/>
                         <color key="textColor" red="0.32921970070000001" green="0.33247930170000001" blue="0.33247930170000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
+                        <variation key="heightClass=regular-widthClass=regular">
+                            <fontDescription key="fontDescription" name="AmericanTypewriter-Semibold" family="American Typewriter" pointSize="19"/>
+                        </variation>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CATEGORY" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5ge-6n-l6c">
-                        <rect key="frame" x="13.5" y="209.5" width="231" height="14"/>
+                        <rect key="frame" x="13.5" y="175" width="231" height="16.5"/>
                         <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="12"/>
                         <color key="textColor" red="0.53086377049519951" green="0.53611984743079555" blue="0.53611984743079555" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
+                        <variation key="heightClass=regular-widthClass=regular">
+                            <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="14"/>
+                        </variation>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="Owner" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hKF-hf-HUL">
-                        <rect key="frame" x="14" y="258" width="37.5" height="14"/>
+                        <rect key="frame" x="14" y="249.5" width="44" height="16.5"/>
                         <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="12"/>
                         <color key="textColor" red="0.5308637705" green="0.53611984739999996" blue="0.53611984739999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
+                        <variation key="heightClass=regular-widthClass=regular">
+                            <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="14"/>
+                        </variation>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Views" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ugE-3J-qTv">
-                        <rect key="frame" x="61.5" y="254.5" width="183.5" height="21"/>
+                        <rect key="frame" x="68" y="247.5" width="177" height="21"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="21" id="iyl-qN-eow"/>
                         </constraints>
                         <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="12"/>
                         <color key="textColor" red="0.5308637705" green="0.53611984739999996" blue="0.53611984739999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
+                        <variation key="heightClass=regular-widthClass=regular">
+                            <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="14"/>
+                        </variation>
                     </label>
                 </subviews>
             </view>
@@ -83,12 +97,16 @@
                 <constraint firstItem="ugE-3J-qTv" firstAttribute="top" secondItem="TKE-NS-8Mk" secondAttribute="bottom" id="RDV-6G-zeM"/>
                 <constraint firstAttribute="trailing" secondItem="ugE-3J-qTv" secondAttribute="trailing" constant="14" id="ROC-zb-OGz"/>
                 <constraint firstItem="5ge-6n-l6c" firstAttribute="width" secondItem="TKE-NS-8Mk" secondAttribute="width" id="UFS-ug-VvL"/>
-                <constraint firstAttribute="bottom" secondItem="d2c-9o-wPX" secondAttribute="bottom" constant="85" id="d0n-GU-W19"/>
+                <constraint firstAttribute="bottom" secondItem="d2c-9o-wPX" secondAttribute="bottom" constant="85" id="d0n-GU-W19">
+                    <variation key="heightClass=regular-widthClass=regular" constant="120"/>
+                </constraint>
                 <constraint firstItem="ugE-3J-qTv" firstAttribute="leading" secondItem="hKF-hf-HUL" secondAttribute="trailing" constant="10" id="dKU-zA-2Te"/>
                 <constraint firstItem="d2c-9o-wPX" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="dbG-N4-tlu"/>
                 <constraint firstItem="5ge-6n-l6c" firstAttribute="centerX" secondItem="TKE-NS-8Mk" secondAttribute="centerX" id="hcG-NT-fQ4"/>
                 <constraint firstAttribute="trailing" secondItem="d2c-9o-wPX" secondAttribute="trailing" id="kx5-c3-yxY"/>
-                <constraint firstAttribute="bottom" secondItem="hKF-hf-HUL" secondAttribute="bottom" constant="9" id="wZN-kr-4wo"/>
+                <constraint firstAttribute="bottom" secondItem="hKF-hf-HUL" secondAttribute="bottom" constant="9" id="wZN-kr-4wo">
+                    <variation key="heightClass=regular-widthClass=regular" constant="15"/>
+                </constraint>
                 <constraint firstItem="TKE-NS-8Mk" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="14" id="xxo-qJ-nHk"/>
             </constraints>
             <size key="customSize" width="259" height="281"/>

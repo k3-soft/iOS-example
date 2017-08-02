@@ -41,7 +41,9 @@
                 <constraint firstItem="FAm-lR-b3x" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="A1D-4q-RTV"/>
                 <constraint firstItem="IJb-yG-rjq" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="FhQ-h3-yab"/>
                 <constraint firstAttribute="trailing" secondItem="FAm-lR-b3x" secondAttribute="trailing" id="P9J-ty-FNA"/>
-                <constraint firstAttribute="trailing" secondItem="IJb-yG-rjq" secondAttribute="trailing" id="djV-WL-YVR"/>
+                <constraint firstAttribute="trailing" secondItem="IJb-yG-rjq" secondAttribute="trailing" id="djV-WL-YVR">
+                    <variation key="heightClass=regular-widthClass=regular" constant="0.0"/>
+                </constraint>
             </constraints>
             <point key="canvasLocation" x="34.5" y="54.5"/>
         </view>

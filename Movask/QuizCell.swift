@@ -23,7 +23,13 @@ class QuizCell: UICollectionViewCell {
     @IBOutlet weak var coverBottomConstraint: NSLayoutConstraint!
     
     // Constants
-    let coverBottomConstantDefault: CGFloat = 85.0
+    var coverBottomConstantDefault: CGFloat {
+        if UIDevice.current.userInterfaceIdiom == .phone {
+            return 85.0
+        } else {
+            return 120.0
+        }
+    }
     static var cellHeight: CGFloat {
         if UIDevice.current.userInterfaceIdiom == .phone {
             return 280.0

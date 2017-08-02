@@ -50,8 +50,12 @@
                     </subviews>
                     <color key="backgroundColor" red="0.93817693769999999" green="0.94746581819999998" blue="0.94746581819999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
-                        <constraint firstItem="PHf-oG-c4c" firstAttribute="leading" secondItem="rf8-4V-j22" secondAttribute="leading" constant="22" id="71Z-iG-qDx"/>
-                        <constraint firstItem="PHf-oG-c4c" firstAttribute="top" secondItem="rf8-4V-j22" secondAttribute="top" constant="14" id="PXX-go-bKa"/>
+                        <constraint firstItem="PHf-oG-c4c" firstAttribute="leading" secondItem="rf8-4V-j22" secondAttribute="leading" constant="22" id="71Z-iG-qDx">
+                            <variation key="heightClass=regular-widthClass=regular" constant="40"/>
+                        </constraint>
+                        <constraint firstItem="PHf-oG-c4c" firstAttribute="top" secondItem="rf8-4V-j22" secondAttribute="top" constant="14" id="PXX-go-bKa">
+                            <variation key="heightClass=regular-widthClass=regular" constant="25"/>
+                        </constraint>
                         <constraint firstAttribute="trailing" secondItem="Wkn-Gr-T8J" secondAttribute="trailing" id="Ump-ut-lu1"/>
                         <constraint firstAttribute="bottom" secondItem="Wkn-Gr-T8J" secondAttribute="bottom" id="VkF-TE-kSD"/>
                         <constraint firstItem="Wkn-Gr-T8J" firstAttribute="leading" secondItem="rf8-4V-j22" secondAttribute="leading" id="m1o-eh-8aQ"/>

@@ -22,6 +22,12 @@ class MainVC: BasicVC {
         setSegmentedControl()
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        lineSegmentedControl.updateLineStateWith(width: view.bounds.width)
+    }
+    
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         
         guard let tabBarControllers = tabBarVC?.viewControllers else { return }
