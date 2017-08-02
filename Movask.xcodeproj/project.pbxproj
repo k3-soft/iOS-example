@@ -8,21 +8,61 @@
 
 /* Begin PBXBuildFile section */
 		03D646BB1F30D2CE007C206F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D646BA1F30D2CE007C206F /* AppDelegate.swift */; };
-		03D646BD1F30D2CE007C206F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D646BC1F30D2CE007C206F /* ViewController.swift */; };
 		03D646C01F30D2CE007C206F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03D646BE1F30D2CE007C206F /* Main.storyboard */; };
 		03D646C21F30D2CE007C206F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 03D646C11F30D2CE007C206F /* Assets.xcassets */; };
 		03D646C51F30D2CE007C206F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03D646C31F30D2CE007C206F /* LaunchScreen.storyboard */; };
+		03D646CE1F3200D0007C206F /* UIView+Storyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D646CD1F3200D0007C206F /* UIView+Storyboard.swift */; };
+		03D646D21F320119007C206F /* UIWindow+Root.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D646D11F320119007C206F /* UIWindow+Root.swift */; };
+		03D646D51F32018C007C206F /* BasicVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D646D41F32018C007C206F /* BasicVC.swift */; };
+		03D646D71F32021F007C206F /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D646D61F32021F007C206F /* LoadingView.swift */; };
+		03D646DA1F32023F007C206F /* LoadingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03D646D91F32023F007C206F /* LoadingView.xib */; };
+		03D646DD1F3202EB007C206F /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D646DB1F3202EB007C206F /* MainVC.swift */; };
+		03D646DE1F3202EB007C206F /* MainVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03D646DC1F3202EB007C206F /* MainVC.xib */; };
+		03D646E51F32082F007C206F /* QuizTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D646E41F32082F007C206F /* QuizTest.swift */; };
+		03D646E81F32099D007C206F /* ImageCashManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D646E71F32099D007C206F /* ImageCashManager.swift */; };
+		03D646EC1F320BC0007C206F /* QuizCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D646EA1F320BC0007C206F /* QuizCell.swift */; };
+		03D646ED1F320BC0007C206F /* QuizCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03D646EB1F320BC0007C206F /* QuizCell.xib */; };
+		03D646F01F32183F007C206F /* EventHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D646EF1F32183F007C206F /* EventHandler.swift */; };
+		03D646F41F326E12007C206F /* LineSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D646F31F326E12007C206F /* LineSegmentedControl.swift */; };
+		03D646F61F326E8F007C206F /* LineSegmentedControl.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03D646F51F326E8F007C206F /* LineSegmentedControl.xib */; };
+		03D646F81F326F70007C206F /* LineSegmentedControlCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D646F71F326F70007C206F /* LineSegmentedControlCell.swift */; };
+		03D646FA1F326F7A007C206F /* LineSegmentedControlCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03D646F91F326F7A007C206F /* LineSegmentedControlCell.xib */; };
+		03D646FD1F3271F6007C206F /* LibraryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D646FB1F3271F6007C206F /* LibraryVC.swift */; };
+		03D646FE1F3271F6007C206F /* LibraryVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03D646FC1F3271F6007C206F /* LibraryVC.xib */; };
+		03D647021F327564007C206F /* NibView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D647011F327564007C206F /* NibView.swift */; };
+		03D647051F3277A0007C206F /* LevelsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D647031F3277A0007C206F /* LevelsVC.swift */; };
+		03D647061F3277A0007C206F /* LevelsVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03D647041F3277A0007C206F /* LevelsVC.xib */; };
 		CD6C7355B1C4AE093EDD1E8F /* Pods_Movask.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADD8DD89C88C0C32D0D1EA71 /* Pods_Movask.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		03D646B71F30D2CE007C206F /* Movask.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Movask.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		03D646BA1F30D2CE007C206F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		03D646BC1F30D2CE007C206F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		03D646BF1F30D2CE007C206F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		03D646C11F30D2CE007C206F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		03D646C41F30D2CE007C206F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		03D646C61F30D2CE007C206F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		03D646CD1F3200D0007C206F /* UIView+Storyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Storyboard.swift"; sourceTree = "<group>"; };
+		03D646D11F320119007C206F /* UIWindow+Root.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIWindow+Root.swift"; sourceTree = "<group>"; };
+		03D646D41F32018C007C206F /* BasicVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicVC.swift; sourceTree = "<group>"; };
+		03D646D61F32021F007C206F /* LoadingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		03D646D91F32023F007C206F /* LoadingView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoadingView.xib; sourceTree = "<group>"; };
+		03D646DB1F3202EB007C206F /* MainVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
+		03D646DC1F3202EB007C206F /* MainVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainVC.xib; sourceTree = "<group>"; };
+		03D646E41F32082F007C206F /* QuizTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuizTest.swift; sourceTree = "<group>"; };
+		03D646E71F32099D007C206F /* ImageCashManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCashManager.swift; sourceTree = "<group>"; };
+		03D646EA1F320BC0007C206F /* QuizCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuizCell.swift; sourceTree = "<group>"; };
+		03D646EB1F320BC0007C206F /* QuizCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QuizCell.xib; sourceTree = "<group>"; };
+		03D646EF1F32183F007C206F /* EventHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventHandler.swift; sourceTree = "<group>"; };
+		03D646F31F326E12007C206F /* LineSegmentedControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineSegmentedControl.swift; sourceTree = "<group>"; };
+		03D646F51F326E8F007C206F /* LineSegmentedControl.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LineSegmentedControl.xib; sourceTree = "<group>"; };
+		03D646F71F326F70007C206F /* LineSegmentedControlCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineSegmentedControlCell.swift; sourceTree = "<group>"; };
+		03D646F91F326F7A007C206F /* LineSegmentedControlCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LineSegmentedControlCell.xib; sourceTree = "<group>"; };
+		03D646FB1F3271F6007C206F /* LibraryVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LibraryVC.swift; sourceTree = "<group>"; };
+		03D646FC1F3271F6007C206F /* LibraryVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LibraryVC.xib; sourceTree = "<group>"; };
+		03D647011F327564007C206F /* NibView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NibView.swift; sourceTree = "<group>"; };
+		03D647031F3277A0007C206F /* LevelsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelsVC.swift; sourceTree = "<group>"; };
+		03D647041F3277A0007C206F /* LevelsVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LevelsVC.xib; sourceTree = "<group>"; };
 		4E98A7AC960E59B9702AEB84 /* Pods-Movask.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Movask.release.xcconfig"; path = "Pods/Target Support Files/Pods-Movask/Pods-Movask.release.xcconfig"; sourceTree = "<group>"; };
 		86C8F8B01958BC742420DC15 /* Pods-Movask.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Movask.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Movask/Pods-Movask.debug.xcconfig"; sourceTree = "<group>"; };
 		ADD8DD89C88C0C32D0D1EA71 /* Pods_Movask.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Movask.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -61,14 +101,146 @@
 		03D646B91F30D2CE007C206F /* Movask */ = {
 			isa = PBXGroup;
 			children = (
-				03D646BA1F30D2CE007C206F /* AppDelegate.swift */,
-				03D646BC1F30D2CE007C206F /* ViewController.swift */,
-				03D646BE1F30D2CE007C206F /* Main.storyboard */,
-				03D646C11F30D2CE007C206F /* Assets.xcassets */,
-				03D646C31F30D2CE007C206F /* LaunchScreen.storyboard */,
-				03D646C61F30D2CE007C206F /* Info.plist */,
+				03D646E61F32098D007C206F /* Managers */,
+				03D646E31F32081D007C206F /* Models */,
+				03D646E21F320714007C206F /* System */,
+				03D646E11F320703007C206F /* Storyboards */,
+				03D646E01F3206F3007C206F /* UI Source */,
+				03D646D31F320178007C206F /* Controllers */,
+				03D646CF1F3200D5007C206F /* Views */,
 			);
 			path = Movask;
+			sourceTree = "<group>";
+		};
+		03D646CF1F3200D5007C206F /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				03D646D01F3200E2007C206F /* Extensions */,
+				03D646D81F320225007C206F /* Custom */,
+				03D647011F327564007C206F /* NibView.swift */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		03D646D01F3200E2007C206F /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				03D646CD1F3200D0007C206F /* UIView+Storyboard.swift */,
+				03D646D11F320119007C206F /* UIWindow+Root.swift */,
+			);
+			name = Extensions;
+			sourceTree = "<group>";
+		};
+		03D646D31F320178007C206F /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				03D646D41F32018C007C206F /* BasicVC.swift */,
+				03D646EE1F32182C007C206F /* Protocols */,
+				03D646DF1F3202EF007C206F /* Main */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		03D646D81F320225007C206F /* Custom */ = {
+			isa = PBXGroup;
+			children = (
+				03D646F21F326DF1007C206F /* LineSegmentedControl */,
+				03D646F11F326DEA007C206F /* LoadingView */,
+			);
+			name = Custom;
+			sourceTree = "<group>";
+		};
+		03D646DF1F3202EF007C206F /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				03D646DB1F3202EB007C206F /* MainVC.swift */,
+				03D646DC1F3202EB007C206F /* MainVC.xib */,
+				03D646FB1F3271F6007C206F /* LibraryVC.swift */,
+				03D646FC1F3271F6007C206F /* LibraryVC.xib */,
+				03D647031F3277A0007C206F /* LevelsVC.swift */,
+				03D647041F3277A0007C206F /* LevelsVC.xib */,
+				03D646E91F320B9F007C206F /* Cells */,
+			);
+			name = Main;
+			sourceTree = "<group>";
+		};
+		03D646E01F3206F3007C206F /* UI Source */ = {
+			isa = PBXGroup;
+			children = (
+				03D646C11F30D2CE007C206F /* Assets.xcassets */,
+			);
+			name = "UI Source";
+			sourceTree = "<group>";
+		};
+		03D646E11F320703007C206F /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				03D646BE1F30D2CE007C206F /* Main.storyboard */,
+				03D646C31F30D2CE007C206F /* LaunchScreen.storyboard */,
+			);
+			name = Storyboards;
+			sourceTree = "<group>";
+		};
+		03D646E21F320714007C206F /* System */ = {
+			isa = PBXGroup;
+			children = (
+				03D646BA1F30D2CE007C206F /* AppDelegate.swift */,
+				03D646C61F30D2CE007C206F /* Info.plist */,
+			);
+			name = System;
+			sourceTree = "<group>";
+		};
+		03D646E31F32081D007C206F /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				03D646E41F32082F007C206F /* QuizTest.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		03D646E61F32098D007C206F /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				03D646E71F32099D007C206F /* ImageCashManager.swift */,
+			);
+			name = Managers;
+			sourceTree = "<group>";
+		};
+		03D646E91F320B9F007C206F /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				03D646EA1F320BC0007C206F /* QuizCell.swift */,
+				03D646EB1F320BC0007C206F /* QuizCell.xib */,
+			);
+			name = Cells;
+			sourceTree = "<group>";
+		};
+		03D646EE1F32182C007C206F /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				03D646EF1F32183F007C206F /* EventHandler.swift */,
+			);
+			name = Protocols;
+			sourceTree = "<group>";
+		};
+		03D646F11F326DEA007C206F /* LoadingView */ = {
+			isa = PBXGroup;
+			children = (
+				03D646D61F32021F007C206F /* LoadingView.swift */,
+				03D646D91F32023F007C206F /* LoadingView.xib */,
+			);
+			name = LoadingView;
+			sourceTree = "<group>";
+		};
+		03D646F21F326DF1007C206F /* LineSegmentedControl */ = {
+			isa = PBXGroup;
+			children = (
+				03D646F31F326E12007C206F /* LineSegmentedControl.swift */,
+				03D646F51F326E8F007C206F /* LineSegmentedControl.xib */,
+				03D646F71F326F70007C206F /* LineSegmentedControlCell.swift */,
+				03D646F91F326F7A007C206F /* LineSegmentedControlCell.xib */,
+			);
+			name = LineSegmentedControl;
 			sourceTree = "<group>";
 		};
 		4D5EB1E2A759B5F25A0D343A /* Frameworks */ = {
@@ -152,7 +324,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				03D646F61F326E8F007C206F /* LineSegmentedControl.xib in Resources */,
+				03D646DE1F3202EB007C206F /* MainVC.xib in Resources */,
+				03D646FE1F3271F6007C206F /* LibraryVC.xib in Resources */,
+				03D647061F3277A0007C206F /* LevelsVC.xib in Resources */,
+				03D646FA1F326F7A007C206F /* LineSegmentedControlCell.xib in Resources */,
 				03D646C51F30D2CE007C206F /* LaunchScreen.storyboard in Resources */,
+				03D646ED1F320BC0007C206F /* QuizCell.xib in Resources */,
+				03D646DA1F32023F007C206F /* LoadingView.xib in Resources */,
 				03D646C21F30D2CE007C206F /* Assets.xcassets in Resources */,
 				03D646C01F30D2CE007C206F /* Main.storyboard in Resources */,
 			);
@@ -227,8 +406,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				03D646BD1F30D2CE007C206F /* ViewController.swift in Sources */,
+				03D646EC1F320BC0007C206F /* QuizCell.swift in Sources */,
+				03D646CE1F3200D0007C206F /* UIView+Storyboard.swift in Sources */,
+				03D646DD1F3202EB007C206F /* MainVC.swift in Sources */,
+				03D647051F3277A0007C206F /* LevelsVC.swift in Sources */,
 				03D646BB1F30D2CE007C206F /* AppDelegate.swift in Sources */,
+				03D646E51F32082F007C206F /* QuizTest.swift in Sources */,
+				03D646D51F32018C007C206F /* BasicVC.swift in Sources */,
+				03D647021F327564007C206F /* NibView.swift in Sources */,
+				03D646F81F326F70007C206F /* LineSegmentedControlCell.swift in Sources */,
+				03D646D21F320119007C206F /* UIWindow+Root.swift in Sources */,
+				03D646E81F32099D007C206F /* ImageCashManager.swift in Sources */,
+				03D646FD1F3271F6007C206F /* LibraryVC.swift in Sources */,
+				03D646D71F32021F007C206F /* LoadingView.swift in Sources */,
+				03D646F41F326E12007C206F /* LineSegmentedControl.swift in Sources */,
+				03D646F01F32183F007C206F /* EventHandler.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -354,6 +546,7 @@
 			baseConfigurationReference = 86C8F8B01958BC742420DC15 /* Pods-Movask.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 47NU3T65A7;
 				INFOPLIST_FILE = Movask/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LibraryVC" customModule="Movask" customModuleProvider="target">
+            <connections>
+                <outlet property="userQuizesCollectionView" destination="Wkn-Gr-T8J" id="tMx-JG-1I0"/>
+                <outlet property="userQuizesTitle" destination="PHf-oG-c4c" id="Nip-6X-pzZ"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rf8-4V-j22">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My quizes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PHf-oG-c4c">
+                            <rect key="frame" x="22" y="14" width="331" height="21"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="21" id="3kG-vI-5pS"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="AmericanTypewriter-Semibold" family="American Typewriter" pointSize="19"/>
+                            <color key="textColor" red="0.32921970070000001" green="0.33247930170000001" blue="0.33247930170000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="Wkn-Gr-T8J">
+                            <rect key="frame" x="0.0" y="43" width="375" height="624"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="zVo-wn-tfj">
+                                <size key="itemSize" width="50" height="50"/>
+                                <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            </collectionViewFlowLayout>
+                            <connections>
+                                <outlet property="dataSource" destination="-1" id="DCj-Bp-iFk"/>
+                                <outlet property="delegate" destination="-1" id="k7E-Ns-aSX"/>
+                            </connections>
+                        </collectionView>
+                    </subviews>
+                    <color key="backgroundColor" red="0.93817693769999999" green="0.94746581819999998" blue="0.94746581819999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstItem="PHf-oG-c4c" firstAttribute="leading" secondItem="rf8-4V-j22" secondAttribute="leading" constant="22" id="71Z-iG-qDx"/>
+                        <constraint firstItem="PHf-oG-c4c" firstAttribute="top" secondItem="rf8-4V-j22" secondAttribute="top" constant="14" id="PXX-go-bKa"/>
+                        <constraint firstAttribute="trailing" secondItem="Wkn-Gr-T8J" secondAttribute="trailing" id="Ump-ut-lu1"/>
+                        <constraint firstAttribute="bottom" secondItem="Wkn-Gr-T8J" secondAttribute="bottom" id="VkF-TE-kSD"/>
+                        <constraint firstItem="Wkn-Gr-T8J" firstAttribute="leading" secondItem="rf8-4V-j22" secondAttribute="leading" id="m1o-eh-8aQ"/>
+                        <constraint firstAttribute="trailing" secondItem="PHf-oG-c4c" secondAttribute="trailing" constant="22" id="rVU-dc-hEE"/>
+                        <constraint firstItem="Wkn-Gr-T8J" firstAttribute="top" secondItem="PHf-oG-c4c" secondAttribute="bottom" constant="8" id="tlG-0q-4Or"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="rf8-4V-j22" secondAttribute="trailing" id="2Jp-GC-Z8d"/>
+                <constraint firstAttribute="bottom" secondItem="rf8-4V-j22" secondAttribute="bottom" id="9Kk-I3-Ofg"/>
+                <constraint firstItem="rf8-4V-j22" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="F4a-5r-qbm"/>
+                <constraint firstItem="rf8-4V-j22" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="O7E-N3-4DZ"/>
+            </constraints>
+        </view>
+    </objects>
+</document>

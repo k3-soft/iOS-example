@@ -19,10 +19,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
+        setInitialViewController()
         setFabric()
         setKeyboardManager()
         
         return true
+    }
+    
+    func setInitialViewController() {
+        
+        let vc = MainVC()
+        
+        let navigationVC = UINavigationController(rootViewController: vc)
+        navigationVC.setNavigationBarHidden(true, animated: false)
+        
+        window?.rootViewController = navigationVC
+        window?.makeKeyAndVisible()
+
     }
 
     func applicationWillResignActive(_ application: UIApplication) { }
