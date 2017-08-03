@@ -46,6 +46,10 @@
 		03F568231F3386DF000DBFDC /* UIColor+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F568221F3386DF000DBFDC /* UIColor+Hex.swift */; };
 		03F568281F338781000DBFDC /* CollectionsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F568261F338781000DBFDC /* CollectionsVC.swift */; };
 		03F568291F338781000DBFDC /* CollectionsVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03F568271F338781000DBFDC /* CollectionsVC.xib */; };
+		03F5682C1F33D803000DBFDC /* AddQuizCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F5682A1F33D803000DBFDC /* AddQuizCell.swift */; };
+		03F5682D1F33D803000DBFDC /* AddQuizCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03F5682B1F33D803000DBFDC /* AddQuizCell.xib */; };
+		03F568301F33D817000DBFDC /* ScanQRCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F5682E1F33D817000DBFDC /* ScanQRCell.swift */; };
+		03F568311F33D817000DBFDC /* ScanQRCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03F5682F1F33D817000DBFDC /* ScanQRCell.xib */; };
 		CD6C7355B1C4AE093EDD1E8F /* Pods_Movask.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADD8DD89C88C0C32D0D1EA71 /* Pods_Movask.framework */; };
 /* End PBXBuildFile section */
 
@@ -91,6 +95,10 @@
 		03F568221F3386DF000DBFDC /* UIColor+Hex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Hex.swift"; sourceTree = "<group>"; };
 		03F568261F338781000DBFDC /* CollectionsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionsVC.swift; sourceTree = "<group>"; };
 		03F568271F338781000DBFDC /* CollectionsVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CollectionsVC.xib; sourceTree = "<group>"; };
+		03F5682A1F33D803000DBFDC /* AddQuizCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddQuizCell.swift; sourceTree = "<group>"; };
+		03F5682B1F33D803000DBFDC /* AddQuizCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddQuizCell.xib; sourceTree = "<group>"; };
+		03F5682E1F33D817000DBFDC /* ScanQRCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScanQRCell.swift; sourceTree = "<group>"; };
+		03F5682F1F33D817000DBFDC /* ScanQRCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScanQRCell.xib; sourceTree = "<group>"; };
 		4E98A7AC960E59B9702AEB84 /* Pods-Movask.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Movask.release.xcconfig"; path = "Pods/Target Support Files/Pods-Movask/Pods-Movask.release.xcconfig"; sourceTree = "<group>"; };
 		86C8F8B01958BC742420DC15 /* Pods-Movask.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Movask.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Movask/Pods-Movask.debug.xcconfig"; sourceTree = "<group>"; };
 		ADD8DD89C88C0C32D0D1EA71 /* Pods_Movask.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Movask.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -252,6 +260,10 @@
 			children = (
 				03D646EA1F320BC0007C206F /* QuizCell.swift */,
 				03D646EB1F320BC0007C206F /* QuizCell.xib */,
+				03F5682A1F33D803000DBFDC /* AddQuizCell.swift */,
+				03F5682B1F33D803000DBFDC /* AddQuizCell.xib */,
+				03F5682E1F33D817000DBFDC /* ScanQRCell.swift */,
+				03F5682F1F33D817000DBFDC /* ScanQRCell.xib */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -375,11 +387,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				03D646F61F326E8F007C206F /* LineSegmentedControl.xib in Resources */,
+				03F568311F33D817000DBFDC /* ScanQRCell.xib in Resources */,
 				03D646DE1F3202EB007C206F /* MainVC.xib in Resources */,
 				03F568291F338781000DBFDC /* CollectionsVC.xib in Resources */,
 				03D646FE1F3271F6007C206F /* LibraryVC.xib in Resources */,
 				03D647061F3277A0007C206F /* LevelsVC.xib in Resources */,
 				03D646FA1F326F7A007C206F /* LineSegmentedControlCell.xib in Resources */,
+				03F5682D1F33D803000DBFDC /* AddQuizCell.xib in Resources */,
 				03D646C51F30D2CE007C206F /* LaunchScreen.storyboard in Resources */,
 				03D646ED1F320BC0007C206F /* QuizCell.xib in Resources */,
 				03D646DA1F32023F007C206F /* LoadingView.xib in Resources */,
@@ -460,6 +474,7 @@
 				03F5681B1F338165000DBFDC /* AuthorizationManager.swift in Sources */,
 				03F568211F3386B8000DBFDC /* String+Size.swift in Sources */,
 				03F5681F1F3383FB000DBFDC /* Token.swift in Sources */,
+				03F568301F33D817000DBFDC /* ScanQRCell.swift in Sources */,
 				03F568231F3386DF000DBFDC /* UIColor+Hex.swift in Sources */,
 				03F568131F33602E000DBFDC /* Networking.swift in Sources */,
 				03F568191F3360D3000DBFDC /* Constants.swift in Sources */,
@@ -471,6 +486,7 @@
 				03D646BB1F30D2CE007C206F /* AppDelegate.swift in Sources */,
 				03D646E51F32082F007C206F /* QuizTest.swift in Sources */,
 				03D646D51F32018C007C206F /* BasicVC.swift in Sources */,
+				03F5682C1F33D803000DBFDC /* AddQuizCell.swift in Sources */,
 				03D647021F327564007C206F /* NibView.swift in Sources */,
 				03D646F81F326F70007C206F /* LineSegmentedControlCell.swift in Sources */,
 				03D646D21F320119007C206F /* UIWindow+Root.swift in Sources */,

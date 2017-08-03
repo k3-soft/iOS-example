@@ -29,7 +29,9 @@ class CollectionsVC: UIViewController {
     var libraryQuizes = [QuizTest]()
     var savedQuizes = [QuizTest]()
     
-    let cellReuseIdentifier = "QuizCell"
+    let quizCellIdentifier = "QuizCell"
+    let addQuizCellIdentifier = "AddQuizCell"
+    let scanQRCellIdentifier = "ScanQRCell"
     
     var collectionLineSpacing: CGFloat {
         if UIDevice.current.userInterfaceIdiom == .phone {
@@ -86,11 +88,20 @@ class CollectionsVC: UIViewController {
     
     func setCollectionView() {
         
+        // Special cells
+        
+        libraryCollection.register(UINib(nibName: addQuizCellIdentifier, bundle: nil),
+                                   forCellWithReuseIdentifier: addQuizCellIdentifier)
+        savedCollection.register(UINib(nibName: scanQRCellIdentifier, bundle: nil),
+                                 forCellWithReuseIdentifier: scanQRCellIdentifier)
+        
+        // Quiz cells
+        
         let collections = [discoverCollection, libraryCollection, savedCollection]
         
         for collection in collections {
-            collection?.register(UINib(nibName: cellReuseIdentifier, bundle: nil),
-                                forCellWithReuseIdentifier: cellReuseIdentifier)
+            collection?.register(UINib(nibName: quizCellIdentifier, bundle: nil),
+                                forCellWithReuseIdentifier: quizCellIdentifier)
         }
     }
     
@@ -112,6 +123,14 @@ class CollectionsVC: UIViewController {
     func qrDidTap(cell: QuizCell) {
         print("QR tapped at \(cell.indexPath!)")
     }
+    
+    func addNewQuiz() {
+        print("Add new quiz")
+    }
+    
+    func scanQRCode() {
+        print("Scan QR code")
+    }
 }
 
 extension CollectionsVC: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
@@ -124,10 +143,10 @@ extension CollectionsVC: UICollectionViewDataSource, UICollectionViewDelegate, U
             return discoverQuizes.count
             
         } else if collectionView == libraryCollection {
-            return libraryQuizes.count
+            return libraryQuizes.count + 1
             
         } else if collectionView == savedCollection {
-            return savedQuizes.count
+            return savedQuizes.count //+ 1
             
         } else {
             return 0
@@ -136,7 +155,35 @@ extension CollectionsVC: UICollectionViewDataSource, UICollectionViewDelegate, U
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellReuseIdentifier, for: indexPath) as! QuizCell
+        // Cell for adding quiz
+        
+        if collectionView == libraryCollection, indexPath.row == 0 {
+            
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: addQuizCellIdentifier, for: indexPath) as! AddQuizCell
+            
+            cell.addHandler = { [unowned self] _ in
+                self.addNewQuiz()
+            }
+            
+            return cell
+        }
+        
+        // Cell for scan QR code
+        
+        if collectionView == savedCollection, indexPath.row == 0 {
+            
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: scanQRCellIdentifier, for: indexPath) as! ScanQRCell
+            
+            cell.scanHandler = { [unowned self] _ in
+                self.scanQRCode()
+            }
+            
+            return cell
+        }
+        
+        // Quiz cells
+        
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: quizCellIdentifier, for: indexPath) as! QuizCell
 
         cell.indexPath = indexPath
         
@@ -172,6 +219,18 @@ extension CollectionsVC: UICollectionViewDataSource, UICollectionViewDelegate, U
         let normalSize = CGSize(width: (view.frame.size.width - collectionLineSpacing - collectionInsets * 2) / 2.2, height: QuizCell.cellHeight)
         let smallSize = CGSize(width: (view.frame.size.width - collectionLineSpacing - collectionInsets * 2) / 4, height: QuizCell.cellHeight)
         let wideSize = CGSize(width: (view.frame.size.width - collectionLineSpacing - collectionInsets * 2) / 4 * 2.3, height: QuizCell.cellHeight)
+        
+        // Special cells
+        
+        if (collectionView == libraryCollection || collectionView == savedCollection), indexPath.row == 0 {
+            if UIApplication.shared.isLandscape {
+                return smallSize
+            } else {
+                return normalSize
+            }
+        }
+        
+        // Quiz cells
         
         if UIApplication.shared.isLandscape {
             if collectionView == libraryCollection {
