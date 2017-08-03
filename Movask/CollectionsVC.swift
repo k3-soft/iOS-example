@@ -171,7 +171,7 @@ extension CollectionsVC: UICollectionViewDataSource, UICollectionViewDelegate, U
         
         let normalSize = CGSize(width: (view.frame.size.width - collectionLineSpacing - collectionInsets * 2) / 2.2, height: QuizCell.cellHeight)
         let smallSize = CGSize(width: (view.frame.size.width - collectionLineSpacing - collectionInsets * 2) / 4, height: QuizCell.cellHeight)
-        let wideSize = CGSize(width: (view.frame.size.width - collectionLineSpacing - collectionInsets * 2) / 4 * 2.5, height: QuizCell.cellHeight)
+        let wideSize = CGSize(width: (view.frame.size.width - collectionLineSpacing - collectionInsets * 2) / 4 * 2.3, height: QuizCell.cellHeight)
         
         if UIApplication.shared.isLandscape {
             if collectionView == libraryCollection {

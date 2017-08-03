@@ -21,7 +21,7 @@
                     <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d2c-9o-wPX">
                         <rect key="frame" x="0.0" y="0.0" width="259" height="201"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="sJ2-lx-PU9">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="EmptyImage" translatesAutoresizingMaskIntoConstraints="NO" id="sJ2-lx-PU9">
                                 <rect key="frame" x="0.0" y="0.0" width="259" height="201"/>
                             </imageView>
                             <view alpha="0.25" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Drh-fw-UWv">
@@ -157,6 +157,7 @@
         </collectionViewCell>
     </objects>
     <resources>
+        <image name="EmptyImage" width="360" height="202"/>
         <image name="QRWhite" width="32" height="32"/>
         <image name="StarWhite" width="32" height="32"/>
     </resources>

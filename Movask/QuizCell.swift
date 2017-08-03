@@ -73,7 +73,7 @@ class QuizCell: UICollectionViewCell {
     }
 
     override func prepareForReuse() {
-        coverImageView.image = nil
+        coverImageView.image = UIImage(named: "EmptyImage")
     }
     
     func setWithQuiz(_ currentQuiz: QuizTest, isInversed: Bool) {
