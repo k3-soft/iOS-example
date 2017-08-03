@@ -11,30 +11,32 @@ import UIKit
 class QuizCell: UICollectionViewCell {
     
     // Labels
-    @IBOutlet weak var categoryLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var ownerLabel: UILabel!
-    @IBOutlet weak var viewsLabel: UILabel!
+    @IBOutlet weak var descriptionLabel: UILabel!
     
     // Cover
     @IBOutlet weak var coverContainer: UIView!
     @IBOutlet weak var coverImageView: UIImageView!
     @IBOutlet weak var coverBlackView: UIView!
+    
+    // Constraints
     @IBOutlet weak var coverBottomConstraint: NSLayoutConstraint!
+    @IBOutlet weak var trailingTitleLabel: NSLayoutConstraint!
+    @IBOutlet weak var leadingTitleLabel: NSLayoutConstraint!
     
     // Constants
     var coverBottomConstantDefault: CGFloat {
         if UIDevice.current.userInterfaceIdiom == .phone {
-            return 85.0
+            return 80.0
         } else {
-            return 120.0
+            return 105.0
         }
     }
     static var cellHeight: CGFloat {
         if UIDevice.current.userInterfaceIdiom == .phone {
-            return 280.0
+            return 245.0
         } else {
-            return 400.0
+            return 400.0 // Need to change (heightCollectionView - 40)
         }
     }
     
@@ -46,14 +48,15 @@ class QuizCell: UICollectionViewCell {
     var isWideSize = false {
         didSet {
             DispatchQueue.main.async {
-                self.categoryLabel.textColor = self.isWideSize ? UIColor.white : UIColor.gray
+                self.descriptionLabel.textColor = self.isWideSize ? UIColor.white : UIColor.gray
                 self.titleLabel.textColor = self.isWideSize ? UIColor.white : UIColor.darkGray
-                self.ownerLabel.textColor = self.isWideSize ? UIColor.gray : UIColor.orange
+                
+                self.coverBottomConstraint.constant = self.isWideSize ? 0.0 : self.coverBottomConstantDefault
+                self.trailingTitleLabel.constant = self.isWideSize ? 20.0 : 0.0
+                self.leadingTitleLabel.constant = self.isWideSize ? 20.0 : 0.0
             
                 UIView.animate(withDuration: 0.2) {
-                    self.coverBottomConstraint.constant = self.isWideSize ? 0.0 : self.coverBottomConstantDefault
                     self.layoutIfNeeded()
-                
                     self.coverBlackView.alpha = self.isWideSize ? 0.25 : 0.0
                 }
             }
@@ -64,35 +67,32 @@ class QuizCell: UICollectionViewCell {
         coverImageView.image = nil
     }
     
-    func setWithQuiz(_ currentQuiz: QuizTest) {
+    func setWithQuiz(_ currentQuiz: QuizTest, isInversed: Bool) {
         
         quiz = currentQuiz
         
-        setWide(isLandscape: UIApplication.shared.isLandscape)
+        setWide(isLandscape: UIApplication.shared.isLandscape, isInversed: isInversed)
 
         // Set labels
         
-        categoryLabel.text = currentQuiz.category
         titleLabel.text = currentQuiz.title
-        ownerLabel.text = currentQuiz.owner
-        viewsLabel.text = "\(currentQuiz.viewsCount)"
+        descriptionLabel.text = currentQuiz.description
         
         // Set cover
         
         CacheManager().setImageFor(imageView: coverImageView, path: currentQuiz.imagePath, imageID: currentQuiz.id)
     }
     
-    func setWide(isLandscape: Bool) {
+    func setWide(isLandscape: Bool, isInversed: Bool) {
         
         guard indexPath != nil else { return }
         
         if isLandscape {
-            if indexPath!.row % 2 == 0 {
-                isWideSize = (indexPath!.row / 2) % 2 != 0
+            if isInversed {
+                isWideSize = indexPath!.row % 2 == 0
             } else {
-                isWideSize = (indexPath!.row / 2) % 2 == 0
+                isWideSize = indexPath!.row % 2 != 0
             }
-    
         } else {
             isWideSize = false
         }

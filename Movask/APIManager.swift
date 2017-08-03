@@ -86,28 +86,29 @@ class APIManager {
             return
         }
         
-        var parameters: Parameters?
+//        var parameters: Parameters?
 //        if object is OfferingBuySellForm {
 //            parameters = Mapper<OfferingBuySellForm>().toJSON(object as! OfferingBuySellForm)
 //        } else {
 //            parameters = Mapper<LookingForBuySellForm>().toJSON(object as! LookingForBuySellForm)
 //        }
         
-        print(parameters!)
-        
-        networking.makeRequest(path: path, method: .post, parameters: parameters!, headers: header, success: success, failure: failure)
+        networking.makeRequest(path: path, method: .post, parameters: nil, headers: header, success: success, failure: failure)
     }
     
-    // MARK: - Uploading methods
+    // MARK: - Videos
     
-    func uploadImage(image: UIImage, success: @escaping (Any)->(), failure: @escaping (Error)->()) {
+    func addVideoWithFileURL(_ fileURL: URL, collectionID: Int, networking: Networking, success: @escaping (Any)->(), failure: @escaping (Error)->()) {
         
-        guard let header = getAuthorizationHeader() else
-        {   failure(ServerRequestError.errorAuthorization)
-            return
-        }
+        guard let languageID = UserDefaultsManager.default.getValue(valueType: Int.self, forKey: .kLanguageID) else { return }
         
-        networking.uploadImageToServer(image: image, parameters: nil, headers: header, success: success, failure: failure)
+        let parameters = ["language_id": "\(languageID)",
+                          "collection_id": "\(collectionID)"]
+        
+        var headers = getAuthorizationHeader()
+        headers?["Content-Type"] = "form-data"
+        
+        networking.uploadData(fileURL: fileURL, parameters: parameters, headers: headers, success: success, failure: failure)
     }
 }
 

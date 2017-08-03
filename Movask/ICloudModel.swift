@@ -37,7 +37,7 @@ class ICloudModel {
             guard error == nil else {
                 DispatchQueue.main.async {
                     self.delegate?.errorUpdating(error! as NSError)
-                    print("Cloud Query Error - Refresh: \(error)")
+                    print("Cloud Query Error - Refresh: \(error!)")
                     completion(nil, error!)
                 }
                 return
@@ -67,7 +67,7 @@ class ICloudModel {
         
         privateDB.save(postToken) { (record, error) in
             guard error == nil else {
-                print("Error saving token: \(error?.localizedDescription)")
+                print("Error saving token: \(error!.localizedDescription)")
                 return
             }
             print("Token saved successfully")

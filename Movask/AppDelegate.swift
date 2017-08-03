@@ -28,7 +28,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func setInitialViewController() {
         
-        let vc = MainVC()
+        let vc = CollectionsVC()
         
         let navigationVC = UINavigationController(rootViewController: vc)
         navigationVC.setNavigationBarHidden(true, animated: false)

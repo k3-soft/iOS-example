@@ -48,7 +48,7 @@ class LibraryVC: BasicVC {
         // Reload visible cells content
         for cell in self.userQuizesCollectionView.visibleCells {
             if let quizCell = cell as? QuizCell {
-                quizCell.setWide(isLandscape: size.width > size.height)
+                quizCell.setWide(isLandscape: size.width > size.height, isInversed: false)
             }
         }
     }
@@ -83,7 +83,7 @@ extension LibraryVC: UICollectionViewDataSource, UICollectionViewDelegate, UICol
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellReuseIdentifier, for: indexPath) as! QuizCell
         
         cell.indexPath = indexPath
-        cell.setWithQuiz(userQuizes[indexPath.row])
+        cell.setWithQuiz(userQuizes[indexPath.row], isInversed: false)
         
         return cell
     }

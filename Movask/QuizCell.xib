@@ -18,14 +18,14 @@
                 <rect key="frame" x="0.0" y="0.0" width="259" height="281"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d2c-9o-wPX">
-                        <rect key="frame" x="0.0" y="0.0" width="259" height="196"/>
+                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d2c-9o-wPX">
+                        <rect key="frame" x="0.0" y="0.0" width="259" height="201"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="sJ2-lx-PU9">
-                                <rect key="frame" x="0.0" y="0.0" width="259" height="196"/>
+                                <rect key="frame" x="0.0" y="0.0" width="259" height="201"/>
                             </imageView>
                             <view alpha="0.25" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Drh-fw-UWv">
-                                <rect key="frame" x="0.0" y="0.0" width="259" height="196"/>
+                                <rect key="frame" x="0.0" y="0.0" width="259" height="201"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                         </subviews>
@@ -40,9 +40,14 @@
                             <constraint firstItem="sJ2-lx-PU9" firstAttribute="leading" secondItem="d2c-9o-wPX" secondAttribute="leading" id="hZN-iL-yRa"/>
                             <constraint firstItem="Drh-fw-UWv" firstAttribute="width" secondItem="sJ2-lx-PU9" secondAttribute="width" id="s8c-CF-4gH"/>
                         </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="10"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.75" translatesAutoresizingMaskIntoConstraints="NO" id="TKE-NS-8Mk">
-                        <rect key="frame" x="14" y="225" width="231" height="30"/>
+                        <rect key="frame" x="0.0" y="209" width="259" height="30"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="30" id="AW7-YF-eXI">
                                 <variation key="heightClass=regular-widthClass=regular" constant="55"/>
@@ -55,28 +60,10 @@
                             <fontDescription key="fontDescription" name="AmericanTypewriter-Semibold" family="American Typewriter" pointSize="19"/>
                         </variation>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CATEGORY" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5ge-6n-l6c">
-                        <rect key="frame" x="13.5" y="210" width="231" height="14"/>
-                        <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="12"/>
-                        <color key="textColor" red="0.53086377049519951" green="0.53611984743079555" blue="0.53611984743079555" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <nil key="highlightedColor"/>
-                        <variation key="heightClass=regular-widthClass=regular">
-                            <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="14"/>
-                        </variation>
-                    </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="Owner" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hKF-hf-HUL">
-                        <rect key="frame" x="14" y="258" width="37.5" height="14"/>
-                        <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="12"/>
-                        <color key="textColor" red="0.5308637705" green="0.53611984739999996" blue="0.53611984739999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <nil key="highlightedColor"/>
-                        <variation key="heightClass=regular-widthClass=regular">
-                            <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="14"/>
-                        </variation>
-                    </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Views" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ugE-3J-qTv">
-                        <rect key="frame" x="61.5" y="255" width="183.5" height="21"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hKF-hf-HUL">
+                        <rect key="frame" x="0.0" y="242" width="259" height="30"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="21" id="iyl-qN-eow"/>
+                            <constraint firstAttribute="height" constant="30" id="STs-EC-p8t"/>
                         </constraints>
                         <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="12"/>
                         <color key="textColor" red="0.5308637705" green="0.53611984739999996" blue="0.53611984739999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -87,27 +74,22 @@
                     </label>
                 </subviews>
             </view>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="TKE-NS-8Mk" secondAttribute="trailing" constant="14" id="5OI-3r-bic"/>
+                <constraint firstItem="hKF-hf-HUL" firstAttribute="top" secondItem="TKE-NS-8Mk" secondAttribute="bottom" constant="3" id="4Ns-eT-44O"/>
+                <constraint firstAttribute="trailing" secondItem="TKE-NS-8Mk" secondAttribute="trailing" id="5OI-3r-bic"/>
+                <constraint firstItem="hKF-hf-HUL" firstAttribute="width" secondItem="TKE-NS-8Mk" secondAttribute="width" id="5st-8z-kwc"/>
                 <constraint firstItem="d2c-9o-wPX" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="75o-yc-6U7"/>
-                <constraint firstItem="TKE-NS-8Mk" firstAttribute="top" secondItem="5ge-6n-l6c" secondAttribute="bottom" constant="1" id="BVu-h2-ZQc"/>
-                <constraint firstItem="hKF-hf-HUL" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="14" id="FVO-HZ-MQr"/>
-                <constraint firstItem="ugE-3J-qTv" firstAttribute="centerY" secondItem="hKF-hf-HUL" secondAttribute="centerY" id="KYa-ij-NVt"/>
-                <constraint firstItem="ugE-3J-qTv" firstAttribute="top" secondItem="TKE-NS-8Mk" secondAttribute="bottom" id="RDV-6G-zeM"/>
-                <constraint firstAttribute="trailing" secondItem="ugE-3J-qTv" secondAttribute="trailing" constant="14" id="ROC-zb-OGz"/>
-                <constraint firstItem="5ge-6n-l6c" firstAttribute="width" secondItem="TKE-NS-8Mk" secondAttribute="width" id="UFS-ug-VvL"/>
-                <constraint firstAttribute="bottom" secondItem="d2c-9o-wPX" secondAttribute="bottom" constant="85" id="d0n-GU-W19">
-                    <variation key="heightClass=regular-widthClass=regular" constant="120"/>
+                <constraint firstItem="hKF-hf-HUL" firstAttribute="centerX" secondItem="TKE-NS-8Mk" secondAttribute="centerX" id="GQk-8F-knt"/>
+                <constraint firstAttribute="bottom" secondItem="d2c-9o-wPX" secondAttribute="bottom" constant="80" id="d0n-GU-W19">
+                    <variation key="heightClass=regular-widthClass=regular" constant="105"/>
                 </constraint>
-                <constraint firstItem="ugE-3J-qTv" firstAttribute="leading" secondItem="hKF-hf-HUL" secondAttribute="trailing" constant="10" id="dKU-zA-2Te"/>
                 <constraint firstItem="d2c-9o-wPX" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="dbG-N4-tlu"/>
-                <constraint firstItem="5ge-6n-l6c" firstAttribute="centerX" secondItem="TKE-NS-8Mk" secondAttribute="centerX" id="hcG-NT-fQ4"/>
                 <constraint firstAttribute="trailing" secondItem="d2c-9o-wPX" secondAttribute="trailing" id="kx5-c3-yxY"/>
                 <constraint firstAttribute="bottom" secondItem="hKF-hf-HUL" secondAttribute="bottom" constant="9" id="wZN-kr-4wo">
                     <variation key="heightClass=regular-widthClass=regular" constant="15"/>
                 </constraint>
-                <constraint firstItem="TKE-NS-8Mk" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="14" id="xxo-qJ-nHk"/>
+                <constraint firstItem="TKE-NS-8Mk" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="xxo-qJ-nHk"/>
             </constraints>
             <size key="customSize" width="259" height="281"/>
             <userDefinedRuntimeAttributes>
@@ -116,14 +98,14 @@
                 </userDefinedRuntimeAttribute>
             </userDefinedRuntimeAttributes>
             <connections>
-                <outlet property="categoryLabel" destination="5ge-6n-l6c" id="e4y-Gx-keQ"/>
                 <outlet property="coverBlackView" destination="Drh-fw-UWv" id="QGe-Xo-1YL"/>
                 <outlet property="coverBottomConstraint" destination="d0n-GU-W19" id="YTa-Ye-weq"/>
                 <outlet property="coverContainer" destination="d2c-9o-wPX" id="vuy-YC-X7c"/>
                 <outlet property="coverImageView" destination="sJ2-lx-PU9" id="geh-BO-6C2"/>
-                <outlet property="ownerLabel" destination="hKF-hf-HUL" id="uNe-vY-ax0"/>
+                <outlet property="descriptionLabel" destination="hKF-hf-HUL" id="er4-6e-dED"/>
+                <outlet property="leadingTitleLabel" destination="xxo-qJ-nHk" id="BVG-q3-12f"/>
                 <outlet property="titleLabel" destination="TKE-NS-8Mk" id="O38-Qx-Huw"/>
-                <outlet property="viewsLabel" destination="ugE-3J-qTv" id="J7y-V4-KiJ"/>
+                <outlet property="trailingTitleLabel" destination="5OI-3r-bic" id="d4o-8J-oRz"/>
             </connections>
             <point key="canvasLocation" x="-1.5" y="37.5"/>
         </collectionViewCell>
