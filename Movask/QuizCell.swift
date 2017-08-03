@@ -45,14 +45,17 @@ class QuizCell: UICollectionViewCell {
     // Customization
     var isWideSize = false {
         didSet {
-            categoryLabel.textColor = isWideSize ? UIColor.white : UIColor.gray
-            titleLabel.textColor = isWideSize ? UIColor.white : UIColor.darkGray
-            ownerLabel.textColor = isWideSize ? UIColor.gray : UIColor.orange
+            DispatchQueue.main.async {
+                self.categoryLabel.textColor = self.isWideSize ? UIColor.white : UIColor.gray
+                self.titleLabel.textColor = self.isWideSize ? UIColor.white : UIColor.darkGray
+                self.ownerLabel.textColor = self.isWideSize ? UIColor.gray : UIColor.orange
             
-            UIView.animate(withDuration: 0.3) { 
-                self.coverBottomConstraint.constant = self.isWideSize ? 0.0 : self.coverBottomConstantDefault
-                self.coverBlackView.alpha = self.isWideSize ? 0.25 : 0.0
-                self.layoutIfNeeded()
+                UIView.animate(withDuration: 0.2) {
+                    self.coverBottomConstraint.constant = self.isWideSize ? 0.0 : self.coverBottomConstantDefault
+                    self.layoutIfNeeded()
+                
+                    self.coverBlackView.alpha = self.isWideSize ? 0.25 : 0.0
+                }
             }
         }
     }
@@ -65,8 +68,8 @@ class QuizCell: UICollectionViewCell {
         
         quiz = currentQuiz
         
-        setWide()
-        
+        setWide(isLandscape: UIApplication.shared.isLandscape)
+
         // Set labels
         
         categoryLabel.text = currentQuiz.category
@@ -79,17 +82,17 @@ class QuizCell: UICollectionViewCell {
         CacheManager().setImageFor(imageView: coverImageView, path: currentQuiz.imagePath, imageID: currentQuiz.id)
     }
     
-    func setWide() {
+    func setWide(isLandscape: Bool) {
         
         guard indexPath != nil else { return }
         
-        if UIDevice.current.orientation.isLandscape {
+        if isLandscape {
             if indexPath!.row % 2 == 0 {
                 isWideSize = (indexPath!.row / 2) % 2 != 0
             } else {
                 isWideSize = (indexPath!.row / 2) % 2 == 0
             }
-            
+    
         } else {
             isWideSize = false
         }

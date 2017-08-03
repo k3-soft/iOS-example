@@ -46,9 +46,9 @@ class LibraryVC: BasicVC {
         userQuizesCollectionView.collectionViewLayout.invalidateLayout()
         
         // Reload visible cells content
-        for cell in userQuizesCollectionView.visibleCells {
+        for cell in self.userQuizesCollectionView.visibleCells {
             if let quizCell = cell as? QuizCell {
-                quizCell.setWide()
+                quizCell.setWide(isLandscape: size.width > size.height)
             }
         }
     }
@@ -100,7 +100,7 @@ extension LibraryVC: UICollectionViewDataSource, UICollectionViewDelegate, UICol
         let smallSize = CGSize(width: (view.frame.size.width - collectionLineSpacing - collectionInsets * 2) / 3, height: QuizCell.cellHeight)
         let wideSize = CGSize(width: (view.frame.size.width - collectionLineSpacing - collectionInsets * 2) / 3 * 2, height: QuizCell.cellHeight)
         
-        if UIDevice.current.orientation.isLandscape {
+        if UIApplication.shared.isLandscape {
             
             if indexPath.row % 2 == 0 {
                 return (indexPath.row / 2) % 2 == 0 ? smallSize : wideSize
