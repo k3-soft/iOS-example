@@ -13,6 +13,11 @@ class QuizCell: UICollectionViewCell {
     // Labels
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var likesLabel: UILabel!
+    
+    // Buttons
+    @IBOutlet weak var likeButton: UIButton!
+    @IBOutlet weak var qrButton: UIButton!
     
     // Cover
     @IBOutlet weak var coverContainer: UIView!
@@ -23,6 +28,10 @@ class QuizCell: UICollectionViewCell {
     @IBOutlet weak var coverBottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var trailingTitleLabel: NSLayoutConstraint!
     @IBOutlet weak var leadingTitleLabel: NSLayoutConstraint!
+    
+    // Action handlers
+    var likeHandler: ((QuizCell)->())?
+    var qrHandler: ((QuizCell)->())?
     
     // Constants
     var coverBottomConstantDefault: CGFloat {
@@ -52,8 +61,8 @@ class QuizCell: UICollectionViewCell {
                 self.titleLabel.textColor = self.isWideSize ? UIColor.white : UIColor.darkGray
                 
                 self.coverBottomConstraint.constant = self.isWideSize ? 0.0 : self.coverBottomConstantDefault
-                self.trailingTitleLabel.constant = self.isWideSize ? 20.0 : 0.0
-                self.leadingTitleLabel.constant = self.isWideSize ? 20.0 : 0.0
+                self.trailingTitleLabel.constant = self.isWideSize ? 10.0 : 0.0
+                self.leadingTitleLabel.constant = self.isWideSize ? 10.0 : 0.0
             
                 UIView.animate(withDuration: 0.2) {
                     self.layoutIfNeeded()
@@ -77,6 +86,7 @@ class QuizCell: UICollectionViewCell {
         
         titleLabel.text = currentQuiz.title
         descriptionLabel.text = currentQuiz.description
+        likesLabel.text = "\(currentQuiz.likesCount)"
         
         // Set cover
         
@@ -97,4 +107,14 @@ class QuizCell: UICollectionViewCell {
             isWideSize = false
         }
     }
+    
+    // MARK: - Actions
+    
+    @IBAction func likeDidTap(_ sender: UIButton) {
+        likeHandler?(self)
+    }
+    
+    @IBAction func qrDidTap(_ sender: UIButton) {
+        qrHandler?(self)
+    }  
 }

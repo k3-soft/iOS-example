@@ -102,6 +102,16 @@ class CollectionsVC: UIViewController {
         libraryQuizes = Array(repeating: QuizTest(), count: 20)
         savedQuizes = Array(repeating: QuizTest(), count: 20)
     }
+    
+    // MARK: - Actions
+    
+    func likeDidTap(cell: QuizCell) {
+        print("Like tapped at \(cell.indexPath!)")
+    }
+    
+    func qrDidTap(cell: QuizCell) {
+        print("QR tapped at \(cell.indexPath!)")
+    }
 }
 
 extension CollectionsVC: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
@@ -138,7 +148,14 @@ extension CollectionsVC: UICollectionViewDataSource, UICollectionViewDelegate, U
             
         } else if collectionView == savedCollection {
             cell.setWithQuiz(savedQuizes[indexPath.row], isInversed: false)
-            
+        }
+        
+        cell.likeHandler = { [unowned self] (container) in
+            self.likeDidTap(cell: container)
+        }
+        
+        cell.qrHandler = { [unowned self] (container) in
+            self.qrDidTap(cell: container)
         }
         
         return cell
