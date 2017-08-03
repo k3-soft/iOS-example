@@ -33,6 +33,19 @@
 		03D647051F3277A0007C206F /* LevelsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D647031F3277A0007C206F /* LevelsVC.swift */; };
 		03D647061F3277A0007C206F /* LevelsVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03D647041F3277A0007C206F /* LevelsVC.xib */; };
 		03F5680C1F3348B5000DBFDC /* UIApplication+Orientation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F5680B1F3348B5000DBFDC /* UIApplication+Orientation.swift */; };
+		03F5680F1F335527000DBFDC /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F5680E1F335527000DBFDC /* APIManager.swift */; };
+		03F568111F335637000DBFDC /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F568101F335637000DBFDC /* UserDefaultsManager.swift */; };
+		03F568131F33602E000DBFDC /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F568121F33602E000DBFDC /* Networking.swift */; };
+		03F568151F336062000DBFDC /* QRManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F568141F336062000DBFDC /* QRManager.swift */; };
+		03F568171F3360AB000DBFDC /* VideoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F568161F3360AB000DBFDC /* VideoManager.swift */; };
+		03F568191F3360D3000DBFDC /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F568181F3360D3000DBFDC /* Constants.swift */; };
+		03F5681B1F338165000DBFDC /* AuthorizationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F5681A1F338165000DBFDC /* AuthorizationManager.swift */; };
+		03F5681D1F3383CC000DBFDC /* ICloudModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F5681C1F3383CC000DBFDC /* ICloudModel.swift */; };
+		03F5681F1F3383FB000DBFDC /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F5681E1F3383FB000DBFDC /* Token.swift */; };
+		03F568211F3386B8000DBFDC /* String+Size.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F568201F3386B8000DBFDC /* String+Size.swift */; };
+		03F568231F3386DF000DBFDC /* UIColor+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F568221F3386DF000DBFDC /* UIColor+Hex.swift */; };
+		03F568281F338781000DBFDC /* CollectionsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F568261F338781000DBFDC /* CollectionsVC.swift */; };
+		03F568291F338781000DBFDC /* CollectionsVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03F568271F338781000DBFDC /* CollectionsVC.xib */; };
 		CD6C7355B1C4AE093EDD1E8F /* Pods_Movask.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADD8DD89C88C0C32D0D1EA71 /* Pods_Movask.framework */; };
 /* End PBXBuildFile section */
 
@@ -65,6 +78,19 @@
 		03D647031F3277A0007C206F /* LevelsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelsVC.swift; sourceTree = "<group>"; };
 		03D647041F3277A0007C206F /* LevelsVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LevelsVC.xib; sourceTree = "<group>"; };
 		03F5680B1F3348B5000DBFDC /* UIApplication+Orientation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIApplication+Orientation.swift"; sourceTree = "<group>"; };
+		03F5680E1F335527000DBFDC /* APIManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
+		03F568101F335637000DBFDC /* UserDefaultsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
+		03F568121F33602E000DBFDC /* Networking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
+		03F568141F336062000DBFDC /* QRManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRManager.swift; sourceTree = "<group>"; };
+		03F568161F3360AB000DBFDC /* VideoManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoManager.swift; sourceTree = "<group>"; };
+		03F568181F3360D3000DBFDC /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		03F5681A1F338165000DBFDC /* AuthorizationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthorizationManager.swift; sourceTree = "<group>"; };
+		03F5681C1F3383CC000DBFDC /* ICloudModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ICloudModel.swift; sourceTree = "<group>"; };
+		03F5681E1F3383FB000DBFDC /* Token.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Token.swift; sourceTree = "<group>"; };
+		03F568201F3386B8000DBFDC /* String+Size.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Size.swift"; sourceTree = "<group>"; };
+		03F568221F3386DF000DBFDC /* UIColor+Hex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Hex.swift"; sourceTree = "<group>"; };
+		03F568261F338781000DBFDC /* CollectionsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionsVC.swift; sourceTree = "<group>"; };
+		03F568271F338781000DBFDC /* CollectionsVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CollectionsVC.xib; sourceTree = "<group>"; };
 		4E98A7AC960E59B9702AEB84 /* Pods-Movask.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Movask.release.xcconfig"; path = "Pods/Target Support Files/Pods-Movask/Pods-Movask.release.xcconfig"; sourceTree = "<group>"; };
 		86C8F8B01958BC742420DC15 /* Pods-Movask.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Movask.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Movask/Pods-Movask.debug.xcconfig"; sourceTree = "<group>"; };
 		ADD8DD89C88C0C32D0D1EA71 /* Pods_Movask.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Movask.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -103,6 +129,7 @@
 		03D646B91F30D2CE007C206F /* Movask */ = {
 			isa = PBXGroup;
 			children = (
+				03F5680D1F335518000DBFDC /* Server */,
 				03D646E61F32098D007C206F /* Managers */,
 				03D646E31F32081D007C206F /* Models */,
 				03D646E21F320714007C206F /* System */,
@@ -110,6 +137,7 @@
 				03D646E01F3206F3007C206F /* UI Source */,
 				03D646D31F320178007C206F /* Controllers */,
 				03D646CF1F3200D5007C206F /* Views */,
+				03D646D01F3200E2007C206F /* Extensions */,
 			);
 			path = Movask;
 			sourceTree = "<group>";
@@ -117,7 +145,6 @@
 		03D646CF1F3200D5007C206F /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				03D646D01F3200E2007C206F /* Extensions */,
 				03D646D81F320225007C206F /* Custom */,
 				03D647011F327564007C206F /* NibView.swift */,
 			);
@@ -130,6 +157,8 @@
 				03D646CD1F3200D0007C206F /* UIView+Storyboard.swift */,
 				03D646D11F320119007C206F /* UIWindow+Root.swift */,
 				03F5680B1F3348B5000DBFDC /* UIApplication+Orientation.swift */,
+				03F568201F3386B8000DBFDC /* String+Size.swift */,
+				03F568221F3386DF000DBFDC /* UIColor+Hex.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -162,6 +191,8 @@
 				03D646FC1F3271F6007C206F /* LibraryVC.xib */,
 				03D647031F3277A0007C206F /* LevelsVC.swift */,
 				03D647041F3277A0007C206F /* LevelsVC.xib */,
+				03F568261F338781000DBFDC /* CollectionsVC.swift */,
+				03F568271F338781000DBFDC /* CollectionsVC.xib */,
 				03D646E91F320B9F007C206F /* Cells */,
 			);
 			name = Main;
@@ -189,6 +220,7 @@
 			children = (
 				03D646BA1F30D2CE007C206F /* AppDelegate.swift */,
 				03D646C61F30D2CE007C206F /* Info.plist */,
+				03F568181F3360D3000DBFDC /* Constants.swift */,
 			);
 			name = System;
 			sourceTree = "<group>";
@@ -197,6 +229,8 @@
 			isa = PBXGroup;
 			children = (
 				03D646E41F32082F007C206F /* QuizTest.swift */,
+				03F5681C1F3383CC000DBFDC /* ICloudModel.swift */,
+				03F5681E1F3383FB000DBFDC /* Token.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -205,6 +239,10 @@
 			isa = PBXGroup;
 			children = (
 				03D646E71F32099D007C206F /* ImageCashManager.swift */,
+				03F568101F335637000DBFDC /* UserDefaultsManager.swift */,
+				03F568141F336062000DBFDC /* QRManager.swift */,
+				03F568161F3360AB000DBFDC /* VideoManager.swift */,
+				03F5681A1F338165000DBFDC /* AuthorizationManager.swift */,
 			);
 			name = Managers;
 			sourceTree = "<group>";
@@ -244,6 +282,15 @@
 				03D646F91F326F7A007C206F /* LineSegmentedControlCell.xib */,
 			);
 			name = LineSegmentedControl;
+			sourceTree = "<group>";
+		};
+		03F5680D1F335518000DBFDC /* Server */ = {
+			isa = PBXGroup;
+			children = (
+				03F5680E1F335527000DBFDC /* APIManager.swift */,
+				03F568121F33602E000DBFDC /* Networking.swift */,
+			);
+			name = Server;
 			sourceTree = "<group>";
 		};
 		4D5EB1E2A759B5F25A0D343A /* Frameworks */ = {
@@ -329,6 +376,7 @@
 			files = (
 				03D646F61F326E8F007C206F /* LineSegmentedControl.xib in Resources */,
 				03D646DE1F3202EB007C206F /* MainVC.xib in Resources */,
+				03F568291F338781000DBFDC /* CollectionsVC.xib in Resources */,
 				03D646FE1F3271F6007C206F /* LibraryVC.xib in Resources */,
 				03D647061F3277A0007C206F /* LevelsVC.xib in Resources */,
 				03D646FA1F326F7A007C206F /* LineSegmentedControlCell.xib in Resources */,
@@ -409,8 +457,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				03F5681B1F338165000DBFDC /* AuthorizationManager.swift in Sources */,
+				03F568211F3386B8000DBFDC /* String+Size.swift in Sources */,
+				03F5681F1F3383FB000DBFDC /* Token.swift in Sources */,
+				03F568231F3386DF000DBFDC /* UIColor+Hex.swift in Sources */,
+				03F568131F33602E000DBFDC /* Networking.swift in Sources */,
+				03F568191F3360D3000DBFDC /* Constants.swift in Sources */,
 				03D646EC1F320BC0007C206F /* QuizCell.swift in Sources */,
 				03D646CE1F3200D0007C206F /* UIView+Storyboard.swift in Sources */,
+				03F5681D1F3383CC000DBFDC /* ICloudModel.swift in Sources */,
 				03D646DD1F3202EB007C206F /* MainVC.swift in Sources */,
 				03D647051F3277A0007C206F /* LevelsVC.swift in Sources */,
 				03D646BB1F30D2CE007C206F /* AppDelegate.swift in Sources */,
@@ -421,9 +476,14 @@
 				03D646D21F320119007C206F /* UIWindow+Root.swift in Sources */,
 				03F5680C1F3348B5000DBFDC /* UIApplication+Orientation.swift in Sources */,
 				03D646E81F32099D007C206F /* ImageCashManager.swift in Sources */,
+				03F5680F1F335527000DBFDC /* APIManager.swift in Sources */,
 				03D646FD1F3271F6007C206F /* LibraryVC.swift in Sources */,
+				03F568111F335637000DBFDC /* UserDefaultsManager.swift in Sources */,
+				03F568151F336062000DBFDC /* QRManager.swift in Sources */,
+				03F568171F3360AB000DBFDC /* VideoManager.swift in Sources */,
 				03D646D71F32021F007C206F /* LoadingView.swift in Sources */,
 				03D646F41F326E12007C206F /* LineSegmentedControl.swift in Sources */,
+				03F568281F338781000DBFDC /* CollectionsVC.swift in Sources */,
 				03D646F01F32183F007C206F /* EventHandler.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
