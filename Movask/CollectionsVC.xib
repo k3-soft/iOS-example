@@ -15,6 +15,7 @@
                 <outlet property="discoverCollection" destination="T6R-eA-Az6" id="gaW-9H-3uB"/>
                 <outlet property="discoverLabel" destination="xTV-XO-CbA" id="LkX-s0-MFa"/>
                 <outlet property="heightDiscoverCollection" destination="Tr2-lp-6Gf" id="hj7-yR-fUH"/>
+                <outlet property="languageButton" destination="koB-yl-KOf" id="4jd-Pb-nTi"/>
                 <outlet property="libraryCollection" destination="in9-fu-Kew" id="BFa-2p-V4b"/>
                 <outlet property="myLibraryLabel" destination="8jD-RC-VHX" id="eIV-QQ-IM4"/>
                 <outlet property="savedCollection" destination="5H7-c6-w6S" id="rhy-xA-Ioo"/>
@@ -149,13 +150,26 @@
                                 </userDefinedRuntimeAttribute>
                             </userDefinedRuntimeAttributes>
                         </view>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="koB-yl-KOf">
+                            <rect key="frame" x="305" y="31.5" width="55" height="55"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="55" id="1cH-gf-jNI"/>
+                                <constraint firstAttribute="width" constant="55" id="E5T-pr-c15"/>
+                            </constraints>
+                            <state key="normal" image="EarthGray"/>
+                            <connections>
+                                <action selector="changeLanguage:" destination="-1" eventType="touchUpInside" id="hXD-gz-2TZ"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" red="0.93826340419999998" green="0.94755314089999998" blue="0.94755314089999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstItem="CLI-OE-uQN" firstAttribute="leading" secondItem="2wx-j7-LcE" secondAttribute="leading" constant="24" id="Bl2-jM-hIB"/>
                         <constraint firstAttribute="bottom" secondItem="CLI-OE-uQN" secondAttribute="bottom" id="Fht-HN-uWO"/>
+                        <constraint firstAttribute="trailing" secondItem="koB-yl-KOf" secondAttribute="trailing" constant="15" id="Jgf-Vg-JhL"/>
                         <constraint firstAttribute="height" constant="90" id="XJl-ga-3jx"/>
                         <constraint firstAttribute="bottom" secondItem="GhE-jb-FRW" secondAttribute="bottom" constant="15" id="g9a-hl-v2v"/>
+                        <constraint firstItem="koB-yl-KOf" firstAttribute="centerY" secondItem="GhE-jb-FRW" secondAttribute="centerY" id="hQr-hM-dhE"/>
                         <constraint firstAttribute="trailing" secondItem="CLI-OE-uQN" secondAttribute="trailing" constant="24" id="vSw-SB-70l"/>
                         <constraint firstItem="GhE-jb-FRW" firstAttribute="leading" secondItem="2wx-j7-LcE" secondAttribute="leading" constant="24" id="vb7-X5-YU1"/>
                     </constraints>
@@ -176,4 +190,7 @@
             <point key="canvasLocation" x="34.5" y="257.5"/>
         </view>
     </objects>
+    <resources>
+        <image name="EarthGray" width="32" height="32"/>
+    </resources>
 </document>

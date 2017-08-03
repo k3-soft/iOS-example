@@ -16,6 +16,9 @@ class CollectionsVC: UIViewController {
     @IBOutlet weak var myLibraryLabel: UILabel!
     @IBOutlet weak var savedLabel: UILabel!
     
+    // Buttons
+    @IBOutlet weak var languageButton: UIButton!
+    
     // Collections
     @IBOutlet weak var discoverCollection: UICollectionView!
     @IBOutlet weak var libraryCollection: UICollectionView!
@@ -115,6 +118,10 @@ class CollectionsVC: UIViewController {
     }
     
     // MARK: - Actions
+    
+    @IBAction func changeLanguage(_ sender: UIButton) {
+        print("Change language")
+    }
     
     func likeDidTap(cell: QuizCell) {
         print("Like tapped at \(cell.indexPath!)")
