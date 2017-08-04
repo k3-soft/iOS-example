@@ -28,7 +28,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func setInitialViewController() {
         
-        let vc = CollectionsVC()
+        //let vc = CollectionsVC()
+        let vc = QuizPhoneVC()
         
         let navigationVC = UINavigationController(rootViewController: vc)
         navigationVC.setNavigationBarHidden(true, animated: false)

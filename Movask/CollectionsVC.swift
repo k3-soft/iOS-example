@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CollectionsVC: UIViewController {
+class CollectionsVC: BasicVC {
     
     // Labels
     @IBOutlet weak var appTitleLabel: UILabel!
