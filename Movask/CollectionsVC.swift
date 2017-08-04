@@ -52,6 +52,14 @@ class CollectionsVC: UIViewController {
         }
     }
     
+    var cellScales: (normal: CGFloat, small: CGFloat, wide: CGFloat) {
+        if UIDevice.current.userInterfaceIdiom == .phone {
+            return (2.1, 4, 1.75)
+        } else {
+            return (3.7, 5, 2.5)
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -218,14 +226,24 @@ extension CollectionsVC: UICollectionViewDataSource, UICollectionViewDelegate, U
     // MARK: - UICollectionViewDelegateFlowLayout
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: collectionInsets / 2, left: collectionInsets, bottom: collectionInsets / 2, right: collectionInsets)
+        
+        var topScale = 0.5
+        
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            topScale = 0.25
+        }
+        
+        return UIEdgeInsets(top: collectionInsets * CGFloat(topScale),
+                            left: collectionInsets,
+                            bottom: collectionInsets * 0.5,
+                            right: collectionInsets)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        let normalSize = CGSize(width: (view.frame.size.width - collectionLineSpacing - collectionInsets * 2) / 2.2, height: QuizCell.cellHeight)
-        let smallSize = CGSize(width: (view.frame.size.width - collectionLineSpacing - collectionInsets * 2) / 4, height: QuizCell.cellHeight)
-        let wideSize = CGSize(width: (view.frame.size.width - collectionLineSpacing - collectionInsets * 2) / 4 * 2.3, height: QuizCell.cellHeight)
+        let normalSize = CGSize(width: (view.frame.size.width - collectionLineSpacing - collectionInsets * 2) / cellScales.normal, height: QuizCell.cellHeight)
+        let smallSize = CGSize(width: (view.frame.size.width - collectionLineSpacing - collectionInsets * 2) / cellScales.small, height: QuizCell.cellHeight)
+        let wideSize = CGSize(width: (view.frame.size.width - collectionLineSpacing - collectionInsets * 2) / cellScales.wide, height: QuizCell.cellHeight)
         
         // Special cells
         

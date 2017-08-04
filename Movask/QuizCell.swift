@@ -38,14 +38,14 @@ class QuizCell: UICollectionViewCell {
         if UIDevice.current.userInterfaceIdiom == .phone {
             return 80.0
         } else {
-            return 105.0
+            return 70.0
         }
     }
     static var cellHeight: CGFloat {
         if UIDevice.current.userInterfaceIdiom == .phone {
-            return 245.0
+            return 240.0
         } else {
-            return 400.0 // Need to change (heightCollectionView - 40)
+            return 245.0
         }
     }
     

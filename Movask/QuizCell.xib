@@ -50,15 +50,12 @@
                         <rect key="frame" x="0.0" y="209" width="259" height="30"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="30" id="AW7-YF-eXI">
-                                <variation key="heightClass=regular-widthClass=regular" constant="55"/>
+                                <variation key="heightClass=regular-widthClass=regular" constant="30"/>
                             </constraint>
                         </constraints>
                         <fontDescription key="fontDescription" name="AmericanTypewriter-Semibold" family="American Typewriter" pointSize="17"/>
                         <color key="textColor" red="0.32921970070000001" green="0.33247930170000001" blue="0.33247930170000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
-                        <variation key="heightClass=regular-widthClass=regular">
-                            <fontDescription key="fontDescription" name="AmericanTypewriter-Semibold" family="American Typewriter" pointSize="19"/>
-                        </variation>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="120" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.75" translatesAutoresizingMaskIntoConstraints="NO" id="WLV-RC-fRr">
                         <rect key="frame" x="43" y="166.5" width="176" height="30"/>
@@ -70,9 +67,6 @@
                         <fontDescription key="fontDescription" name="AmericanTypewriter-Semibold" family="American Typewriter" pointSize="16"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
-                        <variation key="heightClass=regular-widthClass=regular">
-                            <fontDescription key="fontDescription" name="AmericanTypewriter-Semibold" family="American Typewriter" pointSize="19"/>
-                        </variation>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vSh-u5-KQS">
                         <rect key="frame" x="10" y="169" width="25" height="25"/>
@@ -104,9 +98,6 @@
                         <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="12"/>
                         <color key="textColor" red="0.5308637705" green="0.53611984739999996" blue="0.53611984739999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
-                        <variation key="heightClass=regular-widthClass=regular">
-                            <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="14"/>
-                        </variation>
                     </label>
                 </subviews>
             </view>
@@ -123,14 +114,14 @@
                 <constraint firstItem="WLV-RC-fRr" firstAttribute="leading" secondItem="vSh-u5-KQS" secondAttribute="trailing" constant="8" id="RIK-Z4-7FP"/>
                 <constraint firstAttribute="trailing" secondItem="bVs-4F-wOS" secondAttribute="trailing" constant="12" id="cU1-AK-elO"/>
                 <constraint firstAttribute="bottom" secondItem="d2c-9o-wPX" secondAttribute="bottom" constant="80" id="d0n-GU-W19">
-                    <variation key="heightClass=regular-widthClass=regular" constant="105"/>
+                    <variation key="heightClass=regular-widthClass=regular" constant="70"/>
                 </constraint>
                 <constraint firstItem="d2c-9o-wPX" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="dbG-N4-tlu"/>
                 <constraint firstItem="WLV-RC-fRr" firstAttribute="centerY" secondItem="vSh-u5-KQS" secondAttribute="centerY" id="giO-VQ-2iz"/>
                 <constraint firstAttribute="trailing" secondItem="d2c-9o-wPX" secondAttribute="trailing" id="kx5-c3-yxY"/>
                 <constraint firstItem="bVs-4F-wOS" firstAttribute="centerY" secondItem="vSh-u5-KQS" secondAttribute="centerY" id="peA-h5-h9T"/>
                 <constraint firstAttribute="bottom" secondItem="hKF-hf-HUL" secondAttribute="bottom" constant="9" id="wZN-kr-4wo">
-                    <variation key="heightClass=regular-widthClass=regular" constant="15"/>
+                    <variation key="heightClass=regular-widthClass=regular" constant="4"/>
                 </constraint>
                 <constraint firstItem="TKE-NS-8Mk" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="xxo-qJ-nHk"/>
             </constraints>
