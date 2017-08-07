@@ -141,6 +141,8 @@ class CollectionsVC: BasicVC {
     
     func addNewQuiz() {
         print("Add new quiz")
+        let createQuizVC = CreateQuizVC()
+        navigationController?.pushViewController(createQuizVC, animated: true)
     }
     
     func scanQRCode() {

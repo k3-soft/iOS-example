@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="v4K-cS-Pu8">
+            <rect key="frame" x="0.0" y="0.0" width="629" height="375"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="629" height="375"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1AU-Ko-1q2">
+                        <rect key="frame" x="66" y="0.0" width="497" height="200"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="200" id="fLn-44-69q"/>
+                        </constraints>
+                    </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uwj-z2-O12">
+                        <rect key="frame" x="8" y="8" width="50" height="50"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="50" id="696-hW-VCD"/>
+                            <constraint firstAttribute="height" constant="50" id="Zf9-bX-ZU6"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wln-nV-vjD">
+                        <rect key="frame" x="571" y="8" width="50" height="50"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="50" id="OGv-N3-szP"/>
+                            <constraint firstAttribute="height" constant="50" id="ZLx-Rc-z3h"/>
+                        </constraints>
+                        <state key="normal" title="Button"/>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NWc-b7-ANh">
+                        <rect key="frame" x="571" y="66" width="50" height="50"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="50" id="VWP-1I-FAB"/>
+                            <constraint firstAttribute="width" constant="50" id="wTK-Y3-mr9"/>
+                        </constraints>
+                        <state key="normal" title="Button"/>
+                    </button>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="1AU-Ko-1q2" firstAttribute="top" secondItem="v4K-cS-Pu8" secondAttribute="top" id="1n1-w3-8Pc"/>
+                <constraint firstItem="1AU-Ko-1q2" firstAttribute="leading" secondItem="uwj-z2-O12" secondAttribute="trailing" constant="8" id="951-T6-VeR"/>
+                <constraint firstItem="NWc-b7-ANh" firstAttribute="leading" secondItem="1AU-Ko-1q2" secondAttribute="trailing" constant="8" id="AgE-W2-elP"/>
+                <constraint firstItem="uwj-z2-O12" firstAttribute="leading" secondItem="v4K-cS-Pu8" secondAttribute="leading" constant="8" id="Pu1-J2-aAe"/>
+                <constraint firstAttribute="trailing" secondItem="wln-nV-vjD" secondAttribute="trailing" constant="8" id="VkJ-L1-Lnc"/>
+                <constraint firstItem="wln-nV-vjD" firstAttribute="top" secondItem="v4K-cS-Pu8" secondAttribute="top" constant="8" id="moP-aD-fBy"/>
+                <constraint firstItem="uwj-z2-O12" firstAttribute="top" secondItem="v4K-cS-Pu8" secondAttribute="top" constant="8" id="nLj-OF-Kv8"/>
+                <constraint firstAttribute="trailing" secondItem="NWc-b7-ANh" secondAttribute="trailing" constant="8" id="s0e-Dd-1YA"/>
+                <constraint firstItem="NWc-b7-ANh" firstAttribute="top" secondItem="wln-nV-vjD" secondAttribute="bottom" constant="8" id="vSI-sP-9PU"/>
+            </constraints>
+            <size key="customSize" width="629" height="375"/>
+            <point key="canvasLocation" x="156.5" y="-30.5"/>
+        </collectionViewCell>
+    </objects>
+</document>
