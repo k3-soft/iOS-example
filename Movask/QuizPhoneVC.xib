@@ -17,6 +17,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="QuizPhoneVC" customModule="Movask" customModuleProvider="target">
             <connections>
+                <outlet property="activityIndicator" destination="3m3-YM-U88" id="3g5-kW-CqE"/>
                 <outlet property="backButton" destination="lTW-oD-BtT" id="8ax-RU-8x8"/>
                 <outlet property="centerXMovieView" destination="qZe-i4-MCm" id="C1J-59-JQq"/>
                 <outlet property="cupImage" destination="vK6-wk-nMY" id="7Rf-cy-BVy"/>
@@ -35,6 +36,7 @@
                 <outlet property="titleLabel" destination="bLf-Xc-bOb" id="dHm-Ye-pBt"/>
                 <outlet property="topStartView" destination="94w-jw-Erx" id="2hr-fD-bgz"/>
                 <outlet property="topView" destination="ffA-C3-eKD" id="ePC-on-lnN"/>
+                <outlet property="videoPlayer" destination="5QM-7w-yCC" id="PUR-mt-SXr"/>
                 <outlet property="videoView" destination="CHz-Jk-ymU" id="TmC-WA-pfQ"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -68,7 +70,7 @@
                                             </connections>
                                         </collectionView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1/15" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Wn-pC-Zqh">
-                                            <rect key="frame" x="30" y="13" width="25.5" height="15"/>
+                                            <rect key="frame" x="30" y="13" width="30.5" height="17.5"/>
                                             <fontDescription key="fontDescription" name="Solomon-Sans-SemiBold" family="Solomon Sans SemiBold" pointSize="15"/>
                                             <color key="textColor" red="0.5725490196078431" green="0.5725490196078431" blue="0.5725490196078431" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
@@ -91,11 +93,27 @@
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CHz-Jk-ymU">
                                             <rect key="frame" x="0.0" y="84" width="375" height="366"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DFx-cU-mBA">
+                                                <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DFx-cU-mBA">
                                                     <rect key="frame" x="16.5" y="10" width="341" height="341"/>
+                                                    <subviews>
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5QM-7w-yCC" customClass="ASPVideoPlayerView" customModule="ASPVideoPlayer">
+                                                            <rect key="frame" x="0.0" y="0.0" width="341" height="341"/>
+                                                            <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
+                                                        </view>
+                                                        <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="3m3-YM-U88">
+                                                            <rect key="frame" x="152.5" y="152" width="37" height="37"/>
+                                                            <color key="color" red="0.2901960784" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
+                                                        </activityIndicatorView>
+                                                    </subviews>
                                                     <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
+                                                        <constraint firstItem="3m3-YM-U88" firstAttribute="centerY" secondItem="DFx-cU-mBA" secondAttribute="centerY" id="5WV-Nb-hOS"/>
                                                         <constraint firstAttribute="width" secondItem="DFx-cU-mBA" secondAttribute="height" multiplier="1:1" id="8QG-cI-9gD"/>
+                                                        <constraint firstItem="3m3-YM-U88" firstAttribute="centerX" secondItem="DFx-cU-mBA" secondAttribute="centerX" id="EYV-EQ-MFW"/>
+                                                        <constraint firstItem="5QM-7w-yCC" firstAttribute="top" secondItem="DFx-cU-mBA" secondAttribute="top" id="Fh7-fe-Jrt"/>
+                                                        <constraint firstItem="5QM-7w-yCC" firstAttribute="leading" secondItem="DFx-cU-mBA" secondAttribute="leading" id="LlK-1q-MuW"/>
+                                                        <constraint firstAttribute="trailing" secondItem="5QM-7w-yCC" secondAttribute="trailing" id="ix4-0d-6eg"/>
+                                                        <constraint firstAttribute="bottom" secondItem="5QM-7w-yCC" secondAttribute="bottom" id="yjE-R2-EmS"/>
                                                     </constraints>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">

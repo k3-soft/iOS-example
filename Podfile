@@ -13,6 +13,7 @@ pod 'IQKeyboardManagerSwift', '~> 4.0'
 pod 'PKHUD', '~> 4.2'
 pod 'FirebaseMessaging'
 pod 'Firebase'
+pod 'ASPVideoPlayer', '~> 2.0'
 
 end
 

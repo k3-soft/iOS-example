@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ASPVideoPlayer
 
 class QuizPhoneVC: BasicVC {
     
@@ -46,9 +47,11 @@ class QuizPhoneVC: BasicVC {
     
     @IBOutlet weak var videoView: UIView!
     @IBOutlet weak var movieView: UIView!
+    @IBOutlet weak var videoPlayer: ASPVideoPlayerView!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     @IBOutlet weak var centerXMovieView: NSLayoutConstraint!
-    
+
     var replayButton: ReplayButton?
     
     var replayButtonFrame: CGRect {
@@ -60,6 +63,7 @@ class QuizPhoneVC: BasicVC {
     @IBOutlet weak var questionCounterLabel: UILabel!
     
     // Data
+    var quiz = QuizTest()
     var questionsList = [QuestionTest]()
     var pageNumber = 0
     
@@ -80,6 +84,7 @@ class QuizPhoneVC: BasicVC {
         setCollectionView()
         loadQuestions()
         setQuestionCounter()
+        setVideoPlayer()
     }
     
     override func viewDidLayoutSubviews() {
@@ -125,6 +130,25 @@ class QuizPhoneVC: BasicVC {
         setQuestionCounter()
     }
     
+    func setVideoPlayer() {
+        
+        guard let url = URL(string: quiz.videoPath) else { return }
+        
+        activityIndicator.startAnimating()
+        
+        videoPlayer?.videoURL = url
+        videoPlayer?.gravity = .aspectFill
+        videoPlayer?.shouldLoop = false
+        
+        videoPlayer?.finishedVideo = { [unowned self] in
+            self.hideMovie()
+        }
+        
+        videoPlayer?.readyToPlayVideo = { [unowned self] in
+            self.activityIndicator.stopAnimating()
+        }
+    }
+    
     func initiateReplayButton() {
         
         replayButton = ReplayButton(frame: replayButtonFrame)
@@ -133,6 +157,10 @@ class QuizPhoneVC: BasicVC {
         replayButton?.alpha = 0.0
         
         videoView.addSubview(replayButton!)
+    }
+    
+    func setActivityIndicator() {
+        
     }
     
     // MARK: - Movie actions
@@ -157,7 +185,9 @@ class QuizPhoneVC: BasicVC {
             
             UIView.animate(withDuration: 0.3, animations: {
                 self.view.layoutIfNeeded()
-            })
+            }) { _ in
+                self.videoPlayer?.playVideo()
+            }
         }
     }
     
@@ -210,7 +240,7 @@ class QuizPhoneVC: BasicVC {
         }) { _ in
             self.startView.alpha = 0.0
             
-            // start movie
+            self.videoPlayer?.playVideo()
             self.isQuizStarted = true
         }
     }

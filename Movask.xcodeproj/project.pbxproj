@@ -252,7 +252,7 @@
 			isa = PBXGroup;
 			children = (
 				03D646D41F32018C007C206F /* BasicVC.swift */,
-				03E4AD6F1F34E38700EAA33A /* Level */,
+				03E4AD6F1F34E38700EAA33A /* Quiz */,
 				03D646EE1F32182C007C206F /* Protocols */,
 				03D646DF1F3202EF007C206F /* Main */,
 			);
@@ -373,14 +373,14 @@
 			name = LineSegmentedControl;
 			sourceTree = "<group>";
 		};
-		03E4AD6F1F34E38700EAA33A /* Level */ = {
+		03E4AD6F1F34E38700EAA33A /* Quiz */ = {
 			isa = PBXGroup;
 			children = (
 				03E4AD6B1F34E2D000EAA33A /* QuizPhoneVC.swift */,
 				03E4AD6C1F34E2D000EAA33A /* QuizPhoneVC.xib */,
 				03E4AD741F34E3EC00EAA33A /* Cells */,
 			);
-			name = Level;
+			name = Quiz;
 			sourceTree = "<group>";
 		};
 		03E4AD741F34E3EC00EAA33A /* Cells */ = {
