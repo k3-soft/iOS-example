@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		03B8CDE11F3882610058ABAC /* AnswerCheckboxCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B8CDDF1F3882610058ABAC /* AnswerCheckboxCell.swift */; };
+		03B8CDE21F3882610058ABAC /* AnswerCheckboxCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03B8CDE01F3882610058ABAC /* AnswerCheckboxCell.xib */; };
+		03B8CDE41F3882960058ABAC /* AnswerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B8CDE31F3882960058ABAC /* AnswerTest.swift */; };
+		03B8CDE61F3883B60058ABAC /* QuestionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B8CDE51F3883B60058ABAC /* QuestionType.swift */; };
+		03B8CDEA1F3886CC0058ABAC /* UIButton+Touches.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B8CDE91F3886CC0058ABAC /* UIButton+Touches.swift */; };
 		03D646BB1F30D2CE007C206F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D646BA1F30D2CE007C206F /* AppDelegate.swift */; };
 		03D646C01F30D2CE007C206F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03D646BE1F30D2CE007C206F /* Main.storyboard */; };
 		03D646C21F30D2CE007C206F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 03D646C11F30D2CE007C206F /* Assets.xcassets */; };
@@ -66,6 +71,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		03B8CDDF1F3882610058ABAC /* AnswerCheckboxCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnswerCheckboxCell.swift; sourceTree = "<group>"; };
+		03B8CDE01F3882610058ABAC /* AnswerCheckboxCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AnswerCheckboxCell.xib; sourceTree = "<group>"; };
+		03B8CDE31F3882960058ABAC /* AnswerTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnswerTest.swift; sourceTree = "<group>"; };
+		03B8CDE51F3883B60058ABAC /* QuestionType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionType.swift; sourceTree = "<group>"; };
+		03B8CDE91F3886CC0058ABAC /* UIButton+Touches.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIButton+Touches.swift"; sourceTree = "<group>"; };
 		03D646B71F30D2CE007C206F /* Movask.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Movask.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		03D646BA1F30D2CE007C206F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		03D646BF1F30D2CE007C206F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -140,6 +150,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		03B8CDE71F3883B90058ABAC /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+				03B8CDE51F3883B60058ABAC /* QuestionType.swift */,
+			);
+			name = Enums;
+			sourceTree = "<group>";
+		};
+		03B8CDE81F3885580058ABAC /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				03E4ADA01F386B6000EAA33A /* Solomon-Sans-Black.otf */,
+				03E4ADA11F386B6000EAA33A /* Solomon-Sans-Bold.otf */,
+				03E4ADA21F386B6000EAA33A /* Solomon-Sans-Book.otf */,
+				03E4ADA31F386B6000EAA33A /* Solomon-Sans-Light.otf */,
+				03E4ADA41F386B6000EAA33A /* Solomon-Sans-Normal.otf */,
+				03E4ADA51F386B6000EAA33A /* Solomon-Sans-SemiBold.otf */,
+			);
+			name = Fonts;
+			sourceTree = "<group>";
+		};
 		03D646AE1F30D2CE007C206F = {
 			isa = PBXGroup;
 			children = (
@@ -192,6 +223,7 @@
 				03F5680B1F3348B5000DBFDC /* UIApplication+Orientation.swift */,
 				03F568201F3386B8000DBFDC /* String+Size.swift */,
 				03F568221F3386DF000DBFDC /* UIColor+Hex.swift */,
+				03B8CDE91F3886CC0058ABAC /* UIButton+Touches.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -231,12 +263,7 @@
 			isa = PBXGroup;
 			children = (
 				03D646C11F30D2CE007C206F /* Assets.xcassets */,
-				03E4ADA01F386B6000EAA33A /* Solomon-Sans-Black.otf */,
-				03E4ADA11F386B6000EAA33A /* Solomon-Sans-Bold.otf */,
-				03E4ADA21F386B6000EAA33A /* Solomon-Sans-Book.otf */,
-				03E4ADA31F386B6000EAA33A /* Solomon-Sans-Light.otf */,
-				03E4ADA41F386B6000EAA33A /* Solomon-Sans-Normal.otf */,
-				03E4ADA51F386B6000EAA33A /* Solomon-Sans-SemiBold.otf */,
+				03B8CDE81F3885580058ABAC /* Fonts */,
 			);
 			name = "UI Source";
 			sourceTree = "<group>";
@@ -265,8 +292,10 @@
 			children = (
 				03D646E41F32082F007C206F /* QuizTest.swift */,
 				03E4AD761F34E46200EAA33A /* QuestionTest.swift */,
+				03B8CDE31F3882960058ABAC /* AnswerTest.swift */,
 				03F5681C1F3383CC000DBFDC /* ICloudModel.swift */,
 				03F5681E1F3383FB000DBFDC /* Token.swift */,
+				03B8CDE71F3883B90058ABAC /* Enums */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -339,6 +368,8 @@
 			children = (
 				03E4AD701F34E3CA00EAA33A /* QuestionCell.swift */,
 				03E4AD711F34E3CA00EAA33A /* QuestionCell.xib */,
+				03B8CDDF1F3882610058ABAC /* AnswerCheckboxCell.swift */,
+				03B8CDE01F3882610058ABAC /* AnswerCheckboxCell.xib */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -452,6 +483,7 @@
 				03E4AD6E1F34E2D000EAA33A /* QuizPhoneVC.xib in Resources */,
 				03E4ADA91F386B6000EAA33A /* Solomon-Sans-Light.otf in Resources */,
 				03E4ADA71F386B6000EAA33A /* Solomon-Sans-Bold.otf in Resources */,
+				03B8CDE21F3882610058ABAC /* AnswerCheckboxCell.xib in Resources */,
 				03E4ADAB1F386B6000EAA33A /* Solomon-Sans-SemiBold.otf in Resources */,
 				03D646DE1F3202EB007C206F /* MainVC.xib in Resources */,
 				03F568291F338781000DBFDC /* CollectionsVC.xib in Resources */,
@@ -554,6 +586,7 @@
 				03D646DD1F3202EB007C206F /* MainVC.swift in Sources */,
 				03D647051F3277A0007C206F /* LevelsVC.swift in Sources */,
 				03D646BB1F30D2CE007C206F /* AppDelegate.swift in Sources */,
+				03B8CDE41F3882960058ABAC /* AnswerTest.swift in Sources */,
 				03D646E51F32082F007C206F /* QuizTest.swift in Sources */,
 				03E4AD6D1F34E2D000EAA33A /* QuizPhoneVC.swift in Sources */,
 				03E4AD771F34E46200EAA33A /* QuestionTest.swift in Sources */,
@@ -566,11 +599,14 @@
 				03D646E81F32099D007C206F /* ImageCashManager.swift in Sources */,
 				03F5680F1F335527000DBFDC /* APIManager.swift in Sources */,
 				03D646FD1F3271F6007C206F /* LibraryVC.swift in Sources */,
+				03B8CDE11F3882610058ABAC /* AnswerCheckboxCell.swift in Sources */,
+				03B8CDE61F3883B60058ABAC /* QuestionType.swift in Sources */,
 				03F568111F335637000DBFDC /* UserDefaultsManager.swift in Sources */,
 				03F568151F336062000DBFDC /* QRManager.swift in Sources */,
 				03F568171F3360AB000DBFDC /* VideoManager.swift in Sources */,
 				03D646D71F32021F007C206F /* LoadingView.swift in Sources */,
 				03D646F41F326E12007C206F /* LineSegmentedControl.swift in Sources */,
+				03B8CDEA1F3886CC0058ABAC /* UIButton+Touches.swift in Sources */,
 				03F568281F338781000DBFDC /* CollectionsVC.swift in Sources */,
 				03D646F01F32183F007C206F /* EventHandler.swift in Sources */,
 			);

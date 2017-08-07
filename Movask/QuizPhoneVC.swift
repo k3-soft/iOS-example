@@ -41,7 +41,6 @@ class QuizPhoneVC: BasicVC {
         
         questionsCollection.decelerationRate = UIScrollViewDecelerationRateFast
         questionsCollection.isScrollEnabled = false
-        
         questionsCollection.register(UINib(nibName: questionCellIdentifier, bundle: nil),
                                      forCellWithReuseIdentifier: questionCellIdentifier)
     }

@@ -10,9 +10,9 @@ import UIKit
 
 extension String {
     
-    func textHeightWithFontSize(size: CGFloat, viewWidth: CGFloat, offset: CGFloat) -> CGFloat {
+    func textHeightWithFont(size: CGFloat, name: String, viewWidth: CGFloat, offset: CGFloat) -> CGFloat {
         
-        let font = UIFont(name: "Solomon-Sans-SemiBold", size: size)
+        let font = UIFont(name: name, size: size)
         
         let paragraph = NSMutableParagraphStyle()
         paragraph.alignment = .justified

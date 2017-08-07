@@ -12,6 +12,10 @@ class QuestionTest {
     
     let id = 1
     let question = "What is the golden hour?"
-    let type = "The most important things to know is the most important things to know"
+    let type: QuestionType = .checkmarks
     
+    let answers = [AnswerTest(title: "The last hour before sunset"),
+                   AnswerTest(title: "The hour when shadows get really long ang light very red"),
+                   AnswerTest(title: "The hour after sunrize"),
+                   AnswerTest(title: "Is a period shortly after sunrise or before sunset during which daylight is redder and softer than when the Sun is higher in the sky")]
 }

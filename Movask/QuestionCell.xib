@@ -62,16 +62,17 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m2m-Ez-k52">
                                 <rect key="frame" x="0.0" y="58" width="310" height="327"/>
                                 <subviews>
-                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MNV-sr-Mv4">
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="4Zv-zG-ngv">
                                         <rect key="frame" x="0.0" y="0.0" width="310" height="327"/>
-                                    </scrollView>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </tableView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="MNV-sr-Mv4" secondAttribute="bottom" id="JMA-iw-YVQ"/>
-                                    <constraint firstItem="MNV-sr-Mv4" firstAttribute="top" secondItem="m2m-Ez-k52" secondAttribute="top" id="hS7-Cu-l1I"/>
-                                    <constraint firstItem="MNV-sr-Mv4" firstAttribute="leading" secondItem="m2m-Ez-k52" secondAttribute="leading" id="nKS-on-zZe"/>
-                                    <constraint firstAttribute="trailing" secondItem="MNV-sr-Mv4" secondAttribute="trailing" id="rZY-B4-Wba"/>
+                                    <constraint firstItem="4Zv-zG-ngv" firstAttribute="leading" secondItem="m2m-Ez-k52" secondAttribute="leading" id="3f5-fY-Xvq"/>
+                                    <constraint firstAttribute="bottom" secondItem="4Zv-zG-ngv" secondAttribute="bottom" id="ewo-4m-WCy"/>
+                                    <constraint firstAttribute="trailing" secondItem="4Zv-zG-ngv" secondAttribute="trailing" id="hAZ-xx-XEg"/>
+                                    <constraint firstItem="4Zv-zG-ngv" firstAttribute="top" secondItem="m2m-Ez-k52" secondAttribute="top" id="vLM-mq-IYD"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X7S-B0-Lbo">
@@ -169,6 +170,7 @@
                 </userDefinedRuntimeAttribute>
             </userDefinedRuntimeAttributes>
             <connections>
+                <outlet property="answersTableView" destination="4Zv-zG-ngv" id="2la-nQ-1VG"/>
                 <outlet property="confirmButton" destination="dRB-Jx-K6V" id="guB-ML-cjY"/>
                 <outlet property="heightQuestionLabel" destination="BFZ-bk-X4r" id="CoZ-3Y-Cbk"/>
                 <outlet property="heightQuestionView" destination="73Q-q1-KgL" id="ClM-sr-pjg"/>
@@ -176,7 +178,7 @@
                 <outlet property="questionLabel" destination="Iu0-wo-s5h" id="NcU-Si-ZjZ"/>
                 <outlet property="skipButton" destination="TrW-Yd-clM" id="FDs-cp-UVq"/>
             </connections>
-            <point key="canvasLocation" x="42" y="41"/>
+            <point key="canvasLocation" x="42" y="40.5"/>
         </collectionViewCell>
     </objects>
 </document>
