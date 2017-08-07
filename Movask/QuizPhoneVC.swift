@@ -34,6 +34,22 @@ class QuizPhoneVC: BasicVC {
         loadQuestions()
         setQuestionCounter()
     }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        // For case loading screen in landscape
+        // TODO: Check when it's not root vc, delete if needed
+        questionsCollection.collectionViewLayout.invalidateLayout()
+    }
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        
+        // Scroll to current question when rotate
+        coordinator.animate(alongsideTransition: { [unowned self] _ in
+            self.questionsCollection.scrollToItem(at: IndexPath(item: self.pageNumber, section: 0), at: .centeredHorizontally, animated: true)
+        }, completion: nil)
+    }
 
     // MARK: - Views settings
     
@@ -127,7 +143,7 @@ extension QuizPhoneVC: UICollectionViewDataSource, UICollectionViewDelegate, UIC
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-
+        print(view.frame.size.width)
         return CGSize(width: (view.frame.size.width - collectionLineSpacing * 2 - (collectionInsets * 2 - 6)), height: QuestionCell.cellHeight)
     }
     

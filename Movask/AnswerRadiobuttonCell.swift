@@ -13,7 +13,6 @@ class AnswerRadiobuttonCell: AnswerSelectionCell {
     override var checked: Bool {
         didSet {
             if checked {
-                print(UIImage(named: "RadioOnGray") ?? "nil")
                 checkboxButton.setImage(UIImage(named: "RadioOnGray"), for: .normal)
             } else {
                 checkboxButton.setImage(UIImage(named: "RadioOffGray"), for: .normal)
