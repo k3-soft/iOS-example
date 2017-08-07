@@ -222,6 +222,7 @@ class QuizPhoneVC: BasicVC {
     func togglePlay() {
         
         videoPlayer?.videoPlayerView.playVideo()
+        videoPlayer?.hideControls()
         if let controls = videoPlayer.videoPlayerControls as? ASPVideoPlayerControls {
             controls.playPauseButton.isSelected = true
         }
