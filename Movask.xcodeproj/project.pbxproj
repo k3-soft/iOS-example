@@ -15,6 +15,8 @@
 		03B8CDEC1F3892F70058ABAC /* AnswerSelectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B8CDEB1F3892F70058ABAC /* AnswerSelectionCell.swift */; };
 		03B8CDEF1F389A790058ABAC /* AnswerRadiobuttonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B8CDED1F389A790058ABAC /* AnswerRadiobuttonCell.swift */; };
 		03B8CDF01F389A790058ABAC /* AnswerRadiobuttonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03B8CDEE1F389A790058ABAC /* AnswerRadiobuttonCell.xib */; };
+		03B917361F39029200CCB979 /* ReplayButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B917351F39029200CCB979 /* ReplayButton.swift */; };
+		03B917381F3902A700CCB979 /* ReplayButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03B917371F3902A700CCB979 /* ReplayButton.xib */; };
 		03D646BB1F30D2CE007C206F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D646BA1F30D2CE007C206F /* AppDelegate.swift */; };
 		03D646C01F30D2CE007C206F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03D646BE1F30D2CE007C206F /* Main.storyboard */; };
 		03D646C21F30D2CE007C206F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 03D646C11F30D2CE007C206F /* Assets.xcassets */; };
@@ -82,6 +84,8 @@
 		03B8CDEB1F3892F70058ABAC /* AnswerSelectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnswerSelectionCell.swift; sourceTree = "<group>"; };
 		03B8CDED1F389A790058ABAC /* AnswerRadiobuttonCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnswerRadiobuttonCell.swift; sourceTree = "<group>"; };
 		03B8CDEE1F389A790058ABAC /* AnswerRadiobuttonCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AnswerRadiobuttonCell.xib; sourceTree = "<group>"; };
+		03B917351F39029200CCB979 /* ReplayButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReplayButton.swift; sourceTree = "<group>"; };
+		03B917371F3902A700CCB979 /* ReplayButton.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ReplayButton.xib; sourceTree = "<group>"; };
 		03D646B71F30D2CE007C206F /* Movask.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Movask.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		03D646BA1F30D2CE007C206F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		03D646BF1F30D2CE007C206F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -177,6 +181,15 @@
 			name = Fonts;
 			sourceTree = "<group>";
 		};
+		03B917341F39027200CCB979 /* ReplayButton */ = {
+			isa = PBXGroup;
+			children = (
+				03B917351F39029200CCB979 /* ReplayButton.swift */,
+				03B917371F3902A700CCB979 /* ReplayButton.xib */,
+			);
+			name = ReplayButton;
+			sourceTree = "<group>";
+		};
 		03D646AE1F30D2CE007C206F = {
 			isa = PBXGroup;
 			children = (
@@ -216,6 +229,7 @@
 			children = (
 				03D646D81F320225007C206F /* Custom */,
 				03D647011F327564007C206F /* NibView.swift */,
+				03B917341F39027200CCB979 /* ReplayButton */,
 				03E4AD781F34F21A00EAA33A /* CollectionViewCenteredLayout.swift */,
 			);
 			name = Views;
@@ -496,6 +510,7 @@
 				03E4ADAB1F386B6000EAA33A /* Solomon-Sans-SemiBold.otf in Resources */,
 				03D646DE1F3202EB007C206F /* MainVC.xib in Resources */,
 				03B8CDF01F389A790058ABAC /* AnswerRadiobuttonCell.xib in Resources */,
+				03B917381F3902A700CCB979 /* ReplayButton.xib in Resources */,
 				03F568291F338781000DBFDC /* CollectionsVC.xib in Resources */,
 				03E4ADA81F386B6000EAA33A /* Solomon-Sans-Book.otf in Resources */,
 				03D646FE1F3271F6007C206F /* LibraryVC.xib in Resources */,
@@ -614,6 +629,7 @@
 				03B8CDE61F3883B60058ABAC /* QuestionType.swift in Sources */,
 				03F568111F335637000DBFDC /* UserDefaultsManager.swift in Sources */,
 				03F568151F336062000DBFDC /* QRManager.swift in Sources */,
+				03B917361F39029200CCB979 /* ReplayButton.swift in Sources */,
 				03B8CDEF1F389A790058ABAC /* AnswerRadiobuttonCell.swift in Sources */,
 				03F568171F3360AB000DBFDC /* VideoManager.swift in Sources */,
 				03D646D71F32021F007C206F /* LoadingView.swift in Sources */,

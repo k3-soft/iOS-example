@@ -10,6 +10,52 @@ import UIKit
 
 class QuizPhoneVC: BasicVC {
     
+    // Top view
+    
+    @IBOutlet weak var topView: UIView!
+    @IBOutlet weak var heightTopView: NSLayoutConstraint!
+    
+    let maxHeightVideoView: CGFloat = 450.0
+    let minHeightVideoView: CGFloat = 175.0
+    
+    // Navigation bar
+    
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var descriptionLabel: UILabel!
+
+    @IBOutlet weak var backButton: UIButton! {
+        didSet {
+            backButton.touchAreaEdgeInsets = .init(top: -10, left: -10, bottom: -10, right: -10)
+        }
+    }
+    
+    // Start view
+    
+    @IBOutlet weak var starImage: UIImageView!
+    @IBOutlet weak var questionImage: UIImageView!
+    @IBOutlet weak var cupImage: UIImageView!
+    @IBOutlet weak var likesLabel: UILabel!
+    @IBOutlet weak var questionsLabel: UILabel!
+    @IBOutlet weak var scoreLabel: UILabel!
+    
+    @IBOutlet weak var startView: UIView!
+    @IBOutlet weak var heightStartView: NSLayoutConstraint!
+    @IBOutlet weak var topStartView: NSLayoutConstraint!
+    
+    // Video view
+    
+    @IBOutlet weak var videoView: UIView!
+    @IBOutlet weak var movieView: UIView!
+    
+    @IBOutlet weak var centerXMovieView: NSLayoutConstraint!
+    
+    var replayButton: ReplayButton?
+    
+    var replayButtonFrame: CGRect {
+        return CGRect(x: movieView.frame.maxX + 10.0, y: movieView.frame.midY - (40.0 / 2), width: 145.0, height: 40.0)
+    }
+
+    // Questions view
     @IBOutlet weak var questionsCollection: UICollectionView!
     @IBOutlet weak var questionCounterLabel: UILabel!
     
@@ -18,7 +64,8 @@ class QuizPhoneVC: BasicVC {
     var pageNumber = 0
     
     // Flow
-    var isScrollingEnable = false
+    var isQuizStarted = false
+    var isMovieOpen = true
     
     // Collection settings
     
@@ -47,6 +94,7 @@ class QuizPhoneVC: BasicVC {
         
         // Scroll to current question when rotate
         coordinator.animate(alongsideTransition: { [unowned self] _ in
+            self.replayButton?.frame = self.replayButtonFrame
             self.questionsCollection.scrollToItem(at: IndexPath(item: self.pageNumber, section: 0), at: .centeredHorizontally, animated: true)
         }, completion: nil)
     }
@@ -77,6 +125,69 @@ class QuizPhoneVC: BasicVC {
         setQuestionCounter()
     }
     
+    func initiateReplayButton() {
+        
+        replayButton = ReplayButton(frame: replayButtonFrame)
+        replayButton?.replay.addTarget(self, action: #selector(replayVideo), for: .touchUpInside)
+        replayButton?.center.y -= 50.0
+        replayButton?.alpha = 0.0
+        
+        videoView.addSubview(replayButton!)
+    }
+    
+    // MARK: - Movie actions
+    
+    func openMovie() {
+        
+        guard !isMovieOpen else { return }
+        
+        UIView.animate(withDuration: 0.3, animations: {
+            self.replayButton?.center.y -= 50.0
+            self.replayButton?.alpha = 0.0
+            
+        }) { _ in
+            
+            self.isMovieOpen = true
+        
+            self.replayButton?.removeFromSuperview()
+            self.replayButton = nil
+            
+            self.heightTopView.constant = self.maxHeightVideoView
+            self.centerXMovieView.constant = 0.0
+            
+            UIView.animate(withDuration: 0.3, animations: {
+                self.view.layoutIfNeeded()
+            })
+        }
+    }
+    
+    func hideMovie() {
+        
+        guard isMovieOpen else { return }
+
+        heightTopView.constant = minHeightVideoView
+        centerXMovieView.constant = -75.0
+        
+        UIView.animate(withDuration: 0.3, animations: {
+            self.view.layoutIfNeeded()
+            
+        }) { _ in
+            
+            self.isMovieOpen = false
+            
+            self.initiateReplayButton()
+            UIView.animate(withDuration: 0.3, animations: {
+                self.replayButton?.center.y += 50.0
+                self.replayButton?.alpha = 1.0
+            })
+        }
+    }
+    
+    func replayVideo() {
+        
+        openMovie()
+    }
+    
     // MARK: - Load data
     
     func loadQuestions() {
@@ -90,14 +201,32 @@ class QuizPhoneVC: BasicVC {
     
     // MARK: - Actions
     
-    func nextQuestion() {
-        print("Confirm did tap")
+    @IBAction func startMovie(_ sender: UIButton) {
         
-        scrollToQuestion(index: pageNumber + 1)
+        topStartView.constant = -startView.bounds.height
+        
+        UIView.animate(withDuration: 0.3, animations: {
+            self.topView.layoutIfNeeded()
+        }) { _ in
+            self.startView.alpha = 0.0
+            
+            // start movie
+            self.isQuizStarted = true
+        }
+    }
+    
+    func nextQuestion() {
+        
+//        guard isQuizStarted else { return }
+//        
+//        scrollToQuestion(index: pageNumber + 1)
+        
+        hideMovie()
     }
     
     func skipQuestion() {
-        print("Skip")
+        
+        guard isQuizStarted else { return }
         
         scrollToQuestion(index: pageNumber + 1)
     }
