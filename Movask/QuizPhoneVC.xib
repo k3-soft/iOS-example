@@ -24,7 +24,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="375" height="648"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Y5I-iE-i3W">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="653"/>
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="528"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ffA-C3-eKD">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="128"/>
@@ -34,10 +34,10 @@
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dWV-LK-X4P">
-                                    <rect key="frame" x="0.0" y="128" width="375" height="525"/>
+                                    <rect key="frame" x="0.0" y="128" width="375" height="400"/>
                                     <subviews>
                                         <collectionView clipsSubviews="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="FFf-dB-T6g">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="525"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="400"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="cYA-fG-C7c" customClass="CenterCellCollectionViewFlowLayout" customModule="Movask" customModuleProvider="target">
                                                 <size key="itemSize" width="50" height="50"/>
@@ -55,7 +55,7 @@
                                     <constraints>
                                         <constraint firstAttribute="bottom" secondItem="FFf-dB-T6g" secondAttribute="bottom" id="5LP-nY-7kP"/>
                                         <constraint firstItem="FFf-dB-T6g" firstAttribute="top" secondItem="dWV-LK-X4P" secondAttribute="top" id="Gb9-Jm-gsu"/>
-                                        <constraint firstAttribute="height" constant="525" id="RmU-b8-0HL"/>
+                                        <constraint firstAttribute="height" constant="400" id="RmU-b8-0HL"/>
                                         <constraint firstAttribute="trailing" secondItem="FFf-dB-T6g" secondAttribute="trailing" id="oUT-pn-KBI"/>
                                         <constraint firstItem="FFf-dB-T6g" firstAttribute="leading" secondItem="dWV-LK-X4P" secondAttribute="leading" id="p1L-1V-xa2"/>
                                     </constraints>

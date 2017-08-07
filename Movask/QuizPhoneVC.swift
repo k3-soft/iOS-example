@@ -28,14 +28,6 @@ class QuizPhoneVC: BasicVC {
         loadQuestions()
     }
     
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-//        
-//        let sideInset = (self.view.frame.width - self.view.frame.height * 0.52)/2
-//        questionsCollection.contentInset = UIEdgeInsets(top: 0, left: sideInset, bottom: 0, right: sideInset)
-        
-    }
-    
     override func viewDidAppear(_ animated: Bool) {
  
 //        questionsCollection.scrollToItem(at: IndexPath(item: 0, section: 0), at: .centeredHorizontally, animated: false)
@@ -56,7 +48,7 @@ class QuizPhoneVC: BasicVC {
     
     func loadQuestions() {
         
-        questionsList = Array(repeating: QuestionTest(), count: 20)
+        questionsList = Array(repeating: QuestionTest(), count: 10)
     }
     
     // MARK: - Actions
@@ -75,6 +67,10 @@ extension QuizPhoneVC: UICollectionViewDataSource, UICollectionViewDelegate, UIC
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: questionCellIdentifier, for: indexPath) as! QuestionCell
+        
+        let question = questionsList[indexPath.row]
+        
+        cell.setWithQuestion(question)
         
         return cell
     }

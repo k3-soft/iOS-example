@@ -17,7 +17,8 @@ let MainFont = "Arial"
 
 struct BrandColor {
     
-    static let darkGrey = UIColor(colorWithHexValue: 0x4A4A4A)
     static let grey = UIColor(colorWithHexValue: 0x808080)
+    static let darkGrey = UIColor(colorWithHexValue: 0x4A4A4A)
     static let green = UIColor(colorWithHexValue: 0x2CB463)
+    static let darkGreen = UIColor(colorWithHexValue: 0x1F6B3D)
 }
