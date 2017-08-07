@@ -12,7 +12,7 @@ extension String {
     
     func textHeightWithFontSize(size: CGFloat, viewWidth: CGFloat, offset: CGFloat) -> CGFloat {
         
-        let font = UIFont(name: "Arial", size: size)
+        let font = UIFont(name: "Solomon-Sans-SemiBold", size: size)
         
         let paragraph = NSMutableParagraphStyle()
         paragraph.alignment = .justified

@@ -14,20 +14,28 @@ class QuestionCell: UICollectionViewCell {
     @IBOutlet weak var instructionLabel: UILabel!
     @IBOutlet weak var questionLabel: UILabel!
     
+    // Buttons
+    @IBOutlet weak var confirmButton: UIButton!
+    @IBOutlet weak var skipButton: UIButton!
+    
     // Constraints
     @IBOutlet weak var heightQuestionLabel: NSLayoutConstraint!
-    @IBOutlet weak var heightQuestionView: UIView!
+    @IBOutlet weak var heightQuestionView: NSLayoutConstraint!
     
     // Data
     var question: QuestionTest?
     
-    static var heightQuestionViewWithoutLabel: CGFloat = 57.0
+    // Handlers
+    var confirmHandler: (()->())?
+    var skipHandler: (()->())?
+    
+    let heightQuestionViewWithoutLabel: CGFloat = 43.0
     
     static var cellHeight: CGFloat {
         if UIDevice.current.userInterfaceIdiom == .phone {
-            return 360.0
+            return 435.0
         } else {
-            return 360.0
+            return 435.0
         }
     }
 
@@ -37,10 +45,20 @@ class QuestionCell: UICollectionViewCell {
         
         // Get question height
         
-        let height = question.question.textHeightWithFontSize(size: 15.0, viewWidth: bounds.width, offset: 14.0)
+        let height = question.question.textHeightWithFontSize(size: 15.0, viewWidth: bounds.width, offset: 0.0)
         
         heightQuestionLabel.constant = height
+        heightQuestionView.constant = height + heightQuestionViewWithoutLabel
         questionLabel.text = question.question
     }
-
+    
+    // MARK: - Actions
+    
+    @IBAction func confirmDidTap(_ sender: UIButton) {
+        confirmHandler?()
+    }
+    
+    @IBAction func skipDidTap(_ sender: UIButton) {
+        skipHandler?()
+    }
 }

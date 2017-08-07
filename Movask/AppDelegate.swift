@@ -23,13 +23,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         setFabric()
         setKeyboardManager()
         
+        for family: String in UIFont.familyNames
+        {
+            print("\(family)")
+            for names: String in UIFont.fontNames(forFamilyName: family)
+            {
+                print("== \(names)")
+            }
+        }
+        
         return true
     }
     
     func setInitialViewController() {
         
-        let vc = CollectionsVC()
-        //let vc = QuizPhoneVC()
+        //let vc = CollectionsVC()
+        let vc = QuizPhoneVC()
         
         let navigationVC = UINavigationController(rootViewController: vc)
         navigationVC.setNavigationBarHidden(true, animated: false)

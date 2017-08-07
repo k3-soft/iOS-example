@@ -38,11 +38,12 @@
 		03E4AD731F34E3CA00EAA33A /* QuestionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03E4AD711F34E3CA00EAA33A /* QuestionCell.xib */; };
 		03E4AD771F34E46200EAA33A /* QuestionTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E4AD761F34E46200EAA33A /* QuestionTest.swift */; };
 		03E4AD791F34F21A00EAA33A /* CollectionViewCenteredLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E4AD781F34F21A00EAA33A /* CollectionViewCenteredLayout.swift */; };
-		03E4AD7F1F350FA000EAA33A /* Solomon Sans Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 03E4AD7D1F350F3B00EAA33A /* Solomon Sans Light.otf */; };
-		03E4AD801F350FA000EAA33A /* Solomon Sans Book.otf in Resources */ = {isa = PBXBuildFile; fileRef = 03E4AD7B1F350F1D00EAA33A /* Solomon Sans Book.otf */; };
-		03E4AD811F350FA000EAA33A /* Solomon Sans Normal.otf in Resources */ = {isa = PBXBuildFile; fileRef = 03E4AD7A1F350F0800EAA33A /* Solomon Sans Normal.otf */; };
-		03E4AD821F350FA000EAA33A /* Solomon Sans SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 03E4AD7C1F350F2C00EAA33A /* Solomon Sans SemiBold.otf */; };
-		03E4AD831F350FA000EAA33A /* Solomon Sans Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 03E4AD7E1F350F4C00EAA33A /* Solomon Sans Bold.otf */; };
+		03E4ADA61F386B6000EAA33A /* Solomon-Sans-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = 03E4ADA01F386B6000EAA33A /* Solomon-Sans-Black.otf */; };
+		03E4ADA71F386B6000EAA33A /* Solomon-Sans-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 03E4ADA11F386B6000EAA33A /* Solomon-Sans-Bold.otf */; };
+		03E4ADA81F386B6000EAA33A /* Solomon-Sans-Book.otf in Resources */ = {isa = PBXBuildFile; fileRef = 03E4ADA21F386B6000EAA33A /* Solomon-Sans-Book.otf */; };
+		03E4ADA91F386B6000EAA33A /* Solomon-Sans-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 03E4ADA31F386B6000EAA33A /* Solomon-Sans-Light.otf */; };
+		03E4ADAA1F386B6000EAA33A /* Solomon-Sans-Normal.otf in Resources */ = {isa = PBXBuildFile; fileRef = 03E4ADA41F386B6000EAA33A /* Solomon-Sans-Normal.otf */; };
+		03E4ADAB1F386B6000EAA33A /* Solomon-Sans-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 03E4ADA51F386B6000EAA33A /* Solomon-Sans-SemiBold.otf */; };
 		03F5680C1F3348B5000DBFDC /* UIApplication+Orientation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F5680B1F3348B5000DBFDC /* UIApplication+Orientation.swift */; };
 		03F5680F1F335527000DBFDC /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F5680E1F335527000DBFDC /* APIManager.swift */; };
 		03F568111F335637000DBFDC /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F568101F335637000DBFDC /* UserDefaultsManager.swift */; };
@@ -98,11 +99,12 @@
 		03E4AD711F34E3CA00EAA33A /* QuestionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QuestionCell.xib; sourceTree = "<group>"; };
 		03E4AD761F34E46200EAA33A /* QuestionTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionTest.swift; sourceTree = "<group>"; };
 		03E4AD781F34F21A00EAA33A /* CollectionViewCenteredLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewCenteredLayout.swift; sourceTree = "<group>"; };
-		03E4AD7A1F350F0800EAA33A /* Solomon Sans Normal.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Solomon Sans Normal.otf"; sourceTree = "<group>"; };
-		03E4AD7B1F350F1D00EAA33A /* Solomon Sans Book.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Solomon Sans Book.otf"; sourceTree = "<group>"; };
-		03E4AD7C1F350F2C00EAA33A /* Solomon Sans SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Solomon Sans SemiBold.otf"; sourceTree = "<group>"; };
-		03E4AD7D1F350F3B00EAA33A /* Solomon Sans Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Solomon Sans Light.otf"; sourceTree = "<group>"; };
-		03E4AD7E1F350F4C00EAA33A /* Solomon Sans Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Solomon Sans Bold.otf"; sourceTree = "<group>"; };
+		03E4ADA01F386B6000EAA33A /* Solomon-Sans-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Solomon-Sans-Black.otf"; sourceTree = "<group>"; };
+		03E4ADA11F386B6000EAA33A /* Solomon-Sans-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Solomon-Sans-Bold.otf"; sourceTree = "<group>"; };
+		03E4ADA21F386B6000EAA33A /* Solomon-Sans-Book.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Solomon-Sans-Book.otf"; sourceTree = "<group>"; };
+		03E4ADA31F386B6000EAA33A /* Solomon-Sans-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Solomon-Sans-Light.otf"; sourceTree = "<group>"; };
+		03E4ADA41F386B6000EAA33A /* Solomon-Sans-Normal.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Solomon-Sans-Normal.otf"; sourceTree = "<group>"; };
+		03E4ADA51F386B6000EAA33A /* Solomon-Sans-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Solomon-Sans-SemiBold.otf"; sourceTree = "<group>"; };
 		03F5680B1F3348B5000DBFDC /* UIApplication+Orientation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIApplication+Orientation.swift"; sourceTree = "<group>"; };
 		03F5680E1F335527000DBFDC /* APIManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		03F568101F335637000DBFDC /* UserDefaultsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
@@ -228,12 +230,13 @@
 		03D646E01F3206F3007C206F /* UI Source */ = {
 			isa = PBXGroup;
 			children = (
-				03E4AD7D1F350F3B00EAA33A /* Solomon Sans Light.otf */,
-				03E4AD7B1F350F1D00EAA33A /* Solomon Sans Book.otf */,
-				03E4AD7A1F350F0800EAA33A /* Solomon Sans Normal.otf */,
-				03E4AD7C1F350F2C00EAA33A /* Solomon Sans SemiBold.otf */,
-				03E4AD7E1F350F4C00EAA33A /* Solomon Sans Bold.otf */,
 				03D646C11F30D2CE007C206F /* Assets.xcassets */,
+				03E4ADA01F386B6000EAA33A /* Solomon-Sans-Black.otf */,
+				03E4ADA11F386B6000EAA33A /* Solomon-Sans-Bold.otf */,
+				03E4ADA21F386B6000EAA33A /* Solomon-Sans-Book.otf */,
+				03E4ADA31F386B6000EAA33A /* Solomon-Sans-Light.otf */,
+				03E4ADA41F386B6000EAA33A /* Solomon-Sans-Normal.otf */,
+				03E4ADA51F386B6000EAA33A /* Solomon-Sans-SemiBold.otf */,
 			);
 			name = "UI Source";
 			sourceTree = "<group>";
@@ -443,20 +446,21 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				03E4AD7F1F350FA000EAA33A /* Solomon Sans Light.otf in Resources */,
-				03E4AD801F350FA000EAA33A /* Solomon Sans Book.otf in Resources */,
-				03E4AD811F350FA000EAA33A /* Solomon Sans Normal.otf in Resources */,
-				03E4AD821F350FA000EAA33A /* Solomon Sans SemiBold.otf in Resources */,
-				03E4AD831F350FA000EAA33A /* Solomon Sans Bold.otf in Resources */,
+				03E4ADA61F386B6000EAA33A /* Solomon-Sans-Black.otf in Resources */,
 				03D646F61F326E8F007C206F /* LineSegmentedControl.xib in Resources */,
 				03F568311F33D817000DBFDC /* ScanQRCell.xib in Resources */,
 				03E4AD6E1F34E2D000EAA33A /* QuizPhoneVC.xib in Resources */,
+				03E4ADA91F386B6000EAA33A /* Solomon-Sans-Light.otf in Resources */,
+				03E4ADA71F386B6000EAA33A /* Solomon-Sans-Bold.otf in Resources */,
+				03E4ADAB1F386B6000EAA33A /* Solomon-Sans-SemiBold.otf in Resources */,
 				03D646DE1F3202EB007C206F /* MainVC.xib in Resources */,
 				03F568291F338781000DBFDC /* CollectionsVC.xib in Resources */,
+				03E4ADA81F386B6000EAA33A /* Solomon-Sans-Book.otf in Resources */,
 				03D646FE1F3271F6007C206F /* LibraryVC.xib in Resources */,
 				03D647061F3277A0007C206F /* LevelsVC.xib in Resources */,
 				03E4AD731F34E3CA00EAA33A /* QuestionCell.xib in Resources */,
 				03D646FA1F326F7A007C206F /* LineSegmentedControlCell.xib in Resources */,
+				03E4ADAA1F386B6000EAA33A /* Solomon-Sans-Normal.otf in Resources */,
 				03F5682D1F33D803000DBFDC /* AddQuizCell.xib in Resources */,
 				03D646C51F30D2CE007C206F /* LaunchScreen.storyboard in Resources */,
 				03D646ED1F320BC0007C206F /* QuizCell.xib in Resources */,

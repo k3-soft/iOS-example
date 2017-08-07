@@ -11,7 +11,7 @@ import Foundation
 class QuestionTest {
     
     let id = 1
-    let question = "The most important things to know is the most important things to know"
+    let question = "What is the golden hour?"
     let type = "The most important things to know is the most important things to know"
     
 }

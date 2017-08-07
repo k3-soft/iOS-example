@@ -11,26 +11,28 @@ import UIKit
 class QuizPhoneVC: BasicVC {
     
     @IBOutlet weak var questionsCollection: UICollectionView!
+    @IBOutlet weak var questionCounterLabel: UILabel!
     
     // Data
     var questionsList = [QuestionTest]()
     var pageNumber = 0
     
+    // Flow
+    var isScrollingEnable = false
+    
+    // Collection settings
+    
     let questionCellIdentifier = "QuestionCell"
     
-    let collectionLineSpacing: CGFloat = 15.0
-    var collectionInsets: CGFloat = 20.0
+    let collectionLineSpacing: CGFloat = 10.0
+    var collectionInsets: CGFloat = 15.0
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         setCollectionView()
         loadQuestions()
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
- 
-//        questionsCollection.scrollToItem(at: IndexPath(item: 0, section: 0), at: .centeredHorizontally, animated: false)
+        setQuestionCounter()
     }
 
     // MARK: - Views settings
@@ -38,22 +40,48 @@ class QuizPhoneVC: BasicVC {
     func setCollectionView() {
         
         questionsCollection.decelerationRate = UIScrollViewDecelerationRateFast
-        //automaticallyAdjustsScrollViewInsets = false
+        questionsCollection.isScrollEnabled = false
         
         questionsCollection.register(UINib(nibName: questionCellIdentifier, bundle: nil),
                                      forCellWithReuseIdentifier: questionCellIdentifier)
+    }
+    
+    func setQuestionCounter() {
+        
+        questionCounterLabel.text = "\(pageNumber + 1)/\(questionsList.count)"
+    }
+    
+    func scrollToQuestion(index: Int) {
+        
+        guard index < questionsList.count else { return }
+        
+        questionsCollection.scrollToItem(at: IndexPath(item: index, section: 0), at: .centeredHorizontally, animated: true)
+        
+        pageNumber = index
+        
+        setQuestionCounter()
     }
     
     // MARK: - Load data
     
     func loadQuestions() {
         
-        questionsList = Array(repeating: QuestionTest(), count: 10)
+        questionsList = Array(repeating: QuestionTest(), count: 5)
     }
     
     // MARK: - Actions
     
-
+    func nextQuestion() {
+        print("Confirm did tap")
+        
+        scrollToQuestion(index: pageNumber + 1)
+    }
+    
+    func skipQuestion() {
+        print("Skip")
+        
+        scrollToQuestion(index: pageNumber + 1)
+    }
 }
 
 extension QuizPhoneVC: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
@@ -72,6 +100,16 @@ extension QuizPhoneVC: UICollectionViewDataSource, UICollectionViewDelegate, UIC
         
         cell.setWithQuestion(question)
         
+        // Set handlers
+        
+        cell.confirmHandler = { [unowned self] _ in
+            self.nextQuestion()
+        }
+        
+        cell.skipHandler = { [unowned self] _ in
+            self.skipQuestion()
+        }
+        
         return cell
     }
     
@@ -79,32 +117,18 @@ extension QuizPhoneVC: UICollectionViewDataSource, UICollectionViewDelegate, UIC
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         
-        return UIEdgeInsets(top: collectionInsets,
+        return UIEdgeInsets(top: collectionInsets * 3,
                             left: collectionInsets + collectionLineSpacing,
-                            bottom: collectionInsets,
+                            bottom: collectionInsets + collectionLineSpacing,
                             right: collectionInsets + collectionLineSpacing)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
 
-        return CGSize(width: (view.frame.size.width - collectionLineSpacing * 2 - collectionInsets * 2), height: QuestionCell.cellHeight)
+        return CGSize(width: (view.frame.size.width - collectionLineSpacing * 2 - (collectionInsets * 2 - 6)), height: QuestionCell.cellHeight)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return collectionLineSpacing
-    }
-    
-    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        if scrollView == questionsCollection {
-            
-            let initialPinchPoint = CGPoint(x: questionsCollection.center.x + questionsCollection.contentOffset.x, y: questionsCollection.center.y + questionsCollection.contentOffset.y)
-            
-            guard let currentIndexPath = questionsCollection.indexPathForItem(at: initialPinchPoint) else {
-                pageNumber = 0
-                return
-            }
-            
-            pageNumber = currentIndexPath.item
-        }
     }
 }
