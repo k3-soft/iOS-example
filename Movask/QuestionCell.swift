@@ -25,6 +25,9 @@ class QuestionCell: UICollectionViewCell {
     // Data
     var question: QuestionTest?
     
+    // Selection
+    var selectedIndex: Int?
+    
     // Handlers
     var confirmHandler: (()->())?
     var skipHandler: (()->())?
@@ -45,7 +48,7 @@ class QuestionCell: UICollectionViewCell {
     
     @IBOutlet weak var answersTableView: UITableView!
     
-    let checkboxCellIdentifier = "AnswerCheckboxCell"
+    let ckeckboxCellIdentifier = "AnswerCheckboxCell"
     let radiobuttonCellIdentifier = "AnswerRadiobuttonCell"
     let gapCellIdentifier = "AnswerGapCell"
     
@@ -72,7 +75,7 @@ class QuestionCell: UICollectionViewCell {
         answersTableView.dataSource = self
         answersTableView.contentInset = UIEdgeInsets(top: 10.0, left: 0.0, bottom: 0.0, right: 0.0)
         
-        let cellIdentifiers = [checkboxCellIdentifier, radiobuttonCellIdentifier, gapCellIdentifier]
+        let cellIdentifiers = [ckeckboxCellIdentifier, radiobuttonCellIdentifier]
         
         for identifier in cellIdentifiers {
             answersTableView.register(UINib(nibName: identifier, bundle: nil),
@@ -104,14 +107,20 @@ extension QuestionCell: UITableViewDelegate, UITableViewDataSource {
         switch question!.type {
         case .checkmarks:
             
-            let cell = tableView.dequeueReusableCell(withIdentifier: checkboxCellIdentifier, for: indexPath) as! AnswerCheckboxCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: ckeckboxCellIdentifier, for: indexPath) as! AnswerCheckboxCell
             
             cell.setWithAnswer(question!.answers[indexPath.row])
             
             return cell
             
         case .radiobuttons:
-            return UITableViewCell()
+            
+            let cell = tableView.dequeueReusableCell(withIdentifier: radiobuttonCellIdentifier, for: indexPath) as! AnswerRadiobuttonCell
+            
+            cell.setWithAnswer(question!.answers[indexPath.row])
+            cell.delegate = self
+            
+            return cell
             
         case .gaps:
             return UITableViewCell()
@@ -123,14 +132,38 @@ extension QuestionCell: UITableViewDelegate, UITableViewDataSource {
         let answer = question!.answers[indexPath.row]
         
         switch question!.type {
-        case .checkmarks:
-            return AnswerCheckboxCell.getCellHeightFor(viewWidth: bounds.width, answer: answer)
-            
-        case .radiobuttons:
-            return 50.0
+        case .checkmarks, .radiobuttons:
+            return AnswerSelectionCell.getCellHeightFor(viewWidth: bounds.width, answer: answer)
             
         case .gaps:
             return 50.0
+        }
+    }
+}
+
+extension QuestionCell: AnswerSelectionCellDelegate {
+    
+    func answerSelected(cell: AnswerSelectionCell) {
+        
+        if question!.type == .radiobuttons {
+            
+            guard let newSelectedIndex = answersTableView.indexPath(for: cell)?.row else { return }
+            
+            // Deselect previous cell
+            
+            if  selectedIndex != nil, let cellToDeselect = answersTableView.cellForRow(at: IndexPath(row: selectedIndex!, section: 0)) as? AnswerRadiobuttonCell {
+                
+                cellToDeselect.checked = false
+                cellToDeselect.answer?.isSelected = false
+            }
+            
+            // Select new answer
+            
+            if selectedIndex != nil, selectedIndex! == newSelectedIndex {
+                selectedIndex = nil
+            } else {
+                selectedIndex = newSelectedIndex
+            }
         }
     }
 }

@@ -65,7 +65,11 @@ class QuizPhoneVC: BasicVC {
     
     func loadQuestions() {
         
-        questionsList = Array(repeating: QuestionTest(), count: 5)
+        questionsList = [QuestionTest(type: .checkmarks),
+                         QuestionTest(type: .radiobuttons),
+                         QuestionTest(type: .checkmarks),
+                         QuestionTest(type: .radiobuttons),
+                         QuestionTest(type: .checkmarks)]
     }
     
     // MARK: - Actions
