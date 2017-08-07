@@ -40,6 +40,11 @@ class AnswerSelectionCell: UITableViewCell {
     
     static let textOffset: CGFloat = 73.0
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        checked = false
+    }
+    
     func setWithAnswer(_ answer: AnswerTest) {
         
         self.answer = answer

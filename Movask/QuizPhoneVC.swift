@@ -16,8 +16,8 @@ class QuizPhoneVC: BasicVC {
     @IBOutlet weak var topView: UIView!
     @IBOutlet weak var heightTopView: NSLayoutConstraint!
     
-    let maxHeightVideoView: CGFloat = 450.0
-    let minHeightVideoView: CGFloat = 175.0
+    let maxHeightVideoView: CGFloat = 440.0
+    let minHeightVideoView: CGFloat = 165.0
     
     // Navigation bar
     
@@ -47,7 +47,7 @@ class QuizPhoneVC: BasicVC {
     
     @IBOutlet weak var videoView: UIView!
     @IBOutlet weak var movieView: UIView!
-    @IBOutlet weak var videoPlayer: ASPVideoPlayerView!
+    @IBOutlet weak var videoPlayer: ASPVideoPlayer!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     @IBOutlet weak var centerXMovieView: NSLayoutConstraint!
@@ -136,15 +136,17 @@ class QuizPhoneVC: BasicVC {
         
         activityIndicator.startAnimating()
         
-        videoPlayer?.videoURL = url
+        videoPlayer?.videoURLs = [url]
         videoPlayer?.gravity = .aspectFill
         videoPlayer?.shouldLoop = false
+        videoPlayer?.tintColor = UIColor.white
+        videoPlayer?.hideControlsTotally()
         
-        videoPlayer?.finishedVideo = { [unowned self] in
+        videoPlayer?.videoPlayerView.finishedVideo = { [unowned self] in
             self.hideMovie()
         }
         
-        videoPlayer?.readyToPlayVideo = { [unowned self] in
+        videoPlayer?.videoPlayerView.readyToPlayVideo = { [unowned self] in
             self.activityIndicator.stopAnimating()
         }
     }
@@ -157,10 +159,6 @@ class QuizPhoneVC: BasicVC {
         replayButton?.alpha = 0.0
         
         videoView.addSubview(replayButton!)
-    }
-    
-    func setActivityIndicator() {
-        
     }
     
     // MARK: - Movie actions
@@ -176,6 +174,8 @@ class QuizPhoneVC: BasicVC {
         }) { _ in
             
             self.isMovieOpen = true
+            
+            self.videoPlayer?.unhideControls()
         
             self.replayButton?.removeFromSuperview()
             self.replayButton = nil
@@ -186,7 +186,7 @@ class QuizPhoneVC: BasicVC {
             UIView.animate(withDuration: 0.3, animations: {
                 self.view.layoutIfNeeded()
             }) { _ in
-                self.videoPlayer?.playVideo()
+                self.togglePlay()
             }
         }
     }
@@ -194,6 +194,8 @@ class QuizPhoneVC: BasicVC {
     func hideMovie() {
         
         guard isMovieOpen else { return }
+        
+        videoPlayer?.hideControlsTotally()
 
         heightTopView.constant = minHeightVideoView
         centerXMovieView.constant = -75.0
@@ -214,8 +216,15 @@ class QuizPhoneVC: BasicVC {
     }
     
     func replayVideo() {
-        
         openMovie()
+    }
+    
+    func togglePlay() {
+        
+        videoPlayer?.videoPlayerView.playVideo()
+        if let controls = videoPlayer.videoPlayerControls as? ASPVideoPlayerControls {
+            controls.playPauseButton.isSelected = true
+        }
     }
     
     // MARK: - Load data
@@ -240,18 +249,21 @@ class QuizPhoneVC: BasicVC {
         }) { _ in
             self.startView.alpha = 0.0
             
-            self.videoPlayer?.playVideo()
             self.isQuizStarted = true
+            self.videoPlayer.unhideControls()
+            self.togglePlay()
         }
+    }
+    
+    @IBAction func back(_ sender: UIButton) {
+        super.backDidTap()
     }
     
     func nextQuestion() {
         
-//        guard isQuizStarted else { return }
-//        
-//        scrollToQuestion(index: pageNumber + 1)
+        guard isQuizStarted else { return }
         
-        hideMovie()
+        scrollToQuestion(index: pageNumber + 1)
     }
     
     func skipQuestion() {

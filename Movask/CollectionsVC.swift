@@ -271,4 +271,13 @@ extension CollectionsVC: UICollectionViewDataSource, UICollectionViewDelegate, U
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return collectionLineSpacing
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        if (collectionView == libraryCollection || collectionView == savedCollection),
+            indexPath.row == 0 { return }
+        
+        let quizVC = QuizPhoneVC()
+        navigationController?.pushViewController(quizVC, animated: true)
+    }
 }
