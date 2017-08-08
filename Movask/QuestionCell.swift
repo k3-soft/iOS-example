@@ -110,6 +110,7 @@ extension QuestionCell: UITableViewDelegate, UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withIdentifier: ckeckboxCellIdentifier, for: indexPath) as! AnswerCheckboxCell
             
             cell.setWithAnswer(question!.answers[indexPath.row])
+            cell.selectionStyle = .none
             
             return cell
             
@@ -119,6 +120,7 @@ extension QuestionCell: UITableViewDelegate, UITableViewDataSource {
             
             cell.setWithAnswer(question!.answers[indexPath.row])
             cell.delegate = self
+            cell.selectionStyle = .none
             
             return cell
             

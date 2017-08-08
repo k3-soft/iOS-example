@@ -70,7 +70,7 @@
                                             </connections>
                                         </collectionView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1/15" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Wn-pC-Zqh">
-                                            <rect key="frame" x="30" y="13" width="25.5" height="15"/>
+                                            <rect key="frame" x="30" y="13" width="30.5" height="17.5"/>
                                             <fontDescription key="fontDescription" name="Solomon-Sans-SemiBold" family="Solomon Sans SemiBold" pointSize="15"/>
                                             <color key="textColor" red="0.5725490196078431" green="0.5725490196078431" blue="0.5725490196078431" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
@@ -96,7 +96,7 @@
                                                 <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DFx-cU-mBA">
                                                     <rect key="frame" x="16.5" y="10" width="341" height="341"/>
                                                     <subviews>
-                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5QM-7w-yCC" customClass="ASPVideoPlayer" customModule="ASPVideoPlayer">
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5QM-7w-yCC" customClass="ASPVideoPlayer" customModule="Movask" customModuleProvider="target">
                                                             <rect key="frame" x="0.0" y="0.0" width="341" height="341"/>
                                                             <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
                                                         </view>

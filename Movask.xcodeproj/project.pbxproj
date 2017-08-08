@@ -7,6 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		03406D431F3A6F5A0035EA67 /* AnimationForwarder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03406D421F3A6F5A0035EA67 /* AnimationForwarder.swift */; };
+		03406D451F3A6F730035EA67 /* ASPVideoPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03406D441F3A6F730035EA67 /* ASPVideoPlayer.swift */; };
+		03406D471F3A6F980035EA67 /* ASPVideoPlayerControls.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03406D461F3A6F980035EA67 /* ASPVideoPlayerControls.swift */; };
+		03406D491F3A6FB90035EA67 /* ASPVideoPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03406D481F3A6FB90035EA67 /* ASPVideoPlayerView.swift */; };
+		03406D4B1F3A6FE30035EA67 /* ControlButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03406D4A1F3A6FE30035EA67 /* ControlButtons.swift */; };
+		03406D4D1F3A70060035EA67 /* Loader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03406D4C1F3A70060035EA67 /* Loader.swift */; };
+		03406D4F1F3A70150035EA67 /* Math.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03406D4E1F3A70150035EA67 /* Math.swift */; };
+		03406D511F3A702F0035EA67 /* PlayPauseLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03406D501F3A702F0035EA67 /* PlayPauseLayer.swift */; };
+		03406D531F3A70490035EA67 /* Scrubber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03406D521F3A70490035EA67 /* Scrubber.swift */; };
 		03B8CDE11F3882610058ABAC /* AnswerCheckboxCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B8CDDF1F3882610058ABAC /* AnswerCheckboxCell.swift */; };
 		03B8CDE21F3882610058ABAC /* AnswerCheckboxCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03B8CDE01F3882610058ABAC /* AnswerCheckboxCell.xib */; };
 		03B8CDE41F3882960058ABAC /* AnswerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B8CDE31F3882960058ABAC /* AnswerTest.swift */; };
@@ -87,6 +96,15 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		03406D421F3A6F5A0035EA67 /* AnimationForwarder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationForwarder.swift; sourceTree = "<group>"; };
+		03406D441F3A6F730035EA67 /* ASPVideoPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASPVideoPlayer.swift; sourceTree = "<group>"; };
+		03406D461F3A6F980035EA67 /* ASPVideoPlayerControls.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASPVideoPlayerControls.swift; sourceTree = "<group>"; };
+		03406D481F3A6FB90035EA67 /* ASPVideoPlayerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASPVideoPlayerView.swift; sourceTree = "<group>"; };
+		03406D4A1F3A6FE30035EA67 /* ControlButtons.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ControlButtons.swift; sourceTree = "<group>"; };
+		03406D4C1F3A70060035EA67 /* Loader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Loader.swift; sourceTree = "<group>"; };
+		03406D4E1F3A70150035EA67 /* Math.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Math.swift; sourceTree = "<group>"; };
+		03406D501F3A702F0035EA67 /* PlayPauseLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayPauseLayer.swift; sourceTree = "<group>"; };
+		03406D521F3A70490035EA67 /* Scrubber.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Scrubber.swift; sourceTree = "<group>"; };
 		03B8CDDF1F3882610058ABAC /* AnswerCheckboxCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnswerCheckboxCell.swift; sourceTree = "<group>"; };
 		03B8CDE01F3882610058ABAC /* AnswerCheckboxCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AnswerCheckboxCell.xib; sourceTree = "<group>"; };
 		03B8CDE31F3882960058ABAC /* AnswerTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnswerTest.swift; sourceTree = "<group>"; };
@@ -182,6 +200,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		03406D411F3A6F0C0035EA67 /* ASPVideoPlayer */ = {
+			isa = PBXGroup;
+			children = (
+				03406D421F3A6F5A0035EA67 /* AnimationForwarder.swift */,
+				03406D441F3A6F730035EA67 /* ASPVideoPlayer.swift */,
+				03406D461F3A6F980035EA67 /* ASPVideoPlayerControls.swift */,
+				03406D481F3A6FB90035EA67 /* ASPVideoPlayerView.swift */,
+				03406D4A1F3A6FE30035EA67 /* ControlButtons.swift */,
+				03406D4C1F3A70060035EA67 /* Loader.swift */,
+				03406D4E1F3A70150035EA67 /* Math.swift */,
+				03406D501F3A702F0035EA67 /* PlayPauseLayer.swift */,
+				03406D521F3A70490035EA67 /* Scrubber.swift */,
+			);
+			name = ASPVideoPlayer;
+			sourceTree = "<group>";
+		};
 		03B8CDE71F3883B90058ABAC /* Enums */ = {
 			isa = PBXGroup;
 			children = (
@@ -251,7 +285,6 @@
 			children = (
 				03D646D81F320225007C206F /* Custom */,
 				03D647011F327564007C206F /* NibView.swift */,
-				03B917341F39027200CCB979 /* ReplayButton */,
 				03E4AD781F34F21A00EAA33A /* CollectionViewCenteredLayout.swift */,
 			);
 			name = Views;
@@ -285,9 +318,11 @@
 		03D646D81F320225007C206F /* Custom */ = {
 			isa = PBXGroup;
 			children = (
+				03406D411F3A6F0C0035EA67 /* ASPVideoPlayer */,
 				04256C291F39CD14006C86B1 /* RadioButtons View */,
 				03D646F21F326DF1007C206F /* LineSegmentedControl */,
 				03D646F11F326DEA007C206F /* LoadingView */,
+				03B917341F39027200CCB979 /* ReplayButton */,
 				04256C271F388870006C86B1 /* UnderLinedTextView.swift */,
 			);
 			name = Custom;
@@ -659,6 +694,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				03F5681B1F338165000DBFDC /* AuthorizationManager.swift in Sources */,
+				03406D531F3A70490035EA67 /* Scrubber.swift in Sources */,
 				03F568211F3386B8000DBFDC /* String+Size.swift in Sources */,
 				03E4AD791F34F21A00EAA33A /* CollectionViewCenteredLayout.swift in Sources */,
 				03F5681F1F3383FB000DBFDC /* Token.swift in Sources */,
@@ -667,15 +703,20 @@
 				03F568231F3386DF000DBFDC /* UIColor+Hex.swift in Sources */,
 				03E4AD721F34E3CA00EAA33A /* QuestionCell.swift in Sources */,
 				03F568131F33602E000DBFDC /* Networking.swift in Sources */,
+				03406D451F3A6F730035EA67 /* ASPVideoPlayer.swift in Sources */,
 				03F568191F3360D3000DBFDC /* Constants.swift in Sources */,
+				03406D4F1F3A70150035EA67 /* Math.swift in Sources */,
 				04256C221F388196006C86B1 /* QuizQuestionCell.swift in Sources */,
 				03D646EC1F320BC0007C206F /* QuizCell.swift in Sources */,
 				03D646CE1F3200D0007C206F /* UIView+Storyboard.swift in Sources */,
 				03F5681D1F3383CC000DBFDC /* ICloudModel.swift in Sources */,
+				03406D511F3A702F0035EA67 /* PlayPauseLayer.swift in Sources */,
 				03D646DD1F3202EB007C206F /* MainVC.swift in Sources */,
 				03D647051F3277A0007C206F /* LevelsVC.swift in Sources */,
 				03D646BB1F30D2CE007C206F /* AppDelegate.swift in Sources */,
 				03B8CDE41F3882960058ABAC /* AnswerTest.swift in Sources */,
+				03406D4D1F3A70060035EA67 /* Loader.swift in Sources */,
+				03406D4B1F3A6FE30035EA67 /* ControlButtons.swift in Sources */,
 				03D646E51F32082F007C206F /* QuizTest.swift in Sources */,
 				04256C2D1F39CD8C006C86B1 /* RadioCell.swift in Sources */,
 				03E4AD6D1F34E2D000EAA33A /* QuizPhoneVC.swift in Sources */,
@@ -688,6 +729,7 @@
 				03F5680C1F3348B5000DBFDC /* UIApplication+Orientation.swift in Sources */,
 				03D646E81F32099D007C206F /* ImageCashManager.swift in Sources */,
 				03F5680F1F335527000DBFDC /* APIManager.swift in Sources */,
+				03406D471F3A6F980035EA67 /* ASPVideoPlayerControls.swift in Sources */,
 				03D646FD1F3271F6007C206F /* LibraryVC.swift in Sources */,
 				03B8CDE11F3882610058ABAC /* AnswerCheckboxCell.swift in Sources */,
 				03B8CDE61F3883B60058ABAC /* QuestionType.swift in Sources */,
@@ -705,6 +747,8 @@
 				03F568281F338781000DBFDC /* CollectionsVC.swift in Sources */,
 				04256C1B1F387E30006C86B1 /* CreateQuizVC.swift in Sources */,
 				03D646F01F32183F007C206F /* EventHandler.swift in Sources */,
+				03406D491F3A6FB90035EA67 /* ASPVideoPlayerView.swift in Sources */,
+				03406D431F3A6F5A0035EA67 /* AnimationForwarder.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

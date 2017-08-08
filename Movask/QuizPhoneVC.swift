@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import ASPVideoPlayer
 
 class QuizPhoneVC: BasicVC {
     
@@ -223,9 +222,10 @@ class QuizPhoneVC: BasicVC {
         
         videoPlayer?.videoPlayerView.playVideo()
         videoPlayer?.hideControls()
-        if let controls = videoPlayer.videoPlayerControls as? ASPVideoPlayerControls {
-            controls.playPauseButton.isSelected = true
-        }
+        videoPlayer?.videoPlayerControls.togglePlay()
+//        if let controls = videoPlayer.videoPlayerControls as? ASPVideoPlayerControls {
+//            controls.playPauseButton.isSelected = true
+//        }
     }
     
     // MARK: - Load data
