@@ -67,6 +67,12 @@ class CollectionsVC: BasicVC {
         loadQuizes()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        navigationController?.setNavigationBarHidden(true, animated: false)
+    }
+    
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         
         // Reload collectin layout
@@ -141,6 +147,8 @@ class CollectionsVC: BasicVC {
     
     func addNewQuiz() {
         print("Add new quiz")
+        let createQuizVC = CreateQuizVC()
+        navigationController?.pushViewController(createQuizVC, animated: true)
     }
     
     func scanQRCode() {

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="RadioCell" rowHeight="39" id="2bQ-de-jGB" customClass="RadioCell" customModule="Movask" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="39"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2bQ-de-jGB" id="vO4-TT-ERj">
+                <rect key="frame" x="0.0" y="0.0" width="375" height="38.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ypJ-mf-rpE">
+                        <rect key="frame" x="0.0" y="6" width="25" height="25"/>
+                        <color key="backgroundColor" red="0.0129163852" green="0.55452823640000004" blue="0.71723532680000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="25" id="tBa-mt-SgM"/>
+                            <constraint firstAttribute="height" constant="25" id="tTv-LL-sHz"/>
+                        </constraints>
+                    </imageView>
+                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="thY-v7-a5G" customClass="UnderLinedTextView" customModule="Movask" customModuleProvider="target">
+                        <rect key="frame" x="33" y="4.5" width="322" height="30"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="30" id="tp0-gf-xf9"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Enter option"/>
+                        </userDefinedRuntimeAttributes>
+                    </textView>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="thY-v7-a5G" secondAttribute="trailing" constant="20" id="RjP-bm-RBf"/>
+                    <constraint firstItem="ypJ-mf-rpE" firstAttribute="centerY" secondItem="vO4-TT-ERj" secondAttribute="centerY" id="SWF-Pn-zX7"/>
+                    <constraint firstItem="thY-v7-a5G" firstAttribute="leading" secondItem="ypJ-mf-rpE" secondAttribute="trailing" constant="8" id="Swu-Zx-qe4"/>
+                    <constraint firstItem="ypJ-mf-rpE" firstAttribute="leading" secondItem="vO4-TT-ERj" secondAttribute="leading" id="ibS-ky-iN0"/>
+                    <constraint firstItem="thY-v7-a5G" firstAttribute="centerY" secondItem="vO4-TT-ERj" secondAttribute="centerY" id="rAc-IR-CPx"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="radioImage" destination="ypJ-mf-rpE" id="CHJ-uH-aVN"/>
+                <outlet property="radioTextView" destination="thY-v7-a5G" id="PQ8-oE-9KK"/>
+            </connections>
+            <point key="canvasLocation" x="22.5" y="-15.5"/>
+        </tableViewCell>
+    </objects>
+</document>
