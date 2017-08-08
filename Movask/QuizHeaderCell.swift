@@ -29,6 +29,7 @@ extension QuizHeaderCell: UITextViewDelegate {
         let fixedWidth = textView.frame.size.width
         let newSize = textView.sizeThatFits(CGSize(width: fixedWidth, height: CGFloat.greatestFiniteMagnitude))
         
+        //resize textview to fit text
         switch textView {
         case titleTextView:
             titleHeight.constant = newSize.height

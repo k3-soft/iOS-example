@@ -13,10 +13,14 @@ class NibView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         fromNib()
+        setupViews()
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         fromNib()
+        setupViews()
     }
+    
+    func setupViews() { }
 }

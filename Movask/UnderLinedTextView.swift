@@ -14,7 +14,7 @@ class UnderLinedTextView: KMPlaceholderTextView {
     var line: UIView = {
         let line = UIView()
         line.translatesAutoresizingMaskIntoConstraints = false
-        line.backgroundColor = UIColor.lightGray
+        line.backgroundColor = UIColor(colorWithHexValue: 0xE7E7E7)
         return line
     }()
     
@@ -42,7 +42,7 @@ class UnderLinedTextView: KMPlaceholderTextView {
     private func addConstraints() {
         lineTopConstraint = NSLayoutConstraint(item: line, attribute: .top, relatedBy: .equal,
                                                toItem: self, attribute: .top,
-                                               multiplier: 1.0, constant: self.frame.height - 2)
+                                               multiplier: 1.0, constant: self.frame.height - 1)
         lineCenterConstraint = NSLayoutConstraint(item: line, attribute: .centerX, relatedBy: .equal,
                                                   toItem: self, attribute: .centerX,
                                                   multiplier: 1.0, constant: 0.0)
@@ -54,7 +54,7 @@ class UnderLinedTextView: KMPlaceholderTextView {
                                                     multiplier: 1.0, constant: 0.0)
         lineHeightConstraint = NSLayoutConstraint(item: line, attribute: .height, relatedBy: .equal,
                                                   toItem: nil, attribute: .notAnAttribute,
-                                                  multiplier: 1.0, constant: 2)
+                                                  multiplier: 1.0, constant: 1)
         
         self.addConstraints([lineCenterConstraint, lineTopConstraint, lineLeadingConstraint, lineTrailingConstraint, lineHeightConstraint])
 

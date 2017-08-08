@@ -35,7 +35,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         navigationVC.setNavigationBarHidden(true, animated: false)
         
         UINavigationBar.appearance().barTintColor = UIColor.white
-        UINavigationBar.appearance().tintColor = UIColor.green
+        UINavigationBar.appearance().tintColor = BrandColor.darkGreen
         UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName:UIColor.black]
         
         window?.rootViewController = navigationVC
