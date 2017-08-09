@@ -11,7 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RadioButtonsView" customModule="Movask" customModuleProvider="target">
             <connections>
-                <outlet property="optionsTableView" destination="Sxz-rJ-E4a" id="SG8-Wm-Ml8"/>
+                <outlet property="answersCollectionViewView" destination="UY0-ru-Vd1" id="rE2-A6-gc9"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -19,17 +19,23 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="98"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Sxz-rJ-E4a">
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="UY0-ru-Vd1">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="98"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                </tableView>
+                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="WFB-Fj-Sbj">
+                        <size key="itemSize" width="50" height="50"/>
+                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    </collectionViewFlowLayout>
+                </collectionView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="Sxz-rJ-E4a" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="5Wr-vE-uqE"/>
-                <constraint firstItem="Sxz-rJ-E4a" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="5vj-12-Juq"/>
-                <constraint firstAttribute="trailing" secondItem="Sxz-rJ-E4a" secondAttribute="trailing" id="7Vy-cu-wVS"/>
-                <constraint firstAttribute="bottom" secondItem="Sxz-rJ-E4a" secondAttribute="bottom" id="wcr-4x-6uG"/>
+                <constraint firstAttribute="bottom" secondItem="UY0-ru-Vd1" secondAttribute="bottom" id="0Kp-ai-uc6"/>
+                <constraint firstItem="UY0-ru-Vd1" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="6K4-24-Gg1"/>
+                <constraint firstItem="UY0-ru-Vd1" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Meb-r0-uDY"/>
+                <constraint firstAttribute="trailing" secondItem="UY0-ru-Vd1" secondAttribute="trailing" id="oDO-iM-xZt"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="-45.5" y="-1197"/>

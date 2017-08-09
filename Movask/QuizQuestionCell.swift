@@ -10,9 +10,13 @@ import UIKit
 
 protocol QuizQuestionCellDelegate: class {
     func didTapDeleteQuestionButton(cell: QuizQuestionCell, sender: UIButton)
+    func didFinishEditingQuestion(cell: QuizQuestionCell)
 }
 
 class QuizQuestionCell: UICollectionViewCell {
+    
+    
+    @IBOutlet weak var dragButton: UIButton!
     
     @IBOutlet weak var questionContainer: UIView!
     @IBOutlet weak var questionIndexLabel: UILabel!
@@ -30,14 +34,56 @@ class QuizQuestionCell: UICollectionViewCell {
     override func awakeFromNib() {
         questionTitleTextView.delegate = self
         questionOptionsView.delegate = self
+        let panGesture = UIPanGestureRecognizer(target: self, action: #selector (repositionQuestion(_:)))
+        dragButton.addGestureRecognizer(panGesture)
+    }
+    
+    var question: QuestionTest? {
+        didSet {
+            questionTitleTextView.text = question?.question
+            guard let answers = question?.answers else { return }
+            questionOptionsView.answerVariants = answers
+        }
+    }
+    
+    override func prepareForReuse() {
+        question = nil
+        questionTitleTextView.text = ""
+        questionOptionsView.answerVariants = [AnswerTest(title: "")]
+        questionOptionsView.answersCollectionViewView.reloadData()
+        questionContainerHeight.constant = 110.0
+        questionOptionsViewHeight.constant = 76.0
     }
     
     @IBAction func deleteQuestionButtonTapped(_ sender: UIButton) {
         print("delete question tapped")
         delegate?.didTapDeleteQuestionButton(cell: self, sender: sender)
     }
+    
     @IBAction func dragQuestonButtonTapped(_ sender: UIButton) {
         print("drag question tapped")
+    }
+    
+    func repositionQuestion(_ gesture: UILongPressGestureRecognizer) {
+        guard let ownerCollectionView = ownerCollectionView else { return }
+        
+        switch(gesture.state) {
+        case UIGestureRecognizerState.began:
+            guard let selectedIndexPath = ownerCollectionView.indexPathForItem(at: gesture.location(in: ownerCollectionView)) else {
+                break
+            }
+            ownerCollectionView.beginInteractiveMovementForItem(at: selectedIndexPath)
+            
+        case UIGestureRecognizerState.changed:
+            // use default x position and y position from touch
+            ownerCollectionView.updateInteractiveMovementTargetPosition(CGPoint(x: ownerCollectionView.frame.width/2, y: gesture.location(in: ownerCollectionView).y))
+            
+        case UIGestureRecognizerState.ended:
+            ownerCollectionView.endInteractiveMovement()
+            
+        default:
+            ownerCollectionView.cancelInteractiveMovement()
+        }
     }
 
 }
@@ -58,18 +104,34 @@ extension QuizQuestionCell: UITextViewDelegate {
             questionContainerHeight.constant = newSize.height + 80.0
             
             //update collectionview cell height
-            ownerCollectionView?.collectionViewLayout.invalidateLayout()
+            ownerCollectionView?.performBatchUpdates(nil)
+
         default: break
         }
-        textView.layoutIfNeeded()
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        switch textView {
+        case questionTitleTextView:
+            //update question title in model
+            delegate?.didFinishEditingQuestion(cell: self)
+        default: break
+        }
+
     }
 }
 
 extension QuizQuestionCell: RadioButtonsViewDelegate {
 
     func answerVariantWasAdded(view: RadioButtonsView) {
-        questionOptionsViewHeight.constant = CGFloat(view.answerVariants.count + 1) * view.cellHeight + 16
-        ownerCollectionView?.collectionViewLayout.invalidateLayout()
+    }
+    
+    func didUpdateCollectionViewLayout(view: RadioButtonsView) {
+        questionOptionsViewHeight.constant = view.answersCollectionViewView.contentSize.height + 16
+        ownerCollectionView?.performBatchUpdates(nil)
+    }
+    
+    func radioWasSelectedOn(view: RadioButtonsView, with option: AnswerTest) {
     }
     
 }
