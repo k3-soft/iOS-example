@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Solomon-Sans-SemiBold.otf">
+            <string>Solomon-Sans-SemiBold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="GapQuestionCell" id="gTV-IL-0wX" customClass="GapQuestionCell" customModule="Movask" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="310" height="435"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="310" height="435"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1rS-j9-yBh">
+                        <rect key="frame" x="0.0" y="0.0" width="310" height="435"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k52-1e-pVV">
+                                <rect key="frame" x="0.0" y="0.0" width="310" height="65"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tick the correct answer to confirm" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="W88-yH-jMx">
+                                        <rect key="frame" x="14" y="11" width="282" height="21"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="21" id="e7v-1U-tET"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Solomon-Sans-SemiBold" family="Solomon Sans SemiBold" pointSize="13"/>
+                                        <color key="textColor" red="0.1215686275" green="0.41960784309999999" blue="0.23921568630000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Some text _________ text text texttext" translatesAutoresizingMaskIntoConstraints="NO" id="VSA-CN-vgz">
+                                        <rect key="frame" x="10" y="32" width="290" height="21"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="21" id="T3H-34-G8f"/>
+                                        </constraints>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" name="Solomon-Sans-SemiBold" family="Solomon Sans SemiBold" pointSize="15"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="gTV-IL-0wX" id="qds-UV-232"/>
+                                        </connections>
+                                    </textView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.17254901959999999" green="0.70588235290000001" blue="0.38823529410000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="W88-yH-jMx" firstAttribute="top" secondItem="k52-1e-pVV" secondAttribute="top" constant="11" id="5oM-Qi-tFk"/>
+                                    <constraint firstItem="VSA-CN-vgz" firstAttribute="leading" secondItem="k52-1e-pVV" secondAttribute="leading" constant="10" id="L1L-WB-L70"/>
+                                    <constraint firstItem="VSA-CN-vgz" firstAttribute="centerX" secondItem="W88-yH-jMx" secondAttribute="centerX" id="Ld2-OM-pS5"/>
+                                    <constraint firstAttribute="trailing" secondItem="W88-yH-jMx" secondAttribute="trailing" constant="14" id="NUq-tN-NmX"/>
+                                    <constraint firstItem="VSA-CN-vgz" firstAttribute="top" secondItem="W88-yH-jMx" secondAttribute="bottom" id="d7P-I9-RTT"/>
+                                    <constraint firstItem="W88-yH-jMx" firstAttribute="leading" secondItem="k52-1e-pVV" secondAttribute="leading" constant="14" id="udf-FO-P9c"/>
+                                    <constraint firstAttribute="trailing" secondItem="VSA-CN-vgz" secondAttribute="trailing" constant="10" id="w2W-ya-Ao7"/>
+                                    <constraint firstAttribute="height" constant="65" id="y7G-Ph-EWO"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m2D-tu-3D9">
+                                <rect key="frame" x="0.0" y="65" width="310" height="320"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nJI-fB-6b6">
+                                <rect key="frame" x="0.0" y="385" width="310" height="50"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Myx-Zh-mlt">
+                                        <rect key="frame" x="10" y="2" width="290" height="40"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cKW-DM-eiX">
+                                                <rect key="frame" x="0.0" y="0.0" width="140" height="40"/>
+                                                <color key="backgroundColor" red="0.17254901959999999" green="0.70588235290000001" blue="0.38823529410000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <fontDescription key="fontDescription" name="Solomon-Sans-SemiBold" family="Solomon Sans SemiBold" pointSize="15"/>
+                                                <state key="normal" title="Confirm">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="10"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="confirmDidTap:" destination="gTV-IL-0wX" eventType="touchUpInside" id="JfJ-Df-D2j"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4uf-3N-sBp">
+                                                <rect key="frame" x="150" y="0.0" width="140" height="40"/>
+                                                <color key="backgroundColor" red="0.93333333330000001" green="0.93333333330000001" blue="0.93333333330000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <fontDescription key="fontDescription" name="Solomon-Sans-SemiBold" family="Solomon Sans SemiBold" pointSize="15"/>
+                                                <state key="normal" title="Skip">
+                                                    <color key="titleColor" red="0.61176470589999998" green="0.61176470589999998" blue="0.61176470589999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="10"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="skipDidTap:" destination="gTV-IL-0wX" eventType="touchUpInside" id="Bam-1u-yah"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="Myx-Zh-mlt" firstAttribute="top" secondItem="nJI-fB-6b6" secondAttribute="top" constant="2" id="Dun-cA-U4o"/>
+                                    <constraint firstAttribute="trailing" secondItem="Myx-Zh-mlt" secondAttribute="trailing" constant="10" id="alw-DT-wRS"/>
+                                    <constraint firstAttribute="height" constant="50" id="dzO-17-U5H"/>
+                                    <constraint firstItem="Myx-Zh-mlt" firstAttribute="leading" secondItem="nJI-fB-6b6" secondAttribute="leading" constant="10" id="f9S-8s-IOT"/>
+                                    <constraint firstAttribute="bottom" secondItem="Myx-Zh-mlt" secondAttribute="bottom" constant="8" id="onZ-Kv-yuH"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="nJI-fB-6b6" firstAttribute="leading" secondItem="1rS-j9-yBh" secondAttribute="leading" id="0Nn-lg-YhB"/>
+                            <constraint firstAttribute="trailing" secondItem="k52-1e-pVV" secondAttribute="trailing" id="0a3-zI-LvD"/>
+                            <constraint firstAttribute="trailing" secondItem="m2D-tu-3D9" secondAttribute="trailing" id="7EZ-HJ-n2i"/>
+                            <constraint firstAttribute="trailing" secondItem="nJI-fB-6b6" secondAttribute="trailing" id="HZv-J0-YWh"/>
+                            <constraint firstItem="k52-1e-pVV" firstAttribute="leading" secondItem="1rS-j9-yBh" secondAttribute="leading" id="JER-9W-wtQ"/>
+                            <constraint firstItem="m2D-tu-3D9" firstAttribute="leading" secondItem="1rS-j9-yBh" secondAttribute="leading" id="LCV-oF-9Ev"/>
+                            <constraint firstItem="m2D-tu-3D9" firstAttribute="top" secondItem="k52-1e-pVV" secondAttribute="bottom" id="agN-gx-inL"/>
+                            <constraint firstItem="nJI-fB-6b6" firstAttribute="top" secondItem="m2D-tu-3D9" secondAttribute="bottom" id="eXo-pr-oqR"/>
+                            <constraint firstAttribute="bottom" secondItem="nJI-fB-6b6" secondAttribute="bottom" id="ucX-Ca-8iB"/>
+                            <constraint firstItem="k52-1e-pVV" firstAttribute="top" secondItem="1rS-j9-yBh" secondAttribute="top" id="z3R-Mt-8Vu"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="10"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="1rS-j9-yBh" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="2aO-3i-pEn"/>
+                <constraint firstItem="1rS-j9-yBh" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="GxE-hG-zJH"/>
+                <constraint firstAttribute="bottom" secondItem="1rS-j9-yBh" secondAttribute="bottom" id="igl-4k-yIx"/>
+                <constraint firstAttribute="trailing" secondItem="1rS-j9-yBh" secondAttribute="trailing" id="iig-3n-kY8"/>
+            </constraints>
+            <size key="customSize" width="262" height="428"/>
+            <connections>
+                <outlet property="confirmButton" destination="cKW-DM-eiX" id="T48-9X-sQZ"/>
+                <outlet property="heightQuestionView" destination="y7G-Ph-EWO" id="fVR-pn-IIc"/>
+                <outlet property="heightTextView" destination="T3H-34-G8f" id="W4Z-Fz-c8O"/>
+                <outlet property="instructionLabel" destination="W88-yH-jMx" id="im3-aK-tsj"/>
+                <outlet property="questionTextView" destination="VSA-CN-vgz" id="uU9-59-rEg"/>
+                <outlet property="skipButton" destination="4uf-3N-sBp" id="fwG-yv-s52"/>
+            </connections>
+            <point key="canvasLocation" x="43" y="66.5"/>
+        </collectionViewCell>
+    </objects>
+</document>

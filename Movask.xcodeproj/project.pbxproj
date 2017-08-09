@@ -81,6 +81,9 @@
 		03F5682D1F33D803000DBFDC /* AddQuizCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03F5682B1F33D803000DBFDC /* AddQuizCell.xib */; };
 		03F568301F33D817000DBFDC /* ScanQRCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F5682E1F33D817000DBFDC /* ScanQRCell.swift */; };
 		03F568311F33D817000DBFDC /* ScanQRCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03F5682F1F33D817000DBFDC /* ScanQRCell.xib */; };
+		03F76EA61F3BC21600A15532 /* GapQuestionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F76EA41F3BC21600A15532 /* GapQuestionCell.swift */; };
+		03F76EA71F3BC21600A15532 /* GapQuestionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03F76EA51F3BC21600A15532 /* GapQuestionCell.xib */; };
+		03F76EA91F3BC99400A15532 /* QuestionCellHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F76EA81F3BC99400A15532 /* QuestionCellHandler.swift */; };
 		04256C1B1F387E30006C86B1 /* CreateQuizVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04256C1A1F387E30006C86B1 /* CreateQuizVC.swift */; };
 		04256C1E1F387E84006C86B1 /* CreateQuizVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04256C1D1F387E84006C86B1 /* CreateQuizVC.xib */; };
 		04256C201F388181006C86B1 /* QuizHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04256C1F1F388181006C86B1 /* QuizHeaderCell.swift */; };
@@ -172,6 +175,9 @@
 		03F5682B1F33D803000DBFDC /* AddQuizCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddQuizCell.xib; sourceTree = "<group>"; };
 		03F5682E1F33D817000DBFDC /* ScanQRCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScanQRCell.swift; sourceTree = "<group>"; };
 		03F5682F1F33D817000DBFDC /* ScanQRCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScanQRCell.xib; sourceTree = "<group>"; };
+		03F76EA41F3BC21600A15532 /* GapQuestionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GapQuestionCell.swift; sourceTree = "<group>"; };
+		03F76EA51F3BC21600A15532 /* GapQuestionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GapQuestionCell.xib; sourceTree = "<group>"; };
+		03F76EA81F3BC99400A15532 /* QuestionCellHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionCellHandler.swift; sourceTree = "<group>"; };
 		04256C1A1F387E30006C86B1 /* CreateQuizVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateQuizVC.swift; sourceTree = "<group>"; };
 		04256C1D1F387E84006C86B1 /* CreateQuizVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CreateQuizVC.xib; sourceTree = "<group>"; };
 		04256C1F1F388181006C86B1 /* QuizHeaderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuizHeaderCell.swift; sourceTree = "<group>"; };
@@ -446,8 +452,11 @@
 		03E4AD741F34E3EC00EAA33A /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				03F76EAA1F3BCB1900A15532 /* Protocols */,
 				03E4AD701F34E3CA00EAA33A /* QuestionCell.swift */,
 				03E4AD711F34E3CA00EAA33A /* QuestionCell.xib */,
+				03F76EA41F3BC21600A15532 /* GapQuestionCell.swift */,
+				03F76EA51F3BC21600A15532 /* GapQuestionCell.xib */,
 				03B8CDEB1F3892F70058ABAC /* AnswerSelectionCell.swift */,
 				03B8CDDF1F3882610058ABAC /* AnswerCheckboxCell.swift */,
 				03B8CDE01F3882610058ABAC /* AnswerCheckboxCell.xib */,
@@ -477,6 +486,14 @@
 				03F568121F33602E000DBFDC /* Networking.swift */,
 			);
 			name = Server;
+			sourceTree = "<group>";
+		};
+		03F76EAA1F3BCB1900A15532 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				03F76EA81F3BC99400A15532 /* QuestionCellHandler.swift */,
+			);
+			name = Protocols;
 			sourceTree = "<group>";
 		};
 		04256C191F387E12006C86B1 /* QuizCreate */ = {
@@ -603,6 +620,7 @@
 				03E4ADA71F386B6000EAA33A /* Solomon-Sans-Bold.otf in Resources */,
 				03B8CDE21F3882610058ABAC /* AnswerCheckboxCell.xib in Resources */,
 				03E4ADAB1F386B6000EAA33A /* Solomon-Sans-SemiBold.otf in Resources */,
+				03F76EA71F3BC21600A15532 /* GapQuestionCell.xib in Resources */,
 				03D646DE1F3202EB007C206F /* MainVC.xib in Resources */,
 				03B8CDF01F389A790058ABAC /* AnswerRadiobuttonCell.xib in Resources */,
 				03B917381F3902A700CCB979 /* ReplayButton.xib in Resources */,
@@ -698,8 +716,10 @@
 				03F568211F3386B8000DBFDC /* String+Size.swift in Sources */,
 				03E4AD791F34F21A00EAA33A /* CollectionViewCenteredLayout.swift in Sources */,
 				03F5681F1F3383FB000DBFDC /* Token.swift in Sources */,
+				03F76EA91F3BC99400A15532 /* QuestionCellHandler.swift in Sources */,
 				03F568301F33D817000DBFDC /* ScanQRCell.swift in Sources */,
 				03B8CDEC1F3892F70058ABAC /* AnswerSelectionCell.swift in Sources */,
+				03F76EA61F3BC21600A15532 /* GapQuestionCell.swift in Sources */,
 				03F568231F3386DF000DBFDC /* UIColor+Hex.swift in Sources */,
 				03E4AD721F34E3CA00EAA33A /* QuestionCell.swift in Sources */,
 				03F568131F33602E000DBFDC /* Networking.swift in Sources */,

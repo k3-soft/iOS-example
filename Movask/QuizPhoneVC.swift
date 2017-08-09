@@ -73,6 +73,7 @@ class QuizPhoneVC: BasicVC {
     // Collection settings
     
     let questionCellIdentifier = "QuestionCell"
+    let gapQuestionCellIdentifier = "GapQuestionCell"
     
     let collectionLineSpacing: CGFloat = 10.0
     var collectionInsets: CGFloat = 15.0
@@ -109,8 +110,13 @@ class QuizPhoneVC: BasicVC {
         
         questionsCollection.decelerationRate = UIScrollViewDecelerationRateFast
         questionsCollection.isScrollEnabled = false
-        questionsCollection.register(UINib(nibName: questionCellIdentifier, bundle: nil),
-                                     forCellWithReuseIdentifier: questionCellIdentifier)
+        
+        let cellIdentifiers = [questionCellIdentifier, gapQuestionCellIdentifier]
+        
+        for identifier in cellIdentifiers {
+            questionsCollection.register(UINib(nibName: identifier, bundle: nil),
+                                         forCellWithReuseIdentifier: identifier)
+        }
     }
     
     func setQuestionCounter() {
@@ -223,16 +229,14 @@ class QuizPhoneVC: BasicVC {
         videoPlayer?.videoPlayerView.playVideo()
         videoPlayer?.hideControls()
         videoPlayer?.videoPlayerControls.togglePlay()
-//        if let controls = videoPlayer.videoPlayerControls as? ASPVideoPlayerControls {
-//            controls.playPauseButton.isSelected = true
-//        }
     }
     
     // MARK: - Load data
     
     func loadQuestions() {
         
-        questionsList = [QuestionTest(type: .checkmarks),
+        questionsList = [QuestionTest(type: .gaps),
+                         QuestionTest(type: .checkmarks),
                          QuestionTest(type: .radiobuttons),
                          QuestionTest(type: .checkmarks),
                          QuestionTest(type: .radiobuttons),
@@ -285,23 +289,36 @@ extension QuizPhoneVC: UICollectionViewDataSource, UICollectionViewDelegate, UIC
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: questionCellIdentifier, for: indexPath) as! QuestionCell
-        
         let question = questionsList[indexPath.row]
         
-        cell.setWithQuestion(question)
+        var cell: QuestionCellHandler!
         
+        switch question.type {
+            
+        case .checkmarks, .radiobuttons:
+            
+            cell = collectionView.dequeueReusableCell(withReuseIdentifier: questionCellIdentifier, for: indexPath) as! QuestionCell
+            
+            (cell as! QuestionCell).setWithQuestion(question)
+            
+        case .gaps:
+            
+            cell = collectionView.dequeueReusableCell(withReuseIdentifier: gapQuestionCellIdentifier, for: indexPath) as! GapQuestionCell
+            
+            (cell! as! GapQuestionCell).setWithQuestion(question)
+        }
+
         // Set handlers
         
-        cell.confirmHandler = { [unowned self] _ in
+        cell!.confirmHandler = { [unowned self] _ in
             self.nextQuestion()
         }
         
-        cell.skipHandler = { [unowned self] _ in
+        cell!.skipHandler = { [unowned self] _ in
             self.skipQuestion()
         }
         
-        return cell
+        return cell as! UICollectionViewCell
     }
     
     // MARK: - UICollectionViewDelegateFlowLayout

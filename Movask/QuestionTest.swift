@@ -20,6 +20,14 @@ class QuestionTest {
                    AnswerTest(title: "The hour after sunrize"),
                    AnswerTest(title: "Is a period shortly after sunrise or before sunset during which daylight is redder and softer than when the Sun is higher in the sky")]
     
+    // Gap
+    
+    let gapAnswer = "Is a period shortly after sunrise or before sunset during which daylight is redder and softer than when the Sun is higher in the sky"
+    
+    let missingWordsIndexes = [5, 15]
+    
+    var missingWords = [String]()
+    
     init(type: QuestionType) {
         self.type = type
     }

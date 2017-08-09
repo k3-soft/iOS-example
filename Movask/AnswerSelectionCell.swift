@@ -55,6 +55,7 @@ class AnswerSelectionCell: UITableViewCell {
         
         heightAnswerLabel.constant = height
         answerLabel.text = answer.title
+        
     }
     
     // MARK: - Actions

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class QuestionCell: UICollectionViewCell {
+class QuestionCell: UICollectionViewCell, QuestionCellHandler {
     
     // Labels
     @IBOutlet weak var instructionLabel: UILabel!
@@ -66,7 +66,11 @@ class QuestionCell: UICollectionViewCell {
         
         heightQuestionLabel.constant = height
         heightQuestionView.constant = height + heightQuestionViewWithoutLabel
+        
+        // Set labels
+        
         questionLabel.text = question.question
+        instructionLabel.text = question.type.instruction
     }
     
     func setAnswersTableView() {
