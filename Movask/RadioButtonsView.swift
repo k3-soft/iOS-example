@@ -8,9 +8,13 @@
 
 import UIKit
 
+protocol AnswersViewModificationDelegate: class {
+    func didSelect(answer: AnswerTest, for question: QuestionTest?)
+    func didFinishEditing(answer: AnswerTest, for question: QuestionTest?, withText text: String)
+    func didAdd(answer: AnswerTest, for question: QuestionTest?)
+}
+
 protocol RadioButtonsViewDelegate: class {
-    func radioWasSelectedOn(view: RadioButtonsView, with option: AnswerTest)
-    func answerVariantWasAdded(view: RadioButtonsView)
     func didUpdateCollectionViewLayout(view: RadioButtonsView)
 }
 
@@ -18,20 +22,20 @@ class RadioButtonsView: NibView {
     
     @IBOutlet weak var answersCollectionViewView: UICollectionView!
     
-    let cellHeight: CGFloat = 30.0
+    let cellHeight: CGFloat = 33.0
     
     let answerCell = "RadioCell"
     
-    weak var delegate: RadioButtonsViewDelegate?
+    weak var layoutDelegate: RadioButtonsViewDelegate?
+    weak var modificationDelegate: AnswersViewModificationDelegate?
     
     var answerVariants: [AnswerTest] = []
-    var selectedIndexPath = IndexPath(row: 0, section: 0)
+    var selectedAnswerIndexPath = IndexPath(row: 0, section: 0)
     
-    var selectedItem: AnswerTest? {
-        if selectedIndexPath.row < answerVariants.count {
-            return answerVariants[selectedIndexPath.row]
-        } else {
-            return nil
+    var question: QuestionTest? {
+        didSet {
+            guard let question = question else { return }
+            answerVariants = question.answers
         }
     }
     
@@ -59,20 +63,21 @@ class RadioButtonsView: NibView {
     func updateCollectionViewLayout() {
         self.answersCollectionViewView.collectionViewLayout.invalidateLayout()
         answersCollectionViewView.performBatchUpdates(nil, completion: { completed in
-            self.delegate?.didUpdateCollectionViewLayout(view: self)
+            self.layoutDelegate?.didUpdateCollectionViewLayout(view: self)
         })
 
     }
     
     func addAnswerVariant() {
-        answerVariants.append(AnswerTest(title: ""))
+        let newAnswer = AnswerTest(title: "")
+        answerVariants.append(newAnswer)
         
         self.answersCollectionViewView.insertItems(at: [IndexPath(row: self.answerVariants.count-1, section: 0)])
 
         self.answersCollectionViewView.collectionViewLayout.invalidateLayout()
         answersCollectionViewView.performBatchUpdates(nil, completion: { completed in
-            self.delegate?.didUpdateCollectionViewLayout(view: self)
-            self.delegate?.answerVariantWasAdded(view: self)
+            self.layoutDelegate?.didUpdateCollectionViewLayout(view: self)
+            self.modificationDelegate?.didAdd(answer: newAnswer, for: self.question)
         })
     }
     
@@ -94,6 +99,7 @@ extension RadioButtonsView: UICollectionViewDelegate, UICollectionViewDataSource
         case UICollectionElementKindSectionFooter:
             let footerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: answerCell, for: indexPath) as! RadioCell
             
+            footerView.radioImage.isHidden = true
             footerView.radioTextView.placeholder = "Add option"
             footerView.radioTextView.isEditable = false
             footerView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector (addAnswerVariant)))
@@ -106,26 +112,26 @@ extension RadioButtonsView: UICollectionViewDelegate, UICollectionViewDataSource
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let oldSelectedCell = collectionView.cellForItem(at: selectedIndexPath) as! RadioCell
+        let oldSelectedCell = collectionView.cellForItem(at: selectedAnswerIndexPath) as! RadioCell
         oldSelectedCell.selectedCell = false
         
         let newSelectedCell = collectionView.cellForItem(at: indexPath) as! RadioCell
         newSelectedCell.selectedCell = true
-        delegate?.radioWasSelectedOn(view: self, with: answerVariants[indexPath.row])
         
-        selectedIndexPath = indexPath
+        answerVariants[indexPath.row].isSelected = true
+        modificationDelegate?.didSelect(answer: answerVariants[indexPath.row], for: question)
+        selectedAnswerIndexPath = indexPath
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: answerCell, for: indexPath) as! RadioCell
         
-        cell.radioTextView.text = answerVariants[indexPath.row].title
+        cell.answer = answerVariants[indexPath.item]
+        cell.delegate = self
         cell.ownerView = self
         
-        if indexPath == selectedIndexPath {
-            cell.selectedCell = true
-        } else {
-            cell.selectedCell = false
+        if cell.selectedCell {
+            selectedAnswerIndexPath = indexPath
         }
         
         return cell
@@ -137,12 +143,16 @@ extension RadioButtonsView: UICollectionViewDelegate, UICollectionViewDataSource
             let questionConteinerHeight = item.radioTextViewHeight.constant
             return CGSize(width: self.frame.width, height: questionConteinerHeight)
         } else {
-            return CGSize(width: self.frame.width, height: 30)
+            let textFieldInsets: CGFloat = 16.0
+            
+            let answerFieldHeight = answerVariants[indexPath.item].title.height(withConstrainedWidth: self.frame.width - 25 + 5, font: UIFont.systemFont(ofSize: 14)) + textFieldInsets
+            
+            return CGSize(width: self.frame.width, height: answerFieldHeight)
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
-        return CGSize(width: self.frame.width, height: 30)
+        return CGSize(width: self.frame.width, height: 33)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
@@ -153,4 +163,11 @@ extension RadioButtonsView: UICollectionViewDelegate, UICollectionViewDataSource
         return 0
     }
     
+}
+
+extension RadioButtonsView: RadioCellDelegate {
+    func didFinishEditingAnswer(cell: RadioCell) {
+        guard let answer = cell.answer else { return }
+        modificationDelegate?.didFinishEditing(answer: answer, for: question, withText: cell.radioTextView.text)
+    }
 }

@@ -33,16 +33,19 @@ class QuizQuestionCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         questionTitleTextView.delegate = self
-        questionOptionsView.delegate = self
+        questionOptionsView.layoutDelegate = self
         let panGesture = UIPanGestureRecognizer(target: self, action: #selector (repositionQuestion(_:)))
         dragButton.addGestureRecognizer(panGesture)
     }
     
     var question: QuestionTest? {
         didSet {
-            questionTitleTextView.text = question?.question
-            guard let answers = question?.answers else { return }
-            questionOptionsView.answerVariants = answers
+            guard let question = question else { return }
+            
+            questionTitleTextView.text = question.question
+            questionOptionsView.question = question
+            
+            calculateCellHeightFor(question)
         }
     }
     
@@ -80,10 +83,28 @@ class QuizQuestionCell: UICollectionViewCell {
             
         case UIGestureRecognizerState.ended:
             ownerCollectionView.endInteractiveMovement()
-            
         default:
             ownerCollectionView.cancelInteractiveMovement()
         }
+    }
+    
+    func calculateCellHeightFor(_ question: QuestionTest) {
+        var minAnswersConteinerHeight: CGFloat = 33 + 16
+        let textFieldInsets: CGFloat = 16.0
+        for answer in question.answers {
+            minAnswersConteinerHeight += answer.title.height(withConstrainedWidth: self.frame.width - 50 - 50 - 25 - 16 - 16 - 16, font: UIFont.systemFont(ofSize: 14))
+            minAnswersConteinerHeight += textFieldInsets
+        }
+        
+        let answersBlockHeight = minAnswersConteinerHeight
+        questionOptionsViewHeight.constant = CGFloat(answersBlockHeight)
+        
+        let questionFieldHeight = question.question.height(withConstrainedWidth: self.frame.width - 50
+            - 50 - 50 - 16 - 16 - 16 - 16, font: UIFont.systemFont(ofSize: 14)) + textFieldInsets
+
+        questionTitleHeight.constant = questionFieldHeight
+        questionTitleTextView.lineTopConstraint.constant = questionFieldHeight - questionTitleTextView.lineHeightConstraint.constant
+        questionContainerHeight.constant = questionFieldHeight + 80.0
     }
 
 }
@@ -110,6 +131,13 @@ extension QuizQuestionCell: UITextViewDelegate {
         }
     }
     
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        if (text == "\n") {
+            textView.resignFirstResponder()
+        }
+        return true
+    }
+    
     func textViewDidEndEditing(_ textView: UITextView) {
         switch textView {
         case questionTitleTextView:
@@ -122,16 +150,10 @@ extension QuizQuestionCell: UITextViewDelegate {
 }
 
 extension QuizQuestionCell: RadioButtonsViewDelegate {
-
-    func answerVariantWasAdded(view: RadioButtonsView) {
-    }
     
     func didUpdateCollectionViewLayout(view: RadioButtonsView) {
         questionOptionsViewHeight.constant = view.answersCollectionViewView.contentSize.height + 16
         ownerCollectionView?.performBatchUpdates(nil)
-    }
-    
-    func radioWasSelectedOn(view: RadioButtonsView, with option: AnswerTest) {
     }
     
 }

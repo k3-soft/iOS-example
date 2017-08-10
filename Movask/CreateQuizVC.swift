@@ -29,7 +29,7 @@ class CreateQuizVC: BasicVC {
     func defaultQuestion() -> QuestionTest {
         let qt = QuestionTest(type: .radiobuttons)
         qt.question = ""
-        qt.answers = [AnswerTest(title: "")]
+        qt.answers = [AnswerTest(title: "answer1"), AnswerTest(title: "answer2"), AnswerTest(title: "answer3answer3answer3answer3answer3answer3answer3answer3answer3answer3answer3answer3answer3answer3answer3answer3answer3answer3answer3answer3answer3answ")]
         return qt
     }
     
@@ -112,6 +112,7 @@ extension CreateQuizVC: UICollectionViewDelegate, UICollectionViewDataSource, UI
         cell.questionIndexLabel.text = "\(indexPath.item + 1)."
         cell.ownerCollectionView = quizCollectionView
         cell.delegate = self
+        cell.questionOptionsView.modificationDelegate = self
             
         return cell
     }
@@ -123,7 +124,22 @@ extension CreateQuizVC: UICollectionViewDelegate, UICollectionViewDataSource, UI
 
             return CGSize(width: self.view.frame.width, height: questionConteinerHeight + 20)
         } else {
-            return CGSize(width: self.view.frame.width, height: 186 + 20)
+            
+            let answersFooterHeight: CGFloat = 33.0
+            let answersCollectionViewInsets: CGFloat = 16.0
+            var minAnswersConteinerHeight: CGFloat = answersFooterHeight + answersCollectionViewInsets
+            let textFieldInsets: CGFloat = 16.0
+
+            for answer in questions[indexPath.item].answers {
+                minAnswersConteinerHeight += answer.title.height(withConstrainedWidth: self.view.frame.width - 50 - 50 - 25 - 16 - 16 - 16, font: UIFont.systemFont(ofSize: 14))
+                minAnswersConteinerHeight += textFieldInsets
+            }
+            
+            var answerTitleBlockHeight: CGFloat = 80
+            let questionFieldHeight = questions[indexPath.item].question.height(withConstrainedWidth: self.view.frame.width - 50 - 50 - 50 - 16 - 16 - 16 - 16, font: UIFont.systemFont(ofSize: 14)) + textFieldInsets
+            answerTitleBlockHeight = answerTitleBlockHeight + questionFieldHeight
+            
+            return CGSize(width: self.view.frame.width, height: CGFloat(answerTitleBlockHeight + minAnswersConteinerHeight + 20))
         }
     }
     
@@ -135,14 +151,7 @@ extension CreateQuizVC: UICollectionViewDelegate, UICollectionViewDataSource, UI
     }
     
     func collectionView(_ collectionView: UICollectionView, moveItemAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
-        
-//        guard let sourceItem = collectionView.cellForItem(at: sourceIndexPath) as? QuizQuestionCell else { return }
-//        guard let destinationItem = collectionView.cellForItem(at: destinationIndexPath) as? QuizQuestionCell else { return }
-//        
-//        let tempQuestionIndex = sourceItem.questionIndexLabel.text
-//        sourceItem.questionIndexLabel.text = destinationItem.questionIndexLabel.text
-//        destinationItem.questionIndexLabel.text = tempQuestionIndex
-        
+        questions.rearrange(from: sourceIndexPath.item, to: destinationIndexPath.item)
     }
     
 }
@@ -166,6 +175,44 @@ extension CreateQuizVC: QuizQuestionCellDelegate {
     func didFinishEditingQuestion(cell: QuizQuestionCell) {
         guard let question = cell.question else { return }
         questions[question.id].question = cell.questionTitleTextView.text
+    }
+    
+}
+
+extension CreateQuizVC: AnswersViewModificationDelegate {
+    func didFinishEditing(answer: AnswerTest, for question: QuestionTest?, withText text: String) {
+        guard let question = question else { return }
+        guard question.id < questions.count else { return }
+        
+        let questionToModify = questions[question.id]
+        
+        for oldAnswer in questionToModify.answers {
+            if oldAnswer === answer {
+                oldAnswer.title = text
+            }
+        }
+    }
+    
+    func didSelect(answer: AnswerTest, for question: QuestionTest?) {
+        guard let question = question else { return }
+        guard question.id < questions.count else { return }
+        
+        let questionToModify = questions[question.id]
+        for oldAnswer in questionToModify.answers {
+            if oldAnswer === answer {
+                oldAnswer.isSelected = true
+            } else {
+                oldAnswer.isSelected = false
+            }
+        }
+    }
+    
+    func didAdd(answer: AnswerTest, for question: QuestionTest?) {
+        guard let question = question else { return }
+        guard question.id < questions.count else { return }
+        
+        let questionToModify = questions[question.id]
+        questionToModify.answers.append(answer)
     }
     
 }

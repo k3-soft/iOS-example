@@ -92,6 +92,8 @@
 		04256C2D1F39CD8C006C86B1 /* RadioCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04256C2C1F39CD8C006C86B1 /* RadioCell.swift */; };
 		04256C2F1F39CDD8006C86B1 /* RadioCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04256C2E1F39CDD8006C86B1 /* RadioCell.xib */; };
 		04256C311F39D667006C86B1 /* RadioButtonsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04256C301F39D667006C86B1 /* RadioButtonsView.xib */; };
+		04256C331F3C577F006C86B1 /* String+TextHeight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04256C321F3C577F006C86B1 /* String+TextHeight.swift */; };
+		04256C351F3CA2B2006C86B1 /* Array+Rearrange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04256C341F3CA2B2006C86B1 /* Array+Rearrange.swift */; };
 		CD6C7355B1C4AE093EDD1E8F /* Pods_Movask.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADD8DD89C88C0C32D0D1EA71 /* Pods_Movask.framework */; };
 /* End PBXBuildFile section */
 
@@ -183,6 +185,8 @@
 		04256C2C1F39CD8C006C86B1 /* RadioCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadioCell.swift; sourceTree = "<group>"; };
 		04256C2E1F39CDD8006C86B1 /* RadioCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RadioCell.xib; sourceTree = "<group>"; };
 		04256C301F39D667006C86B1 /* RadioButtonsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RadioButtonsView.xib; sourceTree = "<group>"; };
+		04256C321F3C577F006C86B1 /* String+TextHeight.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+TextHeight.swift"; sourceTree = "<group>"; };
+		04256C341F3CA2B2006C86B1 /* Array+Rearrange.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+Rearrange.swift"; sourceTree = "<group>"; };
 		4E98A7AC960E59B9702AEB84 /* Pods-Movask.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Movask.release.xcconfig"; path = "Pods/Target Support Files/Pods-Movask/Pods-Movask.release.xcconfig"; sourceTree = "<group>"; };
 		86C8F8B01958BC742420DC15 /* Pods-Movask.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Movask.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Movask/Pods-Movask.debug.xcconfig"; sourceTree = "<group>"; };
 		ADD8DD89C88C0C32D0D1EA71 /* Pods_Movask.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Movask.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -299,6 +303,8 @@
 				03F568201F3386B8000DBFDC /* String+Size.swift */,
 				03F568221F3386DF000DBFDC /* UIColor+Hex.swift */,
 				03B8CDE91F3886CC0058ABAC /* UIButton+Touches.swift */,
+				04256C321F3C577F006C86B1 /* String+TextHeight.swift */,
+				04256C341F3CA2B2006C86B1 /* Array+Rearrange.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -718,6 +724,7 @@
 				03406D4D1F3A70060035EA67 /* Loader.swift in Sources */,
 				03406D4B1F3A6FE30035EA67 /* ControlButtons.swift in Sources */,
 				03D646E51F32082F007C206F /* QuizTest.swift in Sources */,
+				04256C351F3CA2B2006C86B1 /* Array+Rearrange.swift in Sources */,
 				04256C2D1F39CD8C006C86B1 /* RadioCell.swift in Sources */,
 				03E4AD6D1F34E2D000EAA33A /* QuizPhoneVC.swift in Sources */,
 				03E4AD771F34E46200EAA33A /* QuestionTest.swift in Sources */,
@@ -736,6 +743,7 @@
 				03F568111F335637000DBFDC /* UserDefaultsManager.swift in Sources */,
 				04256C281F388870006C86B1 /* UnderLinedTextView.swift in Sources */,
 				03F568151F336062000DBFDC /* QRManager.swift in Sources */,
+				04256C331F3C577F006C86B1 /* String+TextHeight.swift in Sources */,
 				03B917361F39029200CCB979 /* ReplayButton.swift in Sources */,
 				03B8CDEF1F389A790058ABAC /* AnswerRadiobuttonCell.swift in Sources */,
 				04256C201F388181006C86B1 /* QuizHeaderCell.swift in Sources */,
