@@ -1,46 +1,34 @@
 //
-//  QuizPhoneVC.swift
+//  QuizPadVC.swift
 //  Movask
 //
-//  Created by Alina Yehorova on 04.08.17.
+//  Created by Alina Yehorova on 11.08.17.
 //  Copyright © 2017 Alina Yehorova. All rights reserved.
 //
 
 import UIKit
 
-class QuizPhoneVC: QuizVC {
-    
-    // Top view
-    
-    let maxHeightVideoView: CGFloat = 440.0
-    let minHeightVideoView: CGFloat = 165.0
-    
-    // Start view
-    
-    @IBOutlet weak var cupImage: UIImageView!
-    @IBOutlet weak var scoreLabel: UILabel!
-    
-    @IBOutlet weak var startView: UIView!
-    @IBOutlet weak var heightStartView: NSLayoutConstraint!
-    @IBOutlet weak var topStartView: NSLayoutConstraint!
+class QuizPadVC: QuizVC {
     
     // Video view
     
-    @IBOutlet weak var centerXMovieView: NSLayoutConstraint!
-    
     override var replayButtonFrame: CGRect {
-        return CGRect(x: movieView.frame.maxX + 10.0, y: movieView.frame.midY - (40.0 / 2), width: 145.0, height: 40.0)
+        return CGRect(x: startButton.frame.midX - (145.0 / 2), y: startButton.frame.maxY + 5.0, width: 145.0, height: 40.0)
     }
+    
+    // Start
+    
+    @IBOutlet weak var topStartButton: NSLayoutConstraint!
     
     // Collection settings
     
     override var collectionLineSpacing: CGFloat {
-        return 10.0
+        return 40.0
     }
     override var collectionInsets: CGFloat {
-        return 15.0
+        return 60.0
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -52,7 +40,7 @@ class QuizPhoneVC: QuizVC {
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
     }
-
+    
     // MARK: - Movie actions
     
     override func openMovie() {
@@ -69,18 +57,11 @@ class QuizPhoneVC: QuizVC {
             self.isMovieOpen = true
             
             self.videoPlayer?.unhideControls()
-        
+            
             self.replayButton?.removeFromSuperview()
             self.replayButton = nil
             
-            self.heightTopView.constant = self.maxHeightVideoView
-            self.centerXMovieView.constant = 0.0
-            
-            UIView.animate(withDuration: 0.3, animations: {
-                self.view.layoutIfNeeded()
-            }) { _ in
-                self.togglePlay()
-            }
+            self.togglePlay()
         }
     }
     
@@ -90,23 +71,14 @@ class QuizPhoneVC: QuizVC {
         guard isMovieOpen else { return }
         
         videoPlayer?.hideControlsTotally()
-
-        heightTopView.constant = minHeightVideoView
-        centerXMovieView.constant = -75.0
         
+        isMovieOpen = false
+        
+        initiateReplayButton()
         UIView.animate(withDuration: 0.3, animations: {
-            self.view.layoutIfNeeded()
-            
-        }) { _ in
-            
-            self.isMovieOpen = false
-            
-            self.initiateReplayButton()
-            UIView.animate(withDuration: 0.3, animations: {
-                self.replayButton?.center.y += 50.0
-                self.replayButton?.alpha = 1.0
-            })
-        }
+            self.replayButton?.center.y += 50.0
+            self.replayButton?.alpha = 1.0
+        })
     }
     
     // MARK: - Actions
@@ -114,13 +86,13 @@ class QuizPhoneVC: QuizVC {
     @IBAction override func startMovie(_ sender: UIButton) {
         super.startMovie(sender)
         
-        topStartView.constant = -startView.bounds.height
+        topStartButton.constant -= startButton.frame.height
         
         UIView.animate(withDuration: 0.3, animations: {
             self.topView.layoutIfNeeded()
+            self.startButton.alpha = 0.0
         }) { _ in
-            self.startView.alpha = 0.0
-            
+        
             self.isQuizStarted = true
             self.visibleCellButtonsEnabled(true)
             self.videoPlayer.unhideControls()
@@ -129,20 +101,22 @@ class QuizPhoneVC: QuizVC {
     }
 }
 
-extension QuizPhoneVC {
+extension QuizPadVC {
     
     // MARK: - UICollectionViewDataSource
     
     override func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         
-        return UIEdgeInsets(top: collectionInsets * 3,
-                            left: collectionInsets + collectionLineSpacing,
-                            bottom: collectionInsets + collectionLineSpacing,
-                            right: collectionInsets + collectionLineSpacing)
+        return UIEdgeInsets(top: collectionInsets * 1.5 - 10.0,
+                            left: collectionInsets + collectionLineSpacing * 1.5,
+                            bottom: collectionInsets,
+                            right: collectionInsets + collectionLineSpacing * 1.5)
     }
     
     override func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        return CGSize(width: (view.frame.size.width - collectionLineSpacing * 2 - (collectionInsets * 2 - 6)), height: QuestionCell.cellHeight)
+        return CGSize(width: (view.frame.size.width - collectionLineSpacing * 2 - (collectionInsets * 3)), height: QuestionCell.cellHeight)
     }
 }
+
+

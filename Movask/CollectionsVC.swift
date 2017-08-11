@@ -285,7 +285,13 @@ extension CollectionsVC: UICollectionViewDataSource, UICollectionViewDelegate, U
         if (collectionView == libraryCollection || collectionView == savedCollection),
             indexPath.row == 0 { return }
         
-        let quizVC = QuizPhoneVC()
-        navigationController?.pushViewController(quizVC, animated: true)
+        if UIDevice.current.userInterfaceIdiom == .phone {
+            let quizVC = QuizPhoneVC()
+            navigationController?.pushViewController(quizVC, animated: true)
+            
+        } else {
+            let quizVC = QuizPadVC()
+            navigationController?.pushViewController(quizVC, animated: true)
+        }
     }
 }

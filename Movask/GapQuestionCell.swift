@@ -185,7 +185,7 @@ extension GapQuestionCell: UITextFieldDelegate {
     
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         
-        if let vc = viewController() as? QuizPhoneVC {
+        if let vc = viewController() as? QuizVC {
             return vc.isQuizStarted
         }
         

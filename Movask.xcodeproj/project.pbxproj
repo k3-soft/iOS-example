@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		032A15421F3CFABF00184BA9 /* UILabel+Size.swift in Sources */ = {isa = PBXBuildFile; fileRef = 032A15411F3CFABF00184BA9 /* UILabel+Size.swift */; };
 		033FB5351F3E2682009D6920 /* UIViewController+Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 033FB5341F3E2682009D6920 /* UIViewController+Keyboard.swift */; };
+		033FB5371F3E2AE1009D6920 /* QuizVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 033FB5361F3E2AE1009D6920 /* QuizVC.swift */; };
+		033FB53A1F3E3176009D6920 /* QuizPadVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 033FB5381F3E3176009D6920 /* QuizPadVC.swift */; };
+		033FB53B1F3E3176009D6920 /* QuizPadVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 033FB5391F3E3176009D6920 /* QuizPadVC.xib */; };
 		03406D431F3A6F5A0035EA67 /* AnimationForwarder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03406D421F3A6F5A0035EA67 /* AnimationForwarder.swift */; };
 		03406D451F3A6F730035EA67 /* ASPVideoPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03406D441F3A6F730035EA67 /* ASPVideoPlayer.swift */; };
 		03406D471F3A6F980035EA67 /* ASPVideoPlayerControls.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03406D461F3A6F980035EA67 /* ASPVideoPlayerControls.swift */; };
@@ -106,6 +109,9 @@
 		032A153A1F3CE47A00184BA9 /* Movask-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Movask-Bridging-Header.h"; sourceTree = "<group>"; };
 		032A15411F3CFABF00184BA9 /* UILabel+Size.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UILabel+Size.swift"; sourceTree = "<group>"; };
 		033FB5341F3E2682009D6920 /* UIViewController+Keyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Keyboard.swift"; sourceTree = "<group>"; };
+		033FB5361F3E2AE1009D6920 /* QuizVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuizVC.swift; sourceTree = "<group>"; };
+		033FB5381F3E3176009D6920 /* QuizPadVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuizPadVC.swift; sourceTree = "<group>"; };
+		033FB5391F3E3176009D6920 /* QuizPadVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QuizPadVC.xib; sourceTree = "<group>"; };
 		03406D421F3A6F5A0035EA67 /* AnimationForwarder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationForwarder.swift; sourceTree = "<group>"; };
 		03406D441F3A6F730035EA67 /* ASPVideoPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASPVideoPlayer.swift; sourceTree = "<group>"; };
 		03406D461F3A6F980035EA67 /* ASPVideoPlayerControls.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASPVideoPlayerControls.swift; sourceTree = "<group>"; };
@@ -456,8 +462,11 @@
 		03E4AD6F1F34E38700EAA33A /* QuizGame */ = {
 			isa = PBXGroup;
 			children = (
+				033FB5361F3E2AE1009D6920 /* QuizVC.swift */,
 				03E4AD6B1F34E2D000EAA33A /* QuizPhoneVC.swift */,
 				03E4AD6C1F34E2D000EAA33A /* QuizPhoneVC.xib */,
+				033FB5381F3E3176009D6920 /* QuizPadVC.swift */,
+				033FB5391F3E3176009D6920 /* QuizPadVC.xib */,
 				03E4AD741F34E3EC00EAA33A /* Cells */,
 			);
 			name = QuizGame;
@@ -624,6 +633,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				033FB53B1F3E3176009D6920 /* QuizPadVC.xib in Resources */,
 				03E4ADA61F386B6000EAA33A /* Solomon-Sans-Black.otf in Resources */,
 				04256C261F3881C6006C86B1 /* QuizQuestionCell.xib in Resources */,
 				04256C2F1F39CDD8006C86B1 /* RadioCell.xib in Resources */,
@@ -727,6 +737,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				03F5681B1F338165000DBFDC /* AuthorizationManager.swift in Sources */,
+				033FB53A1F3E3176009D6920 /* QuizPadVC.swift in Sources */,
 				03406D531F3A70490035EA67 /* Scrubber.swift in Sources */,
 				032A15421F3CFABF00184BA9 /* UILabel+Size.swift in Sources */,
 				033FB5351F3E2682009D6920 /* UIViewController+Keyboard.swift in Sources */,
@@ -748,6 +759,7 @@
 				03D646CE1F3200D0007C206F /* UIView+Storyboard.swift in Sources */,
 				03F5681D1F3383CC000DBFDC /* ICloudModel.swift in Sources */,
 				03406D511F3A702F0035EA67 /* PlayPauseLayer.swift in Sources */,
+				033FB5371F3E2AE1009D6920 /* QuizVC.swift in Sources */,
 				03D646DD1F3202EB007C206F /* MainVC.swift in Sources */,
 				03D647051F3277A0007C206F /* LevelsVC.swift in Sources */,
 				03D646BB1F30D2CE007C206F /* AppDelegate.swift in Sources */,

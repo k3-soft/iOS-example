@@ -32,6 +32,7 @@
                 <outlet property="questionsLabel" destination="NLu-qw-ca7" id="oca-tZ-iSD"/>
                 <outlet property="scoreLabel" destination="WHh-hG-IGO" id="uLQ-4z-Zbl"/>
                 <outlet property="starImage" destination="uv1-b2-tLr" id="38J-Fg-6Xc"/>
+                <outlet property="startButton" destination="zIH-sf-21T" id="lTR-Zm-8bV"/>
                 <outlet property="startView" destination="eDB-J4-12p" id="RgL-U9-VN7"/>
                 <outlet property="titleLabel" destination="bLf-Xc-bOb" id="dHm-Ye-pBt"/>
                 <outlet property="topStartView" destination="94w-jw-Erx" id="2hr-fD-bgz"/>
@@ -70,7 +71,7 @@
                                             </connections>
                                         </collectionView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1/15" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Wn-pC-Zqh">
-                                            <rect key="frame" x="30" y="13" width="30.5" height="17.5"/>
+                                            <rect key="frame" x="175" y="13" width="25.5" height="15"/>
                                             <fontDescription key="fontDescription" name="Solomon-Sans-SemiBold" family="Solomon Sans SemiBold" pointSize="15"/>
                                             <color key="textColor" red="0.5725490196078431" green="0.5725490196078431" blue="0.5725490196078431" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
@@ -78,10 +79,10 @@
                                     </subviews>
                                     <color key="backgroundColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
                                     <constraints>
+                                        <constraint firstItem="9Wn-pC-Zqh" firstAttribute="centerX" secondItem="dWV-LK-X4P" secondAttribute="centerX" id="3aK-I1-NdA"/>
                                         <constraint firstAttribute="bottom" secondItem="FFf-dB-T6g" secondAttribute="bottom" id="5LP-nY-7kP"/>
                                         <constraint firstItem="FFf-dB-T6g" firstAttribute="top" secondItem="dWV-LK-X4P" secondAttribute="top" id="Gb9-Jm-gsu"/>
                                         <constraint firstAttribute="height" constant="485" id="RmU-b8-0HL"/>
-                                        <constraint firstItem="9Wn-pC-Zqh" firstAttribute="leading" secondItem="dWV-LK-X4P" secondAttribute="leading" constant="30" id="Vea-gW-ART"/>
                                         <constraint firstItem="9Wn-pC-Zqh" firstAttribute="top" secondItem="dWV-LK-X4P" secondAttribute="top" constant="13" id="mBF-Kg-l4h"/>
                                         <constraint firstAttribute="trailing" secondItem="FFf-dB-T6g" secondAttribute="trailing" id="oUT-pn-KBI"/>
                                         <constraint firstItem="FFf-dB-T6g" firstAttribute="leading" secondItem="dWV-LK-X4P" secondAttribute="leading" id="p1L-1V-xa2"/>
