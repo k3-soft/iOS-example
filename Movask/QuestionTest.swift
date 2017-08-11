@@ -12,10 +12,10 @@ class QuestionTest {
     
     var type: QuestionType
     
-    let id = 1
-    let question = "What is the golden hour?"
+    var id = 1
+    var question = "What is the golden hour?"
     
-    let answers = [AnswerTest(title: "The last hour before sunset"),
+    var answers = [AnswerTest(title: "The last hour before sunset"),
                    AnswerTest(title: "The hour when shadows get really long ang light very red"),
                    AnswerTest(title: "The hour after sunrize"),
                    AnswerTest(title: "Is a period shortly after sunrise or before sunset during which daylight is redder and softer than when the Sun is higher in the sky")]

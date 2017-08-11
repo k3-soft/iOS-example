@@ -10,7 +10,7 @@ import Foundation
 
 class AnswerTest {
     
-    let title: String
+    var title: String
     
     var isSelected = false
     

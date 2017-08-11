@@ -8,108 +8,166 @@
 
 import UIKit
 
-@objc
-protocol RadioButtonsViewDelegate: class {
-    @objc optional func radioWasSelectedOn(view: RadioButtonsView, with option: String)
-    func answerVariantWasAdded(view: RadioButtonsView)
+protocol AnswersViewModificationDelegate: class {
+    func didSelect(answer: AnswerTest, for question: QuestionTest?)
+    func didFinishEditing(answer: AnswerTest, for question: QuestionTest?, withText text: String)
+    func didAdd(answer: AnswerTest, for question: QuestionTest?)
 }
 
-class RadioButtonsView: NibView, UITableViewDataSource, UITableViewDelegate {
+protocol RadioButtonsViewDelegate: class {
+    func didUpdateCollectionViewLayout(view: RadioButtonsView)
+}
+
+class RadioButtonsView: NibView {
     
-    @IBOutlet weak var optionsTableView: UITableView!
-    let cellHeight: CGFloat = 30.0
+    @IBOutlet weak var answersCollectionViewView: UICollectionView!
     
-    let radioCell = "RadioCell"
+    let cellHeight: CGFloat = 33.0
     
-    weak var delegate: RadioButtonsViewDelegate?
-    weak var ownerCollectionView: UICollectionView?
+    let answerCell = "RadioCell"
     
-    var answerVariants = [""]
-    var selectedIndexPath = IndexPath(row: 0, section: 0)
+    weak var layoutDelegate: RadioButtonsViewDelegate?
+    weak var modificationDelegate: AnswersViewModificationDelegate?
     
-    var selectedItem: String? {
-        if selectedIndexPath.row < answerVariants.count {
-            return answerVariants[selectedIndexPath.row]
-        } else {
-            return nil
+    var answerVariants: [AnswerTest] = []
+    var selectedAnswerIndexPath = IndexPath(row: 0, section: 0)
+    
+    var question: QuestionTest? {
+        didSet {
+            guard let question = question else { return }
+            answerVariants = question.answers
         }
     }
     
     override func setupViews() {
-        setTableView()
+        setupCollectionView()
     }
     
-    func setTableView() {
-        optionsTableView.dataSource = self
-        optionsTableView.delegate = self
-        optionsTableView.separatorStyle = .none
-        optionsTableView.contentInset = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: -8)
+    func setupCollectionView() {
+        answersCollectionViewView.delegate = self
+        answersCollectionViewView.dataSource = self
+//        answersCollectionViewView.isScrollEnabled = false
         
-        optionsTableView.register(UINib(nibName: radioCell, bundle: nil),
-                            forCellReuseIdentifier: radioCell)
+        answersCollectionViewView.contentInset = UIEdgeInsets(top: 8, left: 8, bottom: -8, right: -8)
+        
+        let flow = answersCollectionViewView.collectionViewLayout as! UICollectionViewFlowLayout
+        flow.sectionFootersPinToVisibleBounds = false
+        
+        answersCollectionViewView.register(UINib(nibName: answerCell, bundle: nil),
+                                    forCellWithReuseIdentifier: answerCell)
+        answersCollectionViewView.register(UINib(nibName: answerCell, bundle: nil), forSupplementaryViewOfKind: UICollectionElementKindSectionFooter, withReuseIdentifier: answerCell)
     }
     
     //MARK:- Actions
     
-    func addAnswerVariant() {
-        answerVariants.append("")
-        optionsTableView.beginUpdates()
-        optionsTableView.insertRows(at: [IndexPath(row: answerVariants.count-1, section: 0)], with: .bottom)
-        optionsTableView.endUpdates()
-        delegate?.answerVariantWasAdded(view: self)
+    func updateCollectionViewLayout() {
+        self.answersCollectionViewView.collectionViewLayout.invalidateLayout()
+        answersCollectionViewView.performBatchUpdates(nil, completion: { completed in
+            self.layoutDelegate?.didUpdateCollectionViewLayout(view: self)
+        })
+
     }
     
-    // MARK: - UITableViewDataSource, UITableViewDelegate
+    func addAnswerVariant() {
+        let newAnswer = AnswerTest(title: "")
+        answerVariants.append(newAnswer)
+        
+        self.answersCollectionViewView.insertItems(at: [IndexPath(row: self.answerVariants.count-1, section: 0)])
+
+        self.answersCollectionViewView.collectionViewLayout.invalidateLayout()
+        answersCollectionViewView.performBatchUpdates(nil, completion: { completed in
+            self.layoutDelegate?.didUpdateCollectionViewLayout(view: self)
+            self.modificationDelegate?.didAdd(answer: newAnswer, for: self.question)
+        })
+    }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+}
+
+extension RadioButtonsView: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return answerVariants.count
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: radioCell, for: indexPath) as! RadioCell
+        switch kind {
+        case UICollectionElementKindSectionFooter:
+            let footerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: answerCell, for: indexPath) as! RadioCell
+            
+            footerView.radioImage.isHidden = true
+            footerView.radioTextView.placeholder = "Add option"
+            footerView.radioTextView.isEditable = false
+            footerView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector (addAnswerVariant)))
+
+            return footerView
+            
+        default:
+            assert(false, "Unexpected element kind")
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let oldSelectedCell = collectionView.cellForItem(at: selectedAnswerIndexPath) as! RadioCell
+        oldSelectedCell.selectedCell = false
         
-        cell.selectionStyle = .none
-        cell.radioTextView.text = answerVariants[indexPath.row]
+        let newSelectedCell = collectionView.cellForItem(at: indexPath) as! RadioCell
+        newSelectedCell.selectedCell = true
         
-        if indexPath == selectedIndexPath {
-            cell.selectedCell = true
-        } else {
-            cell.selectedCell = false
+        answerVariants[indexPath.row].isSelected = true
+        modificationDelegate?.didSelect(answer: answerVariants[indexPath.row], for: question)
+        selectedAnswerIndexPath = indexPath
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: answerCell, for: indexPath) as! RadioCell
+        
+        cell.answer = answerVariants[indexPath.item]
+        cell.delegate = self
+        cell.ownerView = self
+        
+        if cell.selectedCell {
+            selectedAnswerIndexPath = indexPath
         }
         
         return cell
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 30
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        if let item = collectionView.cellForItem(at: indexPath) as? RadioCell {
+            let questionConteinerHeight = item.radioTextViewHeight.constant
+            return CGSize(width: self.frame.width, height: questionConteinerHeight)
+        } else {
+            let textFieldInsets: CGFloat = 16.0
+            
+            let answerFieldHeight = answerVariants[indexPath.item].title.height(withConstrainedWidth: self.frame.width - 25 + 5, font: UIFont.systemFont(ofSize: 14)) + textFieldInsets
+            
+            return CGSize(width: self.frame.width, height: answerFieldHeight)
+        }
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-        
-        let oldSelectedCell = tableView.cellForRow(at: selectedIndexPath) as! RadioCell
-        oldSelectedCell.selectedCell = false
-        
-        let newSelectedCell = tableView.cellForRow(at: indexPath) as! RadioCell
-        newSelectedCell.selectedCell = true
-        delegate?.radioWasSelectedOn?(view: self, with: answerVariants[indexPath.row])
-        
-        selectedIndexPath = indexPath
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
+        return CGSize(width: self.frame.width, height: 33)
     }
     
-    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        
-        let footerView = UnderLinedTextView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.width - 8, height: 30), textContainer: nil)
-        footerView.backgroundColor = UIColor.clear
-        footerView.placeholder = "Add option"
-        footerView.isEditable = false
-        footerView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector (addAnswerVariant)))
-        
-        return footerView
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
     }
     
-    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return cellHeight
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
+    }
+    
+}
+
+extension RadioButtonsView: RadioCellDelegate {
+    func didFinishEditingAnswer(cell: RadioCell) {
+        guard let answer = cell.answer else { return }
+        modificationDelegate?.didFinishEditing(answer: answer, for: question, withText: cell.radioTextView.text)
     }
 }
