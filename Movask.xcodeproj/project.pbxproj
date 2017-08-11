@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		032A15421F3CFABF00184BA9 /* UILabel+Size.swift in Sources */ = {isa = PBXBuildFile; fileRef = 032A15411F3CFABF00184BA9 /* UILabel+Size.swift */; };
+		033FB5351F3E2682009D6920 /* UIViewController+Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 033FB5341F3E2682009D6920 /* UIViewController+Keyboard.swift */; };
 		03406D431F3A6F5A0035EA67 /* AnimationForwarder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03406D421F3A6F5A0035EA67 /* AnimationForwarder.swift */; };
 		03406D451F3A6F730035EA67 /* ASPVideoPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03406D441F3A6F730035EA67 /* ASPVideoPlayer.swift */; };
 		03406D471F3A6F980035EA67 /* ASPVideoPlayerControls.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03406D461F3A6F980035EA67 /* ASPVideoPlayerControls.swift */; };
@@ -104,6 +105,7 @@
 /* Begin PBXFileReference section */
 		032A153A1F3CE47A00184BA9 /* Movask-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Movask-Bridging-Header.h"; sourceTree = "<group>"; };
 		032A15411F3CFABF00184BA9 /* UILabel+Size.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UILabel+Size.swift"; sourceTree = "<group>"; };
+		033FB5341F3E2682009D6920 /* UIViewController+Keyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Keyboard.swift"; sourceTree = "<group>"; };
 		03406D421F3A6F5A0035EA67 /* AnimationForwarder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationForwarder.swift; sourceTree = "<group>"; };
 		03406D441F3A6F730035EA67 /* ASPVideoPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASPVideoPlayer.swift; sourceTree = "<group>"; };
 		03406D461F3A6F980035EA67 /* ASPVideoPlayerControls.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASPVideoPlayerControls.swift; sourceTree = "<group>"; };
@@ -315,6 +317,7 @@
 				032A15411F3CFABF00184BA9 /* UILabel+Size.swift */,
 				04256C321F3C577F006C86B1 /* String+TextHeight.swift */,
 				04256C341F3CA2B2006C86B1 /* Array+Rearrange.swift */,
+				033FB5341F3E2682009D6920 /* UIViewController+Keyboard.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -726,6 +729,7 @@
 				03F5681B1F338165000DBFDC /* AuthorizationManager.swift in Sources */,
 				03406D531F3A70490035EA67 /* Scrubber.swift in Sources */,
 				032A15421F3CFABF00184BA9 /* UILabel+Size.swift in Sources */,
+				033FB5351F3E2682009D6920 /* UIViewController+Keyboard.swift in Sources */,
 				03F568211F3386B8000DBFDC /* String+Size.swift in Sources */,
 				03E4AD791F34F21A00EAA33A /* CollectionViewCenteredLayout.swift in Sources */,
 				03F5681F1F3383FB000DBFDC /* Token.swift in Sources */,

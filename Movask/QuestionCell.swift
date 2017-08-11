@@ -34,7 +34,7 @@ class QuestionCell: UICollectionViewCell, QuestionCellHandler {
     
     // Sizes
     
-    let heightQuestionViewWithoutLabel: CGFloat = 43.0
+    let heightQuestionViewWithoutLabel: CGFloat = 45.0
     
     static var cellHeight: CGFloat {
         if UIDevice.current.userInterfaceIdiom == .phone {
@@ -62,7 +62,7 @@ class QuestionCell: UICollectionViewCell, QuestionCellHandler {
         
         // Get question height
         
-        let height = question.question.textHeightWithFont(size: 15.0, name: "Solomon-Sans-SemiBold", viewWidth: bounds.width, offset: 0.0)
+        let height = question.question.textHeightWithFont(size: 16.0, name: "Solomon-Sans-SemiBold", viewWidth: bounds.width, offset: 0.0)
         
         heightQuestionLabel.constant = height
         heightQuestionView.constant = height + heightQuestionViewWithoutLabel

@@ -166,6 +166,15 @@ class QuizPhoneVC: BasicVC {
         videoView.addSubview(replayButton!)
     }
     
+    func visibleCellButtonsEnabled(_ enabled: Bool) {
+        
+        for cell in questionsCollection.visibleCells {
+            if let questionCell = cell as? QuestionCellHandler {
+                questionCell.buttonsEnabled(enabled)
+            }
+        }
+    }
+    
     // MARK: - Movie actions
     
     func openMovie() {
@@ -241,6 +250,8 @@ class QuizPhoneVC: BasicVC {
                          QuestionTest(type: .checkmarks),
                          QuestionTest(type: .radiobuttons),
                          QuestionTest(type: .checkmarks)]
+        
+        questionsCollection.reloadData()
     }
     
     // MARK: - Actions
@@ -255,6 +266,7 @@ class QuizPhoneVC: BasicVC {
             self.startView.alpha = 0.0
             
             self.isQuizStarted = true
+            self.visibleCellButtonsEnabled(true)
             self.videoPlayer.unhideControls()
             self.togglePlay()
         }
@@ -265,16 +277,10 @@ class QuizPhoneVC: BasicVC {
     }
     
     func nextQuestion() {
-        
-        guard isQuizStarted else { return }
-        
         scrollToQuestion(index: pageNumber + 1)
     }
     
     func skipQuestion() {
-        
-        guard isQuizStarted else { return }
-        
         scrollToQuestion(index: pageNumber + 1)
     }
 }
@@ -307,6 +313,10 @@ extension QuizPhoneVC: UICollectionViewDataSource, UICollectionViewDelegate, UIC
             
             (cell! as! GapQuestionCell).setWithQuestion(question)
         }
+        
+        // Set buttons
+        
+        cell.buttonsEnabled(isQuizStarted)
 
         // Set handlers
         
@@ -332,11 +342,12 @@ extension QuizPhoneVC: UICollectionViewDataSource, UICollectionViewDelegate, UIC
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        print(view.frame.size.width)
+        
         return CGSize(width: (view.frame.size.width - collectionLineSpacing * 2 - (collectionInsets * 2 - 6)), height: QuestionCell.cellHeight)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        
         return collectionLineSpacing
     }
 }

@@ -9,6 +9,9 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
+        <array key="Solomon-Sans-Bold.otf">
+            <string>Solomon-Sans-Bold</string>
+        </array>
         <array key="Solomon-Sans-SemiBold.otf">
             <string>Solomon-Sans-SemiBold</string>
         </array>
@@ -30,20 +33,20 @@
                                 <rect key="frame" x="0.0" y="0.0" width="310" height="58"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tick the correct answer to confirm" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="IIk-DU-9N9">
-                                        <rect key="frame" x="14" y="11" width="282" height="21"/>
+                                        <rect key="frame" x="14" y="31" width="282" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="21" id="Ar8-B0-tds"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="Solomon-Sans-SemiBold" family="Solomon Sans SemiBold" pointSize="13"/>
+                                        <fontDescription key="fontDescription" name="Solomon-Sans-Bold" family="Solomon Sans Bold" pointSize="13"/>
                                         <color key="textColor" red="0.12156862745098039" green="0.41960784313725491" blue="0.23921568627450979" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tick the correct answer to confirm " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Iu0-wo-s5h">
-                                        <rect key="frame" x="14.5" y="35" width="282" height="15"/>
+                                        <rect key="frame" x="14" y="13" width="282" height="15"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="15" id="BFZ-bk-X4r"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="Solomon-Sans-SemiBold" family="Solomon Sans SemiBold" pointSize="15"/>
+                                        <fontDescription key="fontDescription" name="Solomon-Sans-SemiBold" family="Solomon Sans SemiBold" pointSize="16"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -51,12 +54,12 @@
                                 <color key="backgroundColor" red="0.17254901959999999" green="0.70588235290000001" blue="0.38823529410000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="58" id="73Q-q1-KgL"/>
-                                    <constraint firstItem="Iu0-wo-s5h" firstAttribute="top" secondItem="IIk-DU-9N9" secondAttribute="bottom" constant="3" id="7a7-11-T4h"/>
                                     <constraint firstItem="Iu0-wo-s5h" firstAttribute="centerX" secondItem="IIk-DU-9N9" secondAttribute="centerX" id="MhY-a2-QEX"/>
                                     <constraint firstAttribute="trailing" secondItem="IIk-DU-9N9" secondAttribute="trailing" constant="14" id="RF0-AV-fGn"/>
+                                    <constraint firstItem="Iu0-wo-s5h" firstAttribute="top" secondItem="BIy-cw-2au" secondAttribute="top" constant="13" id="SGt-Of-63m"/>
                                     <constraint firstItem="Iu0-wo-s5h" firstAttribute="width" secondItem="IIk-DU-9N9" secondAttribute="width" id="YnJ-rC-91T"/>
                                     <constraint firstItem="IIk-DU-9N9" firstAttribute="leading" secondItem="BIy-cw-2au" secondAttribute="leading" constant="14" id="aSu-Xz-xpd"/>
-                                    <constraint firstItem="IIk-DU-9N9" firstAttribute="top" secondItem="BIy-cw-2au" secondAttribute="top" constant="11" id="yqM-6i-G8C"/>
+                                    <constraint firstItem="IIk-DU-9N9" firstAttribute="top" secondItem="Iu0-wo-s5h" secondAttribute="bottom" constant="3" id="poi-Hw-Bcp"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m2m-Ez-k52">
