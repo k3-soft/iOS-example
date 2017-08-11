@@ -50,15 +50,22 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" name="Solomon-Sans-SemiBold" family="Solomon Sans SemiBold" pointSize="18"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                        <variation key="heightClass=regular-widthClass=regular">
+                                            <fontDescription key="fontDescription" name="Solomon-Sans-Bold" family="Solomon Sans Bold" pointSize="18"/>
+                                        </variation>
                                     </textView>
                                 </subviews>
                                 <color key="backgroundColor" red="0.17254901959999999" green="0.70588235290000001" blue="0.38823529410000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstItem="W88-yH-jMx" firstAttribute="top" secondItem="p9s-xf-rbX" secondAttribute="bottom" constant="3" id="BVe-5m-7G0"/>
+                                    <constraint firstItem="W88-yH-jMx" firstAttribute="top" secondItem="p9s-xf-rbX" secondAttribute="bottom" constant="3" id="BVe-5m-7G0">
+                                        <variation key="heightClass=regular-widthClass=regular" constant="0.0"/>
+                                    </constraint>
                                     <constraint firstAttribute="trailing" secondItem="W88-yH-jMx" secondAttribute="trailing" constant="14" id="NUq-tN-NmX"/>
                                     <constraint firstItem="p9s-xf-rbX" firstAttribute="centerX" secondItem="W88-yH-jMx" secondAttribute="centerX" id="Vz8-f2-fdS"/>
                                     <constraint firstItem="p9s-xf-rbX" firstAttribute="leading" secondItem="k52-1e-pVV" secondAttribute="leading" constant="10" id="iSz-2C-zf5"/>
-                                    <constraint firstItem="p9s-xf-rbX" firstAttribute="top" secondItem="k52-1e-pVV" secondAttribute="top" constant="8" id="mlm-QA-ABe"/>
+                                    <constraint firstItem="p9s-xf-rbX" firstAttribute="top" secondItem="k52-1e-pVV" secondAttribute="top" constant="8" id="mlm-QA-ABe">
+                                        <variation key="heightClass=regular-widthClass=regular" constant="16"/>
+                                    </constraint>
                                     <constraint firstAttribute="trailing" secondItem="p9s-xf-rbX" secondAttribute="trailing" constant="10" id="omN-xa-Kug"/>
                                     <constraint firstItem="W88-yH-jMx" firstAttribute="leading" secondItem="k52-1e-pVV" secondAttribute="leading" constant="14" id="udf-FO-P9c"/>
                                     <constraint firstAttribute="height" constant="65" id="y7G-Ph-EWO"/>

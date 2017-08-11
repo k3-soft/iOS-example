@@ -94,11 +94,29 @@ class QuizVC: BasicVC {
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         
+        // Resize cells content
+        for cell in self.questionsCollection.visibleCells {
+            if let questionCell = cell as? QuestionCell {
+                questionCell.reload(viewWidth: size.width)
+            } else if let questionGapCell = cell as? GapQuestionCell {
+                questionGapCell.reloadStart(viewWidth: size.width)
+            }
+        }
+        
         // Scroll to current question when rotate
         coordinator.animate(alongsideTransition: { [unowned self] _ in
+            
             self.replayButton?.frame = self.replayButtonFrame
+
             self.questionsCollection.scrollToItem(at: IndexPath(item: self.pageNumber, section: 0), at: .centeredHorizontally, animated: true)
-            }, completion: nil)
+            
+        }, completion: { _ in
+            for cell in self.questionsCollection.visibleCells {
+                if let questionGapCell = cell as? GapQuestionCell {
+                    questionGapCell.reloadEnd()
+                }
+            }
+        })
     }
     
     // MARK: - Views settings
@@ -197,8 +215,8 @@ class QuizVC: BasicVC {
     
     func loadQuestions() {
         
-        questionsList = [QuestionTest(type: .checkmarks),
-                         QuestionTest(type: .gaps),
+        questionsList = [QuestionTest(type: .gaps),
+                         QuestionTest(type: .checkmarks),
                          QuestionTest(type: .radiobuttons),
                          QuestionTest(type: .checkmarks),
                          QuestionTest(type: .radiobuttons),

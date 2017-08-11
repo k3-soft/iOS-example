@@ -44,11 +44,59 @@ class GapQuestionCell: UICollectionViewCell, QuestionCellHandler {
         if UIDevice.current.userInterfaceIdiom == .phone {
             return 435.0
         } else {
-            return 435.0
+            return 453.0
+        }
+    }
+    
+    var cellSideInsets: CGFloat {
+        if UIDevice.current.userInterfaceIdiom == .phone {
+            return 44.0
+        } else {
+            return 260.0
+        }
+    }
+    
+    var textViewInsets: CGFloat {
+        if UIDevice.current.userInterfaceIdiom == .phone {
+            return 14.0 * 2
+        } else {
+            return 20.0 * 2
+        }
+    }
+    
+    // Font
+    
+    var textFieldsFont: UIFont {
+        if UIDevice.current.userInterfaceIdiom == .phone {
+            return UIFont(name: "Solomon-Sans-SemiBold", size: 17.0)!
+        } else {
+            return UIFont(name: "Solomon-Sans-Bold", size: 17.0)!
         }
     }
     
     // MARK: - Set cell
+    
+    func reloadStart(viewWidth: CGFloat) {
+        
+        setViewHeight(cellWidth: viewWidth - cellSideInsets)
+        
+        for textField in textFields {
+            textField.alpha = 0.0
+        }
+    }
+    
+    func reloadEnd() {
+        
+        (0 ..< gapRanges.count).forEach { (index) in
+            var frame = boundingRectForCharacterRange(gapRanges[index])
+            frame.origin.y += 5
+            textFields[index].frame = frame
+            
+            UIView.animate(withDuration: 0.2, animations: {
+                self.textFields[index].alpha = 1.0
+            })
+        }
+    }
     
     func setWithQuestion(_ question: QuestionTest) {
         
@@ -58,18 +106,21 @@ class GapQuestionCell: UICollectionViewCell, QuestionCellHandler {
         
         buildGap()
         getRangesOfGaps()
-        
-        let height = questionTextView.sizeThatFits(CGSize(width: bounds.width - 14.0 * 2, height: CGFloat.greatestFiniteMagnitude)).height
-        
-        heightQuestionLabel.constant = height
-        heightQuestionView.constant = height + heightQuestionViewWithoutLabel
-        layoutIfNeeded()
-        
+        setViewHeight(cellWidth: bounds.width)
         addTextFields()
         
         // Set instruction
         
         instructionLabel.text = question.type.instruction
+    }
+    
+    func setViewHeight(cellWidth: CGFloat) {
+        
+        let height = questionTextView.sizeThatFits(CGSize(width: cellWidth - textViewInsets, height: CGFloat.greatestFiniteMagnitude)).height
+        
+        heightQuestionLabel.constant = height
+        heightQuestionView.constant = height + heightQuestionViewWithoutLabel
+        layoutIfNeeded()
     }
     
     func buildGap() {
@@ -148,7 +199,7 @@ class GapQuestionCell: UICollectionViewCell, QuestionCellHandler {
             
             // Create text field
             let textField = UITextField(frame: frame)
-            textField.font = UIFont(name: "Solomon-Sans-SemiBold", size: 17.0)
+            textField.font = textFieldsFont
             textField.textAlignment = .center
             textField.textColor = UIColor.white
             textField.clearsOnBeginEditing = true

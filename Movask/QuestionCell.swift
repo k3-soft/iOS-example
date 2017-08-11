@@ -44,6 +44,24 @@ class QuestionCell: UICollectionViewCell, QuestionCellHandler {
         }
     }
     
+    var cellSideInsets: CGFloat {
+        if UIDevice.current.userInterfaceIdiom == .phone {
+            return 44.0
+        } else {
+            return 260.0
+        }
+    }
+    
+    // Font
+    
+    var font: (size: CGFloat, name: String) {
+        if UIDevice.current.userInterfaceIdiom == .phone {
+            return (16.0, "Solomon-Sans-SemiBold")
+        } else {
+            return (18.0, "Solomon-Sans-Bold")
+        }
+    }
+    
     // TableView
     
     @IBOutlet weak var answersTableView: UITableView!
@@ -53,24 +71,32 @@ class QuestionCell: UICollectionViewCell, QuestionCellHandler {
     let gapCellIdentifier = "AnswerGapCell"
     
     // MARK: - Set cell
+    
+    func reload(viewWidth: CGFloat) {
+        setLabelHeight(cellWidth: viewWidth - cellSideInsets)
+    }
 
     func setWithQuestion(_ question: QuestionTest) {
         
         self.question = question
         
         setAnswersTableView()
-        
-        // Get question height
-        
-        let height = question.question.textHeightWithFont(size: 16.0, name: "Solomon-Sans-SemiBold", viewWidth: bounds.width, offset: 0.0)
-        
-        heightQuestionLabel.constant = height
-        heightQuestionView.constant = height + heightQuestionViewWithoutLabel
+        setLabelHeight(cellWidth: bounds.width)
         
         // Set labels
         
         questionLabel.text = question.question
         instructionLabel.text = question.type.instruction
+    }
+    
+    func setLabelHeight(cellWidth: CGFloat) {
+        
+        guard question != nil else { return }
+        
+        let height = question!.question.textHeightWithFont(size: font.size, name: font.name, viewWidth: cellWidth, offset: 0.0)
+        
+        heightQuestionLabel.constant = height
+        heightQuestionView.constant = height + heightQuestionViewWithoutLabel
     }
     
     func setAnswersTableView() {
