@@ -244,8 +244,8 @@ class QuizPhoneVC: BasicVC {
     
     func loadQuestions() {
         
-        questionsList = [QuestionTest(type: .gaps),
-                         QuestionTest(type: .checkmarks),
+        questionsList = [QuestionTest(type: .checkmarks),
+                         QuestionTest(type: .gaps),
                          QuestionTest(type: .radiobuttons),
                          QuestionTest(type: .checkmarks),
                          QuestionTest(type: .radiobuttons),

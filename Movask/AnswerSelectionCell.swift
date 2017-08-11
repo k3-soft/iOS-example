@@ -62,6 +62,8 @@ class AnswerSelectionCell: UITableViewCell {
     
     @IBAction func ckeckboxDidTap(_ sender: UIButton) {
         
+        guard let vc = viewController() as? QuizPhoneVC, vc.isQuizStarted else { return }
+        
         checked = !checked
         answer?.isSelected = checked
         
