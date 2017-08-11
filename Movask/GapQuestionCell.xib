@@ -38,30 +38,26 @@
                                         <color key="textColor" red="0.1215686275" green="0.41960784309999999" blue="0.23921568630000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Some text _________ text text texttext" translatesAutoresizingMaskIntoConstraints="NO" id="VSA-CN-vgz">
-                                        <rect key="frame" x="10" y="32" width="290" height="21"/>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="Some text" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="p9s-xf-rbX">
+                                        <rect key="frame" x="10" y="37" width="290" height="23"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="21" id="T3H-34-G8f"/>
+                                            <constraint firstAttribute="height" constant="23" id="UPB-oV-uda"/>
                                         </constraints>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <fontDescription key="fontDescription" name="Solomon-Sans-SemiBold" family="Solomon Sans SemiBold" pointSize="15"/>
+                                        <fontDescription key="fontDescription" name="Solomon-Sans-SemiBold" family="Solomon Sans SemiBold" pointSize="17"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                        <connections>
-                                            <outlet property="delegate" destination="gTV-IL-0wX" id="qds-UV-232"/>
-                                        </connections>
                                     </textView>
                                 </subviews>
                                 <color key="backgroundColor" red="0.17254901959999999" green="0.70588235290000001" blue="0.38823529410000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="W88-yH-jMx" firstAttribute="top" secondItem="k52-1e-pVV" secondAttribute="top" constant="11" id="5oM-Qi-tFk"/>
-                                    <constraint firstItem="VSA-CN-vgz" firstAttribute="leading" secondItem="k52-1e-pVV" secondAttribute="leading" constant="10" id="L1L-WB-L70"/>
-                                    <constraint firstItem="VSA-CN-vgz" firstAttribute="centerX" secondItem="W88-yH-jMx" secondAttribute="centerX" id="Ld2-OM-pS5"/>
+                                    <constraint firstItem="p9s-xf-rbX" firstAttribute="top" secondItem="W88-yH-jMx" secondAttribute="bottom" constant="5" id="Jva-xY-yKN"/>
                                     <constraint firstAttribute="trailing" secondItem="W88-yH-jMx" secondAttribute="trailing" constant="14" id="NUq-tN-NmX"/>
-                                    <constraint firstItem="VSA-CN-vgz" firstAttribute="top" secondItem="W88-yH-jMx" secondAttribute="bottom" id="d7P-I9-RTT"/>
+                                    <constraint firstItem="p9s-xf-rbX" firstAttribute="centerX" secondItem="W88-yH-jMx" secondAttribute="centerX" id="Vz8-f2-fdS"/>
+                                    <constraint firstItem="p9s-xf-rbX" firstAttribute="leading" secondItem="k52-1e-pVV" secondAttribute="leading" constant="10" id="iSz-2C-zf5"/>
+                                    <constraint firstAttribute="trailing" secondItem="p9s-xf-rbX" secondAttribute="trailing" constant="10" id="omN-xa-Kug"/>
                                     <constraint firstItem="W88-yH-jMx" firstAttribute="leading" secondItem="k52-1e-pVV" secondAttribute="leading" constant="14" id="udf-FO-P9c"/>
-                                    <constraint firstAttribute="trailing" secondItem="VSA-CN-vgz" secondAttribute="trailing" constant="10" id="w2W-ya-Ao7"/>
                                     <constraint firstAttribute="height" constant="65" id="y7G-Ph-EWO"/>
                                 </constraints>
                             </view>
@@ -150,10 +146,11 @@
             <size key="customSize" width="262" height="428"/>
             <connections>
                 <outlet property="confirmButton" destination="cKW-DM-eiX" id="T48-9X-sQZ"/>
+                <outlet property="heightQuestionLabel" destination="UPB-oV-uda" id="Qgc-d2-W00"/>
                 <outlet property="heightQuestionView" destination="y7G-Ph-EWO" id="fVR-pn-IIc"/>
-                <outlet property="heightTextView" destination="T3H-34-G8f" id="W4Z-Fz-c8O"/>
                 <outlet property="instructionLabel" destination="W88-yH-jMx" id="im3-aK-tsj"/>
-                <outlet property="questionTextView" destination="VSA-CN-vgz" id="uU9-59-rEg"/>
+                <outlet property="questionLabel" destination="p9s-xf-rbX" id="5qB-ud-esC"/>
+                <outlet property="questionView" destination="k52-1e-pVV" id="jeD-bx-bKY"/>
                 <outlet property="skipButton" destination="4uf-3N-sBp" id="fwG-yv-s52"/>
             </connections>
             <point key="canvasLocation" x="43" y="66.5"/>

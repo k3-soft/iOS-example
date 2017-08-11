@@ -22,9 +22,9 @@ class QuestionTest {
     
     // Gap
     
-    let gapAnswer = "Is a period shortly after sunrise or before sunset during which daylight is redder and softer than when the Sun is higher in the sky"
+    let gapAnswer = "Is a period shortly, after sunrise or before sunset during which daylight is redder and softer than when the Sun is higher in the sky and softer than when the Sun is higher in the sky?"
     
-    let missingWordsIndexes = [5, 15]
+    let missingWordsIndexes = [3, 9, 21, 27]
     
     var missingWords = [String]()
     
