@@ -100,6 +100,7 @@
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5QM-7w-yCC" customClass="ASPVideoPlayer" customModule="Movask" customModuleProvider="target">
                                                             <rect key="frame" x="0.0" y="0.0" width="341" height="341"/>
                                                             <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         </view>
                                                         <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="3m3-YM-U88">
                                                             <rect key="frame" x="152.5" y="152" width="37" height="37"/>
@@ -250,7 +251,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cactus or succulent? Flower of fruit?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L6h-4g-M1e">
-                                                    <rect key="frame" x="40" y="42" width="296" height="37"/>
+                                                    <rect key="frame" x="40" y="47" width="296" height="37"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="37" id="8h7-27-CUw"/>
                                                     </constraints>
@@ -275,10 +276,10 @@
                                                 <constraint firstItem="L6h-4g-M1e" firstAttribute="centerX" secondItem="bLf-Xc-bOb" secondAttribute="centerX" id="4s8-yc-k2J"/>
                                                 <constraint firstItem="bLf-Xc-bOb" firstAttribute="leading" secondItem="lTW-oD-BtT" secondAttribute="trailing" constant="2" id="Dd8-oz-WV6"/>
                                                 <constraint firstAttribute="bottom" secondItem="lTW-oD-BtT" secondAttribute="bottom" constant="19" id="V0Q-o4-rJd"/>
-                                                <constraint firstItem="L6h-4g-M1e" firstAttribute="top" secondItem="bLf-Xc-bOb" secondAttribute="bottom" constant="-8" id="VGL-ZW-kzh"/>
+                                                <constraint firstItem="L6h-4g-M1e" firstAttribute="top" secondItem="bLf-Xc-bOb" secondAttribute="bottom" constant="-3" id="VGL-ZW-kzh"/>
                                                 <constraint firstAttribute="trailing" secondItem="bLf-Xc-bOb" secondAttribute="trailing" constant="39" id="aUQ-Kt-9dJ"/>
                                                 <constraint firstAttribute="height" constant="84" id="eBN-Jh-1JV"/>
-                                                <constraint firstAttribute="bottom" secondItem="L6h-4g-M1e" secondAttribute="bottom" constant="5" id="gUy-Ki-uNp"/>
+                                                <constraint firstAttribute="bottom" secondItem="L6h-4g-M1e" secondAttribute="bottom" id="gUy-Ki-uNp"/>
                                                 <constraint firstItem="lTW-oD-BtT" firstAttribute="leading" secondItem="pK1-QD-zF7" secondAttribute="leading" constant="14" id="nEw-4B-X3I"/>
                                                 <constraint firstItem="L6h-4g-M1e" firstAttribute="width" secondItem="bLf-Xc-bOb" secondAttribute="width" id="pvc-QG-bQG"/>
                                             </constraints>

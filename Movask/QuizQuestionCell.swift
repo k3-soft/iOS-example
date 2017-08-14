@@ -52,7 +52,7 @@ class QuizQuestionCell: UICollectionViewCell {
     override func prepareForReuse() {
         question = nil
         questionTitleTextView.text = ""
-        questionOptionsView.answerVariants = [AnswerTest(title: "")]
+        questionOptionsView.answerVariants = [AnswerTest(title: "", isCorrect: false)]
         questionOptionsView.answersCollectionViewView.reloadData()
         questionContainerHeight.constant = 110.0
         questionOptionsViewHeight.constant = 76.0

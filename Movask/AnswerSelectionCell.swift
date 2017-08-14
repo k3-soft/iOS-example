@@ -26,6 +26,12 @@ class AnswerSelectionCell: UITableViewCell {
     weak var delegate: AnswerSelectionCellDelegate?
     var checked = false
     
+    var isActive = true {
+        didSet {
+            checkboxButton.isEnabled = isActive
+        }
+    }
+    
     var answer: AnswerTest?
     
     // Sizes
@@ -45,7 +51,7 @@ class AnswerSelectionCell: UITableViewCell {
         checked = false
     }
     
-    func setWithAnswer(_ answer: AnswerTest) {
+    func setWithAnswer(_ answer: AnswerTest, showResults: Bool) {
         
         self.answer = answer
         
@@ -56,6 +62,15 @@ class AnswerSelectionCell: UITableViewCell {
         heightAnswerLabel.constant = height
         answerLabel.text = answer.title
         
+        // Set results
+        
+        if showResults {
+            setResults()
+        }
+    }
+    
+    func setResults() {
+        // Need to override
     }
     
     // MARK: - Actions

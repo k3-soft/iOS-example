@@ -15,10 +15,20 @@ class QuestionTest {
     var id = 1
     var question = "What is the golden hour?"
     
-    var answers = [AnswerTest(title: "The last hour before sunset"),
-                   AnswerTest(title: "The hour when shadows get really long ang light very red"),
-                   AnswerTest(title: "The hour after sunrize"),
-                   AnswerTest(title: "Is a period shortly after sunrise or before sunset during which daylight is redder and softer than when the Sun is higher in the sky")]
+    var answers = [AnswerTest(title: "The last hour before sunset",
+                              isCorrect: false),
+                   AnswerTest(title: "The hour when shadows get really long ang light very red",
+                              isCorrect: true),
+                   AnswerTest(title: "The hour after sunrize",
+                              isCorrect: true),
+                   AnswerTest(title: "Is a period shortly after sunrise or before sunset during which daylight is redder and softer than when the Sun is higher in the sky",
+                              isCorrect: true)]
+    
+    var correctAnswersIndexes = [2, 3, 4]
+    var oneCorrectAnswerIndex = 4
+    
+    var userAnswersIndexes = [Int]()
+    var oneUserAnswer: Int?
     
     // Gap
     
@@ -27,6 +37,7 @@ class QuestionTest {
     let missingWordsIndexes = [2, 12, 18, 28, 42]
     
     var missingWords = [String]()
+    var userWords = [String]()
     
     init(type: QuestionType) {
         self.type = type

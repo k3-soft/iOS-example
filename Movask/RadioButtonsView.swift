@@ -69,7 +69,7 @@ class RadioButtonsView: NibView {
     }
     
     func addAnswerVariant() {
-        let newAnswer = AnswerTest(title: "")
+        let newAnswer = AnswerTest(title: "", isCorrect: false)
         answerVariants.append(newAnswer)
         
         self.answersCollectionViewView.insertItems(at: [IndexPath(row: self.answerVariants.count-1, section: 0)])

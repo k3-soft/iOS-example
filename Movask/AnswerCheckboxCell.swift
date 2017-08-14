@@ -10,14 +10,59 @@ import UIKit
 
 class AnswerCheckboxCell: AnswerSelectionCell {
     
+    let emptyCheckbox = UIImage(named: "CheckEmptyGray")!
+    let grayCheckbox = UIImage(named: "CheckGray")!
+    let greenCheckbox = UIImage(named: "CheckGreen")!
+    let errorCheckbox = UIImage(named: "CheckErrorOrange")!
+    
     override var checked: Bool {
         didSet {
             if checked {
-                checkboxButton.setImage(UIImage(named: "CheckGray"), for: .normal)
+                checkboxButton.setImage(grayCheckbox, for: .normal)
             } else {
-                checkboxButton.setImage(UIImage(named: "CheckEmptyGray"), for: .normal)
+                checkboxButton.setImage(emptyCheckbox, for: .normal)
             }
         }
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        checkboxButton.setImage(emptyCheckbox, for: .normal)
+    }
+    
+    override func setResults() {
+        super.setResults()
+        
+        guard let currentAnswer = answer else { return }
+        
+        if currentAnswer.isSelected, currentAnswer.isCorrect {
+            setAsAnsweredAndCorrect()
+            
+        } else if currentAnswer.isSelected, !currentAnswer.isCorrect {
+            setAsAnswerdAndWrong()
+            
+        } else if !currentAnswer.isSelected, currentAnswer.isCorrect {
+            setAsNotAnsweredAndCorrect()
+            
+        } else {
+            setAsEmpty()
+        }
+    }
+    
+    func setAsAnsweredAndCorrect() {
+        checkboxButton.setImage(greenCheckbox, for: .normal)
+    }
+    
+    func setAsAnswerdAndWrong() {
+        checkboxButton.setImage(errorCheckbox, for: .normal)
+    }
+    
+    func setAsNotAnsweredAndCorrect() {
+        checkboxButton.setImage(grayCheckbox, for: .normal)
+    }
+    
+    func setAsEmpty() {
+        checkboxButton.setImage(emptyCheckbox, for: .normal)
     }
 }
 

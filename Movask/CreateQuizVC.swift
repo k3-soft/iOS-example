@@ -29,7 +29,9 @@ class CreateQuizVC: BasicVC {
     func defaultQuestion() -> QuestionTest {
         let qt = QuestionTest(type: .radiobuttons)
         qt.question = ""
-        qt.answers = [AnswerTest(title: "answer1"), AnswerTest(title: "answer2"), AnswerTest(title: "answer3answer3answer3answer3answer3answer3answer3answer3answer3answer3answer3answer3answer3answer3answer3answer3answer3answer3answer3answer3answer3answ")]
+        qt.answers = [AnswerTest(title: "answer1", isCorrect: true),
+                      AnswerTest(title: "answer2", isCorrect: false),
+                      AnswerTest(title: "answer3answer3answer3answer3answer3answer3answer3answer3answer3answer3answer3answer3answer3answer3answer3answer3answer3answer3answer3answer3answer3answ", isCorrect: false)]
         return qt
     }
     

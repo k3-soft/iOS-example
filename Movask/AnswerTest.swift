@@ -11,11 +11,13 @@ import Foundation
 class AnswerTest {
     
     var title: String
+    var isCorrect: Bool
     
     var isSelected = false
     
-    init(title: String) {
+    init(title: String, isCorrect: Bool) {
         self.title = title
+        self.isCorrect = isCorrect
     }
 }
 

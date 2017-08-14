@@ -53,7 +53,7 @@ class QuizVC: BasicVC {
     @IBOutlet weak var questionCounterLabel: UILabel!
     
     // Data
-    var quiz = QuizTest()
+    var quiz: QuizTest!
     var questionsList = [QuestionTest]()
     var pageNumber = 0
     
@@ -75,9 +75,12 @@ class QuizVC: BasicVC {
         return 0.0
     }
     
+    // MARK: - VC lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setNavigationBar()
         setCollectionView()
         loadQuestions()
         setQuestionCounter()
@@ -95,7 +98,7 @@ class QuizVC: BasicVC {
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         
         // Resize cells content
-        for cell in self.questionsCollection.visibleCells {
+        for cell in questionsCollection.visibleCells {
             if let questionCell = cell as? QuestionCell {
                 questionCell.reload(viewWidth: size.width)
             } else if let questionGapCell = cell as? GapQuestionCell {
@@ -119,7 +122,22 @@ class QuizVC: BasicVC {
         })
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        videoPlayer.videoPlayerView.stopVideo()
+    }
+    
+    deinit {
+        print("QuizVC was deallocated")
+    }
+    
     // MARK: - Views settings
+    
+    func setNavigationBar() {
+        
+        titleLabel.text = quiz.title
+        descriptionLabel.text = quiz.description
+    }
     
     func setCollectionView() {
         
@@ -141,7 +159,17 @@ class QuizVC: BasicVC {
     
     func scrollToQuestion(index: Int) {
         
-        guard index < questionsList.count else { return }
+        guard index < questionsList.count else {
+            
+            // Last question, show results
+    
+            let quizResultsVC = QuizResultsPhoneVC()
+            quizResultsVC.quiz = quiz
+            quizResultsVC.questionsList = questionsList
+            
+            navigationController?.pushViewController(quizResultsVC, animated: true)
+            return
+        }
         
         questionsCollection.scrollToItem(at: IndexPath(item: index, section: 0), at: .centeredHorizontally, animated: true)
         
@@ -218,7 +246,7 @@ class QuizVC: BasicVC {
         questionsList = [QuestionTest(type: .gaps),
                          QuestionTest(type: .checkmarks),
                          QuestionTest(type: .radiobuttons),
-                         QuestionTest(type: .checkmarks),
+                         QuestionTest(type: .gaps),
                          QuestionTest(type: .radiobuttons),
                          QuestionTest(type: .checkmarks)]
         
