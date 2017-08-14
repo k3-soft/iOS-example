@@ -18,7 +18,7 @@ class RadioCell: UICollectionViewCell {
     @IBOutlet weak var radioTextView: UnderLinedTextView!
     @IBOutlet weak var radioTextViewHeight: NSLayoutConstraint!
     
-    weak var ownerView: RadioButtonsView?
+    weak var ownerView: AnswersView?
     weak var delegate: RadioCellDelegate?
     
     var selectedCell = false {
