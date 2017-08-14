@@ -50,13 +50,8 @@ class QuizQuestionCell: UICollectionViewCell {
     override func prepareForReuse() {
         question = nil
         questionTitleTextView.text = ""
-<<<<<<< HEAD:Movask/QuizQuestionCell.swift
         questionOptionsView.answerVariants = [AnswerTest(title: "", isCorrect: false)]
         questionOptionsView.answersCollectionViewView.reloadData()
-=======
-        questionOptionsView.answerVariants = [AnswerTest(title: "")]
-        questionOptionsView.answersCollectionView.reloadData()
->>>>>>> lvov-dev:Movask/QuizQuestionAnswersCell.swift
         questionContainerHeight.constant = 110.0
         questionOptionsViewHeight.constant = 76.0
     }
