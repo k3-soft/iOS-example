@@ -66,8 +66,7 @@ class QuestionCell: UICollectionViewCell, QuestionCellHandler {
     
     @IBOutlet weak var answersTableView: UITableView!
     
-    let ckeckboxCellIdentifier = "AnswerCheckboxCell"
-    let radiobuttonCellIdentifier = "AnswerRadiobuttonCell"
+    let cellIdentifier = "AnswerSelectionCell"
     
     // MARK: - Set cell
     
@@ -104,12 +103,8 @@ class QuestionCell: UICollectionViewCell, QuestionCellHandler {
         answersTableView.dataSource = self
         answersTableView.contentInset = UIEdgeInsets(top: 10.0, left: 0.0, bottom: 0.0, right: 0.0)
         
-        let cellIdentifiers = [ckeckboxCellIdentifier, radiobuttonCellIdentifier]
-        
-        for identifier in cellIdentifiers {
-            answersTableView.register(UINib(nibName: identifier, bundle: nil),
-                                      forCellReuseIdentifier: identifier)
-        }
+        answersTableView.register(UINib(nibName: cellIdentifier, bundle: nil),
+                                  forCellReuseIdentifier: cellIdentifier)
         
         answersTableView.reloadData()
     }
@@ -142,29 +137,14 @@ extension QuestionCell: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        switch question!.type {
-        case .checkmarks:
-            
-            let cell = tableView.dequeueReusableCell(withIdentifier: ckeckboxCellIdentifier, for: indexPath) as! AnswerCheckboxCell
-            
-            cell.setWithAnswer(question!.answers[indexPath.row], showResults: false)
-            cell.selectionStyle = .none
-            
-            return cell
-            
-        case .radiobuttons:
-            
-            let cell = tableView.dequeueReusableCell(withIdentifier: radiobuttonCellIdentifier, for: indexPath) as! AnswerRadiobuttonCell
-            
-            cell.setWithAnswer(question!.answers[indexPath.row], showResults: false)
-            cell.delegate = self
-            cell.selectionStyle = .none
-            
-            return cell
-            
-        case .gaps:
-            return UITableViewCell()
-        }
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! AnswerSelectionCell
+        
+        cell.type = question?.type
+        cell.setWithAnswer(question!.answers[indexPath.row], showResults: false)
+        cell.delegate = self
+        cell.selectionStyle = .none
+        
+        return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -191,7 +171,7 @@ extension QuestionCell: AnswerSelectionCellDelegate {
             
             // Deselect previous cell
             
-            if  selectedIndex != nil, let cellToDeselect = answersTableView.cellForRow(at: IndexPath(row: selectedIndex!, section: 0)) as? AnswerRadiobuttonCell {
+            if  selectedIndex != nil, let cellToDeselect = answersTableView.cellForRow(at: IndexPath(row: selectedIndex!, section: 0)) as? AnswerSelectionCell {
                 
                 cellToDeselect.checked = false
                 cellToDeselect.answer?.isSelected = false
