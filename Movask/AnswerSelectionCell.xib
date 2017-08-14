@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Solomon-Sans-SemiBold.otf">
+            <string>Solomon-Sans-SemiBold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="AnswerSelectionCell" rowHeight="50" id="KGk-i7-Jjw" customClass="AnswerSelectionCell" customModule="Movask" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="372" height="50"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="372" height="49.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tick the correct answer to confirm" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="yxc-hd-mpc">
+                        <rect key="frame" x="58" y="17" width="291" height="15"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="15" id="6co-8Q-Zgf"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="Solomon-Sans-SemiBold" family="Solomon Sans SemiBold" pointSize="15"/>
+                        <color key="textColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="93M-UT-P00">
+                        <rect key="frame" x="15" y="12" width="25" height="25"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="25" id="bhf-5E-SE8"/>
+                            <constraint firstAttribute="height" constant="25" id="fI0-nt-2Uz"/>
+                        </constraints>
+                        <state key="normal" image="CheckEmptyGray"/>
+                        <connections>
+                            <action selector="ckeckboxDidTap:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="OgY-4J-qKj"/>
+                        </connections>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="yxc-hd-mpc" firstAttribute="centerY" secondItem="93M-UT-P00" secondAttribute="centerY" id="0Cx-D0-q7i"/>
+                    <constraint firstItem="93M-UT-P00" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="2rg-gM-iJz"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="yxc-hd-mpc" secondAttribute="trailing" constant="15" id="Kv7-G8-Zsp"/>
+                    <constraint firstItem="93M-UT-P00" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="Lck-xi-IM7"/>
+                    <constraint firstItem="yxc-hd-mpc" firstAttribute="leading" secondItem="93M-UT-P00" secondAttribute="trailing" constant="18" id="Uuq-sJ-NsO"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="answerLabel" destination="yxc-hd-mpc" id="qbs-fe-g8P"/>
+                <outlet property="checkboxButton" destination="93M-UT-P00" id="fpv-ao-LYQ"/>
+                <outlet property="heightAnswerLabel" destination="6co-8Q-Zgf" id="6Tr-12-Lv6"/>
+            </connections>
+            <point key="canvasLocation" x="60" y="60"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="CheckEmptyGray" width="32" height="32"/>
+    </resources>
+</document>

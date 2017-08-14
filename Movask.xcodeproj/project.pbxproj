@@ -20,6 +20,7 @@
 		033FB54B1F41C3A6009D6920 /* ResultGapQuestionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 033FB5491F41C3A6009D6920 /* ResultGapQuestionCell.swift */; };
 		033FB54C1F41C3A6009D6920 /* ResultGapQuestionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 033FB54A1F41C3A6009D6920 /* ResultGapQuestionCell.xib */; };
 		033FB54F1F422057009D6920 /* GapManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 033FB54E1F422057009D6920 /* GapManager.swift */; };
+		033FB5511F422334009D6920 /* AnswerSelectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 033FB5501F422334009D6920 /* AnswerSelectionCell.xib */; };
 		03406D431F3A6F5A0035EA67 /* AnimationForwarder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03406D421F3A6F5A0035EA67 /* AnimationForwarder.swift */; };
 		03406D451F3A6F730035EA67 /* ASPVideoPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03406D441F3A6F730035EA67 /* ASPVideoPlayer.swift */; };
 		03406D471F3A6F980035EA67 /* ASPVideoPlayerControls.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03406D461F3A6F980035EA67 /* ASPVideoPlayerControls.swift */; };
@@ -29,7 +30,6 @@
 		03406D4F1F3A70150035EA67 /* Math.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03406D4E1F3A70150035EA67 /* Math.swift */; };
 		03406D511F3A702F0035EA67 /* PlayPauseLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03406D501F3A702F0035EA67 /* PlayPauseLayer.swift */; };
 		03406D531F3A70490035EA67 /* Scrubber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03406D521F3A70490035EA67 /* Scrubber.swift */; };
-		03B8CDE11F3882610058ABAC /* AnswerCheckboxCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B8CDDF1F3882610058ABAC /* AnswerCheckboxCell.swift */; };
 		03B8CDE41F3882960058ABAC /* AnswerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B8CDE31F3882960058ABAC /* AnswerTest.swift */; };
 		03B8CDE61F3883B60058ABAC /* QuestionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B8CDE51F3883B60058ABAC /* QuestionType.swift */; };
 		03B8CDEA1F3886CC0058ABAC /* UIButton+Touches.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B8CDE91F3886CC0058ABAC /* UIButton+Touches.swift */; };
@@ -125,6 +125,7 @@
 		033FB5491F41C3A6009D6920 /* ResultGapQuestionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultGapQuestionCell.swift; sourceTree = "<group>"; };
 		033FB54A1F41C3A6009D6920 /* ResultGapQuestionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ResultGapQuestionCell.xib; sourceTree = "<group>"; };
 		033FB54E1F422057009D6920 /* GapManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GapManager.swift; sourceTree = "<group>"; };
+		033FB5501F422334009D6920 /* AnswerSelectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AnswerSelectionCell.xib; sourceTree = "<group>"; };
 		03406D421F3A6F5A0035EA67 /* AnimationForwarder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationForwarder.swift; sourceTree = "<group>"; };
 		03406D441F3A6F730035EA67 /* ASPVideoPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASPVideoPlayer.swift; sourceTree = "<group>"; };
 		03406D461F3A6F980035EA67 /* ASPVideoPlayerControls.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASPVideoPlayerControls.swift; sourceTree = "<group>"; };
@@ -134,7 +135,6 @@
 		03406D4E1F3A70150035EA67 /* Math.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Math.swift; sourceTree = "<group>"; };
 		03406D501F3A702F0035EA67 /* PlayPauseLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayPauseLayer.swift; sourceTree = "<group>"; };
 		03406D521F3A70490035EA67 /* Scrubber.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Scrubber.swift; sourceTree = "<group>"; };
-		03B8CDDF1F3882610058ABAC /* AnswerCheckboxCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnswerCheckboxCell.swift; sourceTree = "<group>"; };
 		03B8CDE31F3882960058ABAC /* AnswerTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnswerTest.swift; sourceTree = "<group>"; };
 		03B8CDE51F3883B60058ABAC /* QuestionType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionType.swift; sourceTree = "<group>"; };
 		03B8CDE91F3886CC0058ABAC /* UIButton+Touches.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIButton+Touches.swift"; sourceTree = "<group>"; };
@@ -515,7 +515,7 @@
 				03F76EA41F3BC21600A15532 /* GapQuestionCell.swift */,
 				03F76EA51F3BC21600A15532 /* GapQuestionCell.xib */,
 				03B8CDEB1F3892F70058ABAC /* AnswerSelectionCell.swift */,
-				03B8CDDF1F3882610058ABAC /* AnswerCheckboxCell.swift */,
+				033FB5501F422334009D6920 /* AnswerSelectionCell.xib */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -670,6 +670,7 @@
 				04256C2F1F39CDD8006C86B1 /* RadioCell.xib in Resources */,
 				03D646F61F326E8F007C206F /* LineSegmentedControl.xib in Resources */,
 				03F568311F33D817000DBFDC /* ScanQRCell.xib in Resources */,
+				033FB5511F422334009D6920 /* AnswerSelectionCell.xib in Resources */,
 				04256C241F3881B5006C86B1 /* QuizHeaderCell.xib in Resources */,
 				03E4AD6E1F34E2D000EAA33A /* QuizPhoneVC.xib in Resources */,
 				03E4ADA91F386B6000EAA33A /* Solomon-Sans-Light.otf in Resources */,
@@ -816,7 +817,6 @@
 				03F5680F1F335527000DBFDC /* APIManager.swift in Sources */,
 				03406D471F3A6F980035EA67 /* ASPVideoPlayerControls.swift in Sources */,
 				03D646FD1F3271F6007C206F /* LibraryVC.swift in Sources */,
-				03B8CDE11F3882610058ABAC /* AnswerCheckboxCell.swift in Sources */,
 				033FB54B1F41C3A6009D6920 /* ResultGapQuestionCell.swift in Sources */,
 				03B8CDE61F3883B60058ABAC /* QuestionType.swift in Sources */,
 				03F568111F335637000DBFDC /* UserDefaultsManager.swift in Sources */,

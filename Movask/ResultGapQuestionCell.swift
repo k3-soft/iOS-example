@@ -24,6 +24,9 @@ class ResultGapQuestionCell: UICollectionViewCell {
     var question: QuestionTest?
     var gapRanges = [NSRange]()
     
+    // Managers
+    let gapManager = GapManager()
+    
     // Input
     var textFields = [UITextField]()
     
@@ -158,70 +161,16 @@ class ResultGapQuestionCell: UICollectionViewCell {
     
     func buildGap() {
         
-        var gapComponents = question!.gapAnswer.components(separatedBy: " ")
-        
         question?.missingWords.removeAll()
         
-        for index in question!.missingWordsIndexes {
-            guard index < gapComponents.count else { continue }
-            
-            let wordToHide: NSString = gapComponents[index] as NSString
-            
-            // Check if word has punctuation mark at the end (we have not replace it with "_")
-            
-            let lastCharacter: NSString = wordToHide.substring(from: wordToHide.length - 1) as NSString
-            var punctuationAtTheEnd = false
-            
-            let punctuationsSet = CharacterSet(charactersIn: "?!,.:;")
-            if lastCharacter.rangeOfCharacter(from: punctuationsSet).location != NSNotFound {
-                punctuationAtTheEnd = true
-            }
-            
-            // Compose hidden word with "_____" and add punctuation mark at the end (if needed)
-            
-            let numberOfLetters = wordToHide.length - (punctuationAtTheEnd ? 1 : 0)
-            var hiddenWord = String(repeatElement("_", count: numberOfLetters))
-            hiddenWord += punctuationAtTheEnd ? lastCharacter as String : ""
-            
-            // Save hidden word without punctuation mark
-            
-            if punctuationAtTheEnd {
-                let wordWithoutPunctuation: NSString = wordToHide.substring(to: wordToHide.length - 1) as NSString
-                question!.missingWords.append(wordWithoutPunctuation as String)
-                
-            } else {
-                question!.missingWords.append(wordToHide as String)
-            }
-            
-            // Replace word for label text
-            
-            gapComponents[index] = hiddenWord
-        }
+        let result = gapManager.buildGap(text: question!.gapAnswer, missingWordsIndexes: question!.missingWordsIndexes)
         
-        questionTextView.text = gapComponents.joined(separator: " ")
+        question!.missingWords = result.missingWords
+        questionTextView.text = result.resultText
     }
     
     func getRangesOfGaps() {
-        
-        let text = questionTextView.text! as NSString
-        var textRange = NSMakeRange(0, text.length)
-        
-        for word in question!.missingWords {
-            
-            // Find next "_" in text
-            
-            let wordLength = word.characters.count
-            let range: NSRange = text.range(of: "_", options: .caseInsensitive, range: textRange)
-            
-            if range.location != NSNotFound {
-                // When it was found - get range of this word
-                let wordRange = NSMakeRange(range.location, wordLength)
-                gapRanges.append(wordRange)
-                
-                // Cut already looked text for next iteration
-                textRange = NSMakeRange(wordRange.location + wordLength, text.length - (wordRange.location + wordLength))
-            }
-        }
+        gapRanges = gapManager.getRangesOfGaps(in: questionTextView, missingWords: question!.missingWords)
     }
     
     func addTextFields() {
@@ -247,13 +196,6 @@ class ResultGapQuestionCell: UICollectionViewCell {
     }
     
     func boundingRectForCharacterRange(_ range: NSRange) -> CGRect {
-        
-        let glyphRange = questionTextView.layoutManager.glyphRange(forCharacterRange: range, actualCharacterRange: nil)
-        
-        if let glyphContainer = questionTextView.layoutManager.textContainer(forGlyphAt: glyphRange.location, effectiveRange: nil) {
-            return questionTextView.layoutManager.boundingRect(forGlyphRange: glyphRange, in: glyphContainer)
-        } else {
-            return .zero
-        }
+        return gapManager.boundingRectForCharacterRange(in: questionTextView, range: range)
     }
 }
