@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -11,7 +11,6 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CollectionsVC" customModule="Movask" customModuleProvider="target">
             <connections>
-                <outlet property="appTitleLabel" destination="GhE-jb-FRW" id="cGm-XO-Prp"/>
                 <outlet property="discoverCollection" destination="T6R-eA-Az6" id="gaW-9H-3uB"/>
                 <outlet property="discoverLabel" destination="xTV-XO-CbA" id="LkX-s0-MFa"/>
                 <outlet property="heightDiscoverCollection" destination="Tr2-lp-6Gf" id="hj7-yR-fUH"/>
@@ -37,13 +36,13 @@
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Discover" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xTV-XO-CbA">
                                     <rect key="frame" x="24" y="0.0" width="93" height="26"/>
                                     <fontDescription key="fontDescription" name="AmericanTypewriter-Bold" family="American Typewriter" pointSize="21"/>
-                                    <color key="textColor" red="0.29019607843137252" green="0.29019607843137252" blue="0.29019607843137252" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="textColor" red="0.60784313725490191" green="0.60784313725490191" blue="0.60784313725490191" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My Library" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8jD-RC-VHX">
                                     <rect key="frame" x="24" y="299" width="123" height="26"/>
                                     <fontDescription key="fontDescription" name="AmericanTypewriter-Bold" family="American Typewriter" pointSize="21"/>
-                                    <color key="textColor" red="0.2901960784" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="textColor" red="0.60784313729999995" green="0.60784313729999995" blue="0.60784313729999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="T6R-eA-Az6">
@@ -82,7 +81,7 @@
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Saved" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mvp-eb-iAS">
                                     <rect key="frame" x="24" y="598" width="63.5" height="26"/>
                                     <fontDescription key="fontDescription" name="AmericanTypewriter-Bold" family="American Typewriter" pointSize="21"/>
-                                    <color key="textColor" red="0.2901960784" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="textColor" red="0.60784313729999995" green="0.60784313729999995" blue="0.60784313729999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="5H7-c6-w6S">
@@ -152,12 +151,6 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2wx-j7-LcE">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="90"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Veduco" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GhE-jb-FRW">
-                            <rect key="frame" x="24" y="44" width="90.5" height="31"/>
-                            <fontDescription key="fontDescription" name="AmericanTypewriter-Bold" family="American Typewriter" pointSize="25"/>
-                            <color key="textColor" red="0.17254901960784313" green="0.70588235294117641" blue="0.38823529411764707" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <nil key="highlightedColor"/>
-                        </label>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CLI-OE-uQN">
                             <rect key="frame" x="24" y="88" width="327" height="2"/>
                             <color key="backgroundColor" red="0.86768321700507611" green="0.86768321700507611" blue="0.86768321700507611" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -181,21 +174,22 @@
                                 <action selector="changeLanguage:" destination="-1" eventType="touchUpInside" id="hXD-gz-2TZ"/>
                             </connections>
                         </button>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LogoText" translatesAutoresizingMaskIntoConstraints="NO" id="qWT-gH-W1h">
+                            <rect key="frame" x="83.5" y="39" width="188" height="51"/>
+                        </imageView>
                     </subviews>
                     <color key="backgroundColor" red="0.93826340419999998" green="0.94755314089999998" blue="0.94755314089999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstItem="CLI-OE-uQN" firstAttribute="leading" secondItem="2wx-j7-LcE" secondAttribute="leading" constant="24" id="Bl2-jM-hIB"/>
                         <constraint firstAttribute="bottom" secondItem="CLI-OE-uQN" secondAttribute="bottom" id="Fht-HN-uWO"/>
                         <constraint firstAttribute="trailing" secondItem="koB-yl-KOf" secondAttribute="trailing" constant="15" id="Jgf-Vg-JhL"/>
+                        <constraint firstItem="qWT-gH-W1h" firstAttribute="centerX" secondItem="2wx-j7-LcE" secondAttribute="centerX" constant="-10" id="MRg-Qs-Mnn"/>
                         <constraint firstAttribute="height" constant="90" id="XJl-ga-3jx">
                             <variation key="heightClass=regular-widthClass=regular" constant="100"/>
                         </constraint>
-                        <constraint firstAttribute="bottom" secondItem="GhE-jb-FRW" secondAttribute="bottom" constant="15" id="g9a-hl-v2v"/>
-                        <constraint firstItem="koB-yl-KOf" firstAttribute="centerY" secondItem="GhE-jb-FRW" secondAttribute="centerY" id="hQr-hM-dhE"/>
+                        <constraint firstItem="CLI-OE-uQN" firstAttribute="top" secondItem="koB-yl-KOf" secondAttribute="bottom" constant="1.5" id="cXr-tp-BVI"/>
+                        <constraint firstAttribute="bottom" secondItem="qWT-gH-W1h" secondAttribute="bottom" id="igl-PF-c70"/>
                         <constraint firstAttribute="trailing" secondItem="CLI-OE-uQN" secondAttribute="trailing" constant="24" id="vSw-SB-70l"/>
-                        <constraint firstItem="GhE-jb-FRW" firstAttribute="leading" secondItem="2wx-j7-LcE" secondAttribute="leading" constant="24" id="vb7-X5-YU1">
-                            <variation key="heightClass=regular-widthClass=regular" constant="40"/>
-                        </constraint>
                     </constraints>
                 </view>
             </subviews>
@@ -216,5 +210,6 @@
     </objects>
     <resources>
         <image name="EarthGray" width="32" height="32"/>
+        <image name="LogoText" width="188" height="51"/>
     </resources>
 </document>

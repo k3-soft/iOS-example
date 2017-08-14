@@ -22,9 +22,9 @@ class QuestionTest {
     
     // Gap
     
-    let gapAnswer = "Is a period shortly, after sunrise or before sunset during which daylight is redder and softer than when the Sun is higher in the sky and softer than when the Sun is higher in the sky?"
+    let gapAnswer = "Sunset or sundown is the daily disappearance of the Sun below the horizon as a result of Earth's rotation. The Sun will set exactly due west at the equator on the spring and fall equinoxes, each of which occurs only once a year."
     
-    let missingWordsIndexes = [3, 9, 21, 27]
+    let missingWordsIndexes = [2, 12, 18, 28, 42]
     
     var missingWords = [String]()
     
