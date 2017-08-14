@@ -48,9 +48,9 @@
             </constraints>
             <size key="customSize" width="397" height="36"/>
             <connections>
-                <outlet property="radioImage" destination="B78-02-drq" id="t5Z-UG-mUu"/>
-                <outlet property="radioTextView" destination="gKY-3V-nQB" id="M6x-wr-c0d"/>
-                <outlet property="radioTextViewHeight" destination="c0L-D4-lDT" id="WAm-QW-vZ5"/>
+                <outlet property="answerCheckImageView" destination="B78-02-drq" id="Y51-qy-ZBM"/>
+                <outlet property="answerTextView" destination="gKY-3V-nQB" id="hPK-zC-3CM"/>
+                <outlet property="answerTextViewHeight" destination="c0L-D4-lDT" id="gFF-Tf-wbl"/>
             </connections>
             <point key="canvasLocation" x="-53" y="-122"/>
         </collectionViewCell>

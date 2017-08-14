@@ -25,4 +25,15 @@ enum QuestionType {
             return "Click the gaps and start typing"
         }
     }
+    
+    var description: String {
+        switch self {
+        case .checkmarks:
+            return "Multiple choice"
+        case .radiobuttons:
+            return "Single choice"
+        case .gaps:
+            return "Gaps"
+        }
+    }
 }

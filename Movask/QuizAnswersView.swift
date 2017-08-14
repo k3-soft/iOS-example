@@ -1,5 +1,5 @@
 //
-//  AnswersView.swift
+//  QuizAnswersView.swift
 //  Movask
 //
 //  Created by mac on 08.08.17.
@@ -15,10 +15,10 @@ protocol AnswersViewModificationDelegate: class {
 }
 
 protocol RadioButtonsViewDelegate: class {
-    func didUpdateCollectionViewLayout(view: AnswersView)
+    func didUpdateCollectionViewLayout(view: QuizAnswersView)
 }
 
-class AnswersView: NibView {
+class QuizAnswersView: NibView {
     
     @IBOutlet weak var answersCollectionView: UICollectionView!
     
@@ -86,7 +86,7 @@ class AnswersView: NibView {
     
 }
 
-extension AnswersView: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+extension QuizAnswersView: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
@@ -102,9 +102,9 @@ extension AnswersView: UICollectionViewDelegate, UICollectionViewDataSource, UIC
         case UICollectionElementKindSectionFooter:
             let footerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: answerCell, for: indexPath) as! QuizAnswerCell
             
-            footerView.radioImage.isHidden = true
-            footerView.radioTextView.placeholder = "Add option"
-            footerView.radioTextView.isEditable = false
+            footerView.answerCheckImageView.isHidden = true
+            footerView.answerTextView.placeholder = "Add option"
+            footerView.answerTextView.isEditable = false
             footerView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector (addAnswerVariant)))
 
             return footerView
@@ -115,23 +115,43 @@ extension AnswersView: UICollectionViewDelegate, UICollectionViewDataSource, UIC
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let oldSelectedCell = collectionView.cellForItem(at: selectedAnswerIndexPath) as! QuizAnswerCell
-        oldSelectedCell.selectedCell = false
+        guard let question = question else { return }
         
-        let newSelectedCell = collectionView.cellForItem(at: indexPath) as! QuizAnswerCell
-        newSelectedCell.selectedCell = true
-        
-        answerVariants[indexPath.row].isSelected = true
+        switch question.type {
+        case .radiobuttons:
+            let oldSelectedCell = collectionView.cellForItem(at: selectedAnswerIndexPath) as! QuizAnswerCell
+            oldSelectedCell.selectedCell = false
+            
+            let newSelectedCell = collectionView.cellForItem(at: indexPath) as! QuizAnswerCell
+            newSelectedCell.selectedCell = true
+            
+            answerVariants[indexPath.row].isSelected = true
+            selectedAnswerIndexPath = indexPath
+            
+        case .checkmarks:
+            let newSelectedCell = collectionView.cellForItem(at: indexPath) as! QuizAnswerCell
+            
+            if answerVariants[indexPath.row].isSelected {
+                answerVariants[indexPath.row].isSelected = false
+                newSelectedCell.selectedCell = false
+            } else {
+                answerVariants[indexPath.row].isSelected = true
+                newSelectedCell.selectedCell = true
+            }
+            
+        default: break
+        }
         modificationDelegate?.didSelect(answer: answerVariants[indexPath.row], for: question)
-        selectedAnswerIndexPath = indexPath
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: answerCell, for: indexPath) as! QuizAnswerCell
         
         cell.answer = answerVariants[indexPath.item]
+        cell.selectionType = question?.type
         cell.delegate = self
         cell.ownerView = self
+        cell.selectedCell = answerVariants[indexPath.item].isSelected
         
         if cell.selectedCell {
             selectedAnswerIndexPath = indexPath
@@ -142,18 +162,29 @@ extension AnswersView: UICollectionViewDelegate, UICollectionViewDataSource, UIC
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        if let item = collectionView.cellForItem(at: indexPath) as? QuizAnswerCell {
-            let questionConteinerHeight = item.radioTextViewHeight.constant
+        if let answerCell = collectionView.cellForItem(at: indexPath) as? QuizAnswerCell {
+            let questionConteinerHeight = answerCell.answerTextViewHeight.constant
             return CGSize(width: self.frame.width, height: questionConteinerHeight)
         } else {
-            let textFieldInsets: CGFloat = 16.0
+            // answer textview that should be same as used in cell
+            let answerTextView = UnderLinedTextView(frame: .zero, textContainer: nil)
+            answerTextView.font = UIFont.systemFont(ofSize: 13)
             
-            let answerFieldHeight = answerVariants[indexPath.item].title.height(withConstrainedWidth: self.frame.width - 25 + 5, font: UIFont.systemFont(ofSize: 14)) + textFieldInsets
+            if let question = question, indexPath.item < question.answers.count {
+                let answer = question.answers[indexPath.item]
+                answerTextView.text = answer.title
+            } else {
+                answerTextView.text = ""
+            }
+
+            let answerTextViewWidth: CGFloat = self.frame.width - 25 - 16 - 8
             
-            return CGSize(width: self.frame.width, height: answerFieldHeight)
+            let answerTextViewSize = answerTextView.sizeThatFits(CGSize(width: answerTextViewWidth, height: CGFloat.greatestFiniteMagnitude))
+            
+            return CGSize(width: self.frame.width, height: answerTextViewSize.height)
         }
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
         return CGSize(width: self.frame.width, height: 33)
     }
@@ -168,9 +199,9 @@ extension AnswersView: UICollectionViewDelegate, UICollectionViewDataSource, UIC
     
 }
 
-extension AnswersView: RadioCellDelegate {
+extension QuizAnswersView: RadioCellDelegate {
     func didFinishEditingAnswer(cell: QuizAnswerCell) {
         guard let answer = cell.answer else { return }
-        modificationDelegate?.didFinishEditing(answer: answer, for: question, withText: cell.radioTextView.text)
+        modificationDelegate?.didFinishEditing(answer: answer, for: question, withText: cell.answerTextView.text)
     }
 }
