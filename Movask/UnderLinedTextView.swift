@@ -64,3 +64,49 @@ class UnderLinedTextView: KMPlaceholderTextView {
     }
     
 }
+
+extension UnderLinedTextView {
+    
+    func getWord(at index: Int) -> (wordString: String, range: NSRange) {
+        let text = self.text as NSString
+        let textRange = NSMakeRange(0, text.length)
+        var wordString = String()
+        var wordRange = NSRange()
+        var i = 0
+        
+        text.enumerateSubstrings(in: textRange, options: .byWords, using: {
+            (substring, substringRange, _, _) in
+            if index == i {
+                wordString = substring ?? ""
+                wordRange = substringRange
+//                print(substring ?? "There is no word at index: \(index)")
+            }
+            i += 1
+        })
+        return (wordString, wordRange)
+    }
+    
+    func numberOfWords() -> Int {
+        let text = self.text as NSString
+        let textRange = NSMakeRange(0, text.length)
+        var wordSum = 0
+        
+        text.enumerateSubstrings(in: textRange, options: .byWords, using: {
+            (substring, substringRange, _, _) in
+            wordSum += 1
+        })
+        return wordSum
+    }
+    
+    func getWordFrame(at range:NSRange) -> CGRect {
+        let beginning = self.beginningOfDocument;
+        let start = self.position(from: beginning, offset: range.location)
+        let end = self.position(from: start!, offset: range.length)
+        let textRange = self.textRange(from: start!, to: end!)
+        
+        let rect = self.firstRect(for: textRange!)
+        return self.convert(rect, from: self.textInputView)
+    }
+}
+
+

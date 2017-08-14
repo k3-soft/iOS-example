@@ -171,6 +171,7 @@
                 <outlet property="questionOptionsViewHeight" destination="3sn-2L-L9x" id="Oum-yM-1bc"/>
                 <outlet property="questionTitleHeight" destination="V0y-ct-ptG" id="Kkn-ZD-p2k"/>
                 <outlet property="questionTitleTextView" destination="MJb-0v-zbk" id="4a0-Dp-K65"/>
+                <outlet property="questionTypeLabel" destination="g67-Rd-Ekr" id="Txl-im-T7q"/>
                 <outlet property="qustionTypeDescriptionLabel" destination="hAV-cV-4hV" id="cHp-vJ-vVM"/>
             </connections>
             <point key="canvasLocation" x="156" y="-124"/>

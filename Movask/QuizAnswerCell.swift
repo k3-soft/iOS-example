@@ -1,5 +1,5 @@
 //
-//  RadioCell.swift
+//  QuizAnswerCell.swift
 //  Movask
 //
 //  Created by mac on 08.08.17.
@@ -9,26 +9,44 @@
 import UIKit
 
 protocol RadioCellDelegate: class {
-    func didFinishEditingAnswer(cell: RadioCell)
+    func didFinishEditingAnswer(cell: QuizAnswerCell)
 }
 
-class RadioCell: UICollectionViewCell {
+class QuizAnswerCell: UICollectionViewCell {
     
-    @IBOutlet weak var radioImage: UIImageView!
-    @IBOutlet weak var radioTextView: UnderLinedTextView!
-    @IBOutlet weak var radioTextViewHeight: NSLayoutConstraint!
+    @IBOutlet weak var answerCheckImageView: UIImageView!
+    @IBOutlet weak var answerTextView: UnderLinedTextView!
+    @IBOutlet weak var answerTextViewHeight: NSLayoutConstraint!
     
-    weak var ownerView: AnswersView?
+    weak var ownerView: QuizAnswersView?
     weak var delegate: RadioCellDelegate?
+    
+    var checkedImage: UIImage?
+    var unCheckedImage: UIImage?
+    
+    var selectionType: QuestionType? {
+        willSet {
+            guard let selectionType = newValue else { return }
+            switch selectionType {
+            case .checkmarks:
+                checkedImage = UIImage(named: "CheckGray")
+                unCheckedImage = UIImage(named: "CheckEmptyGray")
+            case .radiobuttons:
+                checkedImage = UIImage(named: "RadioOnGray")
+                unCheckedImage = UIImage(named: "RadioOffGray")
+            default: break
+            }
+        }
+    }
     
     var selectedCell = false {
         didSet {
             if selectedCell {
-                radioTextView.textColor = UIColor(colorWithHexValue: 0x417505)
-                radioImage.image = UIImage(named: "RadioOnGray")
+                answerTextView.textColor = UIColor(colorWithHexValue: 0x417505)
+                answerCheckImageView.image = checkedImage
             } else {
-                radioTextView.textColor = UIColor(colorWithHexValue: 0x808080)
-                radioImage.image = UIImage(named: "RadioOffGray")
+                answerTextView.textColor = UIColor(colorWithHexValue: 0x808080)
+                answerCheckImageView.image = unCheckedImage
             }
         }
     }
@@ -36,7 +54,7 @@ class RadioCell: UICollectionViewCell {
     var answer: AnswerTest? {
         didSet {
             guard let answer = answer else { return }
-            radioTextView.text = answer.title
+            answerTextView.text = answer.title
             selectedCell = answer.isSelected
             calculateCellHeightFor(answer)
         }
@@ -44,36 +62,36 @@ class RadioCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        radioTextView.delegate = self
+        answerTextView.delegate = self
     }
     
     override func prepareForReuse() {
-        radioTextViewHeight.constant = 33
+        answerTextViewHeight.constant = 33
         selectedCell = false
     }
     
     func calculateCellHeightFor(_ answer: AnswerTest) {
-        let textFieldInsets: CGFloat = 16.0
+        let answerTextViewWidth: CGFloat = self.frame.width - 25 - 16 - 8
         
-        let answerFieldHeight = answer.title.height(withConstrainedWidth: self.frame.width - 25 + 5, font: UIFont.systemFont(ofSize: 14)) + textFieldInsets
-
-        radioTextViewHeight.constant = CGFloat(answerFieldHeight)
-        radioTextView.lineTopConstraint.constant = answerFieldHeight - radioTextView.lineHeightConstraint.constant
+        let answerTextViewSize = answerTextView.sizeThatFits(CGSize(width: answerTextViewWidth, height: CGFloat.greatestFiniteMagnitude))
+        
+        answerTextViewHeight.constant = CGFloat(answerTextViewSize.height)
+        answerTextView.lineTopConstraint.constant = answerTextViewSize.height - answerTextView.lineHeightConstraint.constant
     }
 
 }
 
-extension RadioCell: UITextViewDelegate {
+extension QuizAnswerCell: UITextViewDelegate {
     
     func textViewDidChange(_ textView: UITextView) {
         let fixedWidth = textView.frame.size.width
         let newSize = textView.sizeThatFits(CGSize(width: fixedWidth, height: CGFloat.greatestFiniteMagnitude))
         print(newSize.height)
         switch textView {
-        case radioTextView:
+        case answerTextView:
             // update textview height
-            radioTextViewHeight.constant = newSize.height
-            radioTextView.lineTopConstraint.constant = newSize.height - radioTextView.lineHeightConstraint.constant
+            answerTextViewHeight.constant = newSize.height
+            answerTextView.lineTopConstraint.constant = newSize.height - answerTextView.lineHeightConstraint.constant
 
             ownerView?.updateCollectionViewLayout()
         default: break
@@ -89,7 +107,7 @@ extension RadioCell: UITextViewDelegate {
     
     func textViewDidEndEditing(_ textView: UITextView) {
         switch textView {
-        case radioTextView:
+        case answerTextView:
             //update question title in model
             delegate?.didFinishEditingAnswer(cell: self)
         default: break
