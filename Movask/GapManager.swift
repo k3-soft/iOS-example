@@ -84,7 +84,7 @@ class GapManager {
     }
     
     func boundingRectForCharacterRange(in textView: UITextView, range: NSRange) -> CGRect {
-        
+       
         let glyphRange = textView.layoutManager.glyphRange(forCharacterRange: range, actualCharacterRange: nil)
         
         if let glyphContainer = textView.layoutManager.textContainer(forGlyphAt: glyphRange.location, effectiveRange: nil) {

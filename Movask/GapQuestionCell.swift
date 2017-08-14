@@ -91,6 +91,14 @@ class GapQuestionCell: UICollectionViewCell, QuestionCellHandler {
         contentView.autoresizingMask.insert(.flexibleWidth)
         contentView.translatesAutoresizingMaskIntoConstraints = true
     }
+
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        if !textFields.isEmpty {
+            reloadEnd(animated: false)
+        }
+    }
     
     // MARK: - Reload
     
@@ -103,16 +111,18 @@ class GapQuestionCell: UICollectionViewCell, QuestionCellHandler {
         }
     }
     
-    func reloadEnd() {
+    func reloadEnd(animated: Bool = true) {
         
         (0 ..< gapRanges.count).forEach { (index) in
             var frame = boundingRectForCharacterRange(gapRanges[index])
             frame.origin.y += 5
             textFields[index].frame = frame
             
-            UIView.animate(withDuration: 0.2, animations: {
-                self.textFields[index].alpha = 1.0
-            })
+            if animated {
+                UIView.animate(withDuration: 0.2, animations: {
+                    self.textFields[index].alpha = 1.0
+                })
+            }
         }
     }
     

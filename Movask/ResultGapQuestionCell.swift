@@ -87,6 +87,14 @@ class ResultGapQuestionCell: UICollectionViewCell {
         contentView.translatesAutoresizingMaskIntoConstraints = true
     }
     
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        if !textFields.isEmpty {
+            reloadEnd(animated: false)
+        }
+    }
+    
     // MARK: - Reload
     
     func reloadStart(viewWidth: CGFloat) {
@@ -98,16 +106,18 @@ class ResultGapQuestionCell: UICollectionViewCell {
         }
     }
     
-    func reloadEnd() {
+    func reloadEnd(animated: Bool = true) {
         
         (0 ..< gapRanges.count).forEach { (index) in
             var frame = boundingRectForCharacterRange(gapRanges[index])
             frame.origin.y += 5
             textFields[index].frame = frame
             
-            UIView.animate(withDuration: 0.2, animations: {
-                self.textFields[index].alpha = 1.0
-            })
+            if animated {
+                UIView.animate(withDuration: 0.2, animations: {
+                    self.textFields[index].alpha = 1.0
+                })
+            }
         }
     }
     
@@ -189,6 +199,7 @@ class ResultGapQuestionCell: UICollectionViewCell {
             textField.autocapitalizationType = .none
             textField.tintColor = UIColor.white
             textField.isEnabled = false
+            textField.backgroundColor = UIColor.red
             
             questionTextView.addSubview(textField)
             textFields.append(textField)

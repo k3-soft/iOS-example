@@ -51,9 +51,9 @@ class QuestionGetTest {
     
     // Gap
     
-    let gapAnswer = "Sunset or sundown is the daily disappearance of the Sun below the horizon as a result of Earth's rotation. The Sun will set exactly due west at the equator on the spring and fall equinoxes, each of which occurs only once a year."
+    let gapAnswer = "Sunset or sundown is the daily disappearance of the Sun below the horizon as a result of Earth's rotation. The Sun will set exactly due west at the equator on the spring and fall equinoxes, each of which occurs only once a year. Sunset or sundown is the daily disappearance of the Sun below the horizon as a result of Earth's rotation."
     
-    let missingWordsIndexes = [2, 12, 18, 28, 42]
+    let missingWordsIndexes = [2, 12, 18, 28, 42, 52]
     
     var missingWords = [String]()
     var userWords = [String]()
