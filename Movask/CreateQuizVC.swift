@@ -15,7 +15,7 @@ class CreateQuizVC: BasicVC {
     let headerCell = "QuizHeaderCell"
     let questionCell = "QuizQuestionCell"
     
-    var questions: [QuestionTest] = []
+    var questions: [QuestionPostTest] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,8 +26,8 @@ class CreateQuizVC: BasicVC {
         setupCollectionView()
     }
     
-    func defaultQuestion() -> QuestionTest {
-        let qt = QuestionTest(type: .radiobuttons)
+    func defaultQuestion() -> QuestionPostTest {
+        let qt = QuestionPostTest(type: .radiobuttons)
         qt.question = ""
         qt.answers = [AnswerTest(title: "answer1", isCorrect: true),
                       AnswerTest(title: "answer2", isCorrect: false),
@@ -182,7 +182,7 @@ extension CreateQuizVC: QuizQuestionCellDelegate {
 }
 
 extension CreateQuizVC: AnswersViewModificationDelegate {
-    func didFinishEditing(answer: AnswerTest, for question: QuestionTest?, withText text: String) {
+    func didFinishEditing(answer: AnswerTest, for question: QuestionPostTest?, withText text: String) {
         guard let question = question else { return }
         guard question.id < questions.count else { return }
         
@@ -195,7 +195,7 @@ extension CreateQuizVC: AnswersViewModificationDelegate {
         }
     }
     
-    func didSelect(answer: AnswerTest, for question: QuestionTest?) {
+    func didSelect(answer: AnswerTest, for question: QuestionPostTest?) {
         guard let question = question else { return }
         guard question.id < questions.count else { return }
         
@@ -209,7 +209,7 @@ extension CreateQuizVC: AnswersViewModificationDelegate {
         }
     }
     
-    func didAdd(answer: AnswerTest, for question: QuestionTest?) {
+    func didAdd(answer: AnswerTest, for question: QuestionPostTest?) {
         guard let question = question else { return }
         guard question.id < questions.count else { return }
         

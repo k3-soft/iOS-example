@@ -13,11 +13,17 @@ class AnswerTest {
     var title: String
     var isCorrect: Bool
     
-    var isSelected = false
-    
     init(title: String, isCorrect: Bool) {
         self.title = title
         self.isCorrect = isCorrect
+    }
+    
+    var isSelected = false
+    
+    var isAccepted: Bool {
+        if isCorrect, isSelected { return true }
+        else if !isCorrect, !isSelected { return true }
+        else { return false }
     }
 }
 

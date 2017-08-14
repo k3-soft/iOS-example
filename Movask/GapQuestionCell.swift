@@ -24,7 +24,7 @@ class GapQuestionCell: UICollectionViewCell, QuestionCellHandler {
     @IBOutlet weak var heightQuestionView: NSLayoutConstraint!
     
     // Data
-    var question: QuestionTest?
+    var question: QuestionGetTest?
     var gapRanges = [NSRange]()
     
     // Input
@@ -118,7 +118,7 @@ class GapQuestionCell: UICollectionViewCell, QuestionCellHandler {
     
     // MARK: - Set cell
     
-    func setWithQuestion(_ question: QuestionTest) {
+    func setWithQuestion(_ question: QuestionGetTest) {
         
         self.question = question
         

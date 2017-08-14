@@ -19,7 +19,7 @@ class ResultQuestionCell: UICollectionViewCell {
     @IBOutlet weak var heightQuestionView: NSLayoutConstraint!
     
     // Data
-    var question: QuestionTest?
+    var question: QuestionGetTest?
     
     // Sizes
     
@@ -63,7 +63,7 @@ class ResultQuestionCell: UICollectionViewCell {
         setLabelHeight(cellWidth: viewWidth - cellSideInsets)
     }
     
-    func setWithQuestion(_ question: QuestionTest) {
+    func setWithQuestion(_ question: QuestionGetTest) {
         
         self.question = question
         

@@ -38,7 +38,7 @@ class QuizQuestionCell: UICollectionViewCell {
         dragButton.addGestureRecognizer(panGesture)
     }
     
-    var question: QuestionTest? {
+    var question: QuestionPostTest? {
         didSet {
             guard let question = question else { return }
             
@@ -88,7 +88,7 @@ class QuizQuestionCell: UICollectionViewCell {
         }
     }
     
-    func calculateCellHeightFor(_ question: QuestionTest) {
+    func calculateCellHeightFor(_ question: QuestionPostTest) {
         var minAnswersConteinerHeight: CGFloat = 33 + 16
         let textFieldInsets: CGFloat = 16.0
         for answer in question.answers {

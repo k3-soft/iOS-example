@@ -32,7 +32,7 @@ class QuizResultsPhoneVC: BasicVC {
     
     // Data
     var quiz: QuizTest!
-    var questionsList = [QuestionTest]()
+    var questionsList = [QuestionGetTest]()
     var pageNumber = 0
     
     // Collection settings
@@ -117,7 +117,7 @@ class QuizResultsPhoneVC: BasicVC {
     
     func setResults() {
         
-        let correctAnswers = 4
+        let correctAnswers = getCorrectAnswersCount()
         let questionsCount = questionsList.count
         
         correctAnswersLabel.text = "\(correctAnswers)/\(questionsCount) questions!"
@@ -125,6 +125,40 @@ class QuizResultsPhoneVC: BasicVC {
         let result = ResultRating.getResult(correctAnswers: correctAnswers, totalAmount: questionsCount)
         
         resultLabel.text = result?.localized
+    }
+    
+    func getCorrectAnswersCount() -> Int {
+        
+        var correctAnswers = 0
+        
+        for question in questionsList {
+            
+            switch question.type {
+                
+            case .checkmarks, .radiobuttons:
+                for i in 0 ..< question.answers.count {
+                    if !question.answers[i].isAccepted {
+                        break
+                    }
+                    if i == question.answers.count - 1 {
+                        correctAnswers += 1
+                    }
+                }
+                
+            case .gaps:
+                for i in 0 ..< question.missingWords.count {
+                    guard question.missingWords.count == question.userWords.count else { break }
+                    if question.missingWords[i] != question.userWords[i] {
+                        break
+                    }
+                    if i == question.missingWords.count - 1 {
+                        correctAnswers += 1
+                    }
+                }
+            }
+        }
+        
+        return correctAnswers
     }
     
     // MARK: - Actions

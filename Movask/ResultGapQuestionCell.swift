@@ -21,7 +21,7 @@ class ResultGapQuestionCell: UICollectionViewCell {
     @IBOutlet weak var heightQuestionView: NSLayoutConstraint!
     
     // Data
-    var question: QuestionTest?
+    var question: QuestionGetTest?
     var gapRanges = [NSRange]()
     
     // Managers
@@ -113,7 +113,7 @@ class ResultGapQuestionCell: UICollectionViewCell {
     
     // MARK: - Set cell
     
-    func setWithQuestion(_ question: QuestionTest) {
+    func setWithQuestion(_ question: QuestionGetTest) {
         
         self.question = question
         

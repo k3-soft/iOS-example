@@ -54,7 +54,7 @@ class QuizVC: BasicVC {
     
     // Data
     var quiz: QuizTest!
-    var questionsList = [QuestionTest]()
+    var questionsList = [QuestionGetTest]()
     var pageNumber = 0
     
     // Flow
@@ -243,12 +243,12 @@ class QuizVC: BasicVC {
     
     func loadQuestions() {
         
-        questionsList = [QuestionTest(type: .gaps),
-                         QuestionTest(type: .checkmarks),
-                         QuestionTest(type: .radiobuttons),
-                         QuestionTest(type: .gaps),
-                         QuestionTest(type: .radiobuttons),
-                         QuestionTest(type: .checkmarks)]
+        questionsList = [QuestionGetTest(type: .gaps),
+                         QuestionGetTest(type: .checkmarks),
+                         QuestionGetTest(type: .radiobuttons),
+                         QuestionGetTest(type: .gaps),
+                         QuestionGetTest(type: .radiobuttons),
+                         QuestionGetTest(type: .checkmarks)]
         
         questionsCollection.reloadData()
     }

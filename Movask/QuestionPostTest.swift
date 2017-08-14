@@ -1,34 +1,29 @@
 //
-//  QuestionTest.swift
+//  QuestionPostTest.swift
 //  Movask
 //
-//  Created by Alina Yehorova on 04.08.17.
+//  Created by Alina Yehorova on 14.08.17.
 //  Copyright © 2017 Alina Yehorova. All rights reserved.
 //
 
 import Foundation
 
-class QuestionTest {
+class QuestionPostTest {
     
     var type: QuestionType
     
     var id = 1
+    
     var question = "What is the golden hour?"
     
     var answers = [AnswerTest(title: "The last hour before sunset",
-                              isCorrect: false),
+                            isCorrect: false),
                    AnswerTest(title: "The hour when shadows get really long ang light very red",
-                              isCorrect: true),
+                            isCorrect: true),
                    AnswerTest(title: "The hour after sunrize",
-                              isCorrect: true),
+                            isCorrect: true),
                    AnswerTest(title: "Is a period shortly after sunrise or before sunset during which daylight is redder and softer than when the Sun is higher in the sky",
-                              isCorrect: true)]
-    
-    var correctAnswersIndexes = [2, 3, 4]
-    var oneCorrectAnswerIndex = 4
-    
-    var userAnswersIndexes = [Int]()
-    var oneUserAnswer: Int?
+                            isCorrect: true)]
     
     // Gap
     
