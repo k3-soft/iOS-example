@@ -15,14 +15,12 @@ protocol QuizQuestionCellDelegate: class {
 
 class QuizQuestionCell: UICollectionViewCell {
     
-    
     @IBOutlet weak var dragButton: UIButton!
-    
     @IBOutlet weak var questionContainer: UIView!
     @IBOutlet weak var questionIndexLabel: UILabel!
     @IBOutlet weak var qustionTypeDescriptionLabel: UILabel!
     @IBOutlet weak var questionTitleTextView: UnderLinedTextView!
-    @IBOutlet weak var questionOptionsView: RadioButtonsView!
+    @IBOutlet weak var questionOptionsView: QuizAnswersView!
 
     @IBOutlet weak var questionContainerHeight: NSLayoutConstraint!
     @IBOutlet weak var questionOptionsViewHeight: NSLayoutConstraint!
@@ -53,7 +51,7 @@ class QuizQuestionCell: UICollectionViewCell {
         question = nil
         questionTitleTextView.text = ""
         questionOptionsView.answerVariants = [AnswerTest(title: "")]
-        questionOptionsView.answersCollectionViewView.reloadData()
+        questionOptionsView.answersCollectionView.reloadData()
         questionContainerHeight.constant = 110.0
         questionOptionsViewHeight.constant = 76.0
     }
@@ -151,8 +149,8 @@ extension QuizQuestionCell: UITextViewDelegate {
 
 extension QuizQuestionCell: RadioButtonsViewDelegate {
     
-    func didUpdateCollectionViewLayout(view: RadioButtonsView) {
-        questionOptionsViewHeight.constant = view.answersCollectionViewView.contentSize.height + 16
+    func didUpdateCollectionViewLayout(view: QuizAnswersView) {
+        questionOptionsViewHeight.constant = view.answersCollectionView.contentSize.height + 16
         ownerCollectionView?.performBatchUpdates(nil)
     }
     
