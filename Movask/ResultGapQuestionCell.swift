@@ -73,6 +73,15 @@ class ResultGapQuestionCell: UICollectionViewCell {
         
         textFields.removeAll()
         gapRanges.removeAll()
+        
+    }
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+        contentView.autoresizingMask.insert(.flexibleHeight)
+        contentView.autoresizingMask.insert(.flexibleWidth)
+        contentView.translatesAutoresizingMaskIntoConstraints = true
     }
     
     // MARK: - Reload
@@ -240,9 +249,11 @@ class ResultGapQuestionCell: UICollectionViewCell {
     func boundingRectForCharacterRange(_ range: NSRange) -> CGRect {
         
         let glyphRange = questionTextView.layoutManager.glyphRange(forCharacterRange: range, actualCharacterRange: nil)
-        let glyphContainer = questionTextView.layoutManager.textContainer(forGlyphAt: glyphRange.location, effectiveRange: nil)
-        let glyphRect = questionTextView.layoutManager.boundingRect(forGlyphRange: glyphRange, in: glyphContainer!)
         
-        return glyphRect
+        if let glyphContainer = questionTextView.layoutManager.textContainer(forGlyphAt: glyphRange.location, effectiveRange: nil) {
+            return questionTextView.layoutManager.boundingRect(forGlyphRange: glyphRange, in: glyphContainer)
+        } else {
+            return .zero
+        }
     }
 }

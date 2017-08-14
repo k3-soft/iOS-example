@@ -70,9 +70,9 @@ class QuizResultsPhoneVC: BasicVC {
         
         // Resize cells content
         for cell in resultsCollection.visibleCells {
-            if let questionCell = cell as? QuestionCell {
+            if let questionCell = cell as? ResultQuestionCell {
                 questionCell.reload(viewWidth: size.width)
-            } else if let questionGapCell = cell as? GapQuestionCell {
+            } else if let questionGapCell = cell as? ResultGapQuestionCell {
                 questionGapCell.reloadStart(viewWidth: size.width)
             }
         }
@@ -84,7 +84,7 @@ class QuizResultsPhoneVC: BasicVC {
             
             }, completion: { _ in
                 for cell in self.resultsCollection.visibleCells {
-                    if let questionGapCell = cell as? GapQuestionCell {
+                    if let questionGapCell = cell as? ResultGapQuestionCell {
                         questionGapCell.reloadEnd()
                     }
                 }
@@ -130,7 +130,7 @@ class QuizResultsPhoneVC: BasicVC {
     // MARK: - Actions
     
     @IBAction func backToStart(_ sender: UIButton) {
-        print("Back to start")
+        navigationController?.popToRootViewController(animated: true)
     }
     
     @IBAction func redo(_ sender: UIButton) {
@@ -191,5 +191,21 @@ extension QuizResultsPhoneVC: UICollectionViewDataSource, UICollectionViewDelega
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return collectionLineSpacing
+    }
+    
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        
+        if scrollView == resultsCollection {
+            
+            let visibleRect = CGRect(origin: resultsCollection.contentOffset, size: resultsCollection.bounds.size)
+            let initialPinchPoint = CGPoint(x: visibleRect.midX, y: visibleRect.midY)
+            
+            guard let currentIndexPath = resultsCollection.indexPathForItem(at: initialPinchPoint) else {
+                pageNumber = 0
+                return
+            }
+            
+            pageNumber = currentIndexPath.item
+        }
     }
 }
