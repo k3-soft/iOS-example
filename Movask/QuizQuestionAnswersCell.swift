@@ -42,7 +42,7 @@ class QuizQuestionAnswersCell: UICollectionViewCell {
     
     var gapButtons: [GapButton] = []
     
-    var question: QuestionTest? {
+    var question: QuestionPostTest? {
         didSet {
             guard let question = question else { return }
             
@@ -114,7 +114,7 @@ class QuizQuestionAnswersCell: UICollectionViewCell {
         }
     }
     
-    func calculateCellHeightFor(_ question: QuestionTest) {
+    func calculateCellHeightFor(_ question: QuestionPostTest) {
         var questionBlockHeight: CGFloat = 80 // height for green question block without textview
         let answersFooterHeight: CGFloat = 33.0 // add item button
         let answersCollectionViewInsets: CGFloat = 16.0
@@ -162,7 +162,7 @@ class QuizQuestionAnswersCell: UICollectionViewCell {
         }
     }
     
-    func addGapButtons(for question: QuestionTest) {
+    func addGapButtons(for question: QuestionPostTest) {
         let questionWordsCount = questionTitleTextView.numberOfWords()
         
         for wordIndex in 0 ..< questionWordsCount {

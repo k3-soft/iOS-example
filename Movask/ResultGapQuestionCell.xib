@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Solomon-Sans-Bold.otf">
+            <string>Solomon-Sans-Bold</string>
+        </array>
+        <array key="Solomon-Sans-SemiBold.otf">
+            <string>Solomon-Sans-SemiBold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ResultGapQuestionCell" id="gTV-IL-0wX" customClass="ResultGapQuestionCell" customModule="Movask" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="310" height="435"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="310" height="435"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yMz-6t-0MK">
+                        <rect key="frame" x="0.0" y="0.0" width="310" height="435"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ucN-0y-LnY">
+                                <rect key="frame" x="0.0" y="0.0" width="310" height="65"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tick the correct answer to confirm" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="ulm-Zd-fVr">
+                                        <rect key="frame" x="14" y="34" width="282" height="21"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="21" id="Z8i-wD-4Sh"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Solomon-Sans-Bold" family="Solomon Sans Bold" pointSize="13"/>
+                                        <color key="textColor" red="0.1215686275" green="0.41960784309999999" blue="0.23921568630000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="Some text" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Gn3-xy-Gln">
+                                        <rect key="frame" x="10" y="8" width="290" height="23"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="23" id="Z5d-36-27X"/>
+                                        </constraints>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" name="Solomon-Sans-SemiBold" family="Solomon Sans SemiBold" pointSize="18"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                        <variation key="heightClass=regular-widthClass=regular">
+                                            <fontDescription key="fontDescription" name="Solomon-Sans-Bold" family="Solomon Sans Bold" pointSize="18"/>
+                                        </variation>
+                                        <connections>
+                                            <outlet property="delegate" destination="gTV-IL-0wX" id="PEE-gg-hwT"/>
+                                        </connections>
+                                    </textView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.17254901959999999" green="0.70588235290000001" blue="0.38823529410000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="Gn3-xy-Gln" firstAttribute="leading" secondItem="ucN-0y-LnY" secondAttribute="leading" constant="10" id="6Oz-gf-jgS"/>
+                                    <constraint firstItem="ulm-Zd-fVr" firstAttribute="leading" secondItem="ucN-0y-LnY" secondAttribute="leading" constant="14" id="Pm6-BM-Za0"/>
+                                    <constraint firstAttribute="trailing" secondItem="ulm-Zd-fVr" secondAttribute="trailing" constant="14" id="VCd-bX-F4t"/>
+                                    <constraint firstAttribute="height" constant="65" id="YK5-HP-Xve"/>
+                                    <constraint firstItem="Gn3-xy-Gln" firstAttribute="top" secondItem="ucN-0y-LnY" secondAttribute="top" constant="8" id="e4g-q1-mck">
+                                        <variation key="heightClass=regular-widthClass=regular" constant="16"/>
+                                    </constraint>
+                                    <constraint firstItem="Gn3-xy-Gln" firstAttribute="centerX" secondItem="ulm-Zd-fVr" secondAttribute="centerX" id="h6W-bE-ZlD"/>
+                                    <constraint firstItem="ulm-Zd-fVr" firstAttribute="top" secondItem="Gn3-xy-Gln" secondAttribute="bottom" constant="3" id="mdj-8a-VzQ">
+                                        <variation key="heightClass=regular-widthClass=regular" constant="0.0"/>
+                                    </constraint>
+                                    <constraint firstAttribute="trailing" secondItem="Gn3-xy-Gln" secondAttribute="trailing" constant="10" id="nfm-eZ-b7s"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZqR-jt-jBC">
+                                <rect key="frame" x="0.0" y="65" width="310" height="370"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Some text" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qNA-Xz-aFb">
+                                <rect key="frame" x="10" y="70" width="290" height="365"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="textColor" red="0.62352941179999999" green="0.62352941179999999" blue="0.62352941179999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="Solomon-Sans-SemiBold" family="Solomon Sans SemiBold" pointSize="16"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <variation key="heightClass=regular-widthClass=regular">
+                                    <fontDescription key="fontDescription" name="Solomon-Sans-Bold" family="Solomon Sans Bold" pointSize="16"/>
+                                </variation>
+                                <connections>
+                                    <outlet property="delegate" destination="gTV-IL-0wX" id="83b-O0-Ilm"/>
+                                </connections>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="qNA-Xz-aFb" secondAttribute="trailing" constant="10" id="2Af-eW-NNX"/>
+                            <constraint firstItem="qNA-Xz-aFb" firstAttribute="top" secondItem="ucN-0y-LnY" secondAttribute="bottom" constant="5" id="8X3-18-xbY"/>
+                            <constraint firstItem="ucN-0y-LnY" firstAttribute="top" secondItem="yMz-6t-0MK" secondAttribute="top" id="CZf-9p-UYW"/>
+                            <constraint firstAttribute="bottom" secondItem="qNA-Xz-aFb" secondAttribute="bottom" id="ShD-Uj-YXg"/>
+                            <constraint firstItem="ZqR-jt-jBC" firstAttribute="top" secondItem="ucN-0y-LnY" secondAttribute="bottom" id="XA8-oh-vnN"/>
+                            <constraint firstItem="qNA-Xz-aFb" firstAttribute="leading" secondItem="yMz-6t-0MK" secondAttribute="leading" constant="10" id="XG8-vT-t1g"/>
+                            <constraint firstAttribute="trailing" secondItem="ucN-0y-LnY" secondAttribute="trailing" id="dMr-Eu-1mg"/>
+                            <constraint firstAttribute="trailing" secondItem="ZqR-jt-jBC" secondAttribute="trailing" id="fSG-Sm-6tO"/>
+                            <constraint firstItem="ZqR-jt-jBC" firstAttribute="leading" secondItem="yMz-6t-0MK" secondAttribute="leading" id="n6D-9C-D5O"/>
+                            <constraint firstAttribute="bottom" secondItem="ZqR-jt-jBC" secondAttribute="bottom" id="s6Q-Jz-YKF"/>
+                            <constraint firstItem="ucN-0y-LnY" firstAttribute="leading" secondItem="yMz-6t-0MK" secondAttribute="leading" id="ti8-QZ-0Dg"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="10"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="yMz-6t-0MK" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="T2w-Ve-Umw"/>
+                <constraint firstItem="yMz-6t-0MK" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="fi8-pL-IMg"/>
+                <constraint firstAttribute="bottom" secondItem="yMz-6t-0MK" secondAttribute="bottom" id="mDK-h8-2TP"/>
+                <constraint firstAttribute="trailing" secondItem="yMz-6t-0MK" secondAttribute="trailing" id="whN-mw-pPh"/>
+            </constraints>
+            <userDefinedRuntimeAttributes>
+                <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                    <real key="value" value="3"/>
+                </userDefinedRuntimeAttribute>
+                <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                    <real key="value" value="0.10000000000000001"/>
+                </userDefinedRuntimeAttribute>
+                <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
+                    <size key="value" width="0.0" height="3"/>
+                </userDefinedRuntimeAttribute>
+                <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                    <color key="value" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                </userDefinedRuntimeAttribute>
+            </userDefinedRuntimeAttributes>
+            <connections>
+                <outlet property="heightQuestionLabel" destination="Z5d-36-27X" id="BvJ-LO-X31"/>
+                <outlet property="heightQuestionView" destination="YK5-HP-Xve" id="FZK-mi-Y8C"/>
+                <outlet property="instructionLabel" destination="ulm-Zd-fVr" id="kJU-r4-lNC"/>
+                <outlet property="questionTextView" destination="Gn3-xy-Gln" id="FWb-1R-FLA"/>
+                <outlet property="questionView" destination="ucN-0y-LnY" id="oDW-qV-ej5"/>
+                <outlet property="resultTextView" destination="qNA-Xz-aFb" id="T8w-Pe-puw"/>
+            </connections>
+            <point key="canvasLocation" x="34" y="54.5"/>
+        </collectionViewCell>
+    </objects>
+</document>

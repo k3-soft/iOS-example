@@ -1,22 +1,18 @@
 //
-//  QuestionCell.swift
+//  ResultQuestionCell.swift
 //  Movask
 //
-//  Created by Alina Yehorova on 04.08.17.
+//  Created by Alina Yehorova on 14.08.17.
 //  Copyright © 2017 Alina Yehorova. All rights reserved.
 //
 
 import UIKit
 
-class QuestionCell: UICollectionViewCell, QuestionCellHandler {
+class ResultQuestionCell: UICollectionViewCell {
     
     // Labels
     @IBOutlet weak var instructionLabel: UILabel!
     @IBOutlet weak var questionLabel: UILabel!
-    
-    // Buttons
-    @IBOutlet weak var confirmButton: UIButton!
-    @IBOutlet weak var skipButton: UIButton!
     
     // Constraints
     @IBOutlet weak var heightQuestionLabel: NSLayoutConstraint!
@@ -25,20 +21,13 @@ class QuestionCell: UICollectionViewCell, QuestionCellHandler {
     // Data
     var question: QuestionGetTest?
     
-    // Selection
-    var selectedIndex: Int?
-    
-    // Handlers
-    var confirmHandler: (()->())?
-    var skipHandler: (()->())?
-    
     // Sizes
     
     let heightQuestionViewWithoutLabel: CGFloat = 45.0
     
     static var cellHeight: CGFloat {
         if UIDevice.current.userInterfaceIdiom == .phone {
-            return 435.0
+            return 360.0
         } else {
             return 453.0
         }
@@ -73,7 +62,7 @@ class QuestionCell: UICollectionViewCell, QuestionCellHandler {
     func reload(viewWidth: CGFloat) {
         setLabelHeight(cellWidth: viewWidth - cellSideInsets)
     }
-
+    
     func setWithQuestion(_ question: QuestionGetTest) {
         
         self.question = question
@@ -108,28 +97,9 @@ class QuestionCell: UICollectionViewCell, QuestionCellHandler {
         
         answersTableView.reloadData()
     }
-    
-    // MARK: - Actions
-    
-    @IBAction func confirmDidTap(_ sender: UIButton) {
-        confirmHandler?()
-    }
-    
-    @IBAction func skipDidTap(_ sender: UIButton) {
-        
-        guard question != nil else { return }
-        
-        // Clear all answers
-        for answer in question!.answers {
-            answer.isSelected = false
-        }
-        
-        // Skip
-        skipHandler?()
-    }
 }
 
-extension QuestionCell: UITableViewDelegate, UITableViewDataSource {
+extension ResultQuestionCell: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return question!.answers.count
@@ -140,8 +110,7 @@ extension QuestionCell: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! AnswerSelectionCell
         
         cell.type = question?.type
-        cell.setWithAnswer(question!.answers[indexPath.row], showResults: false)
-        cell.delegate = self
+        cell.setWithAnswer(question!.answers[indexPath.row], showResults: true)
         cell.selectionStyle = .none
         
         return cell
@@ -156,34 +125,7 @@ extension QuestionCell: UITableViewDelegate, UITableViewDataSource {
             return AnswerSelectionCell.getCellHeightFor(viewWidth: bounds.width, answer: answer)
             
         case .gaps:
-            return 50.0
-        }
-    }
-}
-
-extension QuestionCell: AnswerSelectionCellDelegate {
-    
-    func answerSelected(cell: AnswerSelectionCell) {
-        
-        if question!.type == .radiobuttons {
-            
-            guard let newSelectedIndex = answersTableView.indexPath(for: cell)?.row else { return }
-            
-            // Deselect previous cell
-            
-            if  selectedIndex != nil, let cellToDeselect = answersTableView.cellForRow(at: IndexPath(row: selectedIndex!, section: 0)) as? AnswerSelectionCell {
-                
-                cellToDeselect.checked = false
-                cellToDeselect.answer?.isSelected = false
-            }
-            
-            // Select new answer
-            
-            if selectedIndex != nil, selectedIndex! == newSelectedIndex {
-                selectedIndex = nil
-            } else {
-                selectedIndex = newSelectedIndex
-            }
+            return 0.0
         }
     }
 }

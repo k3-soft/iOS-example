@@ -9,9 +9,9 @@
 import UIKit
 
 protocol AnswersViewModificationDelegate: class {
-    func didSelect(answer: AnswerTest, for question: QuestionTest?)
-    func didFinishEditing(answer: AnswerTest, for question: QuestionTest?, withText text: String)
-    func didAdd(answer: AnswerTest, for question: QuestionTest?)
+    func didSelect(answer: AnswerTest, for question: QuestionPostTest?)
+    func didFinishEditing(answer: AnswerTest, for question: QuestionPostTest?, withText text: String)
+    func didAdd(answer: AnswerTest, for question: QuestionPostTest?)
 }
 
 protocol RadioButtonsViewDelegate: class {
@@ -31,7 +31,7 @@ class QuizAnswersView: NibView {
     var answerVariants: [AnswerTest] = []
     var selectedAnswerIndexPath = IndexPath(row: 0, section: 0)
     
-    var question: QuestionTest? {
+    var question: QuestionPostTest? {
         didSet {
             guard let question = question else { return }
             answerVariants = question.answers
@@ -72,7 +72,7 @@ class QuizAnswersView: NibView {
     }
     
     func addAnswerVariant() {
-        let newAnswer = AnswerTest(title: "")
+        let newAnswer = AnswerTest(title: "", isCorrect: false)
         answerVariants.append(newAnswer)
         
         self.answersCollectionView.insertItems(at: [IndexPath(row: self.answerVariants.count-1, section: 0)])

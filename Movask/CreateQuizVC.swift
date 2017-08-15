@@ -15,7 +15,7 @@ class CreateQuizVC: BasicVC {
     let headerCell = "QuizHeaderCell"
     let questionCell = "QuizQuestionAnswersCell"
     
-    var questions: [QuestionTest] = []
+    var questions: [QuestionPostTest] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,35 +27,35 @@ class CreateQuizVC: BasicVC {
     }
     
     func addQuestions() {
-        let q1 = QuestionTest(type: .checkmarks)
+        let q1 = QuestionPostTest(type: .checkmarks)
         q1.question = "Who is your daddy?"
-        q1.answers = [AnswerTest(title: "Me"), AnswerTest(title: "You"), AnswerTest(title: "Nobody"), AnswerTest(title: "shit")]
+        q1.answers = [AnswerTest(title: "Me", isCorrect: false), AnswerTest(title: "You", isCorrect: false), AnswerTest(title: "Nobody", isCorrect: false), AnswerTest(title: "shit", isCorrect: false)]
         
-        let q2 = QuestionTest(type: .radiobuttons)
+        let q2 = QuestionPostTest(type: .radiobuttons)
         q2.question = "Why am I so stupid?"
-        q2.answers = [AnswerTest(title: "Because"), AnswerTest(title: "Who knows"), AnswerTest(title: "You are not")]
+        q2.answers = [AnswerTest(title: "Because", isCorrect: false), AnswerTest(title: "Who knows", isCorrect: false), AnswerTest(title: "You are not", isCorrect: false)]
         
-        let q3 = QuestionTest(type: .gaps)
+        let q3 = QuestionPostTest(type: .gaps)
         q3.question = "Why am I so stupid?"
         q3.answers = []
         q3.gapAnswer = "You shall not pass, bitch"
         q3.missingWordsIndexes = [1, 3]
         
-        let q4 = QuestionTest(type: .checkmarks)
+        let q4 = QuestionPostTest(type: .checkmarks)
         q4.question = "Who is your daddy?"
-        q4.answers = [AnswerTest(title: "Me"), AnswerTest(title: "You You You You You You You You You You You You You You You You You You You You You You You You You You You You You You You You "), AnswerTest(title: "Nobody"), AnswerTest(title: "shit")]
+        q4.answers = [AnswerTest(title: "Me", isCorrect: false), AnswerTest(title: "You You You You You You You You You You You You You You You You You You You You You You You You You You You You You You You You ", isCorrect: false), AnswerTest(title: "Nobody", isCorrect: false), AnswerTest(title: "shit", isCorrect: false)]
         
-        let q5 = QuestionTest(type: .radiobuttons)
+        let q5 = QuestionPostTest(type: .radiobuttons)
         q5.question = "Why am I so stupid? Tell me"
-        q5.answers = [AnswerTest(title: "Because"), AnswerTest(title: "Who knows"), AnswerTest(title: "You are not"), AnswerTest(title: "You are not"), AnswerTest(title: "You are not You are not You are not You are not You are not You are not You are not You are not You are not You are not You are not You are not You are not You are not You are not You are not You are not You are not You are not You are not You are not You are not ")]
+        q5.answers = [AnswerTest(title: "Because", isCorrect: false), AnswerTest(title: "Who knows", isCorrect: false), AnswerTest(title: "You are not", isCorrect: false), AnswerTest(title: "You are not", isCorrect: false), AnswerTest(title: "You are not You are not You are not You are not You are not You are not You are not You are not You are not You are not You are not You are not You are not You are not You are not You are not You are not You are not You are not You are not You are not You are not ", isCorrect: false)]
         
-        let q6 = QuestionTest(type: .gaps)
+        let q6 = QuestionPostTest(type: .gaps)
         q6.question = "Why am I so stupid?"
         q6.answers = []
         q6.gapAnswer = "You shall not pass, bitch, hello you ar q6 ou shall not pass, bitch, hello you ar q6, ou shall not pass, bitch, hello you ar q6, ou shall not pass, bitch, hello you ar q6ou shall not pass, bitch, hello you ar q6"
         q6.missingWordsIndexes = [1, 4]
         
-        let q7 = QuestionTest(type: .radiobuttons)
+        let q7 = QuestionPostTest(type: .radiobuttons)
         q7.question = "Why am I so stupid?"
         q7.answers = []
         
@@ -99,7 +99,7 @@ class CreateQuizVC: BasicVC {
     }
     
     @IBAction func didTapAddQuestion(_ sender: Any) {
-        let q3 = QuestionTest(type: .gaps)
+        let q3 = QuestionPostTest(type: .gaps)
         q3.question = "Why am I so stupid?"
         q3.answers = []
         q3.gapAnswer = "You shall not pass, bitch"
@@ -163,7 +163,7 @@ extension CreateQuizVC: UICollectionViewDelegate, UICollectionViewDataSource, UI
         }
     }
     
-    func sizeFor(question: QuestionTest) -> CGSize {
+    func sizeFor(question: QuestionPostTest) -> CGSize {
         var questionBlockHeight: CGFloat = 80 // height for green question block without textview
         let shadowSize: CGFloat = 10.0
         let answersFooterHeight: CGFloat = 33.0 // add item button
@@ -263,7 +263,8 @@ extension CreateQuizVC: QuizQuestionCellDelegate {
 
 extension CreateQuizVC: AnswersViewModificationDelegate {
     
-    func didFinishEditing(answer: AnswerTest, for question: QuestionTest?, withText text: String) {
+    func didFinishEditing(answer: AnswerTest, for question: QuestionPostTest?, withText text: String) {
+
         guard let question = question else { return }
         guard question.id < questions.count else { return }
         
@@ -276,7 +277,7 @@ extension CreateQuizVC: AnswersViewModificationDelegate {
         }
     }
     
-    func didSelect(answer: AnswerTest, for question: QuestionTest?) {
+    func didSelect(answer: AnswerTest, for question: QuestionPostTest?) {
         guard let question = question else { return }
         guard question.id < questions.count else { return }
         
@@ -302,7 +303,7 @@ extension CreateQuizVC: AnswersViewModificationDelegate {
         
     }
     
-    func didAdd(answer: AnswerTest, for question: QuestionTest?) {
+    func didAdd(answer: AnswerTest, for question: QuestionPostTest?) {
         guard let question = question else { return }
         guard question.id < questions.count else { return }
         

@@ -24,7 +24,12 @@ class AnswerSelectionCell: UITableViewCell {
     }
     
     weak var delegate: AnswerSelectionCellDelegate?
-    var checked = false
+    
+    var isActive = true {
+        didSet {
+            checkboxButton.isEnabled = isActive
+        }
+    }
     
     var answer: AnswerTest?
     
@@ -40,27 +45,100 @@ class AnswerSelectionCell: UITableViewCell {
     
     static let textOffset: CGFloat = 73.0
     
+    // MARK: - Status
+    
+    var checked = false {
+        didSet {
+            if checked {
+                checkboxButton.setImage(grayBox, for: .normal)
+            } else {
+                checkboxButton.setImage(emptyBox, for: .normal)
+            }
+        }
+    }
+    
+    var type: QuestionType? {
+        didSet {
+            checkboxButton.setImage(emptyBox, for: .normal)
+        }
+    }
+    
+    // MARK: - States images
+    
+    var emptyBox: UIImage? {
+        switch type! {
+        case .checkmarks:
+            return UIImage(named: "CheckEmptyGray")!
+        case .radiobuttons:
+            return UIImage(named: "RadioOffGray")!
+        default:
+            return nil
+        }
+    }
+    
+    var grayBox: UIImage? {
+        switch type! {
+        case .checkmarks:
+            return UIImage(named: "CheckGray")!
+        case .radiobuttons:
+            return UIImage(named: "RadioOnGray")!
+        default:
+            return nil
+        }
+    }
+    
+    var greenBox: UIImage? {
+        switch type! {
+        case .checkmarks:
+            return UIImage(named: "CheckGreen")!
+        case .radiobuttons:
+            return UIImage(named: "RadioOnGreen")!
+        default:
+            return nil
+        }
+    }
+    
+    var orangeBox: UIImage? {
+        switch type! {
+        case .checkmarks:
+            return UIImage(named: "CheckErrorOrange")!
+        case .radiobuttons:
+            return UIImage(named: "RadioOnOrange")!
+        default:
+            return nil
+        }
+    }
+    
+    // MARK: - Set cell
+    
     override func prepareForReuse() {
         super.prepareForReuse()
         checked = false
     }
     
-    func setWithAnswer(_ answer: AnswerTest) {
+    func setWithAnswer(_ answer: AnswerTest, showResults: Bool) {
         
         self.answer = answer
         
         // Get answer height
         
-        let height = AnswerCheckboxCell.getCellHeightFor(viewWidth: bounds.width, answer: answer)
+        let height = AnswerSelectionCell.getCellHeightFor(viewWidth: bounds.width, answer: answer)
         
         heightAnswerLabel.constant = height
         answerLabel.text = answer.title
         
+        // Set results
+        
+        if showResults {
+            setResults()
+        }
     }
     
     // MARK: - Actions
     
     @IBAction func ckeckboxDidTap(_ sender: UIButton) {
+        
+        guard let vc = viewController() as? QuizVC, vc.isQuizStarted else { return }
         
         checked = !checked
         answer?.isSelected = checked
@@ -80,5 +158,41 @@ class AnswerSelectionCell: UITableViewCell {
         let textHeight = getTextHeight(answer: answer, cellWidth: viewWidth)
         
         return cellHeight + textHeight
+    }
+    
+    // MARK: - Results
+    
+    func setResults() {
+        
+        guard let currentAnswer = answer else { return }
+        
+        if currentAnswer.isSelected, currentAnswer.isCorrect {
+            setAsAnsweredAndCorrect()
+            
+        } else if currentAnswer.isSelected, !currentAnswer.isCorrect {
+            setAsAnswerdAndWrong()
+            
+        } else if !currentAnswer.isSelected, currentAnswer.isCorrect {
+            setAsNotAnsweredAndCorrect()
+            
+        } else {
+            setAsEmpty()
+        }
+    }
+    
+    func setAsAnsweredAndCorrect() {
+        checkboxButton.setImage(greenBox, for: .normal)
+    }
+    
+    func setAsAnswerdAndWrong() {
+        checkboxButton.setImage(orangeBox, for: .normal)
+    }
+    
+    func setAsNotAnsweredAndCorrect() {
+        checkboxButton.setImage(grayBox, for: .normal)
+    }
+    
+    func setAsEmpty() {
+        checkboxButton.setImage(emptyBox, for: .normal)
     }
 }
