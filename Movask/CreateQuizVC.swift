@@ -36,10 +36,10 @@ class CreateQuizVC: BasicVC {
         q2.answers = [AnswerTest(title: "Because", isCorrect: false), AnswerTest(title: "Who knows", isCorrect: false), AnswerTest(title: "You are not", isCorrect: false)]
         
         let q3 = QuestionPostTest(type: .gaps)
-        q3.question = "Why am I so stupid?"
+        q3.question = "Why am I so stupid?Why am I so stupid?Why am I so stupid?Why am I so stupid?Why am I so stupid?Why am I so stupid?Why am I so stupid?Why am I so stupid?Why am I so stupid?Why am I so stupid?Why am I so stupid?Why am I so stupid?Why am I so stupid?Why am I so stupid?Why am I so stupid?Why am I so stupid?"
         q3.answers = []
         q3.gapAnswer = "You shall not pass, bitch"
-        q3.missingWordsIndexes = [1, 3]
+        q3.missingWordsIndexes = [1, 3, 6, 7, 23, 21, 15]
         
         let q4 = QuestionPostTest(type: .checkmarks)
         q4.question = "Who is your daddy?"
@@ -52,19 +52,18 @@ class CreateQuizVC: BasicVC {
         let q6 = QuestionPostTest(type: .gaps)
         q6.question = "Why am I so stupid?"
         q6.answers = []
-        q6.gapAnswer = "You shall not pass, bitch, hello you ar q6 ou shall not pass, bitch, hello you ar q6, ou shall not pass, bitch, hello you ar q6, ou shall not pass, bitch, hello you ar q6ou shall not pass, bitch, hello you ar q6"
-        q6.missingWordsIndexes = [1, 4]
+        q6.gapAnswer = "You shall not pass, bitch, hello you ar q6 ou shall not pass, bitch, hello you ar q6, ou shall not pass, bitch, hello you ar q6, ou sha You are not You are not You are not You are not You are not You are not You are not You are not You are not You are not You are not You arll not pass, bitch, hello you ar q6ou shall not pass, bitch, hello you ar q6"
+        q6.missingWordsIndexes = [1, 4, 6, 7, 23, 21, 15, 13, 19]
         
         let q7 = QuestionPostTest(type: .radiobuttons)
         q7.question = "Why am I so stupid?"
         q7.answers = []
         
-        questions = [q1, q2, q3, q4, q5, q6, q7]
+        questions = [q2, q6, q3, q4, q5, q1, q7]
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         quizCollectionView.collectionViewLayout.invalidateLayout()
-        NotificationCenter.default.post(Notification(name: Notification.Name("orientationChanged")))
     }
     
     func setupNavigationBar() {
@@ -104,6 +103,10 @@ class CreateQuizVC: BasicVC {
         q3.answers = []
         q3.gapAnswer = "You shall not pass, bitch"
         q3.missingWordsIndexes = [1, 3]
+        
+//        let q5 = QuestionPostTest(type: .radiobuttons)
+//        q5.question = "Why am I so stupid? Tell me"
+//        q5.answers = [AnswerTest(title: "Because", isCorrect: false), AnswerTest(title: "Who knows", isCorrect: false), AnswerTest(title: "You are not", isCorrect: false), AnswerTest(title: "You are not", isCorrect: false), AnswerTest(title: "You are not You are not You are not You are not You are not You are not You are not You are not You are not You are not You are not You are not You are not You are not You are not You are not You are not You are not You are not You are not You are not You are not ", isCorrect: false)]
         
         questions.append(q3)
         
@@ -193,8 +196,11 @@ extension CreateQuizVC: UICollectionViewDelegate, UICollectionViewDataSource, UI
         default:
             // question textview that should be same as used in cell
             let questionTitleTextView = UnderLinedTextView(frame: .zero, textContainer: nil)
-            questionTitleTextView.font = UIFont.boldSystemFont(ofSize: 14)
-            questionTitleTextView.text = question.question
+            let style = NSMutableParagraphStyle()
+            style.lineSpacing = 0
+            let font = UIFont.boldSystemFont(ofSize: 14)
+            let attributes = [NSParagraphStyleAttributeName : style, NSFontAttributeName : font, NSForegroundColorAttributeName : UIColor.white]
+            questionTitleTextView.attributedText = NSAttributedString(string: question.question, attributes: attributes)
             
             let questionTitleTextViewSize = questionTitleTextView.sizeThatFits(CGSize(width: questionTextViewWidth, height: CGFloat.greatestFiniteMagnitude))
             questionBlockHeight = questionBlockHeight + questionTitleTextViewSize.height
@@ -242,12 +248,14 @@ extension CreateQuizVC: QuizQuestionCellDelegate {
         let point = quizCollectionView.convert(CGPoint.zero, from: sender)
         
         if let indexPath = quizCollectionView.indexPathForItem(at: point) {
-            print(self.questions)
+            self.questions.remove(at: indexPath.item)
+            
             self.quizCollectionView.performBatchUpdates({
-                self.questions.remove(at: indexPath.item)
                 self.quizCollectionView.deleteItems(at: [indexPath])
             }, completion: { completed in
                 self.quizCollectionView.reloadData()
+//                self.quizCollectionView.collectionViewLayout.invalidateLayout()
+                
             })
         }
     }
@@ -256,7 +264,13 @@ extension CreateQuizVC: QuizQuestionCellDelegate {
         guard let question = cell.question else { return }
         guard question.id < questions.count else { return }
 
-        questions[question.id].question = cell.questionTitleTextView.text
+        switch question.type {
+        case .checkmarks,.radiobuttons:
+            questions[question.id].question = cell.questionTitleTextView.text
+        case .gaps:
+            questions[question.id].gapAnswer = cell.questionTitleTextView.text
+        }
+        
     }
     
 }

@@ -14,36 +14,24 @@ class GapButton: UIButton {
     var wordIndex: Int
     var wordRange: NSRange
     
-    var wordIsMissing: Bool = false {
-        willSet {
-            switch newValue {
-            case true:
-                self.setTitle("-", for: .normal)
-                self.titleLabel!.clipsToBounds = false
-            case false:
-                self.setTitle("+", for: .normal)
-                self.titleLabel!.clipsToBounds = false
-            }
-        }
-    }
-    
     convenience init(frame: CGRect, gapWord: String, wordIndex: Int, wordRange: NSRange, wordIsMissing: Bool) {
         self.init(frame: frame)
         
         self.gapWord = gapWord
         self.wordIndex = wordIndex
         self.wordRange = wordRange
-        self.setWordMissingStatus(status: wordIsMissing)
+        self.isSelected = wordIsMissing
         
         self.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
         self.titleLabel?.textColor = UIColor.white
+        self.setTitle("-", for: .selected)
+        self.setTitle("+", for: .normal)
     }
     
     override private init(frame: CGRect) {
         self.gapWord = ""
         self.wordIndex = 0
         self.wordRange = NSRange()
-        self.wordIsMissing = false
         
         super.init(frame: frame)
     }
@@ -51,10 +39,6 @@ class GapButton: UIButton {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    private func setWordMissingStatus(status: Bool) {
-        self.wordIsMissing = status
-    }
-    
+
     
 }

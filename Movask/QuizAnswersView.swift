@@ -40,7 +40,7 @@ class QuizAnswersView: NibView {
     
     override func setupViews() {
         setupCollectionView()
-//        NotificationCenter.default.addObserver(self, selector: #selector (updateCollectionView), name: Notification.Name("orientationChanged"), object: nil)
+//        NotificationCenter.default.addObserver(self, selector: #selector (updateCollectionViewLayout), name: Notification.Name("orientationChanged"), object: nil)
     }
     
     func setupCollectionView() {
@@ -59,16 +59,11 @@ class QuizAnswersView: NibView {
     
     //MARK:- Actions
     
-//    func updateCollectionView() {
-//        answersCollectionViewView.performBatchUpdates(nil, completion: { completed in })
-//    }
-    
     func updateCollectionViewLayout() {
         self.answersCollectionView.collectionViewLayout.invalidateLayout()
         answersCollectionView.performBatchUpdates(nil, completion: { completed in
             self.layoutDelegate?.didUpdateCollectionViewLayout(view: self)
         })
-
     }
     
     func addAnswerVariant() {
@@ -163,6 +158,7 @@ extension QuizAnswersView: UICollectionViewDelegate, UICollectionViewDataSource,
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
         if let answerCell = collectionView.cellForItem(at: indexPath) as? QuizAnswerCell {
+            print(self.frame.width)
             let questionConteinerHeight = answerCell.answerTextViewHeight.constant
             return CGSize(width: self.frame.width, height: questionConteinerHeight)
         } else {

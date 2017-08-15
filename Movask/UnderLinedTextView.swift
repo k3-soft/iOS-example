@@ -63,6 +63,12 @@ class UnderLinedTextView: KMPlaceholderTextView {
 
     }
     
+    override func caretRect(for position: UITextPosition) -> CGRect {
+        var originalRect: CGRect = super.caretRect(for: position)
+        originalRect.size.height = self.font.lineHeight
+        return originalRect
+    }
+    
 }
 
 extension UnderLinedTextView {
@@ -96,6 +102,39 @@ extension UnderLinedTextView {
             wordSum += 1
         })
         return wordSum
+    }
+    
+    func hightLightWordAt(_ index: Int) {
+        let attributedString = NSMutableAttributedString(attributedString: self.attributedText)
+        let text = self.text as NSString
+        let textRange = NSMakeRange(0, text.length)
+        var i = 0
+        
+        text.enumerateSubstrings(in: textRange, options: .byWords, using: {
+            (substring, substringRange, _, _) in
+            if index == i {
+//                attributedString.removeAttribute([NSBackgroundColorAttributeName: UIColor(colorWithHexValue: 0x1E7D45)], range: substringRange, range: substringRange)
+                attributedString.addAttributes([NSForegroundColorAttributeName: UIColor(colorWithHexValue: 0x1E7D45)], range: substringRange)
+            }
+            i += 1
+        })
+        self.attributedText = attributedString
+    }
+    
+    func removeHightLightWordAt(_ index: Int) {
+        let attributedString = NSMutableAttributedString(attributedString: self.attributedText)
+        let text = self.text as NSString
+        let textRange = NSMakeRange(0, text.length)
+        var i = 0
+        
+        text.enumerateSubstrings(in: textRange, options: .byWords, using: {
+            (substring, substringRange, _, _) in
+            if index == i {
+                attributedString.addAttributes([NSForegroundColorAttributeName: UIColor.white], range: substringRange)
+            }
+            i += 1
+        })
+        self.attributedText = attributedString
     }
     
     func getWordFrame(at range:NSRange) -> CGRect {

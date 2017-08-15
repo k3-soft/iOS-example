@@ -24,7 +24,7 @@ class QuizQuestionAnswersCell: UICollectionViewCell {
     @IBOutlet weak var qustionTypeDescriptionLabel: UILabel!
     
     @IBOutlet weak var questionTitleTextView: UnderLinedTextView!
-    @IBOutlet weak var questionOptionsView: QuizAnswersView?
+    @IBOutlet weak var questionOptionsView: QuizAnswersView!
 
     @IBOutlet weak var questionContainerHeight: NSLayoutConstraint!
     @IBOutlet weak var questionOptionsViewHeight: NSLayoutConstraint!
@@ -35,7 +35,7 @@ class QuizQuestionAnswersCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         questionTitleTextView.delegate = self
-        questionOptionsView?.layoutDelegate = self
+        questionOptionsView.layoutDelegate = self
         let panGesture = UIPanGestureRecognizer(target: self, action: #selector (repositionQuestion(_:)))
         dragButton.addGestureRecognizer(panGesture)
     }
@@ -43,17 +43,15 @@ class QuizQuestionAnswersCell: UICollectionViewCell {
     var gapButtons: [GapButton] = []
     
     var question: QuestionPostTest? {
-        didSet {
-            guard let question = question else { return }
+        willSet {
+            guard let question = newValue else { return }
             
             questionIndexLabel.text = "\(question.id + 1)."
             questionTypeLabel.text = question.type.description
             qustionTypeDescriptionLabel.text = question.type.instruction
             
             switch question.type {
-            case .gaps:
-                questionOptionsView = nil
-                
+            case .gaps:                
                 let style = NSMutableParagraphStyle()
                 style.lineSpacing = 30
                 let font = UIFont.boldSystemFont(ofSize: 14)
@@ -61,27 +59,23 @@ class QuizQuestionAnswersCell: UICollectionViewCell {
                 let attributes = [NSParagraphStyleAttributeName : style, NSFontAttributeName : font, NSForegroundColorAttributeName : UIColor.white]
                 questionTitleTextView.attributedText = NSAttributedString(string: question.gapAnswer, attributes: attributes)
                 
-                addGapButtons(for: question)
+            case .checkmarks, .radiobuttons:
+                let style = NSMutableParagraphStyle()
+                style.lineSpacing = 0
+                let font = UIFont.boldSystemFont(ofSize: 14)
                 
-            default:
+                let attributes = [NSParagraphStyleAttributeName : style, NSFontAttributeName : font, NSForegroundColorAttributeName : UIColor.white]
+                questionTitleTextView.attributedText = NSAttributedString(string: question.question, attributes: attributes)
+                
                 questionTitleTextView.text = question.question
+                questionOptionsView.question = question
+                questionOptionsView.answersCollectionView.reloadData()
             }
-            questionOptionsView?.question = question
-            calculateCellHeightFor(question)
         }
     }
     
     override func prepareForReuse() {
-        questionTitleTextView.text = ""
-        questionOptionsViewHeight.constant = 0
-        questionContainerHeight.constant = 0
-        questionTitleHeight.constant = 0
-        gapButtons.forEach { button in
-            button.removeFromSuperview()
-        }
-        gapButtons = []
-        question = nil
-        questionOptionsView?.answersCollectionView.reloadData()
+        removeGapButtons()
     }
     
     @IBAction func deleteQuestionButtonTapped(_ sender: UIButton) {
@@ -164,39 +158,73 @@ class QuizQuestionAnswersCell: UICollectionViewCell {
     
     func addGapButtons(for question: QuestionPostTest) {
         let questionWordsCount = questionTitleTextView.numberOfWords()
-        
+        removeGapButtons()
+        self.layoutIfNeeded()
         for wordIndex in 0 ..< questionWordsCount {
             let word = questionTitleTextView.getWord(at: wordIndex)
             let wordRectInTextView = questionTitleTextView.getWordFrame(at: word.range)
             let wordRectInCell = questionTitleTextView.convert(wordRectInTextView, to: self)
             
-            let buttonRect = CGRect(x: wordRectInCell.origin.x, y: wordRectInCell.origin.y - 20, width: wordRectInCell.width, height: 20.0)
+            let buttonRect = CGRect(x: wordRectInCell.origin.x - 1, y: wordRectInCell.origin.y - 20, width: wordRectInCell.width + 2, height: 20.0)
 
             if question.missingWordsIndexes.contains(wordIndex) {
                 let gapButton = GapButton(frame: buttonRect, gapWord: word.wordString, wordIndex: wordIndex, wordRange: word.range, wordIsMissing: true)
                 gapButton.addTarget(self, action: #selector (setGapButtonStatus(_:)), for: .touchUpInside)
                 addSubview(gapButton)
                 gapButtons.append(gapButton)
+                questionTitleTextView.hightLightWordAt(gapButton.wordIndex)
+
             } else {
                 let gapButton = GapButton(frame: buttonRect, gapWord: word.wordString, wordIndex: wordIndex, wordRange: word.range, wordIsMissing: false)
                 gapButton.addTarget(self, action: #selector (setGapButtonStatus(_:)), for: .touchUpInside)
+
                 addSubview(gapButton)
+
                 gapButtons.append(gapButton)
             }
         }
     }
     
+    func removeGapButtons() {
+        for gapButton in gapButtons {
+            gapButton.removeFromSuperview()
+        }
+        gapButtons.removeAll()
+    }
+    
+    
     func setGapButtonStatus(_ sender: GapButton) {
-        sender.wordIsMissing = !sender.wordIsMissing
+        sender.isSelected = !sender.isSelected
+        sender.setNeedsDisplay()
+
+        if sender.isSelected {
+            questionTitleTextView.hightLightWordAt(sender.wordIndex)
+        } else {
+            questionTitleTextView.removeHightLightWordAt(sender.wordIndex)
+        }
+        
         question!.missingWordsIndexes = []
         
-        gapButtons.forEach { button in
-            if button.wordIsMissing {
-                question!.missingWordsIndexes.append(button.wordIndex)
+        gapButtons.forEach { gap in
+            if gap.isSelected {
+                question!.missingWordsIndexes.append(gap.wordIndex)
             }
         }
     }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
 
+        guard let question = question else { return }
+        calculateCellHeightFor(question)
+
+        switch question.type {
+        case .gaps:
+            addGapButtons(for: question)
+        default:
+            break
+        }
+    }
 }
 
 extension QuizQuestionAnswersCell: UITextViewDelegate {
@@ -210,10 +238,6 @@ extension QuizQuestionAnswersCell: UITextViewDelegate {
             switch question!.type {
             
             case .gaps:
-                for gapButton in gapButtons {
-                    gapButton.removeFromSuperview()
-                }
-                gapButtons.removeAll()
                 question!.gapAnswer = textView.text
                 addGapButtons(for: question!)
             default:

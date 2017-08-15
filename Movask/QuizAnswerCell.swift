@@ -56,7 +56,7 @@ class QuizAnswerCell: UICollectionViewCell {
             guard let answer = answer else { return }
             answerTextView.text = answer.title
             selectedCell = answer.isSelected
-            calculateCellHeightFor(answer)
+//            calculateCellHeightFor(answer)
         }
     }
     
@@ -77,6 +77,12 @@ class QuizAnswerCell: UICollectionViewCell {
         
         answerTextViewHeight.constant = CGFloat(answerTextViewSize.height)
         answerTextView.lineTopConstraint.constant = answerTextViewSize.height - answerTextView.lineHeightConstraint.constant
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        guard let answer = answer else { return }
+        calculateCellHeightFor(answer)
     }
 
 }
