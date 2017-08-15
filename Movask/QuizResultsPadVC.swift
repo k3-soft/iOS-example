@@ -11,6 +11,7 @@ import UIKit
 class QuizResultsPadVC: QuizResultsVC {
     
     // Navigation bar
+    @IBOutlet weak var videoThumb: UIImageView!
     @IBOutlet weak var rewardLabel: UILabel!
     @IBOutlet weak var savedLabel: UILabel!
     
@@ -45,6 +46,25 @@ class QuizResultsPadVC: QuizResultsVC {
     
     override func setNavigationBar() {
         super.setNavigationBar()
+        
+        // Set video thumb
+        
+        guard let url = URL(string: quiz!.videoPath) else {
+            showDefaultImage()
+            return
+        }
+        
+        VideoManager.getThumbnailFromPath(url, needRetry: true, success: { [weak self] (image) in
+            self?.videoThumb.image = image
+            
+        }) { [weak self] _ in
+            print("Error loading video thumb")
+            self?.showDefaultImage()
+        }
+    }
+    
+    func showDefaultImage() {
+        videoThumb.image = UIImage(named: "EmptyImage")!
     }
     
     override func setResults() {

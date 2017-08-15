@@ -34,6 +34,7 @@
                 <outlet property="saveLabel" destination="3rD-Jy-ilA" id="5VG-ZE-hZj"/>
                 <outlet property="savedLabel" destination="Km1-QF-jqZ" id="IZz-Nw-tss"/>
                 <outlet property="summaryView" destination="Z6n-6p-5S9" id="6jA-uR-BDp"/>
+                <outlet property="videoThumb" destination="lAl-lR-k6P" id="hCB-Lk-hVd"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
