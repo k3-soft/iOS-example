@@ -162,12 +162,20 @@ class QuizVC: BasicVC {
         guard index < questionsList.count else {
             
             // Last question, show results
-    
-            let quizResultsVC = QuizResultsPhoneVC()
-            quizResultsVC.quiz = quiz
-            quizResultsVC.questionsList = questionsList
             
-            navigationController?.pushViewController(quizResultsVC, animated: true)
+            var quizResultsVC: QuizResultsVC?
+            
+            if UIDevice.current.userInterfaceIdiom == .phone {
+                quizResultsVC = QuizResultsPhoneVC()
+            } else {
+                quizResultsVC = QuizResultsPadVC()
+            }
+    
+            quizResultsVC!.quiz = quiz
+            quizResultsVC!.questionsList = questionsList
+            
+            navigationController?.pushViewController(quizResultsVC!, animated: true)
+            
             return
         }
         

@@ -38,7 +38,7 @@ class ResultGapQuestionCell: UICollectionViewCell {
         if UIDevice.current.userInterfaceIdiom == .phone {
             return 360.0
         } else {
-            return 453.0
+            return 405.0
         }
     }
     
@@ -197,7 +197,6 @@ class ResultGapQuestionCell: UICollectionViewCell {
             textField.autocapitalizationType = .none
             textField.tintColor = UIColor.white
             textField.isEnabled = false
-            textField.backgroundColor = UIColor.red
             
             questionTextView.addSubview(textField)
             textFields.append(textField)

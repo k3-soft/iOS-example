@@ -29,7 +29,7 @@ class ResultQuestionCell: UICollectionViewCell {
         if UIDevice.current.userInterfaceIdiom == .phone {
             return 360.0
         } else {
-            return 453.0
+            return 405.0
         }
     }
     
