@@ -72,10 +72,13 @@ class QuizQuestionAnswersCell: UICollectionViewCell {
     }
     
     override func prepareForReuse() {
-//        questionTitleTextView.text = ""
-//        questionOptionsViewHeight.constant = 0
-//        questionContainerHeight.constant = 0
-//        questionTitleHeight.constant = 0
+        questionTitleTextView.text = ""
+        questionOptionsViewHeight.constant = 0
+        questionContainerHeight.constant = 0
+        questionTitleHeight.constant = 0
+        gapButtons.forEach { button in
+            button.removeFromSuperview()
+        }
         gapButtons = []
         question = nil
         questionOptionsView?.answersCollectionView.reloadData()
