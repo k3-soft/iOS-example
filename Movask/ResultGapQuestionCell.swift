@@ -91,13 +91,13 @@ class ResultGapQuestionCell: UICollectionViewCell {
         super.layoutSubviews()
         
         if !textFields.isEmpty {
-            reloadEnd(animated: false)
+            layoutGaps(animated: false)
         }
     }
     
     // MARK: - Reload
     
-    func reloadStart(viewWidth: CGFloat) {
+    func reload(viewWidth: CGFloat) {
         
         setViewHeight(cellWidth: viewWidth - cellSideInsets)
         
@@ -106,11 +106,10 @@ class ResultGapQuestionCell: UICollectionViewCell {
         }
     }
     
-    func reloadEnd(animated: Bool = true) {
+    func layoutGaps(animated: Bool = true) {
         
         (0 ..< gapRanges.count).forEach { (index) in
-            var frame = boundingRectForCharacterRange(gapRanges[index])
-            frame.origin.y += 5
+            let frame = boundingRectForCharacterRange(gapRanges[index])
             textFields[index].frame = frame
             
             if animated {
@@ -188,8 +187,7 @@ class ResultGapQuestionCell: UICollectionViewCell {
         for range in gapRanges {
             
             // Get frame for text field
-            var frame = boundingRectForCharacterRange(range)
-            frame.origin.y += 5
+            let frame = boundingRectForCharacterRange(range)
             
             // Create text field
             let textField = UITextField(frame: frame)
@@ -207,6 +205,12 @@ class ResultGapQuestionCell: UICollectionViewCell {
     }
     
     func boundingRectForCharacterRange(_ range: NSRange) -> CGRect {
-        return gapManager.boundingRectForCharacterRange(in: questionTextView, range: range)
+        
+        var frame = gapManager.boundingRectForCharacterRange(in: questionTextView, range: range)
+        
+        // Make frame little wider for long words
+        frame = CGRect(x: frame.origin.x - 5, y: frame.origin.y + 5, width: frame.size.width + 10, height: frame.size.height)
+        
+        return frame
     }
 }

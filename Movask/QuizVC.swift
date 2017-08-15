@@ -102,7 +102,7 @@ class QuizVC: BasicVC {
             if let questionCell = cell as? QuestionCell {
                 questionCell.reload(viewWidth: size.width)
             } else if let questionGapCell = cell as? GapQuestionCell {
-                questionGapCell.reloadStart(viewWidth: size.width)
+                questionGapCell.reload(viewWidth: size.width)
             }
         }
         
@@ -116,7 +116,7 @@ class QuizVC: BasicVC {
         }, completion: { _ in
             for cell in self.questionsCollection.visibleCells {
                 if let questionGapCell = cell as? GapQuestionCell {
-                    questionGapCell.reloadEnd()
+                    questionGapCell.layoutGaps()
                 }
             }
         })

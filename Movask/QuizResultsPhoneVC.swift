@@ -73,7 +73,7 @@ class QuizResultsPhoneVC: BasicVC {
             if let questionCell = cell as? ResultQuestionCell {
                 questionCell.reload(viewWidth: size.width)
             } else if let questionGapCell = cell as? ResultGapQuestionCell {
-                questionGapCell.reloadStart(viewWidth: size.width)
+                questionGapCell.reload(viewWidth: size.width)
             }
         }
         
@@ -85,7 +85,7 @@ class QuizResultsPhoneVC: BasicVC {
             }, completion: { _ in
                 for cell in self.resultsCollection.visibleCells {
                     if let questionGapCell = cell as? ResultGapQuestionCell {
-                        questionGapCell.reloadEnd()
+                        questionGapCell.layoutGaps()
                     }
                 }
         })
