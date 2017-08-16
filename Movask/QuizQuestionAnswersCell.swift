@@ -15,32 +15,43 @@ protocol QuizQuestionCellDelegate: class {
 
 class QuizQuestionAnswersCell: UICollectionViewCell {
     
-    @IBOutlet weak var dragButton: UIButton!
-    
-    @IBOutlet weak var questionContainer: UIView!
     @IBOutlet weak var questionIndexLabel: UILabel!
+    @IBOutlet weak var dragButton: UIButton!
     
     @IBOutlet weak var questionTypeLabel: UILabel!
     @IBOutlet weak var qustionTypeDescriptionLabel: UILabel!
     
-    @IBOutlet weak var questionTitleTextView: UnderLinedTextView!
-    @IBOutlet weak var questionOptionsView: QuizAnswersView!
-
+    @IBOutlet weak var questionContainer: UIView!
     @IBOutlet weak var questionContainerHeight: NSLayoutConstraint!
-    @IBOutlet weak var questionOptionsViewHeight: NSLayoutConstraint!
-    @IBOutlet weak var questionTitleHeight: NSLayoutConstraint!
+    
+    @IBOutlet weak var questionTitleTextView: UnderLinedTextView!
+    @IBOutlet weak var questionTitleTextViewHeight: NSLayoutConstraint!
+    
+    @IBOutlet weak var answersView: QuizAnswersView!
+    @IBOutlet weak var answersViewHeight: NSLayoutConstraint!
 
     weak var delegate: QuizQuestionCellDelegate?
     weak var ownerCollectionView: UICollectionView?
     
-    override func awakeFromNib() {
-        questionTitleTextView.delegate = self
-        questionOptionsView.layoutDelegate = self
-        let panGesture = UIPanGestureRecognizer(target: self, action: #selector (repositionQuestion(_:)))
-        dragButton.addGestureRecognizer(panGesture)
-    }
-    
     var gapButtons: [GapButton] = []
+
+    static let gapsQuestionTextAttributes: [String: NSObject] = {
+        let style = NSMutableParagraphStyle()
+        style.lineSpacing = 30
+        let font = UIFont.boldSystemFont(ofSize: 14)
+        
+        let attributes = [NSParagraphStyleAttributeName : style, NSFontAttributeName : font, NSForegroundColorAttributeName : UIColor.white]
+        return attributes
+    }()
+    
+    static let variantsQuestionTextAttributes: [String: NSObject] = {
+        let style = NSMutableParagraphStyle()
+        style.lineSpacing = 0
+        let font = UIFont.boldSystemFont(ofSize: 14)
+        
+        let attributes = [NSParagraphStyleAttributeName : style, NSFontAttributeName : font, NSForegroundColorAttributeName : UIColor.white]
+        return attributes
+    }()
     
     var question: QuestionPostTest? {
         willSet {
@@ -52,26 +63,21 @@ class QuizQuestionAnswersCell: UICollectionViewCell {
             
             switch question.type {
             case .gaps:                
-                let style = NSMutableParagraphStyle()
-                style.lineSpacing = 30
-                let font = UIFont.boldSystemFont(ofSize: 14)
-                
-                let attributes = [NSParagraphStyleAttributeName : style, NSFontAttributeName : font, NSForegroundColorAttributeName : UIColor.white]
-                questionTitleTextView.attributedText = NSAttributedString(string: question.gapAnswer, attributes: attributes)
+                questionTitleTextView.attributedText = NSAttributedString(string: question.gapAnswer, attributes: QuizQuestionAnswersCell.gapsQuestionTextAttributes)
                 
             case .checkmarks, .radiobuttons:
-                let style = NSMutableParagraphStyle()
-                style.lineSpacing = 0
-                let font = UIFont.boldSystemFont(ofSize: 14)
+                questionTitleTextView.attributedText = NSAttributedString(string: question.question, attributes: QuizQuestionAnswersCell.variantsQuestionTextAttributes)
                 
-                let attributes = [NSParagraphStyleAttributeName : style, NSFontAttributeName : font, NSForegroundColorAttributeName : UIColor.white]
-                questionTitleTextView.attributedText = NSAttributedString(string: question.question, attributes: attributes)
-                
-                questionTitleTextView.text = question.question
-                questionOptionsView.question = question
-                questionOptionsView.answersCollectionView.reloadData()
+                answersView.question = question
             }
         }
+    }
+    
+    override func awakeFromNib() {
+        questionTitleTextView.delegate = self
+        answersView.layoutDelegate = self
+        let panGesture = UIPanGestureRecognizer(target: self, action: #selector (repositionQuestion(_:)))
+        dragButton.addGestureRecognizer(panGesture)
     }
     
     override func prepareForReuse() {
@@ -81,10 +87,6 @@ class QuizQuestionAnswersCell: UICollectionViewCell {
     @IBAction func deleteQuestionButtonTapped(_ sender: UIButton) {
         print("delete question tapped")
         delegate?.didTapDeleteQuestionButton(cell: self, sender: sender)
-    }
-    
-    @IBAction func dragQuestonButtonTapped(_ sender: UIButton) {
-        print("drag question tapped")
     }
     
     func repositionQuestion(_ gesture: UILongPressGestureRecognizer) {
@@ -107,52 +109,41 @@ class QuizQuestionAnswersCell: UICollectionViewCell {
             ownerCollectionView.cancelInteractiveMovement()
         }
     }
-    
-    func calculateCellHeightFor(_ question: QuestionPostTest) {
+
+    func calculateCellHeightConstraintsFor(_ question: QuestionPostTest) {
         var questionBlockHeight: CGFloat = 80 // height for green question block without textview
         let answersFooterHeight: CGFloat = 33.0 // add item button
         let answersCollectionViewInsets: CGFloat = 16.0
-        var minAnswersConteinerHeight: CGFloat = answersFooterHeight + answersCollectionViewInsets
-        questionOptionsViewHeight.constant = 0
+        let textViewInsets: CGFloat = 16.0
+        
+        let answerTextViewWidth: CGFloat = self.frame.width - 50 - 50 - 16 - 16 - 25 - 16 - 8
+        var answersConteinerHeight: CGFloat = answersFooterHeight + answersCollectionViewInsets
+        answersViewHeight.constant = 0
 
         switch question.type {
         case .gaps:
-            // question textview that should be same as used in cell
-            let questionTextViewWidth: CGFloat = self.frame.width - 50 - 50 - 16 - 16 - 16
-
-            let questionTitleTextViewSize = questionTitleTextView.sizeThatFits(CGSize(width: questionTextViewWidth, height: CGFloat.greatestFiniteMagnitude))
+            let questionTitleTextViewSize = questionTitleTextView.sizeThatFits(CGSize(width: questionTitleTextView.frame.size.width, height: CGFloat.greatestFiniteMagnitude))
             questionBlockHeight = questionBlockHeight + questionTitleTextViewSize.height
             
-            questionTitleHeight.constant = questionTitleTextViewSize.height
+            questionTitleTextViewHeight.constant = questionTitleTextViewSize.height
             questionTitleTextView.lineTopConstraint.constant = questionTitleTextViewSize.height - questionTitleTextView.lineHeightConstraint.constant
             questionContainerHeight.constant = questionBlockHeight
             
         default:
-            let questionTextViewWidth: CGFloat = self.frame.width - 50 - 50 - 16 - 16 - 16
-            
-            let questionTitleTextViewSize = questionTitleTextView.sizeThatFits(CGSize(width: questionTextViewWidth, height: CGFloat.greatestFiniteMagnitude))
+            let questionTitleTextViewSize = questionTitleTextView.sizeThatFits(CGSize(width: questionTitleTextView.frame.size.width, height: CGFloat.greatestFiniteMagnitude))
             questionBlockHeight = questionBlockHeight + questionTitleTextViewSize.height
             
-            questionTitleHeight.constant = questionTitleTextViewSize.height
+            questionTitleTextViewHeight.constant = questionTitleTextViewSize.height
             questionTitleTextView.lineTopConstraint.constant = questionTitleTextViewSize.height - questionTitleTextView.lineHeightConstraint.constant
             questionContainerHeight.constant = questionBlockHeight
             
-            // answer textview that should be same as used in cell
-            let answerTextView = UnderLinedTextView(frame: .zero, textContainer: nil)
-            answerTextView.font = UIFont.systemFont(ofSize: 13)
-            
             // calculate size for each answer
             for answer in question.answers {
-                answerTextView.text = answer.title
-                
-                let answerTextViewWidth: CGFloat = self.frame.width - 50 - 50 - 16 - 16 - 25 - 16 - 8
-                
-                let answerTextViewSize = answerTextView.sizeThatFits(CGSize(width: answerTextViewWidth, height: CGFloat.greatestFiniteMagnitude))
-                minAnswersConteinerHeight += answerTextViewSize.height
-
+                let answerTextViewHeight = answer.title.height(withFixedWidth: answerTextViewWidth, textAttributes: QuizAnswerCell.answerTextAttributes) + textViewInsets
+                print(answerTextViewHeight)
+                answersConteinerHeight += answerTextViewHeight
             }
-            
-            questionOptionsViewHeight.constant = minAnswersConteinerHeight
+            answersViewHeight.constant = answersConteinerHeight
         }
     }
     
@@ -160,6 +151,7 @@ class QuizQuestionAnswersCell: UICollectionViewCell {
         let questionWordsCount = questionTitleTextView.numberOfWords()
         removeGapButtons()
         self.layoutIfNeeded()
+        
         for wordIndex in 0 ..< questionWordsCount {
             let word = questionTitleTextView.getWord(at: wordIndex)
             let wordRectInTextView = questionTitleTextView.getWordFrame(at: word.range)
@@ -167,21 +159,20 @@ class QuizQuestionAnswersCell: UICollectionViewCell {
             
             let buttonRect = CGRect(x: wordRectInCell.origin.x - 1, y: wordRectInCell.origin.y - 20, width: wordRectInCell.width + 2, height: 20.0)
 
+            var gapButton = GapButton()
+
             if question.missingWordsIndexes.contains(wordIndex) {
-                let gapButton = GapButton(frame: buttonRect, gapWord: word.wordString, wordIndex: wordIndex, wordRange: word.range, wordIsMissing: true)
-                gapButton.addTarget(self, action: #selector (setGapButtonStatus(_:)), for: .touchUpInside)
-                addSubview(gapButton)
-                gapButtons.append(gapButton)
+                gapButton = GapButton(frame: buttonRect, gapWord: word.wordString, wordIndex: wordIndex, wordRange: word.range, wordIsMissing: true)
+                
                 questionTitleTextView.hightLightWordAt(gapButton.wordIndex)
 
             } else {
-                let gapButton = GapButton(frame: buttonRect, gapWord: word.wordString, wordIndex: wordIndex, wordRange: word.range, wordIsMissing: false)
-                gapButton.addTarget(self, action: #selector (setGapButtonStatus(_:)), for: .touchUpInside)
-
-                addSubview(gapButton)
-
-                gapButtons.append(gapButton)
+                gapButton = GapButton(frame: buttonRect, gapWord: word.wordString, wordIndex: wordIndex, wordRange: word.range, wordIsMissing: false)
             }
+            
+            gapButton.addTarget(self, action: #selector (setGapButtonStatus(_:)), for: .touchUpInside)
+            addSubview(gapButton)
+            gapButtons.append(gapButton)
         }
     }
     
@@ -191,7 +182,6 @@ class QuizQuestionAnswersCell: UICollectionViewCell {
         }
         gapButtons.removeAll()
     }
-    
     
     func setGapButtonStatus(_ sender: GapButton) {
         sender.isSelected = !sender.isSelected
@@ -216,7 +206,7 @@ class QuizQuestionAnswersCell: UICollectionViewCell {
         super.layoutSubviews()
 
         guard let question = question else { return }
-        calculateCellHeightFor(question)
+        calculateCellHeightConstraintsFor(question)
 
         switch question.type {
         case .gaps:
@@ -245,9 +235,8 @@ extension QuizQuestionAnswersCell: UITextViewDelegate {
             }
             
             // update textview height
-            questionTitleHeight.constant = newSize.height
+            questionTitleTextViewHeight.constant = newSize.height
             questionTitleTextView.lineTopConstraint.constant = newSize.height - questionTitleTextView.lineHeightConstraint.constant
-            
             //update container height
             questionContainerHeight.constant = newSize.height + 80.0
             
@@ -279,7 +268,7 @@ extension QuizQuestionAnswersCell: UITextViewDelegate {
 extension QuizQuestionAnswersCell: RadioButtonsViewDelegate {
     
     func didUpdateCollectionViewLayout(view: QuizAnswersView) {
-        questionOptionsViewHeight.constant = view.answersCollectionView.contentSize.height + 16
+        answersViewHeight.constant = view.answersCollectionView.contentSize.height + 16
         ownerCollectionView?.performBatchUpdates(nil)
     }
     

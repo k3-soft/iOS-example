@@ -24,6 +24,15 @@ class QuizAnswerCell: UICollectionViewCell {
     var checkedImage: UIImage?
     var unCheckedImage: UIImage?
     
+    static let answerTextAttributes: [String: NSObject] = {
+        let style = NSMutableParagraphStyle()
+        style.lineSpacing = 0
+        let font = UIFont.systemFont(ofSize: 14)
+        
+        let attributes = [NSParagraphStyleAttributeName : style, NSFontAttributeName : font]
+        return attributes
+    }()
+    
     var selectionType: QuestionType? {
         willSet {
             guard let selectionType = newValue else { return }
@@ -54,9 +63,9 @@ class QuizAnswerCell: UICollectionViewCell {
     var answer: AnswerTest? {
         didSet {
             guard let answer = answer else { return }
-            answerTextView.text = answer.title
+            answerTextView.attributedText = NSAttributedString(string: answer.title, attributes: QuizAnswerCell.answerTextAttributes)
+            
             selectedCell = answer.isSelected
-//            calculateCellHeightFor(answer)
         }
     }
     
@@ -66,14 +75,11 @@ class QuizAnswerCell: UICollectionViewCell {
     }
     
     override func prepareForReuse() {
-        answerTextViewHeight.constant = 33
         selectedCell = false
     }
     
     func calculateCellHeightFor(_ answer: AnswerTest) {
-        let answerTextViewWidth: CGFloat = self.frame.width - 25 - 16 - 8
-        
-        let answerTextViewSize = answerTextView.sizeThatFits(CGSize(width: answerTextViewWidth, height: CGFloat.greatestFiniteMagnitude))
+        let answerTextViewSize = answerTextView.sizeThatFits(CGSize(width: answerTextView.frame.size.width, height: CGFloat.greatestFiniteMagnitude))
         
         answerTextViewHeight.constant = CGFloat(answerTextViewSize.height)
         answerTextView.lineTopConstraint.constant = answerTextViewSize.height - answerTextView.lineHeightConstraint.constant
@@ -92,7 +98,7 @@ extension QuizAnswerCell: UITextViewDelegate {
     func textViewDidChange(_ textView: UITextView) {
         let fixedWidth = textView.frame.size.width
         let newSize = textView.sizeThatFits(CGSize(width: fixedWidth, height: CGFloat.greatestFiniteMagnitude))
-        print(newSize.height)
+
         switch textView {
         case answerTextView:
             // update textview height

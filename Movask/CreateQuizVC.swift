@@ -20,7 +20,6 @@ class CreateQuizVC: BasicVC {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
         addQuestions()
         setupNavigationBar()
         setupCollectionView()
@@ -87,7 +86,6 @@ class CreateQuizVC: BasicVC {
         quizCollectionView.register(UINib(nibName: questionCell, bundle: nil),
                                     forCellWithReuseIdentifier: questionCell)
         quizCollectionView.register(UINib(nibName: headerCell, bundle: nil), forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: headerCell)
-        
     }
 
     
@@ -150,7 +148,7 @@ extension CreateQuizVC: UICollectionViewDelegate, UICollectionViewDataSource, UI
         cell.question = questions[indexPath.item]
         cell.ownerCollectionView = quizCollectionView
         cell.delegate = self
-        cell.questionOptionsView?.modificationDelegate = self
+        cell.answersView.modificationDelegate = self
             
         return cell
     }
@@ -158,7 +156,7 @@ extension CreateQuizVC: UICollectionViewDelegate, UICollectionViewDataSource, UI
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if let questionCell = collectionView.cellForItem(at: indexPath) as? QuizQuestionAnswersCell {
             let shadowSize: CGFloat = 10.0
-            let cellHeight = questionCell.questionContainerHeight.constant + questionCell.questionOptionsViewHeight.constant
+            let cellHeight = questionCell.questionContainerHeight.constant + questionCell.answersViewHeight.constant
             return CGSize(width: self.view.frame.width, height: cellHeight + shadowSize)
             
         } else {
@@ -167,11 +165,12 @@ extension CreateQuizVC: UICollectionViewDelegate, UICollectionViewDataSource, UI
     }
     
     func sizeFor(question: QuestionPostTest) -> CGSize {
-        var questionBlockHeight: CGFloat = 80 // height for green question block without textview
+        let questionBlockHeight: CGFloat = 80 // height for green question block without textview
         let shadowSize: CGFloat = 10.0
         let answersFooterHeight: CGFloat = 33.0 // add item button
         let answersCollectionViewInsets: CGFloat = 16.0
-        var minAnswersConteinerHeight: CGFloat = answersFooterHeight + answersCollectionViewInsets
+        let textViewInsets: CGFloat = 16.0
+        var answersConteinerHeight: CGFloat = answersFooterHeight + answersCollectionViewInsets
         
         let questionTextViewWidth: CGFloat = self.view.frame.width - 50 - 50 - 16 - 16 - 16
         let answerTextViewWidth: CGFloat = self.view.frame.width - 50 - 50 - 16 - 16 - 25 - 16 - 8
@@ -179,45 +178,25 @@ extension CreateQuizVC: UICollectionViewDelegate, UICollectionViewDataSource, UI
         switch question.type {
         case .gaps:
             // question textview that should be same as used in cell
-            let questionTitleTextView = UnderLinedTextView(frame: .zero, textContainer: nil)
-            questionTitleTextView.font = UIFont.boldSystemFont(ofSize: 14)
-            let style = NSMutableParagraphStyle()
-            style.lineSpacing = 30
-            let font = UIFont.boldSystemFont(ofSize: 14)
+            let questionTextViewHeight = question.gapAnswer.height(withFixedWidth: questionTextViewWidth, textAttributes: QuizQuestionAnswersCell.gapsQuestionTextAttributes)
+            let questionContainerHeight = questionTextViewHeight + textViewInsets + questionBlockHeight
             
-            let attributes = [NSParagraphStyleAttributeName : style, NSFontAttributeName : font, NSForegroundColorAttributeName : UIColor.white]
-            questionTitleTextView.attributedText = NSAttributedString(string: question.gapAnswer, attributes: attributes)
+            return CGSize(width: self.view.frame.width, height: CGFloat(questionContainerHeight + shadowSize))
             
-            let questionTitleTextViewHeight = questionTitleTextView.sizeThatFits(CGSize(width: self.view.frame.width - 50 - 50 - 16 - 16 - 16, height: CGFloat.greatestFiniteMagnitude))
-            questionBlockHeight = questionBlockHeight + questionTitleTextViewHeight.height
-            
-            return CGSize(width: self.view.frame.width, height: CGFloat(questionBlockHeight + shadowSize))
-            
-        default:
+        case .checkmarks, .radiobuttons:
             // question textview that should be same as used in cell
-            let questionTitleTextView = UnderLinedTextView(frame: .zero, textContainer: nil)
-            let style = NSMutableParagraphStyle()
-            style.lineSpacing = 0
-            let font = UIFont.boldSystemFont(ofSize: 14)
-            let attributes = [NSParagraphStyleAttributeName : style, NSFontAttributeName : font, NSForegroundColorAttributeName : UIColor.white]
-            questionTitleTextView.attributedText = NSAttributedString(string: question.question, attributes: attributes)
+            let questionTextViewHeight = question.question.height(withFixedWidth: questionTextViewWidth, textAttributes: QuizQuestionAnswersCell.variantsQuestionTextAttributes) + textViewInsets
             
-            let questionTitleTextViewSize = questionTitleTextView.sizeThatFits(CGSize(width: questionTextViewWidth, height: CGFloat.greatestFiniteMagnitude))
-            questionBlockHeight = questionBlockHeight + questionTitleTextViewSize.height
-            
-            // answer textview that should be same as used in cell
-            let answerTextView = UnderLinedTextView(frame: .zero, textContainer: nil)
-            answerTextView.font = UIFont.systemFont(ofSize: 13)
+            let questionContainerHeight = questionTextViewHeight + questionBlockHeight
             
             // calculate size for each answer
             for answer in question.answers {
-                answerTextView.text = answer.title
-                
-                let answerTextViewSize = answerTextView.sizeThatFits(CGSize(width: answerTextViewWidth, height: CGFloat.greatestFiniteMagnitude))
-                minAnswersConteinerHeight += answerTextViewSize.height
+                let answerTextViewHeight = answer.title.height(withFixedWidth: answerTextViewWidth, textAttributes: QuizQuestionAnswersCell.variantsQuestionTextAttributes) + textViewInsets
+                print(answerTextViewHeight)
+                answersConteinerHeight += answerTextViewHeight
             }
             
-            return CGSize(width: self.view.frame.width, height: questionBlockHeight + minAnswersConteinerHeight + shadowSize)
+            return CGSize(width: self.view.frame.width, height: questionContainerHeight + answersConteinerHeight + shadowSize)
         }
     }
     

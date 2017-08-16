@@ -133,9 +133,6 @@
                             <constraint firstAttribute="height" constant="50" id="VWP-1I-FAB"/>
                             <constraint firstAttribute="width" constant="50" id="wTK-Y3-mr9"/>
                         </constraints>
-                        <connections>
-                            <action selector="dragQuestonButtonTapped:" destination="v4K-cS-Pu8" eventType="touchUpInside" id="j8O-6G-0Pl"/>
-                        </connections>
                     </button>
                 </subviews>
             </view>
@@ -163,14 +160,14 @@
                 </userDefinedRuntimeAttribute>
             </userDefinedRuntimeAttributes>
             <connections>
+                <outlet property="answersView" destination="kDc-uo-keH" id="AY2-gi-gvY"/>
+                <outlet property="answersViewHeight" destination="3sn-2L-L9x" id="cLs-nR-Ipt"/>
                 <outlet property="dragButton" destination="NWc-b7-ANh" id="ajd-xT-DXI"/>
                 <outlet property="questionContainer" destination="bBY-Jy-55e" id="8MA-Uf-o1q"/>
                 <outlet property="questionContainerHeight" destination="JaB-6b-j05" id="Tcy-7e-3h2"/>
                 <outlet property="questionIndexLabel" destination="uwj-z2-O12" id="Ryn-J6-QMe"/>
-                <outlet property="questionOptionsView" destination="kDc-uo-keH" id="7RN-o9-bxb"/>
-                <outlet property="questionOptionsViewHeight" destination="3sn-2L-L9x" id="Oum-yM-1bc"/>
-                <outlet property="questionTitleHeight" destination="V0y-ct-ptG" id="Kkn-ZD-p2k"/>
                 <outlet property="questionTitleTextView" destination="MJb-0v-zbk" id="4a0-Dp-K65"/>
+                <outlet property="questionTitleTextViewHeight" destination="V0y-ct-ptG" id="8xS-FO-Yfq"/>
                 <outlet property="questionTypeLabel" destination="g67-Rd-Ekr" id="Txl-im-T7q"/>
                 <outlet property="qustionTypeDescriptionLabel" destination="hAV-cV-4hV" id="cHp-vJ-vVM"/>
             </connections>
