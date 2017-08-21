@@ -70,7 +70,7 @@ class CollectionsVC: BasicVC {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        navigationController?.setNavigationBarHidden(true, animated: false)
+        setNavigationBar()
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
@@ -102,6 +102,12 @@ class CollectionsVC: BasicVC {
     }
     
     // MARK: - Views settings
+    
+    func setNavigationBar() {
+        
+        navigationController?.setNavigationBarHidden(true, animated: false)
+        navigationItem.title = " "
+    }
     
     func setCollectionView() {
         
@@ -153,6 +159,8 @@ class CollectionsVC: BasicVC {
     
     func scanQRCode() {
         print("Scan QR code")
+        let scannerVC = QRScannerVC()
+        navigationController?.pushViewController(scannerVC, animated: true)
     }
 }
 

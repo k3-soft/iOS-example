@@ -150,7 +150,7 @@ class AnswerSelectionCell: UITableViewCell {
     
     static func getTextHeight(answer: AnswerTest, cellWidth: CGFloat) -> CGFloat {
         
-        return answer.title.textHeightWithFont(size: 15.0, name: "Solomon-Sans-SemiBold", viewWidth: cellWidth - textOffset, offset: 0.0)
+        return answer.title.textHeightWithFont(size: 15.0, name: MainFontSemibold, viewWidth: cellWidth - textOffset, offset: 0.0)
     }
     
     static func getCellHeightFor(viewWidth: CGFloat, answer: AnswerTest) -> CGFloat {

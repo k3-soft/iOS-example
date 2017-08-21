@@ -62,9 +62,9 @@ class ResultGapQuestionCell: UICollectionViewCell {
     
     var textFieldsFont: UIFont {
         if UIDevice.current.userInterfaceIdiom == .phone {
-            return UIFont(name: "Solomon-Sans-SemiBold", size: 17.0)!
+            return UIFont(name: MainFontSemibold, size: 17.0)!
         } else {
-            return UIFont(name: "Solomon-Sans-Bold", size: 17.0)!
+            return UIFont(name: MainFontBold, size: 17.0)!
         }
     }
     

@@ -56,9 +56,9 @@ class QuestionCell: UICollectionViewCell, QuestionCellHandler {
     
     var font: (size: CGFloat, name: String) {
         if UIDevice.current.userInterfaceIdiom == .phone {
-            return (16.0, "Solomon-Sans-SemiBold")
+            return (16.0, MainFontSemibold)
         } else {
-            return (18.0, "Solomon-Sans-Bold")
+            return (18.0, MainFontBold)
         }
     }
     
