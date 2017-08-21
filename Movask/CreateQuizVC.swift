@@ -12,7 +12,7 @@ class CreateQuizVC: BasicVC {
     
     @IBOutlet weak var quizCollectionView: UICollectionView!
     
-    let headerCellPad = "CreateQuizHeaderCellPad"
+    let headerCellPad = "CreateQuizHeaderCell"
     let headerCellPhone = "CreateQuizHeaderCellPhone"
     let questionCellPad = "CreateQuizQuestionCell"
     let questionCellPhone = "CreateQuizQuestionCellPhone"
@@ -141,7 +141,6 @@ extension CreateQuizVC: UICollectionViewDelegate, UICollectionViewDataSource, UI
         cell.question = questions[indexPath.item]
         cell.ownerCollectionView = quizCollectionView
         cell.delegate = self
-        cell.answersView.modificationDelegate = self
             
         return cell
     }
@@ -150,7 +149,7 @@ extension CreateQuizVC: UICollectionViewDelegate, UICollectionViewDataSource, UI
         
         let shadowSize: CGFloat = 10.0
         var cellHeight: CGFloat = 0
-        var iphoneTopButtonsHeight: CGFloat = 50 + 16
+        let iphoneTopButtonsHeight: CGFloat = 50 + 16
         
         if let questionCell = collectionView.cellForItem(at: indexPath) as? CreateQuizQuestionCell {
             if UIDevice.current.userInterfaceIdiom == .phone {
@@ -180,11 +179,12 @@ extension CreateQuizVC: UICollectionViewDelegate, UICollectionViewDataSource, UI
         if UIDevice.current.userInterfaceIdiom == .phone {
             minCellHeight = 80 + 50 + 16
             questionTextViewWidth = self.view.frame.width - 16 - 16
-            answerTextViewWidth = self.view.frame.width - 25 - 16 - 8
+            answerTextViewWidth = self.view.frame.width - 8 - 8 - 25 - 8 - 8 - 25 - 8 - 8
+
         } else {
             minCellHeight = 80
             questionTextViewWidth = self.view.frame.width - 50 - 50 - 16 - 16 - 16
-            answerTextViewWidth = self.view.frame.width - 50 - 50 - 16 - 16 - 25 - 16 - 8
+            answerTextViewWidth = self.view.frame.width - 8 - 50 - 8 - 8 - 25 - 8 - 8 - 25 - 8 - 8 - 50 - 8
         }
         
         switch question.type {
@@ -246,79 +246,15 @@ extension CreateQuizVC: QuizQuestionCellDelegate {
             self.quizCollectionView.performBatchUpdates({
                 self.quizCollectionView.deleteItems(at: [indexPath])
             }, completion: { completed in
-                self.quizCollectionView.reloadData()
-//                self.quizCollectionView.collectionViewLayout.invalidateLayout()
-                
+                self.quizCollectionView.performBatchUpdates({
+                    self.quizCollectionView.reloadData()
+                }, completion: nil)
             })
         }
     }
     
-    func didFinishEditingQuestion(cell: CreateQuizQuestionCell) {
-        guard let question = cell.question else { return }
-        guard question.id < questions.count else { return }
-
-        switch question.type {
-        case .checkmarks,.radiobuttons:
-            questions[question.id].question = cell.questionTitleTextView.text
-        case .gaps:
-            questions[question.id].gapAnswer = cell.questionTitleTextView.text
-        }
-        
-    }
-    
 }
 
-extension CreateQuizVC: AnswersViewModificationDelegate {
-    
-    func didFinishEditing(answer: AnswerTest, for question: QuestionPostTest?, withText text: String) {
-
-        guard let question = question else { return }
-        guard question.id < questions.count else { return }
-        
-        let questionToModify = questions[question.id]
-        
-        for oldAnswer in questionToModify.answers {
-            if oldAnswer === answer {
-                oldAnswer.title = text
-            }
-        }
-    }
-    
-    func didSelect(answer: AnswerTest, for question: QuestionPostTest?) {
-        guard let question = question else { return }
-        guard question.id < questions.count else { return }
-        
-        let questionToModify = questions[question.id]
-        
-        switch question.type {
-        case .checkmarks:
-            for oldAnswer in questionToModify.answers {
-                if oldAnswer === answer {
-                    oldAnswer.isSelected = answer.isSelected
-                }
-            }
-        case .radiobuttons:
-            for oldAnswer in questionToModify.answers {
-                if oldAnswer === answer {
-                    oldAnswer.isSelected = true
-                } else {
-                    oldAnswer.isSelected = false
-                }
-            }
-        default: break
-        }
-        
-    }
-    
-    func didAdd(answer: AnswerTest, for question: QuestionPostTest?) {
-        guard let question = question else { return }
-        guard question.id < questions.count else { return }
-        
-        let questionToModify = questions[question.id]
-        questionToModify.answers.append(answer)
-    }
-    
-}
 
 
 

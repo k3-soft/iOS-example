@@ -9,7 +9,7 @@
 import UIKit
 
 protocol RadioCellDelegate: class {
-    func didFinishEditingAnswer(cell: QuizAnswerCell)
+    func didTapDeleteButton(cell: QuizAnswerCell, sender: UIButton)
 }
 
 class QuizAnswerCell: UICollectionViewCell {
@@ -17,6 +17,8 @@ class QuizAnswerCell: UICollectionViewCell {
     @IBOutlet weak var answerCheckImageView: UIImageView!
     @IBOutlet weak var answerTextView: UnderLinedTextView!
     @IBOutlet weak var answerTextViewHeight: NSLayoutConstraint!
+    
+    @IBOutlet weak var deleteAnswerButton: UIButton!
     
     weak var ownerView: QuizAnswersView?
     weak var delegate: RadioCellDelegate?
@@ -90,6 +92,11 @@ class QuizAnswerCell: UICollectionViewCell {
         guard let answer = answer else { return }
         calculateCellHeightFor(answer)
     }
+    
+    @IBAction func didTapDeleteButton(_ sender: UIButton) {
+        delegate?.didTapDeleteButton(cell: self, sender: sender)
+    }
+    
 
 }
 
@@ -102,6 +109,10 @@ extension QuizAnswerCell: UITextViewDelegate {
         switch textView {
         case answerTextView:
             // update textview height
+            if let answer = answer {
+                answer.title = textView.text
+            }
+            
             answerTextViewHeight.constant = newSize.height
             answerTextView.lineTopConstraint.constant = newSize.height - answerTextView.lineHeightConstraint.constant
 
@@ -116,16 +127,7 @@ extension QuizAnswerCell: UITextViewDelegate {
         }
         return true
     }
-    
-    func textViewDidEndEditing(_ textView: UITextView) {
-        switch textView {
-        case answerTextView:
-            //update question title in model
-            delegate?.didFinishEditingAnswer(cell: self)
-        default: break
-        }
-        
-    }
+
 }
 
 

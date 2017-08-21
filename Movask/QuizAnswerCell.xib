@@ -19,31 +19,46 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="B78-02-drq">
-                        <rect key="frame" x="0.0" y="2" width="25" height="25"/>
+                        <rect key="frame" x="8" y="2" width="25" height="25"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="25" id="2It-TK-mYe"/>
                             <constraint firstAttribute="width" constant="25" id="Bly-hU-uWG"/>
                         </constraints>
                     </imageView>
                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="gKY-3V-nQB" customClass="UnderLinedTextView" customModule="Movask" customModuleProvider="target">
-                        <rect key="frame" x="33" y="0.0" width="348" height="33"/>
+                        <rect key="frame" x="41" y="0.0" width="315" height="33"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="33" id="c0L-D4-lDT"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Enter option"/>
                         </userDefinedRuntimeAttributes>
                     </textView>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uU6-dR-Q9N">
+                        <rect key="frame" x="364" y="2" width="25" height="25"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="25" id="Gux-e2-rJg"/>
+                            <constraint firstAttribute="width" constant="25" id="XXS-gd-UNj"/>
+                        </constraints>
+                        <state key="normal" title="X">
+                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        </state>
+                        <connections>
+                            <action selector="didTapDeleteButton:" destination="CeJ-XN-1pv" eventType="touchUpInside" id="RgF-AT-Rrz"/>
+                        </connections>
+                    </button>
                 </subviews>
             </view>
             <constraints>
                 <constraint firstItem="gKY-3V-nQB" firstAttribute="top" secondItem="CeJ-XN-1pv" secondAttribute="top" id="76R-La-oCH"/>
-                <constraint firstItem="B78-02-drq" firstAttribute="leading" secondItem="CeJ-XN-1pv" secondAttribute="leading" id="Dhj-un-EcF"/>
+                <constraint firstAttribute="trailing" secondItem="uU6-dR-Q9N" secondAttribute="trailing" constant="8" id="TvL-OF-IPd"/>
+                <constraint firstItem="B78-02-drq" firstAttribute="leading" secondItem="CeJ-XN-1pv" secondAttribute="leading" constant="8" id="ZY1-FT-Eno"/>
                 <constraint firstItem="B78-02-drq" firstAttribute="top" secondItem="gKY-3V-nQB" secondAttribute="top" constant="2" id="cLl-zm-itc"/>
-                <constraint firstAttribute="trailing" secondItem="gKY-3V-nQB" secondAttribute="trailing" constant="16" id="eBu-ck-T92"/>
+                <constraint firstItem="uU6-dR-Q9N" firstAttribute="leading" secondItem="gKY-3V-nQB" secondAttribute="trailing" constant="8" id="cXw-cT-xMm"/>
+                <constraint firstItem="uU6-dR-Q9N" firstAttribute="top" secondItem="gKY-3V-nQB" secondAttribute="top" constant="2" id="lMd-bk-ss7"/>
                 <constraint firstItem="gKY-3V-nQB" firstAttribute="leading" secondItem="B78-02-drq" secondAttribute="trailing" constant="8" id="qLn-3T-eBc"/>
             </constraints>
             <size key="customSize" width="397" height="36"/>
@@ -51,8 +66,9 @@
                 <outlet property="answerCheckImageView" destination="B78-02-drq" id="Y51-qy-ZBM"/>
                 <outlet property="answerTextView" destination="gKY-3V-nQB" id="hPK-zC-3CM"/>
                 <outlet property="answerTextViewHeight" destination="c0L-D4-lDT" id="gFF-Tf-wbl"/>
+                <outlet property="deleteAnswerButton" destination="uU6-dR-Q9N" id="p1R-JI-kCJ"/>
             </connections>
-            <point key="canvasLocation" x="-53" y="-122"/>
+            <point key="canvasLocation" x="-53.5" y="-122"/>
         </collectionViewCell>
     </objects>
 </document>
