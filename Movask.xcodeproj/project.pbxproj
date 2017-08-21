@@ -98,12 +98,16 @@
 		03F76EA61F3BC21600A15532 /* GapQuestionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F76EA41F3BC21600A15532 /* GapQuestionCell.swift */; };
 		03F76EA71F3BC21600A15532 /* GapQuestionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03F76EA51F3BC21600A15532 /* GapQuestionCell.xib */; };
 		03F76EA91F3BC99400A15532 /* QuestionCellHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F76EA81F3BC99400A15532 /* QuestionCellHandler.swift */; };
+		0422BDC51F4ACD5E00AE80D3 /* CreateQuizQuestionCellPhone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0422BDC41F4ACD5E00AE80D3 /* CreateQuizQuestionCellPhone.swift */; };
+		0422BDC71F4ACD8200AE80D3 /* CreateQuizQuestionCellPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0422BDC61F4ACD8200AE80D3 /* CreateQuizQuestionCellPhone.xib */; };
+		0422BDC91F4AE3A000AE80D3 /* CreateQuizHeaderCellPhone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0422BDC81F4AE3A000AE80D3 /* CreateQuizHeaderCellPhone.swift */; };
+		0422BDCB1F4AE3CF00AE80D3 /* CreateQuizHeaderCellPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0422BDCA1F4AE3CF00AE80D3 /* CreateQuizHeaderCellPhone.xib */; };
 		04256C1B1F387E30006C86B1 /* CreateQuizVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04256C1A1F387E30006C86B1 /* CreateQuizVC.swift */; };
 		04256C1E1F387E84006C86B1 /* CreateQuizVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04256C1D1F387E84006C86B1 /* CreateQuizVC.xib */; };
-		04256C201F388181006C86B1 /* QuizHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04256C1F1F388181006C86B1 /* QuizHeaderCell.swift */; };
-		04256C221F388196006C86B1 /* QuizQuestionAnswersCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04256C211F388196006C86B1 /* QuizQuestionAnswersCell.swift */; };
-		04256C241F3881B5006C86B1 /* QuizHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04256C231F3881B5006C86B1 /* QuizHeaderCell.xib */; };
-		04256C261F3881C6006C86B1 /* QuizQuestionAnswersCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04256C251F3881C6006C86B1 /* QuizQuestionAnswersCell.xib */; };
+		04256C201F388181006C86B1 /* CreateQuizHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04256C1F1F388181006C86B1 /* CreateQuizHeaderCell.swift */; };
+		04256C221F388196006C86B1 /* CreateQuizQuestionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04256C211F388196006C86B1 /* CreateQuizQuestionCell.swift */; };
+		04256C241F3881B5006C86B1 /* CreateQuizHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04256C231F3881B5006C86B1 /* CreateQuizHeaderCell.xib */; };
+		04256C261F3881C6006C86B1 /* CreateQuizQuestionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04256C251F3881C6006C86B1 /* CreateQuizQuestionCell.xib */; };
 		04256C281F388870006C86B1 /* UnderLinedTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04256C271F388870006C86B1 /* UnderLinedTextView.swift */; };
 		04256C2B1F39CD37006C86B1 /* QuizAnswersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04256C2A1F39CD37006C86B1 /* QuizAnswersView.swift */; };
 		04256C2D1F39CD8C006C86B1 /* QuizAnswerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04256C2C1F39CD8C006C86B1 /* QuizAnswerCell.swift */; };
@@ -210,12 +214,16 @@
 		03F76EA41F3BC21600A15532 /* GapQuestionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GapQuestionCell.swift; sourceTree = "<group>"; };
 		03F76EA51F3BC21600A15532 /* GapQuestionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GapQuestionCell.xib; sourceTree = "<group>"; };
 		03F76EA81F3BC99400A15532 /* QuestionCellHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionCellHandler.swift; sourceTree = "<group>"; };
+		0422BDC41F4ACD5E00AE80D3 /* CreateQuizQuestionCellPhone.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateQuizQuestionCellPhone.swift; sourceTree = "<group>"; };
+		0422BDC61F4ACD8200AE80D3 /* CreateQuizQuestionCellPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CreateQuizQuestionCellPhone.xib; sourceTree = "<group>"; };
+		0422BDC81F4AE3A000AE80D3 /* CreateQuizHeaderCellPhone.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateQuizHeaderCellPhone.swift; sourceTree = "<group>"; };
+		0422BDCA1F4AE3CF00AE80D3 /* CreateQuizHeaderCellPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CreateQuizHeaderCellPhone.xib; sourceTree = "<group>"; };
 		04256C1A1F387E30006C86B1 /* CreateQuizVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateQuizVC.swift; sourceTree = "<group>"; };
 		04256C1D1F387E84006C86B1 /* CreateQuizVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CreateQuizVC.xib; sourceTree = "<group>"; };
-		04256C1F1F388181006C86B1 /* QuizHeaderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuizHeaderCell.swift; sourceTree = "<group>"; };
-		04256C211F388196006C86B1 /* QuizQuestionAnswersCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuizQuestionAnswersCell.swift; sourceTree = "<group>"; };
-		04256C231F3881B5006C86B1 /* QuizHeaderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QuizHeaderCell.xib; sourceTree = "<group>"; };
-		04256C251F3881C6006C86B1 /* QuizQuestionAnswersCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QuizQuestionAnswersCell.xib; sourceTree = "<group>"; };
+		04256C1F1F388181006C86B1 /* CreateQuizHeaderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateQuizHeaderCell.swift; sourceTree = "<group>"; };
+		04256C211F388196006C86B1 /* CreateQuizQuestionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateQuizQuestionCell.swift; sourceTree = "<group>"; };
+		04256C231F3881B5006C86B1 /* CreateQuizHeaderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CreateQuizHeaderCell.xib; sourceTree = "<group>"; };
+		04256C251F3881C6006C86B1 /* CreateQuizQuestionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CreateQuizQuestionCell.xib; sourceTree = "<group>"; };
 		04256C271F388870006C86B1 /* UnderLinedTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnderLinedTextView.swift; sourceTree = "<group>"; };
 		04256C2A1F39CD37006C86B1 /* QuizAnswersView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuizAnswersView.swift; sourceTree = "<group>"; };
 		04256C2C1F39CD8C006C86B1 /* QuizAnswerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuizAnswerCell.swift; sourceTree = "<group>"; };
@@ -578,10 +586,14 @@
 		04256C1C1F387E3A006C86B1 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				04256C1F1F388181006C86B1 /* QuizHeaderCell.swift */,
-				04256C231F3881B5006C86B1 /* QuizHeaderCell.xib */,
-				04256C211F388196006C86B1 /* QuizQuestionAnswersCell.swift */,
-				04256C251F3881C6006C86B1 /* QuizQuestionAnswersCell.xib */,
+				04256C1F1F388181006C86B1 /* CreateQuizHeaderCell.swift */,
+				04256C231F3881B5006C86B1 /* CreateQuizHeaderCell.xib */,
+				0422BDC81F4AE3A000AE80D3 /* CreateQuizHeaderCellPhone.swift */,
+				0422BDCA1F4AE3CF00AE80D3 /* CreateQuizHeaderCellPhone.xib */,
+				04256C211F388196006C86B1 /* CreateQuizQuestionCell.swift */,
+				04256C251F3881C6006C86B1 /* CreateQuizQuestionCell.xib */,
+				0422BDC41F4ACD5E00AE80D3 /* CreateQuizQuestionCellPhone.swift */,
+				0422BDC61F4ACD8200AE80D3 /* CreateQuizQuestionCellPhone.xib */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -681,12 +693,12 @@
 			files = (
 				033FB53B1F3E3176009D6920 /* QuizPadVC.xib in Resources */,
 				03E4ADA61F386B6000EAA33A /* Solomon-Sans-Black.otf in Resources */,
-				04256C261F3881C6006C86B1 /* QuizQuestionAnswersCell.xib in Resources */,
+				04256C261F3881C6006C86B1 /* CreateQuizQuestionCell.xib in Resources */,
 				04256C2F1F39CDD8006C86B1 /* QuizAnswerCell.xib in Resources */,
 				03D646F61F326E8F007C206F /* LineSegmentedControl.xib in Resources */,
 				03F568311F33D817000DBFDC /* ScanQRCell.xib in Resources */,
 				033FB5511F422334009D6920 /* AnswerSelectionCell.xib in Resources */,
-				04256C241F3881B5006C86B1 /* QuizHeaderCell.xib in Resources */,
+				04256C241F3881B5006C86B1 /* CreateQuizHeaderCell.xib in Resources */,
 				03E4AD6E1F34E2D000EAA33A /* QuizPhoneVC.xib in Resources */,
 				03E4ADA91F386B6000EAA33A /* Solomon-Sans-Light.otf in Resources */,
 				033FB5591F42F7A5009D6920 /* QuizResultsPadVC.xib in Resources */,
@@ -705,6 +717,7 @@
 				03E4AD731F34E3CA00EAA33A /* QuestionCell.xib in Resources */,
 				03D646FA1F326F7A007C206F /* LineSegmentedControlCell.xib in Resources */,
 				03E4ADAA1F386B6000EAA33A /* Solomon-Sans-Normal.otf in Resources */,
+				0422BDC71F4ACD8200AE80D3 /* CreateQuizQuestionCellPhone.xib in Resources */,
 				03F5682D1F33D803000DBFDC /* AddQuizCell.xib in Resources */,
 				03D646C51F30D2CE007C206F /* LaunchScreen.storyboard in Resources */,
 				03D646ED1F320BC0007C206F /* QuizCell.xib in Resources */,
@@ -712,6 +725,7 @@
 				04256C311F39D667006C86B1 /* QuizAnswersView.xib in Resources */,
 				03D646C21F30D2CE007C206F /* Assets.xcassets in Resources */,
 				03D646C01F30D2CE007C206F /* Main.storyboard in Resources */,
+				0422BDCB1F4AE3CF00AE80D3 /* CreateQuizHeaderCellPhone.xib in Resources */,
 				033FB54C1F41C3A6009D6920 /* ResultGapQuestionCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -805,7 +819,7 @@
 				03F568191F3360D3000DBFDC /* Constants.swift in Sources */,
 				033FB53F1F41A9A9009D6920 /* QuizResultsPhoneVC.swift in Sources */,
 				03406D4F1F3A70150035EA67 /* Math.swift in Sources */,
-				04256C221F388196006C86B1 /* QuizQuestionAnswersCell.swift in Sources */,
+				04256C221F388196006C86B1 /* CreateQuizQuestionCell.swift in Sources */,
 				03D646EC1F320BC0007C206F /* QuizCell.swift in Sources */,
 				033FB5421F41B926009D6920 /* ResultRating.swift in Sources */,
 				03D646CE1F3200D0007C206F /* UIView+Storyboard.swift in Sources */,
@@ -821,10 +835,12 @@
 				03406D4B1F3A6FE30035EA67 /* ControlButtons.swift in Sources */,
 				03D646E51F32082F007C206F /* QuizTest.swift in Sources */,
 				04256C351F3CA2B2006C86B1 /* Array+Rearrange.swift in Sources */,
+				0422BDC51F4ACD5E00AE80D3 /* CreateQuizQuestionCellPhone.swift in Sources */,
 				04256C2D1F39CD8C006C86B1 /* QuizAnswerCell.swift in Sources */,
 				03E4AD6D1F34E2D000EAA33A /* QuizPhoneVC.swift in Sources */,
 				03E4AD771F34E46200EAA33A /* QuestionGetTest.swift in Sources */,
 				033FB5581F42F7A5009D6920 /* QuizResultsPadVC.swift in Sources */,
+				0422BDC91F4AE3A000AE80D3 /* CreateQuizHeaderCellPhone.swift in Sources */,
 				03D646D51F32018C007C206F /* BasicVC.swift in Sources */,
 				03F5682C1F33D803000DBFDC /* AddQuizCell.swift in Sources */,
 				04FD5D021F41D0D50041AB6E /* GapButton.swift in Sources */,
@@ -844,7 +860,7 @@
 				033FB54F1F422057009D6920 /* GapManager.swift in Sources */,
 				04256C331F3C577F006C86B1 /* String+TextHeight.swift in Sources */,
 				03B917361F39029200CCB979 /* ReplayButton.swift in Sources */,
-				04256C201F388181006C86B1 /* QuizHeaderCell.swift in Sources */,
+				04256C201F388181006C86B1 /* CreateQuizHeaderCell.swift in Sources */,
 				04256C2B1F39CD37006C86B1 /* QuizAnswersView.swift in Sources */,
 				03F568171F3360AB000DBFDC /* VideoManager.swift in Sources */,
 				033FB5531F423017009D6920 /* QuestionPostTest.swift in Sources */,

@@ -36,7 +36,7 @@ class UnderLinedTextView: KMPlaceholderTextView {
     
     private func setupViews() {
         self.textContainerInset = UIEdgeInsets(top: 8, left: 0, bottom: 8, right: 0)
-//        self.textContainer.lineFragmentPadding = 0
+        self.textContainer.lineFragmentPadding = 0
         self.returnKeyType = .done
         addSubview(line)
         addConstraints()
@@ -61,6 +61,12 @@ class UnderLinedTextView: KMPlaceholderTextView {
         
         self.addConstraints([lineCenterConstraint, lineTopConstraint, lineLeadingConstraint, lineTrailingConstraint, lineHeightConstraint])
 
+    }
+    
+    override func caretRect(for position: UITextPosition) -> CGRect {
+        var originalRect: CGRect = super.caretRect(for: position)
+        originalRect.size.height = self.font.lineHeight
+        return originalRect
     }
     
 }
@@ -96,6 +102,39 @@ extension UnderLinedTextView {
             wordSum += 1
         })
         return wordSum
+    }
+    
+    func hightLightWordAt(_ index: Int) {
+        let attributedString = NSMutableAttributedString(attributedString: self.attributedText)
+        let text = self.text as NSString
+        let textRange = NSMakeRange(0, text.length)
+        var i = 0
+        
+        text.enumerateSubstrings(in: textRange, options: .byWords, using: {
+            (substring, substringRange, _, _) in
+            if index == i {
+//                attributedString.removeAttribute([NSBackgroundColorAttributeName: UIColor(colorWithHexValue: 0x1E7D45)], range: substringRange, range: substringRange)
+                attributedString.addAttributes([NSForegroundColorAttributeName: UIColor(colorWithHexValue: 0x1E7D45)], range: substringRange)
+            }
+            i += 1
+        })
+        self.attributedText = attributedString
+    }
+    
+    func removeHightLightWordAt(_ index: Int) {
+        let attributedString = NSMutableAttributedString(attributedString: self.attributedText)
+        let text = self.text as NSString
+        let textRange = NSMakeRange(0, text.length)
+        var i = 0
+        
+        text.enumerateSubstrings(in: textRange, options: .byWords, using: {
+            (substring, substringRange, _, _) in
+            if index == i {
+                attributedString.addAttributes([NSForegroundColorAttributeName: UIColor.white], range: substringRange)
+            }
+            i += 1
+        })
+        self.attributedText = attributedString
     }
     
     func getWordFrame(at range:NSRange) -> CGRect {

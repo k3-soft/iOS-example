@@ -35,12 +35,13 @@ class QuizAnswersView: NibView {
         didSet {
             guard let question = question else { return }
             answerVariants = question.answers
+            answersCollectionView.reloadData()
         }
     }
     
     override func setupViews() {
         setupCollectionView()
-//        NotificationCenter.default.addObserver(self, selector: #selector (updateCollectionView), name: Notification.Name("orientationChanged"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(updateCollectionViewLayout), name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
     }
     
     func setupCollectionView() {
@@ -59,23 +60,19 @@ class QuizAnswersView: NibView {
     
     //MARK:- Actions
     
-//    func updateCollectionView() {
-//        answersCollectionViewView.performBatchUpdates(nil, completion: { completed in })
-//    }
     
     func updateCollectionViewLayout() {
         self.answersCollectionView.collectionViewLayout.invalidateLayout()
         answersCollectionView.performBatchUpdates(nil, completion: { completed in
             self.layoutDelegate?.didUpdateCollectionViewLayout(view: self)
         })
-
     }
     
     func addAnswerVariant() {
         let newAnswer = AnswerTest(title: "", isCorrect: false)
         answerVariants.append(newAnswer)
         
-        self.answersCollectionView.insertItems(at: [IndexPath(row: self.answerVariants.count-1, section: 0)])
+        self.answersCollectionView.insertItems(at: [IndexPath(row: self.answerVariants.count - 1, section: 0)])
 
         self.answersCollectionView.collectionViewLayout.invalidateLayout()
         answersCollectionView.performBatchUpdates(nil, completion: { completed in
@@ -106,7 +103,7 @@ extension QuizAnswersView: UICollectionViewDelegate, UICollectionViewDataSource,
             footerView.answerTextView.placeholder = "Add option"
             footerView.answerTextView.isEditable = false
             footerView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector (addAnswerVariant)))
-
+            
             return footerView
             
         default:
@@ -165,23 +162,20 @@ extension QuizAnswersView: UICollectionViewDelegate, UICollectionViewDataSource,
         if let answerCell = collectionView.cellForItem(at: indexPath) as? QuizAnswerCell {
             let questionConteinerHeight = answerCell.answerTextViewHeight.constant
             return CGSize(width: self.frame.width, height: questionConteinerHeight)
-        } else {
-            // answer textview that should be same as used in cell
-            let answerTextView = UnderLinedTextView(frame: .zero, textContainer: nil)
-            answerTextView.font = UIFont.systemFont(ofSize: 13)
             
+        } else {
             if let question = question, indexPath.item < question.answers.count {
                 let answer = question.answers[indexPath.item]
-                answerTextView.text = answer.title
+                
+                let textViewInsets: CGFloat = 16.0
+                let answerTextViewWidth: CGFloat = self.frame.width - 25 - 16 - 8
+                let answerTextViewHeight = answer.title.height(withFixedWidth: answerTextViewWidth, textAttributes: QuizAnswerCell.answerTextAttributes) + textViewInsets
+                
+                return CGSize(width: self.frame.width, height: answerTextViewHeight)
+                
             } else {
-                answerTextView.text = ""
+                return CGSize(width: self.frame.width, height: 33.0)
             }
-
-            let answerTextViewWidth: CGFloat = self.frame.width - 25 - 16 - 8
-            
-            let answerTextViewSize = answerTextView.sizeThatFits(CGSize(width: answerTextViewWidth, height: CGFloat.greatestFiniteMagnitude))
-            
-            return CGSize(width: self.frame.width, height: answerTextViewSize.height)
         }
     }
 
