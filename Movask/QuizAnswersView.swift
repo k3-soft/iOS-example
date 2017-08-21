@@ -41,7 +41,7 @@ class QuizAnswersView: NibView {
     
     override func setupViews() {
         setupCollectionView()
-//        NotificationCenter.default.addObserver(self, selector: #selector (updateCollectionViewLayout), name: Notification.Name("orientationChanged"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(updateCollectionViewLayout), name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
     }
     
     func setupCollectionView() {
@@ -59,6 +59,7 @@ class QuizAnswersView: NibView {
     }
     
     //MARK:- Actions
+    
     
     func updateCollectionViewLayout() {
         self.answersCollectionView.collectionViewLayout.invalidateLayout()
@@ -102,7 +103,7 @@ extension QuizAnswersView: UICollectionViewDelegate, UICollectionViewDataSource,
             footerView.answerTextView.placeholder = "Add option"
             footerView.answerTextView.isEditable = false
             footerView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector (addAnswerVariant)))
-
+            
             return footerView
             
         default:

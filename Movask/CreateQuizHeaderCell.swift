@@ -1,5 +1,5 @@
 //
-//  QuizHeaderCell.swift
+//  CreateQuizHeaderCell.swift
 //  Movask
 //
 //  Created by mac on 07.08.17.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class QuizHeaderCell: UICollectionViewCell {
+class CreateQuizHeaderCell: UICollectionViewCell {
     
     @IBOutlet weak var titleTextView: UnderLinedTextView!
     @IBOutlet weak var descriptionTextView: UnderLinedTextView!
@@ -20,10 +20,9 @@ class QuizHeaderCell: UICollectionViewCell {
         titleTextView.delegate = self
         descriptionTextView.delegate = self
     }
-    
 }
 
-extension QuizHeaderCell: UITextViewDelegate {
+extension CreateQuizHeaderCell: UITextViewDelegate {
     
     func textViewDidChange(_ textView: UITextView) {
         let fixedWidth = textView.frame.size.width

@@ -1,5 +1,5 @@
 //
-//  QuizQuestionAnswersCell.swift
+//  CreateQuizQuestionCell.swift
 //  Movask
 //
 //  Created by mac on 07.08.17.
@@ -9,11 +9,11 @@
 import UIKit
 
 protocol QuizQuestionCellDelegate: class {
-    func didTapDeleteQuestionButton(cell: QuizQuestionAnswersCell, sender: UIButton)
-    func didFinishEditingQuestion(cell: QuizQuestionAnswersCell)
+    func didTapDeleteQuestionButton(cell: CreateQuizQuestionCell, sender: UIButton)
+    func didFinishEditingQuestion(cell: CreateQuizQuestionCell)
 }
 
-class QuizQuestionAnswersCell: UICollectionViewCell {
+class CreateQuizQuestionCell: UICollectionViewCell {
     
     @IBOutlet weak var questionIndexLabel: UILabel!
     @IBOutlet weak var dragButton: UIButton!
@@ -63,10 +63,10 @@ class QuizQuestionAnswersCell: UICollectionViewCell {
             
             switch question.type {
             case .gaps:                
-                questionTitleTextView.attributedText = NSAttributedString(string: question.gapAnswer, attributes: QuizQuestionAnswersCell.gapsQuestionTextAttributes)
+                questionTitleTextView.attributedText = NSAttributedString(string: question.gapAnswer, attributes: CreateQuizQuestionCell.gapsQuestionTextAttributes)
                 
             case .checkmarks, .radiobuttons:
-                questionTitleTextView.attributedText = NSAttributedString(string: question.question, attributes: QuizQuestionAnswersCell.variantsQuestionTextAttributes)
+                questionTitleTextView.attributedText = NSAttributedString(string: question.question, attributes: CreateQuizQuestionCell.variantsQuestionTextAttributes)
                 
                 answersView.question = question
             }
@@ -116,7 +116,14 @@ class QuizQuestionAnswersCell: UICollectionViewCell {
         let answersCollectionViewInsets: CGFloat = 16.0
         let textViewInsets: CGFloat = 16.0
         
-        let answerTextViewWidth: CGFloat = self.frame.width - 50 - 50 - 16 - 16 - 25 - 16 - 8
+        var answerTextViewWidth: CGFloat = 0
+
+        if UIDevice.current.userInterfaceIdiom == .phone {
+            answerTextViewWidth = self.frame.width - 25 - 16 - 8
+        } else {
+            answerTextViewWidth = self.frame.width - 50 - 50 - 16 - 16 - 25 - 16 - 8
+        }
+        
         var answersConteinerHeight: CGFloat = answersFooterHeight + answersCollectionViewInsets
         answersViewHeight.constant = 0
 
@@ -140,7 +147,6 @@ class QuizQuestionAnswersCell: UICollectionViewCell {
             // calculate size for each answer
             for answer in question.answers {
                 let answerTextViewHeight = answer.title.height(withFixedWidth: answerTextViewWidth, textAttributes: QuizAnswerCell.answerTextAttributes) + textViewInsets
-                print(answerTextViewHeight)
                 answersConteinerHeight += answerTextViewHeight
             }
             answersViewHeight.constant = answersConteinerHeight
@@ -217,7 +223,7 @@ class QuizQuestionAnswersCell: UICollectionViewCell {
     }
 }
 
-extension QuizQuestionAnswersCell: UITextViewDelegate {
+extension CreateQuizQuestionCell: UITextViewDelegate {
     
     func textViewDidChange(_ textView: UITextView) {
         let fixedWidth = textView.frame.size.width
@@ -265,7 +271,7 @@ extension QuizQuestionAnswersCell: UITextViewDelegate {
     }
 }
 
-extension QuizQuestionAnswersCell: RadioButtonsViewDelegate {
+extension CreateQuizQuestionCell: RadioButtonsViewDelegate {
     
     func didUpdateCollectionViewLayout(view: QuizAnswersView) {
         answersViewHeight.constant = view.answersCollectionView.contentSize.height + 16
