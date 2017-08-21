@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import AVFoundation
+import MobileCoreServices
 
 class CreateQuizVC: BasicVC {
     
@@ -19,6 +21,9 @@ class CreateQuizVC: BasicVC {
     
     var questions: [QuestionPostTest] = []
     
+    // Video
+    var videoURL: URL?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -29,6 +34,13 @@ class CreateQuizVC: BasicVC {
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         quizCollectionView.collectionViewLayout.invalidateLayout()
     }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        header?.videoPlayer?.videoPlayerView.stopVideo()
+    }
+    
+    // MARK: - Set views
     
     func setupNavigationBar() {
         navigationController?.setNavigationBarHidden(false, animated: false)
@@ -58,12 +70,15 @@ class CreateQuizVC: BasicVC {
         }
         
     }
-
     
     //MARK:- ACTIONS
     
     func saveTapped() {
         print("save tapped")
+    }
+    
+    func addVideo(_ sender: UIButton) {
+        showActionSheetForNewVideo(sender: sender)
     }
     
     @IBAction func didTapAddQuestion(_ sender: Any) {
@@ -112,12 +127,16 @@ extension CreateQuizVC: UICollectionViewDelegate, UICollectionViewDataSource, UI
         
         switch kind {
         case UICollectionElementKindSectionHeader:
-            var headerView = UICollectionReusableView()
+            var headerView = CreateQuizHeaderCell()
             
             if UIDevice.current.userInterfaceIdiom == .phone {
                 headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: headerCellPhone, for: indexPath) as! CreateQuizHeaderCellPhone
             } else {
                 headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: headerCellPad, for: indexPath) as! CreateQuizHeaderCell
+            }
+            
+            headerView.addVideoHandler = { [unowned self] (sender) in
+                self.addVideo(sender)
             }
             
             return headerView
@@ -150,7 +169,7 @@ extension CreateQuizVC: UICollectionViewDelegate, UICollectionViewDataSource, UI
         
         let shadowSize: CGFloat = 10.0
         var cellHeight: CGFloat = 0
-        var iphoneTopButtonsHeight: CGFloat = 50 + 16
+        let iphoneTopButtonsHeight: CGFloat = 50 + 16
         
         if let questionCell = collectionView.cellForItem(at: indexPath) as? CreateQuizQuestionCell {
             if UIDevice.current.userInterfaceIdiom == .phone {
@@ -233,6 +252,14 @@ extension CreateQuizVC: UICollectionViewDelegate, UICollectionViewDataSource, UI
         questions.rearrange(from: sourceIndexPath.item, to: destinationIndexPath.item)
     }
     
+    var header: CreateQuizHeaderCell? {
+        
+        if let header = quizCollectionView.supplementaryView(forElementKind: UICollectionElementKindSectionHeader, at: IndexPath(item: 0, section: 0)) as? CreateQuizHeaderCell {
+            return header
+        } else {
+            return nil
+        }
+    }
 }
 
 extension CreateQuizVC: QuizQuestionCellDelegate {
@@ -320,5 +347,66 @@ extension CreateQuizVC: AnswersViewModificationDelegate {
     
 }
 
-
+extension CreateQuizVC: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    func showActionSheetForNewVideo(sender: UIView) {
+        
+        let videoMenu = UIAlertController(title: nil, message: "Select video source", preferredStyle: .actionSheet)
+        
+        let pickFromGallery = UIAlertAction(title: "Gallery", style: .default, handler: {
+            (alert: UIAlertAction!) -> Void in
+            
+            self.showImagePicker(sourceType: .photoLibrary)
+        })
+        
+        let makeVideo = UIAlertAction(title: "Camera", style: .default, handler: {
+            (alert: UIAlertAction!) -> Void in
+            
+            self.showImagePicker(sourceType: .camera)
+        })
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        
+        videoMenu.addAction(pickFromGallery)
+        videoMenu.addAction(makeVideo)
+        videoMenu.addAction(cancelAction)
+        
+        // Setting for IPad
+        if let popoverController = videoMenu.popoverPresentationController {
+            popoverController.sourceView = sender
+            popoverController.sourceRect = sender.bounds
+        }
+        
+        self.present(videoMenu, animated: true, completion: nil)
+    }
+    
+    func showImagePicker(sourceType: UIImagePickerControllerSourceType) {
+        
+        let imagePicker = UIImagePickerController()
+        imagePicker.sourceType = sourceType
+        imagePicker.mediaTypes = [kUTTypeMovie as String]
+        imagePicker.videoQuality = .typeMedium
+        imagePicker.delegate = self
+        
+        self.present(imagePicker, animated: true, completion: nil)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        
+        picker.dismiss(animated: true, completion: nil)
+        
+        if let fileURL = info[UIImagePickerControllerMediaURL] as? URL {
+            VideoManager.getOriginalVideoResolution(url: fileURL, completionHandler: { [weak self](url) in
+                DispatchQueue.main.async {
+                    self?.videoURL = url
+                    self?.header?.setVideoPlayer(url: url)
+                }
+            })
+        }
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true, completion: nil)
+    }
+}
 

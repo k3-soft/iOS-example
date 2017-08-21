@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -36,8 +36,11 @@
                                         <real key="value" value="10"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="addVideo:" destination="cl0-IU-4Fx" eventType="touchUpInside" id="h7q-rm-fmI"/>
+                                </connections>
                             </button>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="s8c-X8-f3a" customClass="UnderLinedTextView" customModule="Movask" customModuleProvider="target">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="s8c-X8-f3a" customClass="UnderLinedTextView" customModule="Movask" customModuleProvider="target">
                                 <rect key="frame" x="20" y="340" width="335" height="35"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -49,7 +52,7 @@
                                     <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Title"/>
                                 </userDefinedRuntimeAttributes>
                             </textView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="VJG-4O-Oz3" customClass="UnderLinedTextView" customModule="Movask" customModuleProvider="target">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="VJG-4O-Oz3" customClass="UnderLinedTextView" customModule="Movask" customModuleProvider="target">
                                 <rect key="frame" x="20" y="383" width="335" height="32"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -110,6 +113,9 @@
                                         <real key="value" value="10"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="reply:" destination="cl0-IU-4Fx" eventType="touchUpInside" id="WGy-SK-KZW"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -148,6 +154,9 @@
                                         <real key="value" value="10"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="addVideo:" destination="cl0-IU-4Fx" eventType="touchUpInside" id="9WB-0I-zk6"/>
+                                </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="DrI-ks-2Dz">
                                 <rect key="frame" x="50" y="90.5" width="234.5" height="115.5"/>
@@ -212,8 +221,11 @@
             <connections>
                 <outlet property="descriptionHeight" destination="dzy-T9-tXl" id="eNl-0G-gh8"/>
                 <outlet property="descriptionTextView" destination="VJG-4O-Oz3" id="WWG-XV-sQz"/>
+                <outlet property="replaceButton" destination="1oc-1H-yvz" id="SwG-3W-HzX"/>
+                <outlet property="replyButton" destination="nDQ-IE-fA3" id="dA2-T9-fu7"/>
                 <outlet property="titleHeight" destination="zTL-QE-Dz2" id="yfS-eD-sYW"/>
                 <outlet property="titleTextView" destination="s8c-X8-f3a" id="hdZ-aV-0nI"/>
+                <outlet property="videoView" destination="oPv-gg-lTT" id="chk-5z-H5r"/>
             </connections>
             <point key="canvasLocation" x="-62.5" y="191"/>
         </collectionViewCell>

@@ -50,7 +50,7 @@ class QRScannerVC: BasicVC {
             navigationBar.tintColor = UIColor.white
             navigationBar.titleTextAttributes = [
                 NSForegroundColorAttributeName: UIColor.white,
-                NSFontAttributeName: UIFont(name: MainFontSemibold, size: 18.0)!
+                NSFontAttributeName: UIFont(name: MainFontSemibold, size: 20.0)!
             ]
         }
     }

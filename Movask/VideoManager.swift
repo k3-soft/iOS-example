@@ -49,4 +49,25 @@ class VideoManager {
             }
         }
     }
+    
+    class func getOriginalVideoResolution(url: URL, completionHandler: @escaping (URL)->()) {
+        
+        let ti = Date().timeIntervalSinceReferenceDate
+        let fileName = String(format: "%f.MOV", ti)
+        let tmpFile = NSTemporaryDirectory().appending("/\(fileName)")
+        
+        let outputURL = URL(fileURLWithPath: tmpFile)
+        
+        let asset = AVURLAsset(url: url)
+        let exportSession = AVAssetExportSession(asset: asset, presetName: AVAssetExportPresetMediumQuality)
+        exportSession?.outputURL = outputURL
+        exportSession?.shouldOptimizeForNetworkUse = true
+        exportSession?.outputFileType = AVFileTypeQuickTimeMovie
+        
+        exportSession?.exportAsynchronously(completionHandler: {
+            print("Video export done")
+            let url = URL(fileURLWithPath: tmpFile)
+            completionHandler(url)
+        })
+    }
 }
