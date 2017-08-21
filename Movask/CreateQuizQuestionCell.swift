@@ -10,7 +10,6 @@ import UIKit
 
 protocol QuizQuestionCellDelegate: class {
     func didTapDeleteQuestionButton(cell: CreateQuizQuestionCell, sender: UIButton)
-    func didFinishEditingQuestion(cell: CreateQuizQuestionCell)
 }
 
 class CreateQuizQuestionCell: UICollectionViewCell {
@@ -101,10 +100,19 @@ class CreateQuizQuestionCell: UICollectionViewCell {
             
         case UIGestureRecognizerState.changed:
             // use default x position and y position from touch
-            ownerCollectionView.updateInteractiveMovementTargetPosition(CGPoint(x: ownerCollectionView.frame.width/2, y: gesture.location(in: ownerCollectionView).y))
+            if UIDevice.current.userInterfaceIdiom == .phone {
+                ownerCollectionView.updateInteractiveMovementTargetPosition(CGPoint(x: ownerCollectionView.frame.width/2, y: gesture.location(in: ownerCollectionView).y + self.frame.height/2 - 8 - 50/2))
+            } else {
+                ownerCollectionView.updateInteractiveMovementTargetPosition(CGPoint(x: ownerCollectionView.frame.width/2, y: gesture.location(in: ownerCollectionView).y + self.frame.height/2 - 8 - 50 - 8 - 50/2))
+            }
+            
             
         case UIGestureRecognizerState.ended:
-            ownerCollectionView.endInteractiveMovement()
+            ownerCollectionView.performBatchUpdates({
+                ownerCollectionView.endInteractiveMovement()
+            }, completion: { completed in
+                ownerCollectionView.reloadData()
+            })
         default:
             ownerCollectionView.cancelInteractiveMovement()
         }
@@ -119,9 +127,9 @@ class CreateQuizQuestionCell: UICollectionViewCell {
         var answerTextViewWidth: CGFloat = 0
 
         if UIDevice.current.userInterfaceIdiom == .phone {
-            answerTextViewWidth = self.frame.width - 25 - 16 - 8
+            answerTextViewWidth = self.frame.width - 8 - 8 - 25 - 8 - 8 - 25 - 8 - 8
         } else {
-            answerTextViewWidth = self.frame.width - 50 - 50 - 16 - 16 - 25 - 16 - 8
+            answerTextViewWidth = self.frame.width - 8 - 50 - 8 - 8 - 25 - 8 - 8 - 25 - 8 - 8 - 50 - 8
         }
         
         var answersConteinerHeight: CGFloat = answersFooterHeight + answersCollectionViewInsets
@@ -231,13 +239,13 @@ extension CreateQuizQuestionCell: UITextViewDelegate {
         
         switch textView {
         case questionTitleTextView:
-            switch question!.type {
             
+            switch question!.type {
             case .gaps:
                 question!.gapAnswer = textView.text
                 addGapButtons(for: question!)
-            default:
-                break
+            case .checkmarks, .radiobuttons:
+                question!.question = textView.text
             }
             
             // update textview height
@@ -260,15 +268,6 @@ extension CreateQuizQuestionCell: UITextViewDelegate {
         return true
     }
     
-    func textViewDidEndEditing(_ textView: UITextView) {
-        switch textView {
-        case questionTitleTextView:
-            //update question title in model
-            delegate?.didFinishEditingQuestion(cell: self)
-        default: break
-        }
-
-    }
 }
 
 extension CreateQuizQuestionCell: RadioButtonsViewDelegate {
