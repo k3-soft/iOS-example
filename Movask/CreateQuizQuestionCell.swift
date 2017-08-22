@@ -106,13 +106,8 @@ class CreateQuizQuestionCell: UICollectionViewCell {
                 ownerCollectionView.updateInteractiveMovementTargetPosition(CGPoint(x: ownerCollectionView.frame.width/2, y: gesture.location(in: ownerCollectionView).y + self.frame.height/2 - 8 - 50 - 8 - 50/2))
             }
             
-            
         case UIGestureRecognizerState.ended:
-            ownerCollectionView.performBatchUpdates({
-                ownerCollectionView.endInteractiveMovement()
-            }, completion: { completed in
-                ownerCollectionView.reloadData()
-            })
+            ownerCollectionView.endInteractiveMovement()
         default:
             ownerCollectionView.cancelInteractiveMovement()
         }

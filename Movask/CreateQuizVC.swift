@@ -12,6 +12,9 @@ import MobileCoreServices
 
 class CreateQuizVC: BasicVC {
     
+    var newSourceIndexPath = IndexPath()
+    var newdestinationIndexPath = IndexPath()
+    
     @IBOutlet weak var quizCollectionView: UICollectionView!
     
     let headerCellPad = "CreateQuizHeaderCell"
@@ -56,7 +59,6 @@ class CreateQuizVC: BasicVC {
         
         quizCollectionView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 100, right: 0)
         automaticallyAdjustsScrollViewInsets = false
-        
         
         if UIDevice.current.userInterfaceIdiom == .phone {
             quizCollectionView.register(UINib(nibName: questionCellPhone, bundle: nil),
@@ -165,22 +167,7 @@ extension CreateQuizVC: UICollectionViewDelegate, UICollectionViewDataSource, UI
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
-        let shadowSize: CGFloat = 10.0
-        var cellHeight: CGFloat = 0
-        let iphoneTopButtonsHeight: CGFloat = 50 + 16
-        
-        if let questionCell = collectionView.cellForItem(at: indexPath) as? CreateQuizQuestionCell {
-            if UIDevice.current.userInterfaceIdiom == .phone {
-                cellHeight = questionCell.questionContainerHeight.constant + questionCell.answersViewHeight.constant + shadowSize + iphoneTopButtonsHeight
-            } else {
-                cellHeight = questionCell.questionContainerHeight.constant + questionCell.answersViewHeight.constant + shadowSize
-            }
-            return CGSize(width: self.view.frame.width, height: cellHeight)
-            
-        } else {
-            return sizeFor(question: questions[indexPath.item])
-        }
+        return sizeFor(question: questions[indexPath.item])
     }
     
     func sizeFor(question: QuestionPostTest) -> CGSize {
@@ -243,13 +230,13 @@ extension CreateQuizVC: UICollectionViewDelegate, UICollectionViewDataSource, UI
             return CGSize(width: self.view.frame.width, height: 470)
         } else {
             return CGSize(width: self.view.frame.width, height: self.view.frame.height / 2)
-        }
-        
-        
+        }        
     }
     
     func collectionView(_ collectionView: UICollectionView, moveItemAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
-        questions.rearrange(from: sourceIndexPath.item, to: destinationIndexPath.item)
+        
+        let temp = questions.remove(at: sourceIndexPath.item)
+        questions.insert(temp, at: destinationIndexPath.item)
     }
     
     var header: CreateQuizHeaderCell? {
@@ -273,9 +260,9 @@ extension CreateQuizVC: QuizQuestionCellDelegate {
             self.quizCollectionView.performBatchUpdates({
                 self.quizCollectionView.deleteItems(at: [indexPath])
             }, completion: { completed in
-                self.quizCollectionView.performBatchUpdates({
+//                self.quizCollectionView.performBatchUpdates({
                     self.quizCollectionView.reloadData()
-                }, completion: nil)
+//                }, completion: nil)
             })
         }
     }
