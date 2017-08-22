@@ -29,7 +29,7 @@ class ResultQuestionCell: UICollectionViewCell {
         if UIDevice.current.userInterfaceIdiom == .phone {
             return 360.0
         } else {
-            return 453.0
+            return 405.0
         }
     }
     
@@ -45,9 +45,9 @@ class ResultQuestionCell: UICollectionViewCell {
     
     var font: (size: CGFloat, name: String) {
         if UIDevice.current.userInterfaceIdiom == .phone {
-            return (16.0, "Solomon-Sans-SemiBold")
+            return (16.0, MainFontSemibold)
         } else {
-            return (18.0, "Solomon-Sans-Bold")
+            return (18.0, MainFontBold)
         }
     }
     

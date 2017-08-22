@@ -22,6 +22,9 @@
 		033FB54F1F422057009D6920 /* GapManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 033FB54E1F422057009D6920 /* GapManager.swift */; };
 		033FB5511F422334009D6920 /* AnswerSelectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 033FB5501F422334009D6920 /* AnswerSelectionCell.xib */; };
 		033FB5531F423017009D6920 /* QuestionPostTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 033FB5521F423017009D6920 /* QuestionPostTest.swift */; };
+		033FB5551F42F3A1009D6920 /* QuizResultsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 033FB5541F42F3A1009D6920 /* QuizResultsVC.swift */; };
+		033FB5581F42F7A5009D6920 /* QuizResultsPadVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 033FB5561F42F7A5009D6920 /* QuizResultsPadVC.swift */; };
+		033FB5591F42F7A5009D6920 /* QuizResultsPadVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 033FB5571F42F7A5009D6920 /* QuizResultsPadVC.xib */; };
 		03406D431F3A6F5A0035EA67 /* AnimationForwarder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03406D421F3A6F5A0035EA67 /* AnimationForwarder.swift */; };
 		03406D451F3A6F730035EA67 /* ASPVideoPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03406D441F3A6F730035EA67 /* ASPVideoPlayer.swift */; };
 		03406D471F3A6F980035EA67 /* ASPVideoPlayerControls.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03406D461F3A6F980035EA67 /* ASPVideoPlayerControls.swift */; };
@@ -31,6 +34,8 @@
 		03406D4F1F3A70150035EA67 /* Math.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03406D4E1F3A70150035EA67 /* Math.swift */; };
 		03406D511F3A702F0035EA67 /* PlayPauseLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03406D501F3A702F0035EA67 /* PlayPauseLayer.swift */; };
 		03406D531F3A70490035EA67 /* Scrubber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03406D521F3A70490035EA67 /* Scrubber.swift */; };
+		0390B8381F4B31DE009DC8B0 /* QRScannerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0390B8361F4B31DE009DC8B0 /* QRScannerVC.swift */; };
+		0390B8391F4B31DE009DC8B0 /* QRScannerVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0390B8371F4B31DE009DC8B0 /* QRScannerVC.xib */; };
 		03B8CDE41F3882960058ABAC /* AnswerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B8CDE31F3882960058ABAC /* AnswerTest.swift */; };
 		03B8CDE61F3883B60058ABAC /* QuestionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B8CDE51F3883B60058ABAC /* QuestionType.swift */; };
 		03B8CDEA1F3886CC0058ABAC /* UIButton+Touches.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B8CDE91F3886CC0058ABAC /* UIButton+Touches.swift */; };
@@ -133,6 +138,9 @@
 		033FB54E1F422057009D6920 /* GapManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GapManager.swift; sourceTree = "<group>"; };
 		033FB5501F422334009D6920 /* AnswerSelectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AnswerSelectionCell.xib; sourceTree = "<group>"; };
 		033FB5521F423017009D6920 /* QuestionPostTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionPostTest.swift; sourceTree = "<group>"; };
+		033FB5541F42F3A1009D6920 /* QuizResultsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuizResultsVC.swift; sourceTree = "<group>"; };
+		033FB5561F42F7A5009D6920 /* QuizResultsPadVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuizResultsPadVC.swift; sourceTree = "<group>"; };
+		033FB5571F42F7A5009D6920 /* QuizResultsPadVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QuizResultsPadVC.xib; sourceTree = "<group>"; };
 		03406D421F3A6F5A0035EA67 /* AnimationForwarder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationForwarder.swift; sourceTree = "<group>"; };
 		03406D441F3A6F730035EA67 /* ASPVideoPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASPVideoPlayer.swift; sourceTree = "<group>"; };
 		03406D461F3A6F980035EA67 /* ASPVideoPlayerControls.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASPVideoPlayerControls.swift; sourceTree = "<group>"; };
@@ -142,6 +150,8 @@
 		03406D4E1F3A70150035EA67 /* Math.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Math.swift; sourceTree = "<group>"; };
 		03406D501F3A702F0035EA67 /* PlayPauseLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayPauseLayer.swift; sourceTree = "<group>"; };
 		03406D521F3A70490035EA67 /* Scrubber.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Scrubber.swift; sourceTree = "<group>"; };
+		0390B8361F4B31DE009DC8B0 /* QRScannerVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRScannerVC.swift; sourceTree = "<group>"; };
+		0390B8371F4B31DE009DC8B0 /* QRScannerVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QRScannerVC.xib; sourceTree = "<group>"; };
 		03B8CDE31F3882960058ABAC /* AnswerTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnswerTest.swift; sourceTree = "<group>"; };
 		03B8CDE51F3883B60058ABAC /* QuestionType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionType.swift; sourceTree = "<group>"; };
 		03B8CDE91F3886CC0058ABAC /* UIButton+Touches.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIButton+Touches.swift"; sourceTree = "<group>"; };
@@ -246,8 +256,11 @@
 		033FB53C1F41A659009D6920 /* QuizResults */ = {
 			isa = PBXGroup;
 			children = (
+				033FB5541F42F3A1009D6920 /* QuizResultsVC.swift */,
 				033FB53D1F41A9A9009D6920 /* QuizResultsPhoneVC.swift */,
 				033FB53E1F41A9A9009D6920 /* QuizResultsPhoneVC.xib */,
+				033FB5561F42F7A5009D6920 /* QuizResultsPadVC.swift */,
+				033FB5571F42F7A5009D6920 /* QuizResultsPadVC.xib */,
 				033FB54D1F41C3E2009D6920 /* Cells */,
 			);
 			name = QuizResults;
@@ -376,6 +389,8 @@
 			isa = PBXGroup;
 			children = (
 				03D646D41F32018C007C206F /* BasicVC.swift */,
+				0390B8361F4B31DE009DC8B0 /* QRScannerVC.swift */,
+				0390B8371F4B31DE009DC8B0 /* QRScannerVC.xib */,
 				033FB53C1F41A659009D6920 /* QuizResults */,
 				03E4AD6F1F34E38700EAA33A /* QuizGame */,
 				04256C191F387E12006C86B1 /* QuizCreate */,
@@ -691,7 +706,9 @@
 				033FB5511F422334009D6920 /* AnswerSelectionCell.xib in Resources */,
 				04256C241F3881B5006C86B1 /* CreateQuizHeaderCell.xib in Resources */,
 				03E4AD6E1F34E2D000EAA33A /* QuizPhoneVC.xib in Resources */,
+				0390B8391F4B31DE009DC8B0 /* QRScannerVC.xib in Resources */,
 				03E4ADA91F386B6000EAA33A /* Solomon-Sans-Light.otf in Resources */,
+				033FB5591F42F7A5009D6920 /* QuizResultsPadVC.xib in Resources */,
 				03E4ADA71F386B6000EAA33A /* Solomon-Sans-Bold.otf in Resources */,
 				033FB5461F41C35F009D6920 /* ResultQuestionCell.xib in Resources */,
 				03E4ADAB1F386B6000EAA33A /* Solomon-Sans-SemiBold.otf in Resources */,
@@ -805,6 +822,7 @@
 				03E4AD721F34E3CA00EAA33A /* QuestionCell.swift in Sources */,
 				03F568131F33602E000DBFDC /* Networking.swift in Sources */,
 				03406D451F3A6F730035EA67 /* ASPVideoPlayer.swift in Sources */,
+				033FB5551F42F3A1009D6920 /* QuizResultsVC.swift in Sources */,
 				03F568191F3360D3000DBFDC /* Constants.swift in Sources */,
 				033FB53F1F41A9A9009D6920 /* QuizResultsPhoneVC.swift in Sources */,
 				03406D4F1F3A70150035EA67 /* Math.swift in Sources */,
@@ -828,6 +846,7 @@
 				04256C2D1F39CD8C006C86B1 /* QuizAnswerCell.swift in Sources */,
 				03E4AD6D1F34E2D000EAA33A /* QuizPhoneVC.swift in Sources */,
 				03E4AD771F34E46200EAA33A /* QuestionGetTest.swift in Sources */,
+				033FB5581F42F7A5009D6920 /* QuizResultsPadVC.swift in Sources */,
 				0422BDC91F4AE3A000AE80D3 /* CreateQuizHeaderCellPhone.swift in Sources */,
 				03D646D51F32018C007C206F /* BasicVC.swift in Sources */,
 				03F5682C1F33D803000DBFDC /* AddQuizCell.swift in Sources */,
@@ -841,6 +860,7 @@
 				03406D471F3A6F980035EA67 /* ASPVideoPlayerControls.swift in Sources */,
 				03D646FD1F3271F6007C206F /* LibraryVC.swift in Sources */,
 				033FB54B1F41C3A6009D6920 /* ResultGapQuestionCell.swift in Sources */,
+				0390B8381F4B31DE009DC8B0 /* QRScannerVC.swift in Sources */,
 				03B8CDE61F3883B60058ABAC /* QuestionType.swift in Sources */,
 				03F568111F335637000DBFDC /* UserDefaultsManager.swift in Sources */,
 				04256C281F388870006C86B1 /* UnderLinedTextView.swift in Sources */,

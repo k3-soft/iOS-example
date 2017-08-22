@@ -10,15 +10,62 @@ import UIKit
 
 class CreateQuizHeaderCell: UICollectionViewCell {
     
+    @IBOutlet weak var videoView: UIView!
+    @IBOutlet weak var replaceButton: UIButton!
+    @IBOutlet weak var replyButton: UIButton!
     @IBOutlet weak var titleTextView: UnderLinedTextView!
     @IBOutlet weak var descriptionTextView: UnderLinedTextView!
     
     @IBOutlet weak var titleHeight: NSLayoutConstraint!
     @IBOutlet weak var descriptionHeight: NSLayoutConstraint!
     
+    var videoPlayer: ASPVideoPlayer?
+    
+    // Action handlers
+    var addVideoHandler: ((UIButton)->())?
+    
     override func awakeFromNib() {
         titleTextView.delegate = self
         descriptionTextView.delegate = self
+    }
+    
+    func setVideoPlayer(url: URL) {
+        
+        if videoPlayer != nil {
+            videoPlayer?.removeFromSuperview()
+            videoPlayer = nil
+        }
+
+        videoPlayer = ASPVideoPlayer(frame: videoView.bounds)
+        videoPlayer?.backgroundColor = UIColor.black
+        videoPlayer?.videoURLs = [url]
+        videoPlayer?.gravity = .aspectFill
+        videoPlayer?.shouldLoop = false
+        videoPlayer?.tintColor = UIColor.white
+        
+        videoPlayer?.videoPlayerView.startedVideo = { [unowned self] in
+            self.replyButton.isEnabled = false
+        }
+        videoPlayer?.videoPlayerView.finishedVideo = { [unowned self] in
+            self.replyButton.isEnabled = true
+        }
+        
+        videoView.addSubview(videoPlayer!)
+    }
+    
+    // MARK: - Actions
+    
+    @IBAction func addVideo(_ sender: UIButton) {
+        addVideoHandler?(sender)
+    }
+    
+    @IBAction func reply(_ sender: UIButton) {
+        
+        if videoPlayer != nil {
+            videoPlayer?.videoPlayerView.playVideo()
+            videoPlayer?.videoPlayerControls.togglePlay()
+            videoPlayer?.hideControls()
+        }
     }
 }
 

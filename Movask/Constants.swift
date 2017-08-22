@@ -11,7 +11,8 @@ import UIKit
 let BaseAPIUrl = "http://clock.miber.se/api/v1/"
 let BaseAPIUploads = "http://clock.miber.se/uploads/"
 
-let MainFont = "Arial"
+let MainFontSemibold = "Solomon-Sans-SemiBold"
+let MainFontBold = "Solomon-Sans-Bold"
 
 // MARK: - Colors
 

@@ -143,7 +143,7 @@
                                                             <rect key="frame" x="0.0" y="102.5" width="160" height="37.5"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add to saved" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DIB-VM-XVE">
-                                                                    <rect key="frame" x="32" y="12" width="128" height="15"/>
+                                                                    <rect key="frame" x="32" y="11.5" width="128" height="15"/>
                                                                     <fontDescription key="fontDescription" name="Solomon-Sans-SemiBold" family="Solomon Sans SemiBold" pointSize="15"/>
                                                                     <color key="textColor" red="0.17254901959999999" green="0.70588235290000001" blue="0.38823529410000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                     <nil key="highlightedColor"/>
@@ -193,7 +193,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ForwardGray" translatesAutoresizingMaskIntoConstraints="NO" id="qOI-H4-VL5">
-                                                    <rect key="frame" x="123" y="327" width="18" height="27"/>
+                                                    <rect key="frame" x="123" y="327.5" width="18" height="27"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="18" id="Dk0-tO-hVT"/>
                                                         <constraint firstAttribute="height" constant="27" id="gdB-4G-JaE"/>

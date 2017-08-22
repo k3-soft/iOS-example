@@ -102,7 +102,7 @@ class QuizVC: BasicVC {
             if let questionCell = cell as? QuestionCell {
                 questionCell.reload(viewWidth: size.width)
             } else if let questionGapCell = cell as? GapQuestionCell {
-                questionGapCell.reloadStart(viewWidth: size.width)
+                questionGapCell.reload(viewWidth: size.width)
             }
         }
         
@@ -116,7 +116,7 @@ class QuizVC: BasicVC {
         }, completion: { _ in
             for cell in self.questionsCollection.visibleCells {
                 if let questionGapCell = cell as? GapQuestionCell {
-                    questionGapCell.reloadEnd()
+                    questionGapCell.layoutGaps()
                 }
             }
         })
@@ -162,12 +162,20 @@ class QuizVC: BasicVC {
         guard index < questionsList.count else {
             
             // Last question, show results
-    
-            let quizResultsVC = QuizResultsPhoneVC()
-            quizResultsVC.quiz = quiz
-            quizResultsVC.questionsList = questionsList
             
-            navigationController?.pushViewController(quizResultsVC, animated: true)
+            var quizResultsVC: QuizResultsVC?
+            
+            if UIDevice.current.userInterfaceIdiom == .phone {
+                quizResultsVC = QuizResultsPhoneVC()
+            } else {
+                quizResultsVC = QuizResultsPadVC()
+            }
+    
+            quizResultsVC!.quiz = quiz
+            quizResultsVC!.questionsList = questionsList
+            
+            navigationController?.pushViewController(quizResultsVC!, animated: true)
+            
             return
         }
         
