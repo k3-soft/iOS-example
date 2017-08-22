@@ -117,6 +117,7 @@
 		04256C311F39D667006C86B1 /* QuizAnswersView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04256C301F39D667006C86B1 /* QuizAnswersView.xib */; };
 		04256C331F3C577F006C86B1 /* String+TextHeight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04256C321F3C577F006C86B1 /* String+TextHeight.swift */; };
 		04256C351F3CA2B2006C86B1 /* Array+Rearrange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04256C341F3CA2B2006C86B1 /* Array+Rearrange.swift */; };
+		0496B33A1F4C378D007A4F95 /* CVLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0496B3391F4C378D007A4F95 /* CVLayout.swift */; };
 		04FD5D021F41D0D50041AB6E /* GapButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FD5D011F41D0D50041AB6E /* GapButton.swift */; };
 		CD6C7355B1C4AE093EDD1E8F /* Pods_Movask.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADD8DD89C88C0C32D0D1EA71 /* Pods_Movask.framework */; };
 /* End PBXBuildFile section */
@@ -235,6 +236,7 @@
 		04256C301F39D667006C86B1 /* QuizAnswersView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QuizAnswersView.xib; sourceTree = "<group>"; };
 		04256C321F3C577F006C86B1 /* String+TextHeight.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+TextHeight.swift"; sourceTree = "<group>"; };
 		04256C341F3CA2B2006C86B1 /* Array+Rearrange.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+Rearrange.swift"; sourceTree = "<group>"; };
+		0496B3391F4C378D007A4F95 /* CVLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CVLayout.swift; sourceTree = "<group>"; };
 		04FD5D011F41D0D50041AB6E /* GapButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GapButton.swift; sourceTree = "<group>"; };
 		4E98A7AC960E59B9702AEB84 /* Pods-Movask.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Movask.release.xcconfig"; path = "Pods/Target Support Files/Pods-Movask/Pods-Movask.release.xcconfig"; sourceTree = "<group>"; };
 		86C8F8B01958BC742420DC15 /* Pods-Movask.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Movask.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Movask/Pods-Movask.debug.xcconfig"; sourceTree = "<group>"; };
@@ -583,6 +585,7 @@
 			isa = PBXGroup;
 			children = (
 				04256C1A1F387E30006C86B1 /* CreateQuizVC.swift */,
+				0496B3391F4C378D007A4F95 /* CVLayout.swift */,
 				04256C1D1F387E84006C86B1 /* CreateQuizVC.xib */,
 				04256C1C1F387E3A006C86B1 /* Cells */,
 			);
@@ -816,6 +819,7 @@
 				03F5681F1F3383FB000DBFDC /* Token.swift in Sources */,
 				03F76EA91F3BC99400A15532 /* QuestionCellHandler.swift in Sources */,
 				03F568301F33D817000DBFDC /* ScanQRCell.swift in Sources */,
+				0496B33A1F4C378D007A4F95 /* CVLayout.swift in Sources */,
 				03B8CDEC1F3892F70058ABAC /* AnswerSelectionCell.swift in Sources */,
 				03F76EA61F3BC21600A15532 /* GapQuestionCell.swift in Sources */,
 				03F568231F3386DF000DBFDC /* UIColor+Hex.swift in Sources */,
