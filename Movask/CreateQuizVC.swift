@@ -23,7 +23,8 @@ class CreateQuizVC: BasicVC {
     let questionCellPhone = "CreateQuizQuestionCellPhone"
     
     var questions: [QuestionPostTest] = []
-    
+    var savedQuestions: [QuestionPostTest] = []
+
     // Video
     var videoURL: URL?
     
@@ -104,6 +105,7 @@ class CreateQuizVC: BasicVC {
         }
         
         questions.append(q3)
+        savedQuestions.append(q3)
         
         quizCollectionView.performBatchUpdates({
             self.quizCollectionView.insertItems(at: [IndexPath(item: self.questions.count - 1, section: 0)])
@@ -234,9 +236,15 @@ extension CreateQuizVC: UICollectionViewDelegate, UICollectionViewDataSource, UI
     }
     
     func collectionView(_ collectionView: UICollectionView, moveItemAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
-        
+        guard sourceIndexPath != destinationIndexPath else { return }
+
         let temp = questions.remove(at: sourceIndexPath.item)
         questions.insert(temp, at: destinationIndexPath.item)
+        
+//        for q in questions {
+//            print(q.question)
+//        }
+//        print("")
     }
     
     var header: CreateQuizHeaderCell? {
@@ -265,6 +273,39 @@ extension CreateQuizVC: QuizQuestionCellDelegate {
 //                }, completion: nil)
             })
         }
+    }
+    
+    func repositionCell(cell: CreateQuizQuestionCell, gestureRecognizer: UIGestureRecognizer) {
+
+        switch(gestureRecognizer.state) {
+        case UIGestureRecognizerState.began:
+            guard let selectedIndexPath = quizCollectionView.indexPathForItem(at: gestureRecognizer.location(in: quizCollectionView)) else {
+                break
+            }
+            savedQuestions = questions
+
+            quizCollectionView.beginInteractiveMovementForItem(at: selectedIndexPath)
+            
+        case UIGestureRecognizerState.changed:
+            // use default x position and y position from touch
+            if UIDevice.current.userInterfaceIdiom == .phone {
+                quizCollectionView.updateInteractiveMovementTargetPosition(CGPoint(x: quizCollectionView.frame.width/2, y: gestureRecognizer.location(in: quizCollectionView).y + cell.frame.height/2 - 8 - 50/2))
+            } else {
+                quizCollectionView.updateInteractiveMovementTargetPosition(CGPoint(x: quizCollectionView.frame.width/2, y: gestureRecognizer.location(in: quizCollectionView).y + cell.frame.height/2 - 8 - 50 - 8 - 50/2))
+            }
+
+        case UIGestureRecognizerState.ended:
+            questions = savedQuestions
+            self.quizCollectionView.endInteractiveMovement()
+                
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                self.quizCollectionView.reloadData()
+            }
+
+        default:
+            quizCollectionView.cancelInteractiveMovement()
+        }
+
     }
     
 }
