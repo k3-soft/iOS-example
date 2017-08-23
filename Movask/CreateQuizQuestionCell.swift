@@ -10,6 +10,7 @@ import UIKit
 
 protocol QuizQuestionCellDelegate: class {
     func didTapDeleteQuestionButton(cell: CreateQuizQuestionCell, sender: UIButton)
+    func repositionCell(cell: CreateQuizQuestionCell, gestureRecognizer: UIGestureRecognizer)
 }
 
 class CreateQuizQuestionCell: UICollectionViewCell {
@@ -79,6 +80,10 @@ class CreateQuizQuestionCell: UICollectionViewCell {
         dragButton.addGestureRecognizer(panGesture)
     }
     
+    func repositionQuestion(_ gesture: UILongPressGestureRecognizer) {
+        delegate?.repositionCell(cell: self, gestureRecognizer: gesture)
+    }
+    
     override func prepareForReuse() {
         removeGapButtons()
     }
@@ -86,31 +91,6 @@ class CreateQuizQuestionCell: UICollectionViewCell {
     @IBAction func deleteQuestionButtonTapped(_ sender: UIButton) {
         print("delete question tapped")
         delegate?.didTapDeleteQuestionButton(cell: self, sender: sender)
-    }
-    
-    func repositionQuestion(_ gesture: UILongPressGestureRecognizer) {
-        guard let ownerCollectionView = ownerCollectionView else { return }
-        
-        switch(gesture.state) {
-        case UIGestureRecognizerState.began:
-            guard let selectedIndexPath = ownerCollectionView.indexPathForItem(at: gesture.location(in: ownerCollectionView)) else {
-                break
-            }
-            ownerCollectionView.beginInteractiveMovementForItem(at: selectedIndexPath)
-            
-        case UIGestureRecognizerState.changed:
-            // use default x position and y position from touch
-            if UIDevice.current.userInterfaceIdiom == .phone {
-                ownerCollectionView.updateInteractiveMovementTargetPosition(CGPoint(x: ownerCollectionView.frame.width/2, y: gesture.location(in: ownerCollectionView).y + self.frame.height/2 - 8 - 50/2))
-            } else {
-                ownerCollectionView.updateInteractiveMovementTargetPosition(CGPoint(x: ownerCollectionView.frame.width/2, y: gesture.location(in: ownerCollectionView).y + self.frame.height/2 - 8 - 50 - 8 - 50/2))
-            }
-            
-        case UIGestureRecognizerState.ended:
-            ownerCollectionView.endInteractiveMovement()
-        default:
-            ownerCollectionView.cancelInteractiveMovement()
-        }
     }
 
     func calculateCellHeightConstraintsFor(_ question: QuestionPostTest) {

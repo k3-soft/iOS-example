@@ -19,8 +19,4 @@ class CVLayout: UICollectionViewFlowLayout {
         return context
     }
     
-//    override func invalidationContextForEndingInteractiveMovementOfItems(toFinalIndexPaths indexPaths: [IndexPath], previousIndexPaths: [IndexPath], movementCancelled: Bool) -> UICollectionViewLayoutInvalidationContext {
-//        //
-//    }
-    
 }
