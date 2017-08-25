@@ -108,11 +108,11 @@ class CreateQuizVC: BasicVC {
             q3.missingWordsIndexes = [1, 3]
         case 1:
             q3 = QuestionPostTest(type: .checkmarks)
-            q3.question = "Why am I so stupid? Multiple choice!"
+            q3.question = "Type multiple choice question!"
             q3.answers = []
         case 2:
             q3 = QuestionPostTest(type: .radiobuttons)
-            q3.question = "Why am I so stupid? Single choice!"
+            q3.question = "Type single choice question!"
             q3.answers = []
         default:
             break
