@@ -56,6 +56,7 @@ extension AuthorizationVC: UITextFieldDelegate {
         
         if textField.isFirstResponder {
             textField.resignFirstResponder()
+            okDidTap(okButton)
         }
         return true
     }

@@ -25,7 +25,7 @@
                             <constraint firstAttribute="width" constant="25" id="Bly-hU-uWG"/>
                         </constraints>
                     </imageView>
-                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="gKY-3V-nQB" customClass="UnderLinedTextView" customModule="Movask" customModuleProvider="target">
+                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="gKY-3V-nQB" customClass="UnderLinedTextView" customModule="Movask" customModuleProvider="target">
                         <rect key="frame" x="41" y="0.0" width="315" height="33"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -43,7 +43,7 @@
                             <constraint firstAttribute="height" constant="25" id="Gux-e2-rJg"/>
                             <constraint firstAttribute="width" constant="25" id="XXS-gd-UNj"/>
                         </constraints>
-                        <state key="normal" title="X">
+                        <state key="normal" image="CloseBlack">
                             <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
                         <connections>
@@ -71,4 +71,7 @@
             <point key="canvasLocation" x="-53.5" y="-122"/>
         </collectionViewCell>
     </objects>
+    <resources>
+        <image name="CloseBlack" width="16" height="16"/>
+    </resources>
 </document>

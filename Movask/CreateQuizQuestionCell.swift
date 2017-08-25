@@ -94,6 +94,7 @@ class CreateQuizQuestionCell: UICollectionViewCell {
     }
 
     func calculateCellHeightConstraintsFor(_ question: QuestionPostTest) {
+        
         var questionBlockHeight: CGFloat = 80 // height for green question block without textview
         let answersFooterHeight: CGFloat = 33.0 // add item button
         let answersCollectionViewInsets: CGFloat = 16.0

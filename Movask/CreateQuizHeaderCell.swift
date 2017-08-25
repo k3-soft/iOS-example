@@ -11,6 +11,8 @@ import UIKit
 class CreateQuizHeaderCell: UICollectionViewCell {
     
     @IBOutlet weak var videoView: UIView!
+    @IBOutlet weak var replaceView: UIView!
+    @IBOutlet weak var replyView: UIView!
     @IBOutlet weak var replaceButton: UIButton!
     @IBOutlet weak var replyButton: UIButton!
     @IBOutlet weak var titleTextView: UnderLinedTextView!
@@ -19,14 +21,35 @@ class CreateQuizHeaderCell: UICollectionViewCell {
     @IBOutlet weak var titleHeight: NSLayoutConstraint!
     @IBOutlet weak var descriptionHeight: NSLayoutConstraint!
     
+    var quiz: QuizPostTest?
+    
+    weak var ownerCollectionView: UICollectionView?
+    
     var videoPlayer: ASPVideoPlayer?
     
     // Action handlers
     var addVideoHandler: ((UIButton)->())?
     
+    static let titleTextAttributes: [String: NSObject] = {
+        let font = UIFont(name: MainFontSemibold, size: 21.0)!
+        let attributes = [NSFontAttributeName : font, NSForegroundColorAttributeName : UIColor.white]
+        return attributes
+    }()
+    
+    static let descriptionTextAttributes: [String: NSObject] = {
+        let font = UIFont(name: MainFontSemibold, size: 17.0)!
+        let attributes = [NSFontAttributeName : font, NSForegroundColorAttributeName : UIColor.white]
+        return attributes
+    }()
+    
     override func awakeFromNib() {
+        
         titleTextView.delegate = self
         descriptionTextView.delegate = self
+    
+        if videoPlayer == nil {
+            makeButtonsHidden(true)
+        }
     }
     
     func setVideoPlayer(url: URL) {
@@ -53,6 +76,11 @@ class CreateQuizHeaderCell: UICollectionViewCell {
         videoView.addSubview(videoPlayer!)
     }
     
+    func makeButtonsHidden(_ hidden: Bool) {
+        replaceView.isHidden = hidden
+        replyView.isHidden = hidden
+    }
+    
     // MARK: - Actions
     
     @IBAction func addVideo(_ sender: UIButton) {
@@ -72,20 +100,36 @@ class CreateQuizHeaderCell: UICollectionViewCell {
 extension CreateQuizHeaderCell: UITextViewDelegate {
     
     func textViewDidChange(_ textView: UITextView) {
+        
         let fixedWidth = textView.frame.size.width
         let newSize = textView.sizeThatFits(CGSize(width: fixedWidth, height: CGFloat.greatestFiniteMagnitude))
         
         //resize textview to fit text
         switch textView {
         case titleTextView:
+            quiz?.title = textView.text
             titleHeight.constant = newSize.height
             titleTextView.lineTopConstraint.constant = newSize.height - titleTextView.lineHeightConstraint.constant
+            
         case descriptionTextView:
+            quiz?.description = textView.text
             descriptionHeight.constant = newSize.height
             descriptionTextView.lineTopConstraint.constant = newSize.height - descriptionTextView.lineHeightConstraint.constant
 
         default: break
         }
         textView.layoutIfNeeded()
+        
+        //update collectionview cell height
+        ownerCollectionView?.performBatchUpdates(nil)
+    }
+    
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        
+        if(text == "\n") {
+            textView.resignFirstResponder()
+            return false
+        }
+        return true
     }
 }

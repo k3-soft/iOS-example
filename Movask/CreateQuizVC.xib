@@ -8,6 +8,11 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Solomon-Sans-Bold.otf">
+            <string>Solomon-Sans-Bold</string>
+        </array>
+    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CreateQuizVC" customModule="Movask" customModuleProvider="target">
             <connections>
@@ -22,7 +27,7 @@
             <subviews>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="v0a-cR-Lgp" customClass="SwappingCollectionView" customModule="Movask" customModuleProvider="target">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                    <color key="backgroundColor" red="0.96068006753921509" green="0.96084433794021606" blue="0.96066969633102417" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="backgroundColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Bx5-Yn-5fH" customClass="CVLayout" customModule="Movask" customModuleProvider="target">
                         <size key="itemSize" width="50" height="50"/>
                         <size key="headerReferenceSize" width="50" height="50"/>
@@ -37,7 +42,7 @@
                         <constraint firstAttribute="height" constant="44" id="34R-2S-Glo"/>
                         <constraint firstAttribute="width" constant="200" id="4Y5-BU-gIg"/>
                     </constraints>
-                    <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                    <fontDescription key="fontDescription" name="Solomon-Sans-Bold" family="Solomon Sans Bold" pointSize="19"/>
                     <state key="normal" title="Add question"/>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">

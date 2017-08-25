@@ -22,6 +22,7 @@ class CreateQuizVC: BasicVC {
     let questionCellPad = "CreateQuizQuestionCell"
     let questionCellPhone = "CreateQuizQuestionCellPhone"
     
+    var quiz = QuizPostTest()
     var questions: [QuestionPostTest] = []
     var savedQuestions: [QuestionPostTest] = []
 
@@ -47,14 +48,27 @@ class CreateQuizVC: BasicVC {
     // MARK: - Set views
     
     func setupNavigationBar() {
+        
         navigationController?.setNavigationBarHidden(false, animated: false)
-        navigationController?.navigationBar.isTranslucent = false
-    
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save", style: .plain, target: self, action: #selector(saveTapped))
+        
         navigationItem.title = "Quiz Maker"
+        
+        if let navigationBar = navigationController?.navigationBar {
+            navigationBar.isTranslucent = false
+            navigationBar.barTintColor = UIColor.white
+            navigationBar.tintColor = BrandColor.green
+            navigationBar.titleTextAttributes = [
+                NSForegroundColorAttributeName: BrandColor.darkGrey,
+                NSFontAttributeName: UIFont(name: MainFontSemibold, size: 20.0)!
+            ]
+        }
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save", style: .plain, target: self, action: #selector(saveTapped))
+        navigationItem.rightBarButtonItem?.setTitleTextAttributes([NSFontAttributeName: UIFont(name: MainFontBold, size: 20)!], for: .normal)
     }
     
     func setupCollectionView() {
+        
         quizCollectionView.delegate = self
         quizCollectionView.dataSource = self
         
@@ -139,6 +153,8 @@ extension CreateQuizVC: UICollectionViewDelegate, UICollectionViewDataSource, UI
                 headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: headerCellPad, for: indexPath) as! CreateQuizHeaderCell
             }
             
+            headerView.quiz = quiz
+            headerView.ownerCollectionView = quizCollectionView
             headerView.addVideoHandler = { [unowned self] (sender) in
                 self.addVideo(sender)
             }
@@ -170,6 +186,26 @@ extension CreateQuizVC: UICollectionViewDelegate, UICollectionViewDataSource, UI
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return sizeFor(question: questions[indexPath.item])
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        
+        var heightWithoutTextViews: CGFloat = 0.0
+        var textViewsWidth: CGFloat = 0.0
+        
+        if UIDevice.current.userInterfaceIdiom == .phone {
+            heightWithoutTextViews = 500 - 35 - 32
+            textViewsWidth = self.view.frame.width - 30 - 30 - 5// - 25 - 25
+            
+        } else {
+            heightWithoutTextViews = 365 - 35 - 32
+            textViewsWidth = self.view.frame.width - 20 - 20 - 8 - 308
+        }
+        
+        let titleHeight: CGFloat = quiz.title.height(withFixedWidth: textViewsWidth, textAttributes: CreateQuizHeaderCell.titleTextAttributes)
+        let descriptionHeight: CGFloat = quiz.description.height(withFixedWidth: textViewsWidth, textAttributes: CreateQuizHeaderCell.descriptionTextAttributes)
+        
+        return CGSize(width: self.view.frame.width, height: heightWithoutTextViews + titleHeight + descriptionHeight)
     }
     
     func sizeFor(question: QuestionPostTest) -> CGSize {
@@ -226,25 +262,20 @@ extension CreateQuizVC: UICollectionViewDelegate, UICollectionViewDataSource, UI
         return 20.0
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        
-        if UIDevice.current.userInterfaceIdiom == .phone {
-            return CGSize(width: self.view.frame.width, height: 470)
-        } else {
-            return CGSize(width: self.view.frame.width, height: self.view.frame.height / 2)
-        }        
-    }
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+//        
+//        if UIDevice.current.userInterfaceIdiom == .phone {
+//            return CGSize(width: self.view.frame.width, height: 470)
+//        } else {
+//            return CGSize(width: self.view.frame.width, height: self.view.frame.height / 2)
+//        }        
+//    }
     
     func collectionView(_ collectionView: UICollectionView, moveItemAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
         guard sourceIndexPath != destinationIndexPath else { return }
 
         let temp = questions.remove(at: sourceIndexPath.item)
         questions.insert(temp, at: destinationIndexPath.item)
-        
-//        for q in questions {
-//            print(q.question)
-//        }
-//        print("")
     }
     
     var header: CreateQuizHeaderCell? {
@@ -364,6 +395,7 @@ extension CreateQuizVC: UIImagePickerControllerDelegate, UINavigationControllerD
                 DispatchQueue.main.async {
                     self?.videoURL = url
                     self?.header?.setVideoPlayer(url: url)
+                    self?.header?.makeButtonsHidden(false)
                 }
             })
         }
