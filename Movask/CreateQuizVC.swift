@@ -9,6 +9,7 @@
 import UIKit
 import AVFoundation
 import MobileCoreServices
+import YNDropDownMenu
 
 class CreateQuizVC: BasicVC {
     
@@ -345,6 +346,33 @@ extension CreateQuizVC: QuizQuestionCellDelegate {
 
     }
     
+    func showQuestionTypesMenu(cell: CreateQuizQuestionCell, gestureRecognizer: UIGestureRecognizer) {
+        let senderIndexPath = quizCollectionView.indexPath(for: cell)
+        
+        let menuButtonFrame = cell.questionTypeSelectionView.convert(cell.questionTypeSelectionView.bounds, to: quizCollectionView)
+        let dropDownMenuFrame = CGRect(x: menuButtonFrame.origin.x, y: menuButtonFrame.origin.y + 44, width: menuButtonFrame.width, height: 41 * 3)
+        
+        let questionTypesMenu = QuestionTypesDropDown(frame: dropDownMenuFrame, selectedType: cell.question?.type, senderIndexPath: senderIndexPath)
+        questionTypesMenu.delegate = self
+        
+        // Inherit YNDropDownView if you want to hideMenu in your dropDownViews
+        quizCollectionView.addSubview(questionTypesMenu)
+    }
+    
+}
+
+extension CreateQuizVC: QuestionTypesDropDownDelegate {
+    func didSelectQuestionType(in menu: QuestionTypesDropDown, at senderIndexPath: IndexPath?) {
+        guard let senderIndexPath = menu.senderIndexPath else { return }
+        guard let selectedType = menu.selectedType else { return }
+        
+        menu.removeFromSuperview()
+        
+        questions[senderIndexPath.row].type = selectedType
+        quizCollectionView.performBatchUpdates({
+            self.quizCollectionView.reloadItems(at: [senderIndexPath])
+        }, completion: nil)
+    }
 }
 
 

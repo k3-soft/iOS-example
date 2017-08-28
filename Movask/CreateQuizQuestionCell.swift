@@ -11,6 +11,7 @@ import UIKit
 protocol QuizQuestionCellDelegate: class {
     func didTapDeleteQuestionButton(cell: CreateQuizQuestionCell, sender: UIButton)
     func repositionCell(cell: CreateQuizQuestionCell, gestureRecognizer: UIGestureRecognizer)
+    func showQuestionTypesMenu(cell: CreateQuizQuestionCell, gestureRecognizer: UIGestureRecognizer)
 }
 
 class CreateQuizQuestionCell: UICollectionViewCell {
@@ -19,6 +20,8 @@ class CreateQuizQuestionCell: UICollectionViewCell {
     @IBOutlet weak var dragButton: UIButton!
     
     @IBOutlet weak var questionTypeLabel: UILabel!
+    @IBOutlet weak var questionTypeSelectionView: UIView!
+
     @IBOutlet weak var qustionTypeDescriptionLabel: UILabel!
     
     @IBOutlet weak var questionContainer: UIView!
@@ -76,12 +79,20 @@ class CreateQuizQuestionCell: UICollectionViewCell {
     override func awakeFromNib() {
         questionTitleTextView.delegate = self
         answersView.layoutDelegate = self
+        
         let panGesture = UIPanGestureRecognizer(target: self, action: #selector (repositionQuestion(_:)))
         dragButton.addGestureRecognizer(panGesture)
+        
+        let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector (showQuestionTypesMenu(_:)))
+        questionTypeSelectionView.addGestureRecognizer(tapRecognizer)
     }
     
     func repositionQuestion(_ gesture: UILongPressGestureRecognizer) {
         delegate?.repositionCell(cell: self, gestureRecognizer: gesture)
+    }
+    
+    func showQuestionTypesMenu(_ gesture: UILongPressGestureRecognizer) {
+        delegate?.showQuestionTypesMenu(cell: self, gestureRecognizer: gesture)
     }
     
     override func prepareForReuse() {
