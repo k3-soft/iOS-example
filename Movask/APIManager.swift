@@ -22,10 +22,30 @@ class APIManager {
     
     private func getAuthorizationHeader() -> [String:String]? {
         guard let token = AuthorizationManager.token else { return nil }
-        return ["device-id": token]
+        return ["X-AUTH-TOKEN": token]
     }
     
     // MARK: - Profile
+    
+    func registerUserProfile(data: ProfileRegistrationForm, success: @escaping (Any)->(), failure: @escaping (Error)->()) {
+        
+        let parameters = Mapper<ProfileRegistrationForm>().toJSON(data)
+        
+        networking.makeRequest(path: "profiles", method: .post, parameters: parameters, headers: nil, success: success, failure: failure)
+    }
+    
+    func updateUserProfile(data: ProfileEditForm, success: @escaping (Any)->(), failure: @escaping (Error)->()) {
+        
+        guard let header = getAuthorizationHeader() else {
+            failure(ServerRequestError.errorAuthorization)
+            return
+        }
+        
+        
+        let parameters = Mapper<ProfileEditForm>().toJSON(data)
+        
+        networking.makeRequest(path: "profiles/own", method: .patch, parameters: parameters, headers: header, success: success, failure: failure)
+    }
     
     func getCurrentUser(success: @escaping (Any)->(), failure: @escaping (Error)->()) {
         
@@ -36,19 +56,6 @@ class APIManager {
         
         networking.makeRequest(path: "profiles/own", method: .get, parameters: nil, headers: header, success: success, failure: failure)
     }
-    
-//    func updateUserProfile(userID: Int, data: ProfileForm, success: @escaping (Any)->(), failure: @escaping (Error)->()) {
-//        
-//        guard let header = getAuthorizationHeader() else {
-//            failure(ServerRequestError.errorAuthorization)
-//            return
-//        }
-//        
-//        
-//        let parameters = Mapper<ProfileForm>().toJSON(data)
-//        
-//        networking.makeRequest(path: "profiles/\(userID)", method: .patch, parameters: parameters, headers: header, success: success, failure: failure)
-//    }
     
     // MARK: - Get commerce
     

@@ -96,7 +96,8 @@ extension QuizAnswersView: UICollectionViewDelegate, UICollectionViewDataSource,
             return footerView
             
         default:
-            assert(false, "Unexpected element kind")
+            return UICollectionReusableView()
+            //assert(false, "Unexpected element kind")
         }
     }
     

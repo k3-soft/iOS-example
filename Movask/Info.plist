@@ -2,18 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>NSPhotoLibraryUsageDescription</key>
-	<string>Please, allow to use your media library for full app functionality</string>
-	<key>NSAppleMusicUsageDescription</key>
-	<string>Please, allow to use your media library for full app functionality</string>
-	<key>NSMicrophoneUsageDescription</key>
-	<string>Please, allow to use your microphone for full app functionality</string>
-	<key>NSCameraUsageDescription</key>
-	<string>Please, allow to use your device camera for full app functionality</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
-	<string>VideoQ</string>
+	<string>AfterVideo</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -49,6 +41,14 @@
 		<key>NSAllowsArbitraryLoads</key>
 		<true/>
 	</dict>
+	<key>NSAppleMusicUsageDescription</key>
+	<string>Please, allow to use your media library for full app functionality</string>
+	<key>NSCameraUsageDescription</key>
+	<string>Please, allow to use your device camera for full app functionality</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>Please, allow to use your microphone for full app functionality</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Please, allow to use your media library for full app functionality</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>Solomon-Sans-Black.otf</string>

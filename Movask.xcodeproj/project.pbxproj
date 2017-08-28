@@ -36,6 +36,8 @@
 		03406D531F3A70490035EA67 /* Scrubber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03406D521F3A70490035EA67 /* Scrubber.swift */; };
 		0390B8381F4B31DE009DC8B0 /* QRScannerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0390B8361F4B31DE009DC8B0 /* QRScannerVC.swift */; };
 		0390B8391F4B31DE009DC8B0 /* QRScannerVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0390B8371F4B31DE009DC8B0 /* QRScannerVC.xib */; };
+		039588B61F541F30001E8D4A /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 039588B51F541F30001E8D4A /* Profile.swift */; };
+		039588B81F5423A9001E8D4A /* ProfilePostForms.swift in Sources */ = {isa = PBXBuildFile; fileRef = 039588B71F5423A9001E8D4A /* ProfilePostForms.swift */; };
 		03B8CDE41F3882960058ABAC /* AnswerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B8CDE31F3882960058ABAC /* AnswerTest.swift */; };
 		03B8CDE61F3883B60058ABAC /* QuestionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B8CDE51F3883B60058ABAC /* QuestionType.swift */; };
 		03B8CDEA1F3886CC0058ABAC /* UIButton+Touches.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B8CDE91F3886CC0058ABAC /* UIButton+Touches.swift */; };
@@ -158,6 +160,8 @@
 		03406D521F3A70490035EA67 /* Scrubber.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Scrubber.swift; sourceTree = "<group>"; };
 		0390B8361F4B31DE009DC8B0 /* QRScannerVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRScannerVC.swift; sourceTree = "<group>"; };
 		0390B8371F4B31DE009DC8B0 /* QRScannerVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QRScannerVC.xib; sourceTree = "<group>"; };
+		039588B51F541F30001E8D4A /* Profile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
+		039588B71F5423A9001E8D4A /* ProfilePostForms.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfilePostForms.swift; sourceTree = "<group>"; };
 		03B8CDE31F3882960058ABAC /* AnswerTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnswerTest.swift; sourceTree = "<group>"; };
 		03B8CDE51F3883B60058ABAC /* QuestionType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionType.swift; sourceTree = "<group>"; };
 		03B8CDE91F3886CC0058ABAC /* UIButton+Touches.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIButton+Touches.swift"; sourceTree = "<group>"; };
@@ -305,6 +309,15 @@
 				03406D521F3A70490035EA67 /* Scrubber.swift */,
 			);
 			name = ASPVideoPlayer;
+			sourceTree = "<group>";
+		};
+		039588B41F541F12001E8D4A /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				039588B51F541F30001E8D4A /* Profile.swift */,
+				039588B71F5423A9001E8D4A /* ProfilePostForms.swift */,
+			);
+			name = Profile;
 			sourceTree = "<group>";
 		};
 		03B8CDE71F3883B90058ABAC /* Enums */ = {
@@ -483,6 +496,7 @@
 		03D646E31F32081D007C206F /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				039588B41F541F12001E8D4A /* Profile */,
 				03D646E41F32082F007C206F /* QuizTest.swift */,
 				03E4AD761F34E46200EAA33A /* QuestionGetTest.swift */,
 				033FB5521F423017009D6920 /* QuestionPostTest.swift */,
@@ -866,6 +880,7 @@
 				03F568191F3360D3000DBFDC /* Constants.swift in Sources */,
 				033FB53F1F41A9A9009D6920 /* QuizResultsPhoneVC.swift in Sources */,
 				03406D4F1F3A70150035EA67 /* Math.swift in Sources */,
+				039588B61F541F30001E8D4A /* Profile.swift in Sources */,
 				0496B33C1F4CEB57007A4F95 /* SwapableCollectionView.swift in Sources */,
 				04256C221F388196006C86B1 /* CreateQuizQuestionCell.swift in Sources */,
 				03D646EC1F320BC0007C206F /* QuizCell.swift in Sources */,
@@ -883,6 +898,7 @@
 				03406D4B1F3A6FE30035EA67 /* ControlButtons.swift in Sources */,
 				03D646E51F32082F007C206F /* QuizTest.swift in Sources */,
 				04256C351F3CA2B2006C86B1 /* Array+Rearrange.swift in Sources */,
+				039588B81F5423A9001E8D4A /* ProfilePostForms.swift in Sources */,
 				0422BDC51F4ACD5E00AE80D3 /* CreateQuizQuestionCellPhone.swift in Sources */,
 				04256C2D1F39CD8C006C86B1 /* QuizAnswerCell.swift in Sources */,
 				03E4AD6D1F34E2D000EAA33A /* QuizPhoneVC.swift in Sources */,

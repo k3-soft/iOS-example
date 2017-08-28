@@ -8,8 +8,8 @@
 
 import UIKit
 
-let BaseAPIUrl = "http://clock.miber.se/api/v1/"
-let BaseAPIUploads = "http://clock.miber.se/uploads/"
+let BaseAPIUrl = "http://api.aftervideo.k-3soft.com/api/"
+let BaseAPIUploads = "http://api.aftervideo.k-3soft.com/api/"
 
 let MainFontSemibold = "Solomon-Sans-SemiBold"
 let MainFontBold = "Solomon-Sans-Bold"

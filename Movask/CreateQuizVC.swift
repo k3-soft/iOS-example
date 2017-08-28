@@ -162,7 +162,8 @@ extension CreateQuizVC: UICollectionViewDelegate, UICollectionViewDataSource, UI
             return headerView
             
         default:
-            assert(false, "Unexpected element kind")
+            return UICollectionReusableView()
+            //assert(false, "Unexpected element kind")
         }
     }
     
