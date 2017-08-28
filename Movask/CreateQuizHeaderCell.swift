@@ -32,13 +32,13 @@ class CreateQuizHeaderCell: UICollectionViewCell {
     
     static let titleTextAttributes: [String: NSObject] = {
         let font = UIFont(name: MainFontSemibold, size: 21.0)!
-        let attributes = [NSFontAttributeName : font, NSForegroundColorAttributeName : UIColor.white]
+        let attributes = [NSFontAttributeName : font, NSForegroundColorAttributeName : UIColor.black]
         return attributes
     }()
     
     static let descriptionTextAttributes: [String: NSObject] = {
         let font = UIFont(name: MainFontSemibold, size: 17.0)!
-        let attributes = [NSFontAttributeName : font, NSForegroundColorAttributeName : UIColor.white]
+        let attributes = [NSFontAttributeName : font, NSForegroundColorAttributeName : UIColor.lightGray]
         return attributes
     }()
     
@@ -46,6 +46,12 @@ class CreateQuizHeaderCell: UICollectionViewCell {
         
         titleTextView.delegate = self
         descriptionTextView.delegate = self
+        
+        titleTextView.attributedText = NSAttributedString(string: "setVideoPlayersetVideosetVideoPlayersetVideosetVideoPlayersetVideosetVideoPlayersetVideosetVideoPlayersetVideosetVideoPlayersetVideosetVideoPlayersetVideosetVideoPlayersetVideosetVideoPlayersetVideosetVideoPlayersetVideosetVideoPlayersetVideosetVideoPlayersetVideosetVideoPlayersetVideosetVideoPlayersetVideosetVideoPlayersetVideo",
+                                                          attributes: CreateQuizHeaderCell.titleTextAttributes)
+        
+        descriptionTextView.attributedText = NSAttributedString(string: "setVideoPlayersetVideoPlsd",
+                                                                attributes: CreateQuizHeaderCell.descriptionTextAttributes)
     
         if videoPlayer == nil {
             makeButtonsHidden(true)
@@ -118,7 +124,7 @@ extension CreateQuizHeaderCell: UITextViewDelegate {
 
         default: break
         }
-        textView.layoutIfNeeded()
+//        textView.layoutIfNeeded()
         
         //update collectionview cell height
         ownerCollectionView?.performBatchUpdates(nil)

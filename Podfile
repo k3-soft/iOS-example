@@ -14,6 +14,7 @@ pod 'PKHUD', '~> 4.2'
 pod 'FirebaseMessaging'
 pod 'Firebase'
 pod 'KMPlaceholderTextView', '~> 1.3.0'
+pod 'YNDropDownMenu'
 
 end
 
