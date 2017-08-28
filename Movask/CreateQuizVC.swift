@@ -9,6 +9,7 @@
 import UIKit
 import AVFoundation
 import MobileCoreServices
+import YNDropDownMenu
 
 class CreateQuizVC: BasicVC {
     
@@ -193,20 +194,34 @@ extension CreateQuizVC: UICollectionViewDelegate, UICollectionViewDataSource, UI
         
         var heightWithoutTextViews: CGFloat = 0.0
         var textViewsWidth: CGFloat = 0.0
+        var minHeight: CGFloat = 0.0
+        let textViewInsets: CGFloat = 16 + 16
         
         if UIDevice.current.userInterfaceIdiom == .phone {
-            heightWithoutTextViews = 500 - 35 - 32
-            textViewsWidth = self.view.frame.width - 30 - 30 - 5// - 25 - 25
+            minHeight = 500
+            heightWithoutTextViews = 500 - 41.5 - 36.5
+            textViewsWidth = self.view.frame.width - 30 - 30
             
         } else {
-            heightWithoutTextViews = 365 - 35 - 32
+            minHeight = 350
+            if self.header?.videoPlayer != nil {
+                //add buttons height
+                heightWithoutTextViews = 10 + 25 + 20 + 8 + 20 + 30 + 40 + 40 + 12
+            } else {
+                heightWithoutTextViews = 10 + 25 + 20 + 8 + 20
+            }
             textViewsWidth = self.view.frame.width - 20 - 20 - 8 - 308
         }
         
         let titleHeight: CGFloat = quiz.title.height(withFixedWidth: textViewsWidth, textAttributes: CreateQuizHeaderCell.titleTextAttributes)
         let descriptionHeight: CGFloat = quiz.description.height(withFixedWidth: textViewsWidth, textAttributes: CreateQuizHeaderCell.descriptionTextAttributes)
         
-        return CGSize(width: self.view.frame.width, height: heightWithoutTextViews + titleHeight + descriptionHeight)
+        
+        if titleHeight + descriptionHeight + heightWithoutTextViews + textViewInsets > minHeight {
+            return CGSize(width: self.view.frame.width, height: titleHeight + descriptionHeight + heightWithoutTextViews + textViewInsets + 75)
+        } else {
+            return CGSize(width: self.view.frame.width, height: minHeight + 75)
+        }
     }
     
     func sizeFor(question: QuestionPostTest) -> CGSize {
@@ -263,15 +278,6 @@ extension CreateQuizVC: UICollectionViewDelegate, UICollectionViewDataSource, UI
         return 20.0
     }
     
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-//        
-//        if UIDevice.current.userInterfaceIdiom == .phone {
-//            return CGSize(width: self.view.frame.width, height: 470)
-//        } else {
-//            return CGSize(width: self.view.frame.width, height: self.view.frame.height / 2)
-//        }        
-//    }
-    
     func collectionView(_ collectionView: UICollectionView, moveItemAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
         guard sourceIndexPath != destinationIndexPath else { return }
 
@@ -282,6 +288,7 @@ extension CreateQuizVC: UICollectionViewDelegate, UICollectionViewDataSource, UI
     var header: CreateQuizHeaderCell? {
         
         if let header = quizCollectionView.supplementaryView(forElementKind: UICollectionElementKindSectionHeader, at: IndexPath(item: 0, section: 0)) as? CreateQuizHeaderCell {
+            
             return header
         } else {
             return nil
@@ -340,6 +347,33 @@ extension CreateQuizVC: QuizQuestionCellDelegate {
 
     }
     
+    func showQuestionTypesMenu(cell: CreateQuizQuestionCell, gestureRecognizer: UIGestureRecognizer) {
+        let senderIndexPath = quizCollectionView.indexPath(for: cell)
+        
+        let menuButtonFrame = cell.questionTypeSelectionView.convert(cell.questionTypeSelectionView.bounds, to: quizCollectionView)
+        let dropDownMenuFrame = CGRect(x: menuButtonFrame.origin.x, y: menuButtonFrame.origin.y + 44, width: menuButtonFrame.width, height: 41 * 3)
+        
+        let questionTypesMenu = QuestionTypesDropDown(frame: dropDownMenuFrame, selectedType: cell.question?.type, senderIndexPath: senderIndexPath)
+        questionTypesMenu.delegate = self
+        
+        // Inherit YNDropDownView if you want to hideMenu in your dropDownViews
+        quizCollectionView.addSubview(questionTypesMenu)
+    }
+    
+}
+
+extension CreateQuizVC: QuestionTypesDropDownDelegate {
+    func didSelectQuestionType(in menu: QuestionTypesDropDown, at senderIndexPath: IndexPath?) {
+        guard let senderIndexPath = menu.senderIndexPath else { return }
+        guard let selectedType = menu.selectedType else { return }
+        
+        menu.removeFromSuperview()
+        
+        questions[senderIndexPath.row].type = selectedType
+        quizCollectionView.performBatchUpdates({
+            self.quizCollectionView.reloadItems(at: [senderIndexPath])
+        }, completion: nil)
+    }
 }
 
 
@@ -397,6 +431,7 @@ extension CreateQuizVC: UIImagePickerControllerDelegate, UINavigationControllerD
                     self?.videoURL = url
                     self?.header?.setVideoPlayer(url: url)
                     self?.header?.makeButtonsHidden(false)
+                    
                 }
             })
         }

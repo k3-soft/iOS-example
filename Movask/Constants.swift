@@ -25,3 +25,12 @@ struct BrandColor {
     static let darkGreen = UIColor(colorWithHexValue: 0x1F6B3D)
     static let orange = UIColor(colorWithHexValue: 0xFAAA00)
 }
+
+
+let allQuestionTypes: [QuestionType] = {
+    var questionTypes: [QuestionType] = []
+    for questionType in iterateEnum(QuestionType.self) {
+        questionTypes.append(questionType)
+    }
+    return questionTypes
+}()

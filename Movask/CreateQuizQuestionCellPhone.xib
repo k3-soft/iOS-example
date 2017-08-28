@@ -58,7 +58,7 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="OdY-5M-dzz" customClass="UnderLinedTextView" customModule="Movask" customModuleProvider="target">
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="OdY-5M-dzz" customClass="UnderLinedTextView" customModule="Movask" customModuleProvider="target">
                                         <rect key="frame" x="8" y="72" width="343" height="33"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
@@ -189,6 +189,7 @@
                 <outlet property="questionTitleTextView" destination="OdY-5M-dzz" id="cgV-yr-q14"/>
                 <outlet property="questionTitleTextViewHeight" destination="mI6-Ma-5lV" id="PIt-Am-CUF"/>
                 <outlet property="questionTypeLabel" destination="h55-g1-8Bg" id="91x-Pm-lsu"/>
+                <outlet property="questionTypeSelectionView" destination="V0E-Kl-oeK" id="Piq-YY-LTK"/>
                 <outlet property="qustionTypeDescriptionLabel" destination="y1a-vJ-ERd" id="of1-VO-qhV"/>
             </connections>
             <point key="canvasLocation" x="155.5" y="-240.5"/>

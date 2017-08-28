@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="QuestionTypeCell" id="raj-4g-xYn" customClass="QuestionTypeCell" customModule="Movask" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="406" height="46"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="406" height="46"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="k1A-um-G0h">
+                        <rect key="frame" x="8" y="8" width="25" height="25"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="25" id="POe-3Y-awH"/>
+                            <constraint firstAttribute="width" constant="25" id="bsh-8O-oYK"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9wO-6b-yWb">
+                        <rect key="frame" x="41" y="10" width="357" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="9wO-6b-yWb" firstAttribute="leading" secondItem="k1A-um-G0h" secondAttribute="trailing" constant="8" id="3vN-aK-KqB"/>
+                <constraint firstItem="k1A-um-G0h" firstAttribute="top" secondItem="raj-4g-xYn" secondAttribute="top" constant="8" id="Bf0-KZ-B4Z"/>
+                <constraint firstItem="k1A-um-G0h" firstAttribute="leading" secondItem="raj-4g-xYn" secondAttribute="leading" constant="8" id="F7j-Mv-AGo"/>
+                <constraint firstItem="9wO-6b-yWb" firstAttribute="centerY" secondItem="k1A-um-G0h" secondAttribute="centerY" id="WkD-Dn-zYo"/>
+                <constraint firstAttribute="trailing" secondItem="9wO-6b-yWb" secondAttribute="trailing" constant="8" id="pFP-sk-ZYv"/>
+            </constraints>
+            <size key="customSize" width="406" height="46"/>
+            <connections>
+                <outlet property="checkImageView" destination="k1A-um-G0h" id="6p6-WF-Xzb"/>
+                <outlet property="typeLabel" destination="9wO-6b-yWb" id="drW-dN-hnW"/>
+            </connections>
+            <point key="canvasLocation" x="105" y="93"/>
+        </collectionViewCell>
+    </objects>
+</document>

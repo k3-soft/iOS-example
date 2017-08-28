@@ -29,7 +29,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bBY-Jy-55e">
                                 <rect key="frame" x="0.0" y="0.0" width="636" height="110"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H1j-JN-660">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H1j-JN-660" customClass="YNDropDownMenu" customModule="YNDropDownMenu">
                                         <rect key="frame" x="8" y="8" width="170" height="44"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Single choice" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g67-Rd-Ekr">
@@ -58,7 +58,7 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="MJb-0v-zbk" customClass="UnderLinedTextView" customModule="Movask" customModuleProvider="target">
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="MJb-0v-zbk" customClass="UnderLinedTextView" customModule="Movask" customModuleProvider="target">
                                         <rect key="frame" x="8" y="72" width="620" height="33"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -190,6 +190,7 @@
                 <outlet property="questionTitleTextView" destination="MJb-0v-zbk" id="4a0-Dp-K65"/>
                 <outlet property="questionTitleTextViewHeight" destination="V0y-ct-ptG" id="8xS-FO-Yfq"/>
                 <outlet property="questionTypeLabel" destination="g67-Rd-Ekr" id="Txl-im-T7q"/>
+                <outlet property="questionTypeSelectionView" destination="H1j-JN-660" id="Txc-Vl-mFJ"/>
                 <outlet property="qustionTypeDescriptionLabel" destination="hAV-cV-4hV" id="cHp-vJ-vVM"/>
             </connections>
             <point key="canvasLocation" x="156" y="-124"/>
