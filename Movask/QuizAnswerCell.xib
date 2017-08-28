@@ -8,6 +8,11 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Solomon-Sans-SemiBold.otf">
+            <string>Solomon-Sans-SemiBold</string>
+        </array>
+    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -25,13 +30,15 @@
                             <constraint firstAttribute="width" constant="25" id="Bly-hU-uWG"/>
                         </constraints>
                     </imageView>
-                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="gKY-3V-nQB" customClass="UnderLinedTextView" customModule="Movask" customModuleProvider="target">
+                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="gKY-3V-nQB" customClass="UnderLinedTextView" customModule="Movask" customModuleProvider="target">
                         <rect key="frame" x="41" y="0.0" width="315" height="33"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="tintColor" red="0.2901960784" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="33" id="c0L-D4-lDT"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" red="0.2901960784" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <fontDescription key="fontDescription" name="Solomon-Sans-SemiBold" family="Solomon Sans SemiBold" pointSize="17"/>
                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Enter option"/>
@@ -43,7 +50,7 @@
                             <constraint firstAttribute="height" constant="25" id="Gux-e2-rJg"/>
                             <constraint firstAttribute="width" constant="25" id="XXS-gd-UNj"/>
                         </constraints>
-                        <state key="normal" title="X">
+                        <state key="normal" image="CloseBlack">
                             <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
                         <connections>
@@ -71,4 +78,7 @@
             <point key="canvasLocation" x="-53.5" y="-122"/>
         </collectionViewCell>
     </objects>
+    <resources>
+        <image name="CloseBlack" width="16" height="16"/>
+    </resources>
 </document>

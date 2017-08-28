@@ -42,6 +42,10 @@
 		03B8CDEC1F3892F70058ABAC /* AnswerSelectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B8CDEB1F3892F70058ABAC /* AnswerSelectionCell.swift */; };
 		03B917361F39029200CCB979 /* ReplayButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B917351F39029200CCB979 /* ReplayButton.swift */; };
 		03B917381F3902A700CCB979 /* ReplayButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03B917371F3902A700CCB979 /* ReplayButton.xib */; };
+		03BC65E31F50681D0012AD5E /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03BC65E21F50681D0012AD5E /* CloudKit.framework */; };
+		03BC65E71F506A0D0012AD5E /* AuthorizationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BC65E51F506A0D0012AD5E /* AuthorizationVC.swift */; };
+		03BC65E81F506A0D0012AD5E /* AuthorizationVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03BC65E61F506A0D0012AD5E /* AuthorizationVC.xib */; };
+		03BC65EA1F5081080012AD5E /* UIView+Animations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BC65E91F5081080012AD5E /* UIView+Animations.swift */; };
 		03D646BB1F30D2CE007C206F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D646BA1F30D2CE007C206F /* AppDelegate.swift */; };
 		03D646C01F30D2CE007C206F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03D646BE1F30D2CE007C206F /* Main.storyboard */; };
 		03D646C21F30D2CE007C206F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 03D646C11F30D2CE007C206F /* Assets.xcassets */; };
@@ -158,6 +162,11 @@
 		03B8CDEB1F3892F70058ABAC /* AnswerSelectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnswerSelectionCell.swift; sourceTree = "<group>"; };
 		03B917351F39029200CCB979 /* ReplayButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReplayButton.swift; sourceTree = "<group>"; };
 		03B917371F3902A700CCB979 /* ReplayButton.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ReplayButton.xib; sourceTree = "<group>"; };
+		03BC65E11F5068050012AD5E /* Movask.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Movask.entitlements; sourceTree = "<group>"; };
+		03BC65E21F50681D0012AD5E /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
+		03BC65E51F506A0D0012AD5E /* AuthorizationVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthorizationVC.swift; sourceTree = "<group>"; };
+		03BC65E61F506A0D0012AD5E /* AuthorizationVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AuthorizationVC.xib; sourceTree = "<group>"; };
+		03BC65E91F5081080012AD5E /* UIView+Animations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Animations.swift"; sourceTree = "<group>"; };
 		03D646B71F30D2CE007C206F /* Movask.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Movask.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		03D646BA1F30D2CE007C206F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		03D646BF1F30D2CE007C206F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -247,6 +256,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CD6C7355B1C4AE093EDD1E8F /* Pods_Movask.framework in Frameworks */,
+				03BC65E31F50681D0012AD5E /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -324,6 +334,15 @@
 			name = ReplayButton;
 			sourceTree = "<group>";
 		};
+		03BC65E41F5069EB0012AD5E /* Intro */ = {
+			isa = PBXGroup;
+			children = (
+				03BC65E51F506A0D0012AD5E /* AuthorizationVC.swift */,
+				03BC65E61F506A0D0012AD5E /* AuthorizationVC.xib */,
+			);
+			name = Intro;
+			sourceTree = "<group>";
+		};
 		03D646AE1F30D2CE007C206F = {
 			isa = PBXGroup;
 			children = (
@@ -345,6 +364,7 @@
 		03D646B91F30D2CE007C206F /* Movask */ = {
 			isa = PBXGroup;
 			children = (
+				03BC65E11F5068050012AD5E /* Movask.entitlements */,
 				03F5680D1F335518000DBFDC /* Server */,
 				03D646E61F32098D007C206F /* Managers */,
 				03D646E31F32081D007C206F /* Models */,
@@ -381,6 +401,7 @@
 				04256C321F3C577F006C86B1 /* String+TextHeight.swift */,
 				04256C341F3CA2B2006C86B1 /* Array+Rearrange.swift */,
 				033FB5341F3E2682009D6920 /* UIViewController+Keyboard.swift */,
+				03BC65E91F5081080012AD5E /* UIView+Animations.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -391,6 +412,7 @@
 				03D646D41F32018C007C206F /* BasicVC.swift */,
 				0390B8361F4B31DE009DC8B0 /* QRScannerVC.swift */,
 				0390B8371F4B31DE009DC8B0 /* QRScannerVC.xib */,
+				03BC65E41F5069EB0012AD5E /* Intro */,
 				033FB53C1F41A659009D6920 /* QuizResults */,
 				03E4AD6F1F34E38700EAA33A /* QuizGame */,
 				04256C191F387E12006C86B1 /* QuizCreate */,
@@ -618,6 +640,7 @@
 		4D5EB1E2A759B5F25A0D343A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				03BC65E21F50681D0012AD5E /* CloudKit.framework */,
 				ADD8DD89C88C0C32D0D1EA71 /* Pods_Movask.framework */,
 			);
 			name = Frameworks;
@@ -671,6 +694,14 @@
 						DevelopmentTeam = 47NU3T65A7;
 						LastSwiftMigration = 0830;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+							com.apple.iCloud = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -703,6 +734,7 @@
 				04256C2F1F39CDD8006C86B1 /* QuizAnswerCell.xib in Resources */,
 				03D646F61F326E8F007C206F /* LineSegmentedControl.xib in Resources */,
 				03F568311F33D817000DBFDC /* ScanQRCell.xib in Resources */,
+				03BC65E81F506A0D0012AD5E /* AuthorizationVC.xib in Resources */,
 				033FB5511F422334009D6920 /* AnswerSelectionCell.xib in Resources */,
 				04256C241F3881B5006C86B1 /* CreateQuizHeaderCell.xib in Resources */,
 				03E4AD6E1F34E2D000EAA33A /* QuizPhoneVC.xib in Resources */,
@@ -811,6 +843,7 @@
 				03406D531F3A70490035EA67 /* Scrubber.swift in Sources */,
 				032A15421F3CFABF00184BA9 /* UILabel+Size.swift in Sources */,
 				033FB5351F3E2682009D6920 /* UIViewController+Keyboard.swift in Sources */,
+				03BC65EA1F5081080012AD5E /* UIView+Animations.swift in Sources */,
 				03F568211F3386B8000DBFDC /* String+Size.swift in Sources */,
 				03E4AD791F34F21A00EAA33A /* CollectionViewCenteredLayout.swift in Sources */,
 				03F5681F1F3383FB000DBFDC /* Token.swift in Sources */,
@@ -864,6 +897,7 @@
 				03B8CDE61F3883B60058ABAC /* QuestionType.swift in Sources */,
 				03F568111F335637000DBFDC /* UserDefaultsManager.swift in Sources */,
 				04256C281F388870006C86B1 /* UnderLinedTextView.swift in Sources */,
+				03BC65E71F506A0D0012AD5E /* AuthorizationVC.swift in Sources */,
 				03F568151F336062000DBFDC /* QRManager.swift in Sources */,
 				033FB54F1F422057009D6920 /* GapManager.swift in Sources */,
 				04256C331F3C577F006C86B1 /* String+TextHeight.swift in Sources */,
@@ -1006,6 +1040,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = Movask/Movask.entitlements;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 47NU3T65A7;
 				INFOPLIST_FILE = Movask/Info.plist;
@@ -1024,6 +1059,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = Movask/Movask.entitlements;
 				DEVELOPMENT_TEAM = 47NU3T65A7;
 				INFOPLIST_FILE = Movask/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

@@ -29,7 +29,7 @@ class QuizAnswerCell: UICollectionViewCell {
     static let answerTextAttributes: [String: NSObject] = {
         let style = NSMutableParagraphStyle()
         style.lineSpacing = 0
-        let font = UIFont.systemFont(ofSize: 14)
+        let font = UIFont(name: MainFontSemibold, size: 17.0)!
         
         let attributes = [NSParagraphStyleAttributeName : style, NSFontAttributeName : font]
         return attributes

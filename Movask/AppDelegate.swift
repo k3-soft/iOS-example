@@ -19,6 +19,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
+        AuthorizationManager.setToken()
+        
         setInitialViewController()
         setFabric()
         setKeyboardManager()
@@ -28,16 +30,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func setInitialViewController() {
         
-        let vc = CollectionsVC()
+        let vc = AuthorizationVC()
+        //let vc = CollectionsVC()
         //let vc = QuizPadVC()
         //let vc = QuizPhoneVC()
         
         let navigationVC = UINavigationController(rootViewController: vc)
         navigationVC.setNavigationBarHidden(true, animated: false)
         
-        UINavigationBar.appearance().barTintColor = UIColor.white
-        UINavigationBar.appearance().tintColor = BrandColor.darkGreen
-        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName:UIColor.black]
+        window?.tintColor = BrandColor.green
         
         window?.rootViewController = navigationVC
         window?.makeKeyAndVisible()

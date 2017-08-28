@@ -38,7 +38,7 @@ class CreateQuizQuestionCell: UICollectionViewCell {
     static let gapsQuestionTextAttributes: [String: NSObject] = {
         let style = NSMutableParagraphStyle()
         style.lineSpacing = 30
-        let font = UIFont.boldSystemFont(ofSize: 14)
+        let font = UIFont(name: MainFontSemibold, size: 17.0)!
         
         let attributes = [NSParagraphStyleAttributeName : style, NSFontAttributeName : font, NSForegroundColorAttributeName : UIColor.white]
         return attributes
@@ -47,7 +47,7 @@ class CreateQuizQuestionCell: UICollectionViewCell {
     static let variantsQuestionTextAttributes: [String: NSObject] = {
         let style = NSMutableParagraphStyle()
         style.lineSpacing = 0
-        let font = UIFont.boldSystemFont(ofSize: 14)
+        let font = UIFont(name: MainFontSemibold, size: 17.0)!
         
         let attributes = [NSParagraphStyleAttributeName : style, NSFontAttributeName : font, NSForegroundColorAttributeName : UIColor.white]
         return attributes
@@ -94,6 +94,7 @@ class CreateQuizQuestionCell: UICollectionViewCell {
     }
 
     func calculateCellHeightConstraintsFor(_ question: QuestionPostTest) {
+        
         var questionBlockHeight: CGFloat = 80 // height for green question block without textview
         let answersFooterHeight: CGFloat = 33.0 // add item button
         let answersCollectionViewInsets: CGFloat = 16.0
