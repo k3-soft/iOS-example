@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 class QuizVC: BasicVC {
     
@@ -38,8 +39,10 @@ class QuizVC: BasicVC {
     
     @IBOutlet weak var videoView: UIView!
     @IBOutlet weak var movieView: UIView!
-    @IBOutlet weak var videoPlayer: ASPVideoPlayer!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    
+    var player = AVPlayer()
+    var playerLayer: AVPlayerLayer?
     
     var replayButton: ReplayButton?
     
@@ -124,7 +127,7 @@ class QuizVC: BasicVC {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        videoPlayer.videoPlayerView.stopVideo()
+        player.pause()
     }
     
     deinit {
@@ -190,21 +193,21 @@ class QuizVC: BasicVC {
         
         guard let url = URL(string: quiz.videoPath) else { return }
         
-        activityIndicator.startAnimating()
+        let item = AVPlayerItem(url: url)
         
-        videoPlayer?.videoURLs = [url]
-        videoPlayer?.gravity = .aspectFill
-        videoPlayer?.shouldLoop = false
-        videoPlayer?.tintColor = UIColor.white
-        videoPlayer?.hideControlsTotally()
+        NotificationCenter.default.addObserver(self,selector:#selector(self.playerDidFinishPlaying), name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: item)
         
-        videoPlayer?.videoPlayerView.finishedVideo = { [unowned self] in
-            self.hideMovie()
-        }
+        player = AVPlayer(playerItem: item)
         
-        videoPlayer?.videoPlayerView.readyToPlayVideo = { [unowned self] in
-            self.activityIndicator.stopAnimating()
-        }
+        playerLayer = AVPlayerLayer(player: player)
+        playerLayer?.videoGravity = AVLayerVideoGravityResizeAspectFill
+        playerLayer?.frame = movieView.bounds
+        
+        movieView.layer.insertSublayer(playerLayer!, at: 0)
+    }
+    
+    func playerDidFinishPlaying() {
+        hideMovie()
     }
     
     func initiateReplayButton() {
@@ -241,10 +244,9 @@ class QuizVC: BasicVC {
     }
     
     func togglePlay() {
-        
-        videoPlayer?.videoPlayerView.playVideo()
-        videoPlayer?.hideControls()
-        videoPlayer?.videoPlayerControls.togglePlay()
+        player.pause()
+        player.seek(to: kCMTimeZero)
+        player.play()
     }
     
     // MARK: - Load data

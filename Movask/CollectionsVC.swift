@@ -140,7 +140,9 @@ class CollectionsVC: BasicVC {
     // MARK: - Actions
     
     @IBAction func changeLanguage(_ sender: UIButton) {
-        print("Change language")
+        sender.animatePush { _ in
+            print("Change language")
+        }
     }
     
     func likeDidTap(cell: QuizCell) {
@@ -153,14 +155,10 @@ class CollectionsVC: BasicVC {
     
     func addNewQuiz() {
         print("Add new quiz")
-        let createQuizVC = CreateQuizVC()
-        navigationController?.pushViewController(createQuizVC, animated: true)
     }
     
     func scanQRCode() {
         print("Scan QR code")
-        let scannerVC = QRScannerVC()
-        navigationController?.pushViewController(scannerVC, animated: true)
     }
 }
 

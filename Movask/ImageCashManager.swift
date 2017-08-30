@@ -7,36 +7,44 @@
 //
 
 import UIKit
-import AlamofireImage
+
+typealias ImageCacheLoaderCompletionHandler = ((UIImage) -> ())
 
 class CacheManager {
     
-    static var cachedImages = NSCache<AnyObject, AnyObject>()
+    static var cache = NSCache<NSString, UIImage>()
     
-    func setImageFor(imageView: UIImageView, path: String, imageID: Int) {
+    var session: URLSession!
+    
+    init() {
+        session = URLSession.shared
+    }
+    
+    func obtainImageWithPath(_ imagePath: String, completionHandler: @escaping ImageCacheLoaderCompletionHandler) {
         
-        if let cachedImage = getImage(id: imageID) {
-            imageView.image = cachedImage
+        if let image = CacheManager.cache.object(forKey: imagePath as NSString) {
+            DispatchQueue.main.async {
+                completionHandler(image)
+            }
         } else {
             
-            if let url = URL(string: path) {
-                
-                DispatchQueue.global(qos: .background).async {
-                    imageView.af_setImage(withURL: url, completion: { [weak self] (response) in
-                        if let image = response.value {
-                            self?.saveImage(image, id: imageID)
-                        }
-                    })
-                }
+            let placeholder = UIImage(named: "ImageEmpty")!
+            DispatchQueue.main.async {
+                completionHandler(placeholder)
             }
+            
+            guard let url = URL(string: imagePath) else { return }
+            let request = URLRequest(url: url)
+            
+            let task = session.dataTask(with: request, completionHandler: { (data, response, error) in
+                if data != nil, let img = UIImage(data: data!) {
+                    CacheManager.cache.setObject(img, forKey: imagePath as NSString)
+                    DispatchQueue.main.async {
+                        completionHandler(img)
+                    }
+                }
+            })
+            task.resume()
         }
-    }
-    
-    private func saveImage(_ image: UIImage, id: Int) {
-        CacheManager.cachedImages.setObject(image, forKey: id as AnyObject)
-    }
-    
-    private func getImage(id: Int) -> UIImage? {
-        return CacheManager.cachedImages.object(forKey: id as AnyObject) as? UIImage
     }
 }

@@ -73,7 +73,7 @@ class QuizCell: UICollectionViewCell {
     }
 
     override func prepareForReuse() {
-        coverImageView.image = UIImage(named: "EmptyImage")
+        coverImageView.image = UIImage(named: "ImageEmpty")
     }
     
     func setWithQuiz(_ currentQuiz: QuizTest, isInversed: Bool) {
@@ -90,7 +90,9 @@ class QuizCell: UICollectionViewCell {
         
         // Set cover
         
-        CacheManager().setImageFor(imageView: coverImageView, path: currentQuiz.imagePath, imageID: currentQuiz.id)
+        CacheManager().obtainImageWithPath(currentQuiz.imagePath) { [unowned self] (image) in
+            self.coverImageView.image = image
+        }
     }
     
     func setWide(isLandscape: Bool, isInversed: Bool) {

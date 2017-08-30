@@ -67,8 +67,6 @@ class QuizPhoneVC: QuizVC {
         }) { _ in
             
             self.isMovieOpen = true
-            
-            self.videoPlayer?.unhideControls()
         
             self.replayButton?.removeFromSuperview()
             self.replayButton = nil
@@ -78,6 +76,7 @@ class QuizPhoneVC: QuizVC {
             
             UIView.animate(withDuration: 0.3, animations: {
                 self.view.layoutIfNeeded()
+                self.playerLayer?.frame = self.movieView.bounds
             }) { _ in
                 self.togglePlay()
             }
@@ -88,14 +87,13 @@ class QuizPhoneVC: QuizVC {
         super.hideMovie()
         
         guard isMovieOpen else { return }
-        
-        videoPlayer?.hideControlsTotally()
 
         heightTopView.constant = minHeightVideoView
         centerXMovieView.constant = -75.0
         
         UIView.animate(withDuration: 0.3, animations: {
             self.view.layoutIfNeeded()
+            self.playerLayer?.frame = self.movieView.bounds
             
         }) { _ in
             
@@ -118,12 +116,12 @@ class QuizPhoneVC: QuizVC {
         
         UIView.animate(withDuration: 0.3, animations: {
             self.topView.layoutIfNeeded()
+            
         }) { _ in
             self.startView.alpha = 0.0
             
             self.isQuizStarted = true
             self.visibleCellButtonsEnabled(true)
-            self.videoPlayer.unhideControls()
             self.togglePlay()
         }
     }

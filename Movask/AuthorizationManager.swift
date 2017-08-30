@@ -36,16 +36,6 @@ class AuthorizationManager {
         }
     }
     
-    @discardableResult class func updateProfile(with data: Any) -> Profile? {
-        
-        guard let json = data as? [String: Any],
-            let profile = Profile(JSON: json) else { return nil }
-            
-        UserDefaultsManager.default.writeValue(profile.username, forKey: .kNickname)
-        
-        return profile
-    }
-    
     // MARK: - Private
     
     static private var sharedInstance = AuthorizationManager()

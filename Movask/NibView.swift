@@ -2,7 +2,7 @@
 //  NibView.swift
 //  Movask
 //
-//  Created by Alina Yehorova on 03.08.17.
+//  Created by Alina Yehorova on 30.08.17.
 //  Copyright © 2017 Alina Yehorova. All rights reserved.
 //
 

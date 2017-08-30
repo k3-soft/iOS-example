@@ -64,7 +64,7 @@ class QuizResultsPadVC: QuizResultsVC {
     }
     
     func showDefaultImage() {
-        videoThumb.image = UIImage(named: "EmptyImage")!
+        videoThumb.image = UIImage(named: "ImageEmpty")!
     }
     
     override func setResults() {

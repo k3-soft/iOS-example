@@ -8,8 +8,8 @@
 
 import UIKit
 
-let BaseAPIUrl = "http://api.aftervideo.k-3soft.com/api/"
-let BaseAPIUploads = "http://api.aftervideo.k-3soft.com/api/"
+let BaseAPIUrl = "http://..."
+let BaseAPIUploads = "http://..."
 
 let MainFontSemibold = "Solomon-Sans-SemiBold"
 let MainFontBold = "Solomon-Sans-Bold"
@@ -26,11 +26,3 @@ struct BrandColor {
     static let orange = UIColor(colorWithHexValue: 0xFAAA00)
 }
 
-
-let allQuestionTypes: [QuestionType] = {
-    var questionTypes: [QuestionType] = []
-    for questionType in iterateEnum(QuestionType.self) {
-        questionTypes.append(questionType)
-    }
-    return questionTypes
-}()

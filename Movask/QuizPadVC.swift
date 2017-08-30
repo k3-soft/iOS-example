@@ -56,8 +56,6 @@ class QuizPadVC: QuizVC {
             
             self.isMovieOpen = true
             
-            self.videoPlayer?.unhideControls()
-            
             self.replayButton?.removeFromSuperview()
             self.replayButton = nil
             
@@ -69,8 +67,6 @@ class QuizPadVC: QuizVC {
         super.hideMovie()
         
         guard isMovieOpen else { return }
-        
-        videoPlayer?.hideControlsTotally()
         
         isMovieOpen = false
         
@@ -95,7 +91,6 @@ class QuizPadVC: QuizVC {
         
             self.isQuizStarted = true
             self.visibleCellButtonsEnabled(true)
-            self.videoPlayer.unhideControls()
             self.togglePlay()
         }
     }

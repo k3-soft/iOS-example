@@ -11,15 +11,15 @@ import UIKit
 enum ErrorType {
     
     case serverError
-    case loadingLocationError
+    case authorizationError
     
     var title: String {
         
         switch self {
         case .serverError:
             return "Server error"
-        case .loadingLocationError:
-            return "Some error"
+        case .authorizationError:
+            return "Authorization error"
         }
     }
 }

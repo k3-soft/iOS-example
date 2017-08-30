@@ -35,7 +35,6 @@
                 <outlet property="titleLabel" destination="vEB-fA-JNP" id="nma-5e-BJM"/>
                 <outlet property="topStartButton" destination="wUF-dh-cyk" id="fnN-3j-zab"/>
                 <outlet property="topView" destination="7eC-y5-kXF" id="5x6-Od-A2V"/>
-                <outlet property="videoPlayer" destination="GYG-Y0-CRw" id="84C-83-Hy6"/>
                 <outlet property="videoView" destination="psb-7N-TBU" id="Aob-iq-r0P"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -95,11 +94,6 @@
                                                 <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b46-Nq-KQ7">
                                                     <rect key="frame" x="36" y="10" width="345" height="345"/>
                                                     <subviews>
-                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GYG-Y0-CRw" customClass="ASPVideoPlayer" customModule="Movask" customModuleProvider="target">
-                                                            <rect key="frame" x="0.0" y="0.0" width="345" height="345"/>
-                                                            <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
-                                                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                        </view>
                                                         <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="XvM-Qe-bmn">
                                                             <rect key="frame" x="154.5" y="154" width="37" height="37"/>
                                                             <color key="color" red="0.2901960784" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
@@ -107,13 +101,9 @@
                                                     </subviews>
                                                     <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="bottom" secondItem="GYG-Y0-CRw" secondAttribute="bottom" id="8hN-p3-d4H"/>
-                                                        <constraint firstItem="GYG-Y0-CRw" firstAttribute="leading" secondItem="b46-Nq-KQ7" secondAttribute="leading" id="JLj-l7-Llo"/>
                                                         <constraint firstItem="XvM-Qe-bmn" firstAttribute="centerX" secondItem="b46-Nq-KQ7" secondAttribute="centerX" id="fA8-4G-T38"/>
                                                         <constraint firstItem="XvM-Qe-bmn" firstAttribute="centerY" secondItem="b46-Nq-KQ7" secondAttribute="centerY" id="i12-p2-39c"/>
-                                                        <constraint firstItem="GYG-Y0-CRw" firstAttribute="top" secondItem="b46-Nq-KQ7" secondAttribute="top" id="lzU-F1-4tM"/>
                                                         <constraint firstAttribute="width" secondItem="b46-Nq-KQ7" secondAttribute="height" multiplier="1:1" id="nmp-A2-G0j"/>
-                                                        <constraint firstAttribute="trailing" secondItem="GYG-Y0-CRw" secondAttribute="trailing" id="qEl-gw-8fD"/>
                                                     </constraints>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">

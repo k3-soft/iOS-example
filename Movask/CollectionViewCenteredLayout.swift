@@ -2,7 +2,7 @@
 //  CollectionViewCenteredLayout.swift
 //  Movask
 //
-//  Created by Alina Yehorova on 04.08.17.
+//  Created by Alina Yehorova on 30.08.17.
 //  Copyright © 2017 Alina Yehorova. All rights reserved.
 //
 

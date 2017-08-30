@@ -19,13 +19,3 @@ class QuizTest {
     let videoPath = "http://clock.miber.se/uploads/1495619835-517312610.657764.MOV"
 }
 
-class QuizPostTest {
-    
-    let id = 1
-    var title = ""
-    var description = ""
-    let likesCount = 120
-    
-    let imagePath = "http://orig03.deviantart.net/a288/f/2012/123/a/2/cat_as_photographer_by_microkey-d4ydm7b.jpg"
-    let videoPath = "http://clock.miber.se/uploads/1495619835-517312610.657764.MOV"
-}

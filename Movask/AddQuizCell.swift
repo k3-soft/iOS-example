@@ -16,6 +16,8 @@ class AddQuizCell: UICollectionViewCell {
     var addHandler: (()->())?
     
     @IBAction func addDidTap(_ sender: UIButton) {
-        addHandler?()
+        sender.animatePush { [unowned self] _ in
+            self.addHandler?()
+        }
     }
 }

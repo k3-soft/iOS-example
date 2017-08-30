@@ -11,11 +11,8 @@ import Foundation
 enum UserDefaultKeys: String {
     case kNickname = "Nickname"
     case kUserID = "UserID"
-    case kLanguageID = "LanguageID"
-    case kLanguageName = "LanguageName"
     case kDeviceID = "DeviceID"
     case kDeviceToken = "DeviceToken"
-    case kInterfaceLanguage = "InterfaceLanguage"
 }
 
 class UserDefaultsManager {
@@ -33,12 +30,8 @@ class UserDefaultsManager {
     
     func clearAllDefaults() {
         
-        let prefferedLanguage = getValue(valueType: String.self, forKey: .kInterfaceLanguage)
-        
         let appDomain = Bundle.main.bundleIdentifier!
         UserDefaults.standard.removePersistentDomain(forName: appDomain)
         UserDefaults.standard.synchronize()
-        
-        writeValue(prefferedLanguage, forKey: .kInterfaceLanguage)
     }
 }

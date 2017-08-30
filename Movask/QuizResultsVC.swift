@@ -166,7 +166,9 @@ class QuizResultsVC: BasicVC {
     // MARK: - Actions
     
     @IBAction func backToStart(_ sender: UIButton) {
-        navigationController?.popToRootViewController(animated: true)
+        sender.animatePush { [unowned self] _ in
+            self.navigationController?.popToRootViewController(animated: true)
+        }
     }
     
     @IBAction func redo(_ sender: UIButton) {

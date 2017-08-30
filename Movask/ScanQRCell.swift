@@ -21,6 +21,8 @@ class ScanQRCell: UICollectionViewCell {
     }
     
     @IBAction func scanDidTap(_ sender: UIButton) {
-        scanHandler?()
+        sender.animatePush { [unowned self] _ in
+            self.scanHandler?()
+        }
     }
 }
